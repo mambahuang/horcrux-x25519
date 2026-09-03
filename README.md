@@ -41,6 +41,7 @@ make crheepto-gen
 
 | Topic | Where |
 |---|---|
+| Bare-metal (non-Docker) environment setup on a shared EDA lab server | [`SETUP_NOTES.md`](SETUP_NOTES.md) |
 | Coprocessor modules and the full HORCRUX Instruction Set | [`hw/ip/coprocessors/README.md`](hw/ip/coprocessors/README.md) |
 | All software tests & PQC applications, and how to run them | [`sw/applications/README.md`](sw/applications/README.md) |
 | Post-synthesis power-characterization tests | [`sw/applications/tests-power/README.md`](sw/applications/tests-power/README.md) |
