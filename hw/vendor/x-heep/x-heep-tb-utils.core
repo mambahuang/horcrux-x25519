@@ -19,7 +19,7 @@ filesets:
     - example:ip:simple_accelerator
     - example:ip:dlc
     - example:ip:im2col_spc
-    files:
+    files: []
     file_type: systemVerilogSource
 
   files_verilator_waiver:
