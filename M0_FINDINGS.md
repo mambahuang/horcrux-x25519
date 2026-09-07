@@ -901,20 +901,33 @@ and `tests/kyber-intt` passes in full-SoC RTL simulation (SW 29,604 / HW
 Kyber inverse-NTT butterfly could not produce correct results if the Barrett
 cone were missing.
 
-## Still open
+## Functionally confirmed as well
 
-Presence is settled; **correctness of the four `OP_BARRETT*` opcodes
-specifically is not**. `OP_BFINTTK` exercises the Kyber path only, and the
-`tests/kyber-barrett` and `tests/hqc-barrett` directed tests were never run
-during the Experiment 1 regression. They are cheap and would close this:
+Presence in the netlist does not by itself prove the four `OP_BARRETT*`
+opcodes compute correctly, so the two directed tests were run in full-SoC
+QuestaSim simulation:
 
-```sh
-for p in tests/kyber-barrett tests/hqc-barrett ; do … ; done
-```
+| Test | Covers | SW cycles | HW cycles | Result |
+|---|---|---|---|---|
+| `tests/kyber-barrett` | `OP_BARRETT` (Z₃₃₂₉) | 272 | 224 | **PASS** |
+| `tests/hqc-barrett` | `OP_BARRETT_HQC` / `_HQC3` / `_HQC5` | 2,716 | 1,878 | **PASS** |
 
-That matters because `tests/falcon-montg` showed the encoding a test emits and
-the encoding the decoder expects can disagree — the failure mode this
-investigation was originally chasing does exist in this design, just not here.
+Both cross-check the hardware result against a software reference, and
+`hqc-barrett` sweeps all three HQC parameter sets. Together with `kyber-intt`
+exercising the `OP_BFINTTK` path, **all four `OP_BARRETT*` opcodes are
+confirmed to reach the unit and return correct results.** The Step 3 open
+question is closed on both counts: the logic is there, and it works.
+
+## This is *not* the same problem as `tests/falcon-montg`
+
+An earlier draft of these notes speculated that the Barrett question and the
+`falcon-montg` failure might be one systemic issue — instructions in the
+published design not wired through end to end. **The Barrett result refutes
+that.** Barrett's encodings match the decoder and its results are correct;
+`falcon-montg`'s encoding decodes to `OP_CBD3` and its results are wrong. They
+are unrelated, and `falcon-montg` remains a single isolated case rather than
+evidence of a pattern. Any writeup should say so — the broader claim is not
+supported.
 
 ## Note on the RTL, for anyone repeating this
 
