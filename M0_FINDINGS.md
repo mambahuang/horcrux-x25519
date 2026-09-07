@@ -672,17 +672,76 @@ confirming whether a dedicated single-operand Falcon Montgomery-reduce
 instruction was intended and dropped, or whether the test simply has the wrong
 encoding, before reporting upstream.
 
+## Full-SoC synthesis — the design now meets timing
+
+The OOC numbers above are not comparable to the SoC's 97.231 ns, so M0's SoC
+flow was re-run on a copy of its project (`pynq-z2-vivado-exp1`, original left
+untouched) with the same report command.
+
+| Main clock domain (`clk_out1_…clk_wiz_0_0`, 66.667 ns) | M0 baseline | After |
+|---|---|---|
+| **WNS** | **−30.825 ns** | **+15.696 ns** |
+| TNS | −75,386.570 ns | **0.000 ns** |
+| **Failing endpoints** | **2,658** / 84,875 | **0** / 84,875 |
+| Worst reg-to-reg path | 97.231 ns | **47.905 ns** |
+| Logic levels on that path | 110 (CARRY4=50, DSP=3) | 61 (CARRY4=29, DSP=5) |
+
+**The design closes timing at 15 MHz for the first time.** All 2,658 failing
+endpoints M0 recorded are gone, and no multiplier path appears anywhere in the
+20 worst paths.
+
+The one remaining violation, `spi_slave_sck_io` → GPIO sync register
+(−4.785 ns, 2 logic levels, IBUF+LUT2), is a pre-existing I/O constraint issue
+— it appears in M0's baseline summary too, merely masked by the −30.825 ns
+coprocessor path. Hold timing is byte-identical either way (WHS −0.202 ns,
+8 failing endpoints), so this change does not touch it.
+
+SoC area: **95,135 → 92,513 LUT (−2,622)**, FF and BRAM unchanged, DSP 20 → 24.
+
+### Segment comparison on the same path
+
+Same destination register (`alu_operand_b_ex_o_reg[23]`) in both:
+
+| Segment | M0 baseline | After | Δ |
+|---|---|---|---|
+| Decode/mux + raw multiply (S0+S1) | 65.183 ns | **16.006 ns** | **−49.18 ns** |
+| Montgomery reduction (S2) | 23.528 ns | 23.528 ns | 0.000 |
+| cv32e40px tail (S3) | 8.521 ns | 8.371 ns | −0.15 |
+| **Total** | **97.231 ns** | **47.905 ns** | **−49.33 ns (−50.7%)** |
+
+S2 comes out **identical to three decimals**, which is the expected result: the
+Montgomery RTL was not touched. The entire saving is in the raw multiply,
+a 4.1× speedup on that segment, and it matches the OOC prediction
+(−49.03 ns) almost exactly.
+
+### Revised M1 gate
+
+Task 1's gate of 73.7 ns was computed against the old RTL. Recomputed here,
+`MODE_RAW_MUL` = S0 + S1 + S3 = 16.006 + 8.371 = **24.4 ns**, comfortably
+inside the 66.667 ns budget.
+
+**Montgomery reduction is now the dominant segment** — 23.528 ns of a 47.905 ns
+path, 49% — so it is the target for any further optimisation work, and the
+"long accumulation chain" hypothesis that drove M0 is now fully retired.
+
 ## Caveats
 
-- **OOC only.** 44.921 ns is not comparable to the SoC's 97.231 ns — a
-  full-SoC re-synthesis is needed to know the real effect on the chip's
-  critical path. The before/after pair here *is* apples-to-apples.
-- **Still pre-placement**, on the same statistical route model as everything
-  else in this document. Note the logic/route split shifted from 50.6/49.4 to
-  63.1/36.9 — proportionally more of the remaining delay is now real logic.
-- **Module-level equivalence only** at the time of writing; superseded in part
-  by the RTL-simulation results below.
-- The Task 1 gate of 73.7 ns was computed against the *old* RTL and must be
-  recomputed if this change is adopted.
-- DSP usage rises 11 → 15 of the Z020's 220 (5.0% → 6.8%). Not a constraint
-  here, but it would scale with any future instantiation count.
+- **Still pre-placement.** These are synthesis estimates on the same
+  statistical route model as everything else in this document; a positive WNS
+  at synthesis is not a guarantee post-route. The SoC also does not fit on the
+  Z020 (92,513 LUT vs 53,200, 256 BRAM vs 140), so P&R cannot be run to check.
+  The logic/route split did shift from 50.6/49.4 to 63.1/36.9, so
+  proportionally more of the remaining delay is real logic rather than
+  estimate.
+- **`tests/falcon-montg` and the falcon-512 KAT contribute nothing** — both
+  fail for pre-existing reasons documented above, so Falcon coverage rests on
+  `falcon-ntt` / `falcon-intt`.
+- DSP usage rises 11 → 15 in the multiplier tree (20 → 24 across the SoC, of
+  the Z020's 220). Not a constraint here, but it scales with instantiation
+  count.
+- **M0's project was left mid-experiment.** `pynq-z2-vivado`'s `synth_1` has
+  its top set to `multiplier_tree` and an OOC wrapper source that no longer
+  exists still in the fileset, both left over from the Step 3 OOC work. A plain
+  `launch_runs synth_1` therefore synthesises the bare module, not the SoC —
+  `reports/m0_followup/exp1_soc_synth.tcl` resets both. Anyone reproducing M0's
+  SoC baseline will hit this.

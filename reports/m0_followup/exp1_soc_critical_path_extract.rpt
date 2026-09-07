@@ -1,0 +1,185 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
+| Date         : Mon Sep  7 14:25:15 2026
+| Host         : DESKTOP-OKV77IV running 64-bit major release  (build 9200)
+| Command      : report_timing -from [all_registers] -to [all_registers] -delay_type max -max_paths 10 -nworst 10 -file build/polito_vlsi_crheepto_0/pynq-z2-vivado-exp1/reports/reg2reg_max10.rpt
+| Design       : xilinx_crheepto_wrapper
+| Device       : 7z020-clg400
+| Speed File   : -1  PRODUCTION 1.12 2019-11-22
+| Design State : Synthesized
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack:                    inf
+  Source:                 u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/rs_values_o_reg[rs2][0]/C
+                            (rising edge-triggered cell FDCE)
+  Destination:            u_crheepto_top/u_core_v_mini_mcu/cpu_subsystem_i/gen_cv32e40px.cv32e40px_top_i/core_i/id_stage_i/alu_operand_b_ex_o_reg[23]/D
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        47.905ns  (logic 29.641ns (61.874%)  route 18.264ns (38.126%))
+  Logic Levels:           61  (CARRY4=29 DSP48E1=5 FDCE=1 LUT2=7 LUT3=2 LUT4=3 LUT5=5 LUT6=8 MUXF7=1)
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         FDCE                         0.000     0.000 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/rs_values_o_reg[rs2][0]/C
+                         FDCE (Prop_fdce_C_Q)         0.362     0.362 f  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/rs_values_o_reg[rs2][0]/Q
+                         net (fo=128, unplaced)       0.847     1.209    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/rs_values_o_reg[rs2][31]_1[0]
+                         LUT4 (Prop_lut4_I1_O)        0.319     1.528 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/int_prod_i_173/O
+                         net (fo=1, unplaced)         0.000     1.528    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/int_prod_i_173_n_0
+                         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.576     2.104 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/int_prod_i_161/CO[3]
+                         net (fo=1, unplaced)         0.009     2.113    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/int_prod_i_161_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     2.230 f  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/int_prod_i_157/CO[3]
+                         net (fo=9, unplaced)         0.959     3.189    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_inst/mul_op_b2
+                         LUT2 (Prop_lut2_I0_O)        0.117     3.306 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/int_prod_i_144/O
+                         net (fo=1, unplaced)         0.000     3.306    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/int_prod_i_144_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.547     3.853 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/int_prod_i_84/CO[3]
+                         net (fo=1, unplaced)         0.009     3.862    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/int_prod_i_84_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.979 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/int_prod_i_81/CO[3]
+                         net (fo=1, unplaced)         0.000     3.979    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/int_prod_i_81_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     4.096 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/int_prod_i_78/CO[3]
+                         net (fo=1, unplaced)         0.000     4.096    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/int_prod_i_78_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331     4.427 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/int_prod_i_75/O[3]
+                         net (fo=1, unplaced)         0.618     5.045    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_inst/data2[15]
+                         LUT3 (Prop_lut3_I0_O)        0.307     5.352 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/int_prod_i_40/O
+                         net (fo=1, unplaced)         0.449     5.801    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/int_prod_i_40_n_0
+                         LUT6 (Prop_lut6_I2_O)        0.124     5.925 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/int_prod_i_17/O
+                         net (fo=35, unplaced)        0.800     6.725    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/B[15]
+                         DSP48E1 (Prop_dsp48e1_B[15]_PCOUT[47])
+                                                      3.851    10.576 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/int_prod__1/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    10.631    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/int_prod__1_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    12.149 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/int_prod__2/P[0]
+                         net (fo=2, unplaced)         0.800    12.948    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/int_prod__2_n_105
+                         LUT2 (Prop_lut2_I0_O)        0.124    13.072 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/int_prod_carry_i_3/O
+                         net (fo=1, unplaced)         0.000    13.072    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/int_prod_carry_i_3_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    13.605 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/int_prod_carry/CO[3]
+                         net (fo=1, unplaced)         0.009    13.614    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/int_prod_carry_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.731 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/int_prod_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000    13.731    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/int_prod_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.848 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/int_prod_carry__1/CO[3]
+                         net (fo=1, unplaced)         0.000    13.848    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/int_prod_carry__1_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256    14.104 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/int_prod_carry__2/O[2]
+                         net (fo=1, unplaced)         1.114    15.218    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/int_prod__3[14]
+                         LUT6 (Prop_lut6_I5_O)        0.301    15.519 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/stage_a_result_i_32/O
+                         net (fo=8, unplaced)         0.487    16.006    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_inst/u_shared_mul/full_prod[30]
+                         LUT4 (Prop_lut4_I3_O)        0.124    16.130 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/stage_a_result_i_8/O
+                         net (fo=1, unplaced)         0.800    16.930    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/stage_a_result_0[13]
+                         DSP48E1 (Prop_dsp48e1_A[13]_P[0])
+                                                      3.841    20.771 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/stage_a_result/P[0]
+                         net (fo=1, unplaced)         0.800    21.571    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/stage_a_result_n_105
+                         LUT2 (Prop_lut2_I1_O)        0.124    21.695 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_i_34/O
+                         net (fo=1, unplaced)         0.000    21.695    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_i_34_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    22.228 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_i_19/CO[3]
+                         net (fo=1, unplaced)         0.009    22.237    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_i_19_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    22.354 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_i_18/CO[3]
+                         net (fo=1, unplaced)         0.000    22.354    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_i_18_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    22.471 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_i_17/CO[3]
+                         net (fo=1, unplaced)         0.000    22.471    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_i_17_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    22.802 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_i_16/O[3]
+                         net (fo=2, unplaced)         0.629    23.431    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/stage_b_result[3]
+                         LUT5 (Prop_lut5_I0_O)        0.307    23.738 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/modp_tp_i_1/O
+                         net (fo=2, unplaced)         0.800    24.538    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_0[15]
+                         DSP48E1 (Prop_dsp48e1_B[14]_PCOUT[47])
+                                                      3.851    28.389 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    28.444    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518    29.962 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp__0/P[3]
+                         net (fo=1, unplaced)         0.800    30.761    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp__0_n_102
+                         LUT2 (Prop_lut2_I1_O)        0.124    30.885 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/reg_B[11]_i_52/O
+                         net (fo=1, unplaced)         0.000    30.885    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/reg_B[11]_i_52_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    31.418 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/reg_B_reg[11]_i_49/CO[3]
+                         net (fo=1, unplaced)         0.000    31.418    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/reg_B_reg[11]_i_49_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.535 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/reg_B_reg[17]_i_55/CO[3]
+                         net (fo=1, unplaced)         0.000    31.535    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/reg_B_reg[17]_i_55_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.652 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/reg_B_reg[17]_i_54/CO[3]
+                         net (fo=1, unplaced)         0.000    31.652    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/reg_B_reg[17]_i_54_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    31.989 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/reg_B_reg[21]_i_30/O[1]
+                         net (fo=1, unplaced)         0.611    32.600    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/modp_tp__3[33]
+                         LUT4 (Prop_lut4_I3_O)        0.306    32.906 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B[21]_i_28/O
+                         net (fo=1, unplaced)         0.000    32.906    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B[21]_i_28_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    33.439 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B_reg[21]_i_17/CO[3]
+                         net (fo=1, unplaced)         0.000    33.439    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B_reg[21]_i_17_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    33.770 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B_reg[27]_i_40/O[3]
+                         net (fo=2, unplaced)         0.629    34.399    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_inst/u_shared_mul/p_0_in[24]
+                         LUT2 (Prop_lut2_I0_O)        0.307    34.706 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B[27]_i_44/O
+                         net (fo=1, unplaced)         0.000    34.706    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B[27]_i_44_n_0
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    35.219 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B_reg[27]_i_17/CO[3]
+                         net (fo=1, unplaced)         0.000    35.219    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B_reg[27]_i_17_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    35.550 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B_reg[31]_i_11/O[3]
+                         net (fo=32, unplaced)        0.689    36.239    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_sub[31]
+                         LUT3 (Prop_lut3_I2_O)        0.307    36.546 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B[0]_i_12/O
+                         net (fo=1, unplaced)         0.000    36.546    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B[0]_i_12_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    37.079 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B_reg[0]_i_4/CO[3]
+                         net (fo=1, unplaced)         0.009    37.088    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B_reg[0]_i_4_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    37.205 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B_reg[7]_i_7/CO[3]
+                         net (fo=1, unplaced)         0.000    37.205    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B_reg[7]_i_7_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    37.536 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B_reg[11]_i_7/O[3]
+                         net (fo=1, unplaced)         0.618    38.154    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_inst/u_shared_mul/data4[11]
+                         LUT5 (Prop_lut5_I0_O)        0.307    38.461 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B[11]_i_4/O
+                         net (fo=1, unplaced)         0.449    38.910    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B[11]_i_4_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124    39.034 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B[11]_i_2/O
+                         net (fo=14, unplaced)        0.500    39.534    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_inst/mul_res_lo[11]
+                         LUT2 (Prop_lut2_I1_O)        0.116    39.650 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem[31][15]_i_131/O
+                         net (fo=1, unplaced)         0.000    39.650    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem[31][15]_i_131_n_0
+                         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.576    40.226 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem_reg[31][15]_i_89/CO[3]
+                         net (fo=1, unplaced)         0.000    40.226    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem_reg[31][15]_i_89_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.232    40.458 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem_reg[31][15]_i_91/O[0]
+                         net (fo=7, unplaced)         0.346    40.804    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_inst/p_0_in0
+                         LUT2 (Prop_lut2_I1_O)        0.295    41.099 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem[31][0]_i_53/O
+                         net (fo=1, unplaced)         0.000    41.099    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem[31][0]_i_53_n_0
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    41.612 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem_reg[31][0]_i_28/CO[3]
+                         net (fo=1, unplaced)         0.009    41.621    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem_reg[31][0]_i_28_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    41.952 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem_reg[31][5]_i_29/O[3]
+                         net (fo=1, unplaced)         0.618    42.570    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem_reg[31][5]_i_29_n_4
+                         LUT6 (Prop_lut6_I3_O)        0.307    42.877 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem[31][7]_i_31/O
+                         net (fo=1, unplaced)         0.449    43.326    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem[31][7]_i_31_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124    43.450 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem[31][7]_i_16/O
+                         net (fo=1, unplaced)         0.449    43.899    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_result[7]
+                         LUT6 (Prop_lut6_I0_O)        0.124    44.023 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem[31][7]_i_9/O
+                         net (fo=1, unplaced)         0.000    44.023    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem[31][7]_i_9_n_0
+                         MUXF7 (Prop_muxf7_I1_O)      0.247    44.270 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem_reg[31][7]_i_4/O
+                         net (fo=1, unplaced)         0.422    44.692    u_crheepto_top/u_core_v_mini_mcu/cpu_subsystem_i/gen_cv32e40px.cv32e40px_top_i/core_i/ex_stage_i/gen_apu.apu_disp_i/rd_values_o[rd1][7]
+                         LUT6 (Prop_lut6_I0_O)        0.298    44.990 r  u_crheepto_top/u_core_v_mini_mcu/cpu_subsystem_i/gen_cv32e40px.cv32e40px_top_i/core_i/ex_stage_i/gen_apu.apu_disp_i/gen_rf[31].mem[31][7]_i_2/O
+                         net (fo=66, unplaced)        0.538    45.528    u_crheepto_top/u_core_v_mini_mcu/cpu_subsystem_i/gen_cv32e40px.cv32e40px_top_i/core_i/ex_stage_i/gen_apu.apu_disp_i/gen_apu.apu_result_q_reg[7]
+                         LUT6 (Prop_lut6_I4_O)        0.124    45.652 f  u_crheepto_top/u_core_v_mini_mcu/cpu_subsystem_i/gen_cv32e40px.cv32e40px_top_i/core_i/ex_stage_i/gen_apu.apu_disp_i/hwlp_start_q[1][7]_i_2/O
+                         net (fo=8, unplaced)         0.487    46.139    u_crheepto_top/u_core_v_mini_mcu/cpu_subsystem_i/gen_cv32e40px.cv32e40px_top_i/core_i/if_stage_i/hwlp_start_q_reg[0][7]
+                         LUT6 (Prop_lut6_I5_O)        0.124    46.263 r  u_crheepto_top/u_core_v_mini_mcu/cpu_subsystem_i/gen_cv32e40px.cv32e40px_top_i/core_i/if_stage_i/mult_operand_b_ex_o[7]_i_2/O
+                         net (fo=1, unplaced)         0.449    46.712    u_crheepto_top/u_core_v_mini_mcu/cpu_subsystem_i/gen_cv32e40px.cv32e40px_top_i/core_i/if_stage_i/mult_operand_b_ex_o[7]_i_2_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124    46.836 r  u_crheepto_top/u_core_v_mini_mcu/cpu_subsystem_i/gen_cv32e40px.cv32e40px_top_i/core_i/if_stage_i/mult_operand_b_ex_o[7]_i_1/O
+                         net (fo=10, unplaced)        0.945    47.781    u_crheepto_top/u_core_v_mini_mcu/cpu_subsystem_i/gen_cv32e40px.cv32e40px_top_i/core_i/if_stage_i/operand_b[7]
+                         LUT6 (Prop_lut6_I5_O)        0.124    47.905 r  u_crheepto_top/u_core_v_mini_mcu/cpu_subsystem_i/gen_cv32e40px.cv32e40px_top_i/core_i/if_stage_i/alu_operand_b_ex_o[23]_i_1/O
+                         net (fo=1, unplaced)         0.000    47.905    u_crheepto_top/u_core_v_mini_mcu/cpu_subsystem_i/gen_cv32e40px.cv32e40px_top_i/core_i/id_stage_i/alu_operand_b_ex_o_reg[31]_0[22]
+                         FDCE                                         r  u_crheepto_top/u_core_v_mini_mcu/cpu_subsystem_i/gen_cv32e40px.cv32e40px_top_i/core_i/id_stage_i/alu_operand_b_ex_o_reg[23]/D
+  -------------------------------------------------------------------    -------------------
+
