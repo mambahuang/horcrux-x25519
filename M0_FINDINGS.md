@@ -442,7 +442,11 @@ loop body, so every accumulate rank is a mode-muxed add/XOR. Vivado cannot
 pattern-match that to a multiplier and must build the shared array in fabric.
 **The GF(2) mode is what costs the integer mode its DSP mapping.**
 
-## Highest-value M1 experiment (untested)
+## Highest-value M1 experiment
+
+*(Proposed here, then carried out — see Experiment 1 below. Predictions kept
+as written for comparison against what actually happened; the area prediction
+turned out to be wrong in the favourable direction.)*
 
 `stage_a_result` — written as a plain `assign x = a * b` — performs a 32×32 in
 **3.841 ns** on one DSP48E1. The hand-rolled array performs the same 32×32 in
@@ -617,8 +621,17 @@ check the timestamp, not just existence.
 ## Verdict
 
 The rewrite is functionally equivalent at both module and system level, halves
-the OOC critical path, and reduces LUT count. No correctness regression was
-found in any test that runs.
+the critical path at OOC and SoC level alike, and reduces LUT count at both.
+No correctness regression was found in any test that runs.
+
+The defensible claim is **not** "a broken design was fixed" — the design is not
+broken, and on the paper's own platform it meets the frequency the paper
+reports. It is narrower and better supported: *the paper attributes the
+multiplier tree's 3× frequency penalty to a deliberate architectural
+trade-off; on this platform roughly two thirds of that penalty is instead an
+RTL-coding artifact that blocks DSP inference, and removing it costs none of
+the properties the trade-off was made to buy.* Confirming that on ZU7EV is the
+outstanding work.
 
 ---
 
@@ -686,9 +699,16 @@ untouched) with the same report command.
 | Worst reg-to-reg path | 97.231 ns | **47.905 ns** |
 | Logic levels on that path | 110 (CARRY4=50, DSP=3) | 61 (CARRY4=29, DSP=5) |
 
-**The design closes timing at 15 MHz for the first time.** All 2,658 failing
-endpoints M0 recorded are gone, and no multiplier path appears anywhere in the
-20 worst paths.
+**On this platform the design closes timing for the first time.** All 2,658
+failing endpoints M0 recorded are gone, and no multiplier path appears anywhere
+in the 20 worst paths.
+
+**Scope, stated precisely, because it is easy to overclaim here.** This is
+Pynq-Z2 (`xc7z020clg400-1`, 28 nm, speed grade −1), post-synthesis, against the
+66.667 ns clock the repo's build scripts generate. It is *not* the paper's
+platform and says nothing directly about the paper's reported numbers — see
+the comparison section below. Pynq-Z2 was only ever a proxy: the design does
+not fit on it in either configuration.
 
 The one remaining violation, `spi_slave_sck_io` → GPIO sync register
 (−4.785 ns, 2 logic levels, IBUF+LUT2), is a pre-existing I/O constraint issue
@@ -723,6 +743,65 @@ inside the 66.667 ns budget.
 **Montgomery reduction is now the dominant segment** — 23.528 ns of a 47.905 ns
 path, 49% — so it is the target for any further optimisation work, and the
 "long accumulation chain" hypothesis that drove M0 is now fully retired.
+
+## Relation to the paper's reported frequency
+
+The paper reports, on ZCU104 (Zynq UltraScale+, Vivado 2022.2):
+
+| Configuration | fmax | Source |
+|---|---|---|
+| HORCRUX **without** the unified multiplier tree | 125 MHz | Section VI-B |
+| HORCRUX **complete** | **42 MHz** | Table VI, last row |
+| ASIC, 65 nm CMOS | 160 MHz | Section VI-C |
+
+42 MHz is the lowest figure in Table VI; the other works cited there sit
+between 100 and 270 MHz. The paper addresses this directly and attributes the
+3× penalty to a deliberate architectural decision (Section IV-D):
+
+> integrating pre-processing, modular reduction, and post-processing into a
+> single-cycle butterfly creates the primary frequency bottleneck of the
+> architecture. This long combinatorial path was a conscious design trade-off
+> to prioritize a shareable, area-efficient datapath over peak operating
+> frequency.
+
+**The measurements above suggest that attribution is only partly right.** The
+paper correctly identifies the multiplier tree as the bottleneck, but the
+segment breakdown splits the cost in two:
+
+| | Delay (M0 baseline) | Removed by this change? |
+|---|---|---|
+| Modular reduction — the integration the paper describes | 23.528 ns | **No** — identical after |
+| Raw `a×b` | 59.504 ns | **Yes** — down to ~16 ns |
+
+The architectural integration costs what the paper says it costs. The raw
+multiply's 59.5 ns is a separate matter: it comes from the mode mux sitting
+inside the accumulate loop, and removing it **does not give up any of the
+properties the trade-off was made to buy** — the datapath is still shared,
+still single-cycle, still serves both integer and GF(2) modes. Area went down,
+not up. On this platform roughly two thirds of the measured penalty was not a
+trade-off at all.
+
+The paper's own ASIC result is consistent with this reading: at 65 nm the same
+RTL reaches 160 MHz, which is what one would expect if the FPGA penalty came
+from failed DSP inference and a LUT/CARRY4 ripple structure rather than from
+the algorithm — an ASIC synthesiser has no DSP hard blocks to miss and will
+restructure the conditional-add chain into a carry-save tree.
+
+**What cannot be claimed from this work.** Everything here is Pynq-Z2
+(Z020, 28 nm, −1), post-synthesis, Vivado 2024.2. The paper's 42 MHz is ZU7EV
+(16 nm, −2), presumably post-implementation, Vivado 2022.2. The ~10-11 MHz
+measured here is in the expected range for a part 2.5-3.5× slower, so the two
+are not in conflict — but the 2.03× path improvement measured here **must not
+be extrapolated to "42 → 85 MHz"**. DSP-based and LUT-based paths do not scale
+alike across devices, and no ZU7EV synthesis has been run: this machine has no
+UltraScale+ device files installed (`get_parts xczu*` returns 0; only artix7,
+kintex7, spartan7 and zynq are present).
+
+Installing UltraScale+ device support would settle it — it is an installer
+step, not a hardware purchase, and needs no physical board. It would allow a
+same-part comparison against the paper's 42 MHz, a reproducibility check of
+that number, and, since ZCU104 has ~230 K LUTs, a full place-and-route the
+Z020 can never support.
 
 ## Caveats
 
