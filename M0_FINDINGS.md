@@ -824,3 +824,104 @@ Z020 can never support.
   `launch_runs synth_1` therefore synthesises the bare module, not the SoC —
   `reports/m0_followup/exp1_soc_synth.tcl` resets both. Anyone reproducing M0's
   SoC baseline will hit this.
+
+---
+
+# M0 Follow-Up — Task 4: the Barrett unit is present (RESOLVED)
+
+**Step 3's "genuine absence" conclusion was wrong, and so was the decode
+hypothesis built on top of it.** The Barrett unit is fully present in the
+synthesised SoC netlist. M0's query simply looked at the wrong object type.
+
+Reports: `reports/m0_followup/task4_barrett_soc.rpt`,
+`task4_barrett_names.rpt`; scripts alongside them.
+
+## The measurement
+
+Querying the SoC checkpoint both ways:
+
+| Query | Result |
+|---|---|
+| `get_cells -hier -filter {NAME =~ *barrett*}` (M0's query) | **0** |
+| `get_nets -hier -filter {NAME =~ *barrett*}` | **329** |
+| `get_nets … *barrett_result*` | 32 — the full result bus |
+| `get_nets … *hqc_r*` | 218 |
+| `get_nets … *z_kyber*` | 79 |
+| distinct driver cells in the Barrett cone | **113** |
+
+The nets keep the complete RTL path, instance name included:
+
+```
+…/multiplier_tree_inst/kyber_barrett_inst/z_kyber0[0]
+…/multiplier_tree_inst/barrett_result[0]
+```
+
+while the cells driving them are named after the **destination**, the
+coprocessor register file:
+
+```
+gen_rf[31].mem[31][0]_i_29        (LUT6)
+gen_rf[31].mem_reg[31][0]_i_113   (CARRY4)
+```
+
+Barrett's result is ultimately written into a register-file entry, and Vivado
+named the flattened leaf cells after that load rather than after the module
+they came from. Nothing about the logic is missing.
+
+## Why M0's query missed it, when the same query worked for `u_primary_mul`
+
+Step 3 diagnosed exactly this naming phenomenon for `unified_mul_32x32` — "the
+flattened leaf cells retain the original RTL path as a naming convention,
+which is why a plain string search still finds them" — and then concluded the
+opposite for Barrett because the same search came back empty.
+
+The two cases differ in **which object kept the name**. For `u_primary_mul`
+the cells kept the path, so `get_cells` found them. For `kyber_barrett_inst`
+the cells took the register file's name and only the nets kept the path, so
+`get_cells` found nothing while `get_nets` finds 329. A single-object-type
+query cannot distinguish "optimised away" from "renamed after its load";
+absence in `get_cells` is not evidence of absence.
+
+## The decode hypothesis is dead
+
+Step 3's leading hypothesis was that `id_stage`'s decoder never produces
+`OP_BARRETT*` on `insn_i`, letting Vivado eliminate the logic. That cannot
+stand: the logic is present in the built SoC.
+
+There is independent functional evidence too. `barrett_result` does not only
+serve the four `OP_BARRETT*` opcodes — `multiplier_tree.sv:269` routes it into
+`OP_BFINTTK` as well:
+
+```systemverilog
+OP_BFINTTK: result_o = {mul_res_lo[15:0], 16'(barrett_result)};
+```
+
+and `tests/kyber-intt` passes in full-SoC RTL simulation (SW 29,604 / HW
+11,406 cycles, hardware cross-checked against the software reference). The
+Kyber inverse-NTT butterfly could not produce correct results if the Barrett
+cone were missing.
+
+## Still open
+
+Presence is settled; **correctness of the four `OP_BARRETT*` opcodes
+specifically is not**. `OP_BFINTTK` exercises the Kyber path only, and the
+`tests/kyber-barrett` and `tests/hqc-barrett` directed tests were never run
+during the Experiment 1 regression. They are cheap and would close this:
+
+```sh
+for p in tests/kyber-barrett tests/hqc-barrett ; do … ; done
+```
+
+That matters because `tests/falcon-montg` showed the encoding a test emits and
+the encoding the decoder expects can disagree — the failure mode this
+investigation was originally chasing does exist in this design, just not here.
+
+## Note on the RTL, for anyone repeating this
+
+Task 4's suggestion to search the netlist for Kyber's Barrett constant 20159
+(`floor(2^26/3329)`) would not have worked: `barrett.sv` never multiplies by a
+magic constant. Every Barrett multiplier is decomposed into shift-and-add
+(`m_kyber = (tb << 11) + (tb << 10) + (tb << 8) + tb`, and similar chains for
+the three HQC variants), so there is no constant to find. The greppable
+constants are the moduli — 3329, 17669, 35851, 57637 — and those are absorbed
+into LUT truth tables rather than surviving as netlist objects.

@@ -1,0 +1,26 @@
+=== sample barrett_result nets and the cells driving them ===
+NET  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_inst/barrett_result[0]
+  DRIVEN BY  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem[31][0]_i_29   (LUT6)
+NET  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_inst/barrett_result[10]
+  DRIVEN BY  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem[31][10]_i_53   (LUT6)
+NET  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_inst/barrett_result[11]
+  DRIVEN BY  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem[31][11]_i_51   (LUT6)
+NET  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_inst/barrett_result[12]
+  DRIVEN BY  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem[31][12]_i_54   (LUT6)
+NET  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_inst/barrett_result[13]
+  DRIVEN BY  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem[31][13]_i_54   (LUT6)
+NET  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_inst/barrett_result[14]
+  DRIVEN BY  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem[31][14]_i_55   (LUT6)
+
+=== sample z_kyber nets (Kyber Barrett intermediate) ===
+NET  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_inst/kyber_barrett_inst/z_kyber0[0]
+  DRIVEN BY  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem_reg[31][0]_i_113   (CARRY4)
+NET  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_inst/kyber_barrett_inst/z_kyber0[10]
+  DRIVEN BY  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem_reg[31][11]_i_122   (CARRY4)
+NET  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_inst/kyber_barrett_inst/z_kyber0[11]
+  DRIVEN BY  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem_reg[31][11]_i_122   (CARRY4)
+NET  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_inst/kyber_barrett_inst/z_kyber0[12]
+  DRIVEN BY  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem_reg[31][15]_i_148   (CARRY4)
+
+=== how big is the Barrett cone? ===
+  distinct driver cells: 113

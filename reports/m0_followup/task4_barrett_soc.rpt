@@ -1,0 +1,21 @@
+=== M0's original query ===
+cells matching *barrett* : 0
+nets  matching *barrett* : 329
+cells matching *kyber*   : 0
+
+=== does the barrett_result net survive under any name? ===
+  nets *barrett_result* : 32
+  nets *hqc_r* : 218
+  nets *hqc_q* : 0
+  nets *z_kyber* : 79
+  nets *m_kyber* : 0
+  nets *hqc_mu_sum* : 0
+  nets *hqc_n_sum* : 0
+
+=== fan-in cone of multiplier_tree result_o ===
+  result_o nets found: 47
+  cells named *BFINTTK*: 0
+
+=== sanity: is the multiplier tree itself present? ===
+  cells under multiplier_tree_inst: 366
+  cells under u_shared_mul        : 237
