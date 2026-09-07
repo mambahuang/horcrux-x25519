@@ -1,0 +1,32 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
+| Date         : Mon Sep  7 08:40:03 2026
+| Host         : DESKTOP-OKV77IV running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file reports/m0_followup/exp1_before_util_hier.rpt
+| Design       : multiplier_tree
+| Device       : xc7z020clg400-1
+| Speed File   : -1
+| Design State : Optimized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++---------------------+-----------------------------+------------+------------+---------+------+-----+--------+--------+------------+
+|       Instance      |            Module           | Total LUTs | Logic LUTs | LUTRAMs | SRLs | FFs | RAMB36 | RAMB18 | DSP Blocks |
++---------------------+-----------------------------+------------+------------+---------+------+-----+--------+--------+------------+
+| multiplier_tree     |                       (top) |       5775 |       5775 |       0 |    0 | 128 |      0 |      0 |         11 |
+|   (multiplier_tree) |                       (top) |          4 |          4 |       0 |    0 | 128 |      0 |      0 |          0 |
+|   u_shared_mul      | shared_multiplication_logic |       5771 |       5771 |       0 |    0 |   0 |      0 |      0 |         11 |
+|     (u_shared_mul)  | shared_multiplication_logic |        357 |        357 |       0 |    0 |   0 |      0 |      0 |         11 |
+|     u_primary_mul   |           unified_mul_32x32 |       5414 |       5414 |       0 |    0 |   0 |      0 |      0 |          0 |
++---------------------+-----------------------------+------------+------------+---------+------+-----+--------+--------+------------+
+
+

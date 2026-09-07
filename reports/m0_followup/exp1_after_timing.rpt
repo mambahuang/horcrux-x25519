@@ -1,0 +1,1750 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
+| Date         : Mon Sep  7 08:42:28 2026
+| Host         : DESKTOP-OKV77IV running 64-bit major release  (build 9200)
+| Command      : report_timing -delay_type max -max_paths 10 -file reports/m0_followup/exp1_after_timing.rpt
+| Design       : multiplier_tree
+| Device       : 7z020-clg400
+| Speed File   : -1  PRODUCTION 1.12 2019-11-22
+| Design State : Optimized
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Timing Report
+
+Slack (VIOLATED) :        -24.921ns  (required time - arrival time)
+  Source:                 multiplier_tree2_i[1]
+                            (input port)
+  Destination:            result_o[31]
+  Path Group:             **default**
+  Path Type:              Max at Slow Process Corner
+  Requirement:            20.000ns  (MaxDelay Path 20.000ns)
+  Data Path Delay:        44.921ns  (logic 28.341ns (63.090%)  route 16.580ns (36.910%))
+  Logic Levels:           57  (CARRY4=32 DSP48E1=5 LUT2=7 LUT3=2 LUT4=3 LUT5=4 LUT6=4)
+  Output Delay:           0.000ns
+  Timing Exception:       MaxDelay Path 20.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 f  multiplier_tree2_i[1] (IN)
+                         net (fo=26, unset)           0.973     0.973    u_shared_mul/u_primary_mul/multiplier_tree2_i[1]
+                         LUT4 (Prop_lut4_I2_O)        0.150     1.123 r  u_shared_mul/u_primary_mul/int_prod_i_172/O
+                         net (fo=1, unplaced)         0.000     1.123    u_shared_mul/u_primary_mul/int_prod_i_172_n_0
+                         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.576     1.699 r  u_shared_mul/u_primary_mul/int_prod_i_160/CO[3]
+                         net (fo=1, unplaced)         0.009     1.708    u_shared_mul/u_primary_mul/int_prod_i_160_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     1.825 f  u_shared_mul/u_primary_mul/int_prod_i_157/CO[3]
+                         net (fo=8, unplaced)         0.956     2.781    u_shared_mul/u_primary_mul/mul_op_b2
+                         LUT2 (Prop_lut2_I1_O)        0.117     2.898 r  u_shared_mul/u_primary_mul/int_prod_i_148/O
+                         net (fo=1, unplaced)         0.000     2.898    u_shared_mul/u_primary_mul/int_prod_i_148_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.547     3.445 r  u_shared_mul/u_primary_mul/int_prod_i_85/CO[3]
+                         net (fo=1, unplaced)         0.009     3.454    u_shared_mul/u_primary_mul/int_prod_i_85_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.571 r  u_shared_mul/u_primary_mul/int_prod_i_82/CO[3]
+                         net (fo=1, unplaced)         0.000     3.571    u_shared_mul/u_primary_mul/int_prod_i_82_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.688 r  u_shared_mul/u_primary_mul/int_prod_i_78/CO[3]
+                         net (fo=1, unplaced)         0.000     3.688    u_shared_mul/u_primary_mul/int_prod_i_78_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331     4.019 r  u_shared_mul/u_primary_mul/int_prod_i_75/O[3]
+                         net (fo=1, unplaced)         0.618     4.637    u_shared_mul/u_primary_mul/data2[15]
+                         LUT5 (Prop_lut5_I2_O)        0.307     4.944 r  u_shared_mul/u_primary_mul/int_prod_i_39/O
+                         net (fo=4, unplaced)         0.473     5.417    u_shared_mul/u_primary_mul/multiplier_tree2_i[15]_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     5.541 r  u_shared_mul/u_primary_mul/int_prod_i_17/O
+                         net (fo=36, unplaced)        0.800     6.341    u_shared_mul/u_primary_mul/multiplier_tree2_i_15_sn_1
+                         DSP48E1 (Prop_dsp48e1_B[15]_PCOUT[47])
+                                                      3.851    10.192 r  u_shared_mul/u_primary_mul/int_prod__1/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    10.247    u_shared_mul/u_primary_mul/int_prod__1_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    11.765 r  u_shared_mul/u_primary_mul/int_prod__2/P[0]
+                         net (fo=2, unplaced)         0.800    12.564    u_shared_mul/u_primary_mul/int_prod__2_n_105
+                         LUT2 (Prop_lut2_I0_O)        0.124    12.688 r  u_shared_mul/u_primary_mul/int_prod_carry_i_3/O
+                         net (fo=1, unplaced)         0.000    12.688    u_shared_mul/u_primary_mul/int_prod_carry_i_3_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    13.221 r  u_shared_mul/u_primary_mul/int_prod_carry/CO[3]
+                         net (fo=1, unplaced)         0.009    13.230    u_shared_mul/u_primary_mul/int_prod_carry_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.347 r  u_shared_mul/u_primary_mul/int_prod_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000    13.347    u_shared_mul/u_primary_mul/int_prod_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.464 r  u_shared_mul/u_primary_mul/int_prod_carry__1/CO[3]
+                         net (fo=1, unplaced)         0.000    13.464    u_shared_mul/u_primary_mul/int_prod_carry__1_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256    13.720 r  u_shared_mul/u_primary_mul/int_prod_carry__2/O[2]
+                         net (fo=3, unplaced)         1.132    14.852    u_shared_mul/u_primary_mul/int_prod__3__0[30]
+                         LUT6 (Prop_lut6_I5_O)        0.301    15.153 r  u_shared_mul/u_primary_mul/result_hi_o[30]_INST_0_i_5/O
+                         net (fo=10, unplaced)        0.492    15.645    u_shared_mul/u_primary_mul/full_prod[30]
+                         LUT4 (Prop_lut4_I3_O)        0.124    15.769 r  u_shared_mul/u_primary_mul/stage_a_result_i_8/O
+                         net (fo=1, unplaced)         0.800    16.569    u_shared_mul/stage_a_op1[30]
+                         DSP48E1 (Prop_dsp48e1_A[13]_P[0])
+                                                      3.841    20.410 r  u_shared_mul/stage_a_result/P[0]
+                         net (fo=1, unplaced)         0.800    21.210    u_shared_mul/stage_a_result_n_105
+                         LUT2 (Prop_lut2_I1_O)        0.124    21.334 r  u_shared_mul/modp_tp_i_34/O
+                         net (fo=1, unplaced)         0.000    21.334    u_shared_mul/modp_tp_i_34_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    21.867 r  u_shared_mul/modp_tp_i_19/CO[3]
+                         net (fo=1, unplaced)         0.009    21.876    u_shared_mul/modp_tp_i_19_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    21.993 r  u_shared_mul/modp_tp_i_18/CO[3]
+                         net (fo=1, unplaced)         0.000    21.993    u_shared_mul/modp_tp_i_18_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    22.110 r  u_shared_mul/modp_tp_i_17/CO[3]
+                         net (fo=1, unplaced)         0.000    22.110    u_shared_mul/modp_tp_i_17_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    22.441 r  u_shared_mul/modp_tp_i_16/O[3]
+                         net (fo=2, unplaced)         0.629    23.070    u_shared_mul/stage_a_result__2[31]
+                         LUT5 (Prop_lut5_I0_O)        0.307    23.377 r  u_shared_mul/modp_tp_i_1/O
+                         net (fo=2, unplaced)         0.800    24.177    u_shared_mul/p_1_in[31]
+                         DSP48E1 (Prop_dsp48e1_B[14]_PCOUT[47])
+                                                      3.851    28.028 r  u_shared_mul/modp_tp/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    28.083    u_shared_mul/modp_tp_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518    29.601 r  u_shared_mul/modp_tp__0/P[3]
+                         net (fo=1, unplaced)         0.800    30.400    u_shared_mul/modp_tp__0_n_102
+                         LUT2 (Prop_lut2_I1_O)        0.124    30.524 r  u_shared_mul/result_o[23]_INST_0_i_214/O
+                         net (fo=1, unplaced)         0.000    30.524    u_shared_mul/result_o[23]_INST_0_i_214_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    31.057 r  u_shared_mul/result_o[23]_INST_0_i_207/CO[3]
+                         net (fo=1, unplaced)         0.000    31.057    u_shared_mul/result_o[23]_INST_0_i_207_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.174 r  u_shared_mul/result_o[31]_INST_0_i_255/CO[3]
+                         net (fo=1, unplaced)         0.000    31.174    u_shared_mul/result_o[31]_INST_0_i_255_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.291 r  u_shared_mul/result_hi_o[19]_INST_0_i_95/CO[3]
+                         net (fo=1, unplaced)         0.000    31.291    u_shared_mul/result_hi_o[19]_INST_0_i_95_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    31.628 r  u_shared_mul/result_o[23]_INST_0_i_211/O[1]
+                         net (fo=1, unplaced)         0.611    32.239    u_shared_mul/u_primary_mul/modp_tp__3[33]
+                         LUT4 (Prop_lut4_I3_O)        0.306    32.545 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_205/O
+                         net (fo=1, unplaced)         0.000    32.545    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_205_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    33.078 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_151/CO[3]
+                         net (fo=1, unplaced)         0.000    33.078    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_151_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    33.409 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_138/O[3]
+                         net (fo=2, unplaced)         0.629    34.038    u_shared_mul/u_primary_mul/modp_shifted[24]
+                         LUT2 (Prop_lut2_I0_O)        0.307    34.345 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_142/O
+                         net (fo=1, unplaced)         0.000    34.345    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_142_n_0
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    34.858 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_45/CO[3]
+                         net (fo=1, unplaced)         0.000    34.858    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_45_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    35.189 r  u_shared_mul/u_primary_mul/result_o[31]_INST_0_i_64/O[3]
+                         net (fo=32, unplaced)        0.689    35.878    u_shared_mul/u_primary_mul/modp_sub[31]
+                         LUT3 (Prop_lut3_I2_O)        0.307    36.185 r  u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_79/O
+                         net (fo=1, unplaced)         0.000    36.185    u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_79_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    36.718 r  u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_21/CO[3]
+                         net (fo=1, unplaced)         0.009    36.727    u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_21_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    36.844 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_19/CO[3]
+                         net (fo=1, unplaced)         0.000    36.844    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_19_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    37.175 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_36/O[3]
+                         net (fo=1, unplaced)         0.618    37.793    u_shared_mul/u_primary_mul/data4[11]
+                         LUT5 (Prop_lut5_I0_O)        0.307    38.100 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_17/O
+                         net (fo=3, unplaced)         0.467    38.567    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_17_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124    38.691 r  u_shared_mul/u_primary_mul/result_o[11]_INST_0_i_7/O
+                         net (fo=13, unplaced)        0.499    39.190    u_shared_mul/u_primary_mul/mul_res_lo[11]
+                         LUT2 (Prop_lut2_I1_O)        0.124    39.314 r  u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_29/O
+                         net (fo=1, unplaced)         0.000    39.314    u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_29_n_0
+                         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    39.690 r  u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_13/CO[3]
+                         net (fo=1, unplaced)         0.000    39.690    u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_13_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    39.807 r  u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_12/CO[3]
+                         net (fo=1, unplaced)         0.000    39.807    u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_12_n_0
+                         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.281    40.088 r  u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_13/CO[0]
+                         net (fo=6, unplaced)         0.343    40.431    u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_13_n_3
+                         LUT2 (Prop_lut2_I1_O)        0.367    40.798 r  u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_13/O
+                         net (fo=1, unplaced)         0.000    40.798    u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_13_n_0
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    41.311 r  u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_5/CO[3]
+                         net (fo=1, unplaced)         0.009    41.320    u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_5_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    41.437 r  u_shared_mul/u_primary_mul/result_o[22]_INST_0_i_6/CO[3]
+                         net (fo=1, unplaced)         0.000    41.437    u_shared_mul/u_primary_mul/result_o[22]_INST_0_i_6_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    41.554 r  u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_5/CO[3]
+                         net (fo=1, unplaced)         0.000    41.554    u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_5_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    41.885 r  u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_5/O[3]
+                         net (fo=1, unplaced)         0.618    42.503    u_shared_mul/u_primary_mul/result_o0[15]
+                         LUT3 (Prop_lut3_I2_O)        0.299    42.802 r  u_shared_mul/u_primary_mul/result_o[31]_INST_0_i_11/O
+                         net (fo=1, unplaced)         0.449    43.251    u_shared_mul/u_primary_mul/result_o[31]_INST_0_i_11_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.124    43.375 r  u_shared_mul/u_primary_mul/result_o[31]_INST_0_i_1/O
+                         net (fo=1, unplaced)         0.449    43.824    u_shared_mul/u_primary_mul/result_o[31]_INST_0_i_1_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    43.948 r  u_shared_mul/u_primary_mul/result_o[31]_INST_0/O
+                         net (fo=0)                   0.973    44.921    result_o[31]
+                                                                      r  result_o[31] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   20.000    20.000    
+                         clock pessimism              0.000    20.000    
+                         output delay                -0.000    20.000    
+  -------------------------------------------------------------------
+                         required time                         20.000    
+                         arrival time                         -44.921    
+  -------------------------------------------------------------------
+                         slack                                -24.921    
+
+Slack (VIOLATED) :        -24.804ns  (required time - arrival time)
+  Source:                 multiplier_tree2_i[1]
+                            (input port)
+  Destination:            result_o[27]
+  Path Group:             **default**
+  Path Type:              Max at Slow Process Corner
+  Requirement:            20.000ns  (MaxDelay Path 20.000ns)
+  Data Path Delay:        44.804ns  (logic 28.224ns (62.994%)  route 16.580ns (37.006%))
+  Logic Levels:           56  (CARRY4=31 DSP48E1=5 LUT2=7 LUT3=2 LUT4=3 LUT5=4 LUT6=4)
+  Output Delay:           0.000ns
+  Timing Exception:       MaxDelay Path 20.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 f  multiplier_tree2_i[1] (IN)
+                         net (fo=26, unset)           0.973     0.973    u_shared_mul/u_primary_mul/multiplier_tree2_i[1]
+                         LUT4 (Prop_lut4_I2_O)        0.150     1.123 r  u_shared_mul/u_primary_mul/int_prod_i_172/O
+                         net (fo=1, unplaced)         0.000     1.123    u_shared_mul/u_primary_mul/int_prod_i_172_n_0
+                         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.576     1.699 r  u_shared_mul/u_primary_mul/int_prod_i_160/CO[3]
+                         net (fo=1, unplaced)         0.009     1.708    u_shared_mul/u_primary_mul/int_prod_i_160_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     1.825 f  u_shared_mul/u_primary_mul/int_prod_i_157/CO[3]
+                         net (fo=8, unplaced)         0.956     2.781    u_shared_mul/u_primary_mul/mul_op_b2
+                         LUT2 (Prop_lut2_I1_O)        0.117     2.898 r  u_shared_mul/u_primary_mul/int_prod_i_148/O
+                         net (fo=1, unplaced)         0.000     2.898    u_shared_mul/u_primary_mul/int_prod_i_148_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.547     3.445 r  u_shared_mul/u_primary_mul/int_prod_i_85/CO[3]
+                         net (fo=1, unplaced)         0.009     3.454    u_shared_mul/u_primary_mul/int_prod_i_85_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.571 r  u_shared_mul/u_primary_mul/int_prod_i_82/CO[3]
+                         net (fo=1, unplaced)         0.000     3.571    u_shared_mul/u_primary_mul/int_prod_i_82_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.688 r  u_shared_mul/u_primary_mul/int_prod_i_78/CO[3]
+                         net (fo=1, unplaced)         0.000     3.688    u_shared_mul/u_primary_mul/int_prod_i_78_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331     4.019 r  u_shared_mul/u_primary_mul/int_prod_i_75/O[3]
+                         net (fo=1, unplaced)         0.618     4.637    u_shared_mul/u_primary_mul/data2[15]
+                         LUT5 (Prop_lut5_I2_O)        0.307     4.944 r  u_shared_mul/u_primary_mul/int_prod_i_39/O
+                         net (fo=4, unplaced)         0.473     5.417    u_shared_mul/u_primary_mul/multiplier_tree2_i[15]_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     5.541 r  u_shared_mul/u_primary_mul/int_prod_i_17/O
+                         net (fo=36, unplaced)        0.800     6.341    u_shared_mul/u_primary_mul/multiplier_tree2_i_15_sn_1
+                         DSP48E1 (Prop_dsp48e1_B[15]_PCOUT[47])
+                                                      3.851    10.192 r  u_shared_mul/u_primary_mul/int_prod__1/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    10.247    u_shared_mul/u_primary_mul/int_prod__1_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    11.765 r  u_shared_mul/u_primary_mul/int_prod__2/P[0]
+                         net (fo=2, unplaced)         0.800    12.564    u_shared_mul/u_primary_mul/int_prod__2_n_105
+                         LUT2 (Prop_lut2_I0_O)        0.124    12.688 r  u_shared_mul/u_primary_mul/int_prod_carry_i_3/O
+                         net (fo=1, unplaced)         0.000    12.688    u_shared_mul/u_primary_mul/int_prod_carry_i_3_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    13.221 r  u_shared_mul/u_primary_mul/int_prod_carry/CO[3]
+                         net (fo=1, unplaced)         0.009    13.230    u_shared_mul/u_primary_mul/int_prod_carry_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.347 r  u_shared_mul/u_primary_mul/int_prod_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000    13.347    u_shared_mul/u_primary_mul/int_prod_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.464 r  u_shared_mul/u_primary_mul/int_prod_carry__1/CO[3]
+                         net (fo=1, unplaced)         0.000    13.464    u_shared_mul/u_primary_mul/int_prod_carry__1_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256    13.720 r  u_shared_mul/u_primary_mul/int_prod_carry__2/O[2]
+                         net (fo=3, unplaced)         1.132    14.852    u_shared_mul/u_primary_mul/int_prod__3__0[30]
+                         LUT6 (Prop_lut6_I5_O)        0.301    15.153 r  u_shared_mul/u_primary_mul/result_hi_o[30]_INST_0_i_5/O
+                         net (fo=10, unplaced)        0.492    15.645    u_shared_mul/u_primary_mul/full_prod[30]
+                         LUT4 (Prop_lut4_I3_O)        0.124    15.769 r  u_shared_mul/u_primary_mul/stage_a_result_i_8/O
+                         net (fo=1, unplaced)         0.800    16.569    u_shared_mul/stage_a_op1[30]
+                         DSP48E1 (Prop_dsp48e1_A[13]_P[0])
+                                                      3.841    20.410 r  u_shared_mul/stage_a_result/P[0]
+                         net (fo=1, unplaced)         0.800    21.210    u_shared_mul/stage_a_result_n_105
+                         LUT2 (Prop_lut2_I1_O)        0.124    21.334 r  u_shared_mul/modp_tp_i_34/O
+                         net (fo=1, unplaced)         0.000    21.334    u_shared_mul/modp_tp_i_34_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    21.867 r  u_shared_mul/modp_tp_i_19/CO[3]
+                         net (fo=1, unplaced)         0.009    21.876    u_shared_mul/modp_tp_i_19_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    21.993 r  u_shared_mul/modp_tp_i_18/CO[3]
+                         net (fo=1, unplaced)         0.000    21.993    u_shared_mul/modp_tp_i_18_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    22.110 r  u_shared_mul/modp_tp_i_17/CO[3]
+                         net (fo=1, unplaced)         0.000    22.110    u_shared_mul/modp_tp_i_17_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    22.441 r  u_shared_mul/modp_tp_i_16/O[3]
+                         net (fo=2, unplaced)         0.629    23.070    u_shared_mul/stage_a_result__2[31]
+                         LUT5 (Prop_lut5_I0_O)        0.307    23.377 r  u_shared_mul/modp_tp_i_1/O
+                         net (fo=2, unplaced)         0.800    24.177    u_shared_mul/p_1_in[31]
+                         DSP48E1 (Prop_dsp48e1_B[14]_PCOUT[47])
+                                                      3.851    28.028 r  u_shared_mul/modp_tp/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    28.083    u_shared_mul/modp_tp_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518    29.601 r  u_shared_mul/modp_tp__0/P[3]
+                         net (fo=1, unplaced)         0.800    30.400    u_shared_mul/modp_tp__0_n_102
+                         LUT2 (Prop_lut2_I1_O)        0.124    30.524 r  u_shared_mul/result_o[23]_INST_0_i_214/O
+                         net (fo=1, unplaced)         0.000    30.524    u_shared_mul/result_o[23]_INST_0_i_214_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    31.057 r  u_shared_mul/result_o[23]_INST_0_i_207/CO[3]
+                         net (fo=1, unplaced)         0.000    31.057    u_shared_mul/result_o[23]_INST_0_i_207_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.174 r  u_shared_mul/result_o[31]_INST_0_i_255/CO[3]
+                         net (fo=1, unplaced)         0.000    31.174    u_shared_mul/result_o[31]_INST_0_i_255_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.291 r  u_shared_mul/result_hi_o[19]_INST_0_i_95/CO[3]
+                         net (fo=1, unplaced)         0.000    31.291    u_shared_mul/result_hi_o[19]_INST_0_i_95_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    31.628 r  u_shared_mul/result_o[23]_INST_0_i_211/O[1]
+                         net (fo=1, unplaced)         0.611    32.239    u_shared_mul/u_primary_mul/modp_tp__3[33]
+                         LUT4 (Prop_lut4_I3_O)        0.306    32.545 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_205/O
+                         net (fo=1, unplaced)         0.000    32.545    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_205_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    33.078 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_151/CO[3]
+                         net (fo=1, unplaced)         0.000    33.078    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_151_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    33.409 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_138/O[3]
+                         net (fo=2, unplaced)         0.629    34.038    u_shared_mul/u_primary_mul/modp_shifted[24]
+                         LUT2 (Prop_lut2_I0_O)        0.307    34.345 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_142/O
+                         net (fo=1, unplaced)         0.000    34.345    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_142_n_0
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    34.858 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_45/CO[3]
+                         net (fo=1, unplaced)         0.000    34.858    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_45_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    35.189 r  u_shared_mul/u_primary_mul/result_o[31]_INST_0_i_64/O[3]
+                         net (fo=32, unplaced)        0.689    35.878    u_shared_mul/u_primary_mul/modp_sub[31]
+                         LUT3 (Prop_lut3_I2_O)        0.307    36.185 r  u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_79/O
+                         net (fo=1, unplaced)         0.000    36.185    u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_79_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    36.718 r  u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_21/CO[3]
+                         net (fo=1, unplaced)         0.009    36.727    u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_21_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    36.844 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_19/CO[3]
+                         net (fo=1, unplaced)         0.000    36.844    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_19_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    37.175 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_36/O[3]
+                         net (fo=1, unplaced)         0.618    37.793    u_shared_mul/u_primary_mul/data4[11]
+                         LUT5 (Prop_lut5_I0_O)        0.307    38.100 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_17/O
+                         net (fo=3, unplaced)         0.467    38.567    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_17_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124    38.691 r  u_shared_mul/u_primary_mul/result_o[11]_INST_0_i_7/O
+                         net (fo=13, unplaced)        0.499    39.190    u_shared_mul/u_primary_mul/mul_res_lo[11]
+                         LUT2 (Prop_lut2_I1_O)        0.124    39.314 r  u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_29/O
+                         net (fo=1, unplaced)         0.000    39.314    u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_29_n_0
+                         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    39.690 r  u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_13/CO[3]
+                         net (fo=1, unplaced)         0.000    39.690    u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_13_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    39.807 r  u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_12/CO[3]
+                         net (fo=1, unplaced)         0.000    39.807    u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_12_n_0
+                         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.281    40.088 r  u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_13/CO[0]
+                         net (fo=6, unplaced)         0.343    40.431    u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_13_n_3
+                         LUT2 (Prop_lut2_I1_O)        0.367    40.798 r  u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_13/O
+                         net (fo=1, unplaced)         0.000    40.798    u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_13_n_0
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    41.311 r  u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_5/CO[3]
+                         net (fo=1, unplaced)         0.009    41.320    u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_5_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    41.437 r  u_shared_mul/u_primary_mul/result_o[22]_INST_0_i_6/CO[3]
+                         net (fo=1, unplaced)         0.000    41.437    u_shared_mul/u_primary_mul/result_o[22]_INST_0_i_6_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    41.768 r  u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_5/O[3]
+                         net (fo=1, unplaced)         0.618    42.386    u_shared_mul/u_primary_mul/result_o0[11]
+                         LUT3 (Prop_lut3_I2_O)        0.299    42.685 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_5/O
+                         net (fo=1, unplaced)         0.449    43.134    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_5_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    43.258 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_1/O
+                         net (fo=1, unplaced)         0.449    43.707    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_1_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    43.831 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0/O
+                         net (fo=0)                   0.973    44.804    result_o[27]
+                                                                      r  result_o[27] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   20.000    20.000    
+                         clock pessimism              0.000    20.000    
+                         output delay                -0.000    20.000    
+  -------------------------------------------------------------------
+                         required time                         20.000    
+                         arrival time                         -44.804    
+  -------------------------------------------------------------------
+                         slack                                -24.804    
+
+Slack (VIOLATED) :        -24.687ns  (required time - arrival time)
+  Source:                 multiplier_tree2_i[1]
+                            (input port)
+  Destination:            result_o[23]
+  Path Group:             **default**
+  Path Type:              Max at Slow Process Corner
+  Requirement:            20.000ns  (MaxDelay Path 20.000ns)
+  Data Path Delay:        44.687ns  (logic 28.107ns (62.897%)  route 16.580ns (37.103%))
+  Logic Levels:           55  (CARRY4=30 DSP48E1=5 LUT2=7 LUT3=2 LUT4=3 LUT5=4 LUT6=4)
+  Output Delay:           0.000ns
+  Timing Exception:       MaxDelay Path 20.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 f  multiplier_tree2_i[1] (IN)
+                         net (fo=26, unset)           0.973     0.973    u_shared_mul/u_primary_mul/multiplier_tree2_i[1]
+                         LUT4 (Prop_lut4_I2_O)        0.150     1.123 r  u_shared_mul/u_primary_mul/int_prod_i_172/O
+                         net (fo=1, unplaced)         0.000     1.123    u_shared_mul/u_primary_mul/int_prod_i_172_n_0
+                         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.576     1.699 r  u_shared_mul/u_primary_mul/int_prod_i_160/CO[3]
+                         net (fo=1, unplaced)         0.009     1.708    u_shared_mul/u_primary_mul/int_prod_i_160_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     1.825 f  u_shared_mul/u_primary_mul/int_prod_i_157/CO[3]
+                         net (fo=8, unplaced)         0.956     2.781    u_shared_mul/u_primary_mul/mul_op_b2
+                         LUT2 (Prop_lut2_I1_O)        0.117     2.898 r  u_shared_mul/u_primary_mul/int_prod_i_148/O
+                         net (fo=1, unplaced)         0.000     2.898    u_shared_mul/u_primary_mul/int_prod_i_148_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.547     3.445 r  u_shared_mul/u_primary_mul/int_prod_i_85/CO[3]
+                         net (fo=1, unplaced)         0.009     3.454    u_shared_mul/u_primary_mul/int_prod_i_85_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.571 r  u_shared_mul/u_primary_mul/int_prod_i_82/CO[3]
+                         net (fo=1, unplaced)         0.000     3.571    u_shared_mul/u_primary_mul/int_prod_i_82_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.688 r  u_shared_mul/u_primary_mul/int_prod_i_78/CO[3]
+                         net (fo=1, unplaced)         0.000     3.688    u_shared_mul/u_primary_mul/int_prod_i_78_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331     4.019 r  u_shared_mul/u_primary_mul/int_prod_i_75/O[3]
+                         net (fo=1, unplaced)         0.618     4.637    u_shared_mul/u_primary_mul/data2[15]
+                         LUT5 (Prop_lut5_I2_O)        0.307     4.944 r  u_shared_mul/u_primary_mul/int_prod_i_39/O
+                         net (fo=4, unplaced)         0.473     5.417    u_shared_mul/u_primary_mul/multiplier_tree2_i[15]_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     5.541 r  u_shared_mul/u_primary_mul/int_prod_i_17/O
+                         net (fo=36, unplaced)        0.800     6.341    u_shared_mul/u_primary_mul/multiplier_tree2_i_15_sn_1
+                         DSP48E1 (Prop_dsp48e1_B[15]_PCOUT[47])
+                                                      3.851    10.192 r  u_shared_mul/u_primary_mul/int_prod__1/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    10.247    u_shared_mul/u_primary_mul/int_prod__1_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    11.765 r  u_shared_mul/u_primary_mul/int_prod__2/P[0]
+                         net (fo=2, unplaced)         0.800    12.564    u_shared_mul/u_primary_mul/int_prod__2_n_105
+                         LUT2 (Prop_lut2_I0_O)        0.124    12.688 r  u_shared_mul/u_primary_mul/int_prod_carry_i_3/O
+                         net (fo=1, unplaced)         0.000    12.688    u_shared_mul/u_primary_mul/int_prod_carry_i_3_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    13.221 r  u_shared_mul/u_primary_mul/int_prod_carry/CO[3]
+                         net (fo=1, unplaced)         0.009    13.230    u_shared_mul/u_primary_mul/int_prod_carry_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.347 r  u_shared_mul/u_primary_mul/int_prod_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000    13.347    u_shared_mul/u_primary_mul/int_prod_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.464 r  u_shared_mul/u_primary_mul/int_prod_carry__1/CO[3]
+                         net (fo=1, unplaced)         0.000    13.464    u_shared_mul/u_primary_mul/int_prod_carry__1_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256    13.720 r  u_shared_mul/u_primary_mul/int_prod_carry__2/O[2]
+                         net (fo=3, unplaced)         1.132    14.852    u_shared_mul/u_primary_mul/int_prod__3__0[30]
+                         LUT6 (Prop_lut6_I5_O)        0.301    15.153 r  u_shared_mul/u_primary_mul/result_hi_o[30]_INST_0_i_5/O
+                         net (fo=10, unplaced)        0.492    15.645    u_shared_mul/u_primary_mul/full_prod[30]
+                         LUT4 (Prop_lut4_I3_O)        0.124    15.769 r  u_shared_mul/u_primary_mul/stage_a_result_i_8/O
+                         net (fo=1, unplaced)         0.800    16.569    u_shared_mul/stage_a_op1[30]
+                         DSP48E1 (Prop_dsp48e1_A[13]_P[0])
+                                                      3.841    20.410 r  u_shared_mul/stage_a_result/P[0]
+                         net (fo=1, unplaced)         0.800    21.210    u_shared_mul/stage_a_result_n_105
+                         LUT2 (Prop_lut2_I1_O)        0.124    21.334 r  u_shared_mul/modp_tp_i_34/O
+                         net (fo=1, unplaced)         0.000    21.334    u_shared_mul/modp_tp_i_34_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    21.867 r  u_shared_mul/modp_tp_i_19/CO[3]
+                         net (fo=1, unplaced)         0.009    21.876    u_shared_mul/modp_tp_i_19_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    21.993 r  u_shared_mul/modp_tp_i_18/CO[3]
+                         net (fo=1, unplaced)         0.000    21.993    u_shared_mul/modp_tp_i_18_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    22.110 r  u_shared_mul/modp_tp_i_17/CO[3]
+                         net (fo=1, unplaced)         0.000    22.110    u_shared_mul/modp_tp_i_17_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    22.441 r  u_shared_mul/modp_tp_i_16/O[3]
+                         net (fo=2, unplaced)         0.629    23.070    u_shared_mul/stage_a_result__2[31]
+                         LUT5 (Prop_lut5_I0_O)        0.307    23.377 r  u_shared_mul/modp_tp_i_1/O
+                         net (fo=2, unplaced)         0.800    24.177    u_shared_mul/p_1_in[31]
+                         DSP48E1 (Prop_dsp48e1_B[14]_PCOUT[47])
+                                                      3.851    28.028 r  u_shared_mul/modp_tp/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    28.083    u_shared_mul/modp_tp_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518    29.601 r  u_shared_mul/modp_tp__0/P[3]
+                         net (fo=1, unplaced)         0.800    30.400    u_shared_mul/modp_tp__0_n_102
+                         LUT2 (Prop_lut2_I1_O)        0.124    30.524 r  u_shared_mul/result_o[23]_INST_0_i_214/O
+                         net (fo=1, unplaced)         0.000    30.524    u_shared_mul/result_o[23]_INST_0_i_214_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    31.057 r  u_shared_mul/result_o[23]_INST_0_i_207/CO[3]
+                         net (fo=1, unplaced)         0.000    31.057    u_shared_mul/result_o[23]_INST_0_i_207_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.174 r  u_shared_mul/result_o[31]_INST_0_i_255/CO[3]
+                         net (fo=1, unplaced)         0.000    31.174    u_shared_mul/result_o[31]_INST_0_i_255_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.291 r  u_shared_mul/result_hi_o[19]_INST_0_i_95/CO[3]
+                         net (fo=1, unplaced)         0.000    31.291    u_shared_mul/result_hi_o[19]_INST_0_i_95_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    31.628 r  u_shared_mul/result_o[23]_INST_0_i_211/O[1]
+                         net (fo=1, unplaced)         0.611    32.239    u_shared_mul/u_primary_mul/modp_tp__3[33]
+                         LUT4 (Prop_lut4_I3_O)        0.306    32.545 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_205/O
+                         net (fo=1, unplaced)         0.000    32.545    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_205_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    33.078 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_151/CO[3]
+                         net (fo=1, unplaced)         0.000    33.078    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_151_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    33.409 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_138/O[3]
+                         net (fo=2, unplaced)         0.629    34.038    u_shared_mul/u_primary_mul/modp_shifted[24]
+                         LUT2 (Prop_lut2_I0_O)        0.307    34.345 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_142/O
+                         net (fo=1, unplaced)         0.000    34.345    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_142_n_0
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    34.858 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_45/CO[3]
+                         net (fo=1, unplaced)         0.000    34.858    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_45_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    35.189 r  u_shared_mul/u_primary_mul/result_o[31]_INST_0_i_64/O[3]
+                         net (fo=32, unplaced)        0.689    35.878    u_shared_mul/u_primary_mul/modp_sub[31]
+                         LUT3 (Prop_lut3_I2_O)        0.307    36.185 r  u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_79/O
+                         net (fo=1, unplaced)         0.000    36.185    u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_79_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    36.718 r  u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_21/CO[3]
+                         net (fo=1, unplaced)         0.009    36.727    u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_21_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    36.844 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_19/CO[3]
+                         net (fo=1, unplaced)         0.000    36.844    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_19_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    37.175 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_36/O[3]
+                         net (fo=1, unplaced)         0.618    37.793    u_shared_mul/u_primary_mul/data4[11]
+                         LUT5 (Prop_lut5_I0_O)        0.307    38.100 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_17/O
+                         net (fo=3, unplaced)         0.467    38.567    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_17_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124    38.691 r  u_shared_mul/u_primary_mul/result_o[11]_INST_0_i_7/O
+                         net (fo=13, unplaced)        0.499    39.190    u_shared_mul/u_primary_mul/mul_res_lo[11]
+                         LUT2 (Prop_lut2_I1_O)        0.124    39.314 r  u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_29/O
+                         net (fo=1, unplaced)         0.000    39.314    u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_29_n_0
+                         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    39.690 r  u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_13/CO[3]
+                         net (fo=1, unplaced)         0.000    39.690    u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_13_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    39.807 r  u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_12/CO[3]
+                         net (fo=1, unplaced)         0.000    39.807    u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_12_n_0
+                         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.281    40.088 r  u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_13/CO[0]
+                         net (fo=6, unplaced)         0.343    40.431    u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_13_n_3
+                         LUT2 (Prop_lut2_I1_O)        0.367    40.798 r  u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_13/O
+                         net (fo=1, unplaced)         0.000    40.798    u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_13_n_0
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    41.311 r  u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_5/CO[3]
+                         net (fo=1, unplaced)         0.009    41.320    u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_5_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    41.651 r  u_shared_mul/u_primary_mul/result_o[22]_INST_0_i_6/O[3]
+                         net (fo=1, unplaced)         0.618    42.269    u_shared_mul/u_primary_mul/result_o0[7]
+                         LUT3 (Prop_lut3_I2_O)        0.299    42.568 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_8/O
+                         net (fo=1, unplaced)         0.449    43.017    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_8_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.124    43.141 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_1/O
+                         net (fo=1, unplaced)         0.449    43.590    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_1_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    43.714 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0/O
+                         net (fo=0)                   0.973    44.687    result_o[23]
+                                                                      r  result_o[23] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   20.000    20.000    
+                         clock pessimism              0.000    20.000    
+                         output delay                -0.000    20.000    
+  -------------------------------------------------------------------
+                         required time                         20.000    
+                         arrival time                         -44.687    
+  -------------------------------------------------------------------
+                         slack                                -24.687    
+
+Slack (VIOLATED) :        -24.682ns  (required time - arrival time)
+  Source:                 multiplier_tree2_i[1]
+                            (input port)
+  Destination:            result_o[30]
+  Path Group:             **default**
+  Path Type:              Max at Slow Process Corner
+  Requirement:            20.000ns  (MaxDelay Path 20.000ns)
+  Data Path Delay:        44.682ns  (logic 28.268ns (63.264%)  route 16.414ns (36.736%))
+  Logic Levels:           57  (CARRY4=32 DSP48E1=5 LUT2=7 LUT3=2 LUT4=3 LUT5=4 LUT6=4)
+  Output Delay:           0.000ns
+  Timing Exception:       MaxDelay Path 20.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 f  multiplier_tree2_i[1] (IN)
+                         net (fo=26, unset)           0.973     0.973    u_shared_mul/u_primary_mul/multiplier_tree2_i[1]
+                         LUT4 (Prop_lut4_I2_O)        0.150     1.123 r  u_shared_mul/u_primary_mul/int_prod_i_172/O
+                         net (fo=1, unplaced)         0.000     1.123    u_shared_mul/u_primary_mul/int_prod_i_172_n_0
+                         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.576     1.699 r  u_shared_mul/u_primary_mul/int_prod_i_160/CO[3]
+                         net (fo=1, unplaced)         0.009     1.708    u_shared_mul/u_primary_mul/int_prod_i_160_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     1.825 f  u_shared_mul/u_primary_mul/int_prod_i_157/CO[3]
+                         net (fo=8, unplaced)         0.956     2.781    u_shared_mul/u_primary_mul/mul_op_b2
+                         LUT2 (Prop_lut2_I1_O)        0.117     2.898 r  u_shared_mul/u_primary_mul/int_prod_i_148/O
+                         net (fo=1, unplaced)         0.000     2.898    u_shared_mul/u_primary_mul/int_prod_i_148_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.547     3.445 r  u_shared_mul/u_primary_mul/int_prod_i_85/CO[3]
+                         net (fo=1, unplaced)         0.009     3.454    u_shared_mul/u_primary_mul/int_prod_i_85_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.571 r  u_shared_mul/u_primary_mul/int_prod_i_82/CO[3]
+                         net (fo=1, unplaced)         0.000     3.571    u_shared_mul/u_primary_mul/int_prod_i_82_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.688 r  u_shared_mul/u_primary_mul/int_prod_i_78/CO[3]
+                         net (fo=1, unplaced)         0.000     3.688    u_shared_mul/u_primary_mul/int_prod_i_78_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331     4.019 r  u_shared_mul/u_primary_mul/int_prod_i_75/O[3]
+                         net (fo=1, unplaced)         0.618     4.637    u_shared_mul/u_primary_mul/data2[15]
+                         LUT5 (Prop_lut5_I2_O)        0.307     4.944 r  u_shared_mul/u_primary_mul/int_prod_i_39/O
+                         net (fo=4, unplaced)         0.473     5.417    u_shared_mul/u_primary_mul/multiplier_tree2_i[15]_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     5.541 r  u_shared_mul/u_primary_mul/int_prod_i_17/O
+                         net (fo=36, unplaced)        0.800     6.341    u_shared_mul/u_primary_mul/multiplier_tree2_i_15_sn_1
+                         DSP48E1 (Prop_dsp48e1_B[15]_PCOUT[47])
+                                                      3.851    10.192 r  u_shared_mul/u_primary_mul/int_prod__1/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    10.247    u_shared_mul/u_primary_mul/int_prod__1_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    11.765 r  u_shared_mul/u_primary_mul/int_prod__2/P[0]
+                         net (fo=2, unplaced)         0.800    12.564    u_shared_mul/u_primary_mul/int_prod__2_n_105
+                         LUT2 (Prop_lut2_I0_O)        0.124    12.688 r  u_shared_mul/u_primary_mul/int_prod_carry_i_3/O
+                         net (fo=1, unplaced)         0.000    12.688    u_shared_mul/u_primary_mul/int_prod_carry_i_3_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    13.221 r  u_shared_mul/u_primary_mul/int_prod_carry/CO[3]
+                         net (fo=1, unplaced)         0.009    13.230    u_shared_mul/u_primary_mul/int_prod_carry_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.347 r  u_shared_mul/u_primary_mul/int_prod_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000    13.347    u_shared_mul/u_primary_mul/int_prod_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.464 r  u_shared_mul/u_primary_mul/int_prod_carry__1/CO[3]
+                         net (fo=1, unplaced)         0.000    13.464    u_shared_mul/u_primary_mul/int_prod_carry__1_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256    13.720 r  u_shared_mul/u_primary_mul/int_prod_carry__2/O[2]
+                         net (fo=3, unplaced)         1.132    14.852    u_shared_mul/u_primary_mul/int_prod__3__0[30]
+                         LUT6 (Prop_lut6_I5_O)        0.301    15.153 r  u_shared_mul/u_primary_mul/result_hi_o[30]_INST_0_i_5/O
+                         net (fo=10, unplaced)        0.492    15.645    u_shared_mul/u_primary_mul/full_prod[30]
+                         LUT4 (Prop_lut4_I3_O)        0.124    15.769 r  u_shared_mul/u_primary_mul/stage_a_result_i_8/O
+                         net (fo=1, unplaced)         0.800    16.569    u_shared_mul/stage_a_op1[30]
+                         DSP48E1 (Prop_dsp48e1_A[13]_P[0])
+                                                      3.841    20.410 r  u_shared_mul/stage_a_result/P[0]
+                         net (fo=1, unplaced)         0.800    21.210    u_shared_mul/stage_a_result_n_105
+                         LUT2 (Prop_lut2_I1_O)        0.124    21.334 r  u_shared_mul/modp_tp_i_34/O
+                         net (fo=1, unplaced)         0.000    21.334    u_shared_mul/modp_tp_i_34_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    21.867 r  u_shared_mul/modp_tp_i_19/CO[3]
+                         net (fo=1, unplaced)         0.009    21.876    u_shared_mul/modp_tp_i_19_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    21.993 r  u_shared_mul/modp_tp_i_18/CO[3]
+                         net (fo=1, unplaced)         0.000    21.993    u_shared_mul/modp_tp_i_18_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    22.110 r  u_shared_mul/modp_tp_i_17/CO[3]
+                         net (fo=1, unplaced)         0.000    22.110    u_shared_mul/modp_tp_i_17_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    22.441 r  u_shared_mul/modp_tp_i_16/O[3]
+                         net (fo=2, unplaced)         0.629    23.070    u_shared_mul/stage_a_result__2[31]
+                         LUT5 (Prop_lut5_I0_O)        0.307    23.377 r  u_shared_mul/modp_tp_i_1/O
+                         net (fo=2, unplaced)         0.800    24.177    u_shared_mul/p_1_in[31]
+                         DSP48E1 (Prop_dsp48e1_B[14]_PCOUT[47])
+                                                      3.851    28.028 r  u_shared_mul/modp_tp/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    28.083    u_shared_mul/modp_tp_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518    29.601 r  u_shared_mul/modp_tp__0/P[3]
+                         net (fo=1, unplaced)         0.800    30.400    u_shared_mul/modp_tp__0_n_102
+                         LUT2 (Prop_lut2_I1_O)        0.124    30.524 r  u_shared_mul/result_o[23]_INST_0_i_214/O
+                         net (fo=1, unplaced)         0.000    30.524    u_shared_mul/result_o[23]_INST_0_i_214_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    31.057 r  u_shared_mul/result_o[23]_INST_0_i_207/CO[3]
+                         net (fo=1, unplaced)         0.000    31.057    u_shared_mul/result_o[23]_INST_0_i_207_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.174 r  u_shared_mul/result_o[31]_INST_0_i_255/CO[3]
+                         net (fo=1, unplaced)         0.000    31.174    u_shared_mul/result_o[31]_INST_0_i_255_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.291 r  u_shared_mul/result_hi_o[19]_INST_0_i_95/CO[3]
+                         net (fo=1, unplaced)         0.000    31.291    u_shared_mul/result_hi_o[19]_INST_0_i_95_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    31.628 r  u_shared_mul/result_o[23]_INST_0_i_211/O[1]
+                         net (fo=1, unplaced)         0.611    32.239    u_shared_mul/u_primary_mul/modp_tp__3[33]
+                         LUT4 (Prop_lut4_I3_O)        0.306    32.545 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_205/O
+                         net (fo=1, unplaced)         0.000    32.545    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_205_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    33.078 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_151/CO[3]
+                         net (fo=1, unplaced)         0.000    33.078    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_151_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    33.409 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_138/O[3]
+                         net (fo=2, unplaced)         0.629    34.038    u_shared_mul/u_primary_mul/modp_shifted[24]
+                         LUT2 (Prop_lut2_I0_O)        0.307    34.345 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_142/O
+                         net (fo=1, unplaced)         0.000    34.345    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_142_n_0
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    34.858 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_45/CO[3]
+                         net (fo=1, unplaced)         0.000    34.858    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_45_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    35.189 r  u_shared_mul/u_primary_mul/result_o[31]_INST_0_i_64/O[3]
+                         net (fo=32, unplaced)        0.689    35.878    u_shared_mul/u_primary_mul/modp_sub[31]
+                         LUT3 (Prop_lut3_I2_O)        0.307    36.185 r  u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_79/O
+                         net (fo=1, unplaced)         0.000    36.185    u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_79_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    36.718 r  u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_21/CO[3]
+                         net (fo=1, unplaced)         0.009    36.727    u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_21_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    36.844 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_19/CO[3]
+                         net (fo=1, unplaced)         0.000    36.844    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_19_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    37.175 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_36/O[3]
+                         net (fo=1, unplaced)         0.618    37.793    u_shared_mul/u_primary_mul/data4[11]
+                         LUT5 (Prop_lut5_I0_O)        0.307    38.100 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_17/O
+                         net (fo=3, unplaced)         0.467    38.567    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_17_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124    38.691 r  u_shared_mul/u_primary_mul/result_o[11]_INST_0_i_7/O
+                         net (fo=13, unplaced)        0.499    39.190    u_shared_mul/u_primary_mul/mul_res_lo[11]
+                         LUT2 (Prop_lut2_I1_O)        0.124    39.314 r  u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_29/O
+                         net (fo=1, unplaced)         0.000    39.314    u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_29_n_0
+                         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    39.690 r  u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_13/CO[3]
+                         net (fo=1, unplaced)         0.000    39.690    u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_13_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    39.807 r  u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_12/CO[3]
+                         net (fo=1, unplaced)         0.000    39.807    u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_12_n_0
+                         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.281    40.088 r  u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_13/CO[0]
+                         net (fo=6, unplaced)         0.343    40.431    u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_13_n_3
+                         LUT2 (Prop_lut2_I1_O)        0.367    40.798 r  u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_13/O
+                         net (fo=1, unplaced)         0.000    40.798    u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_13_n_0
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    41.311 r  u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_5/CO[3]
+                         net (fo=1, unplaced)         0.009    41.320    u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_5_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    41.437 r  u_shared_mul/u_primary_mul/result_o[22]_INST_0_i_6/CO[3]
+                         net (fo=1, unplaced)         0.000    41.437    u_shared_mul/u_primary_mul/result_o[22]_INST_0_i_6_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    41.554 r  u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_5/CO[3]
+                         net (fo=1, unplaced)         0.000    41.554    u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_5_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256    41.810 r  u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_5/O[2]
+                         net (fo=1, unplaced)         0.452    42.262    u_shared_mul/u_primary_mul/result_o0[14]
+                         LUT3 (Prop_lut3_I2_O)        0.301    42.563 r  u_shared_mul/u_primary_mul/result_o[30]_INST_0_i_8/O
+                         net (fo=1, unplaced)         0.449    43.012    u_shared_mul/u_primary_mul/result_o[30]_INST_0_i_8_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.124    43.136 r  u_shared_mul/u_primary_mul/result_o[30]_INST_0_i_1/O
+                         net (fo=1, unplaced)         0.449    43.585    u_shared_mul/u_primary_mul/result_o[30]_INST_0_i_1_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    43.709 r  u_shared_mul/u_primary_mul/result_o[30]_INST_0/O
+                         net (fo=0)                   0.973    44.682    result_o[30]
+                                                                      r  result_o[30] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   20.000    20.000    
+                         clock pessimism              0.000    20.000    
+                         output delay                -0.000    20.000    
+  -------------------------------------------------------------------
+                         required time                         20.000    
+                         arrival time                         -44.682    
+  -------------------------------------------------------------------
+                         slack                                -24.682    
+
+Slack (VIOLATED) :        -24.565ns  (required time - arrival time)
+  Source:                 multiplier_tree2_i[1]
+                            (input port)
+  Destination:            result_o[26]
+  Path Group:             **default**
+  Path Type:              Max at Slow Process Corner
+  Requirement:            20.000ns  (MaxDelay Path 20.000ns)
+  Data Path Delay:        44.565ns  (logic 28.151ns (63.168%)  route 16.414ns (36.832%))
+  Logic Levels:           56  (CARRY4=31 DSP48E1=5 LUT2=7 LUT3=2 LUT4=3 LUT5=4 LUT6=4)
+  Output Delay:           0.000ns
+  Timing Exception:       MaxDelay Path 20.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 f  multiplier_tree2_i[1] (IN)
+                         net (fo=26, unset)           0.973     0.973    u_shared_mul/u_primary_mul/multiplier_tree2_i[1]
+                         LUT4 (Prop_lut4_I2_O)        0.150     1.123 r  u_shared_mul/u_primary_mul/int_prod_i_172/O
+                         net (fo=1, unplaced)         0.000     1.123    u_shared_mul/u_primary_mul/int_prod_i_172_n_0
+                         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.576     1.699 r  u_shared_mul/u_primary_mul/int_prod_i_160/CO[3]
+                         net (fo=1, unplaced)         0.009     1.708    u_shared_mul/u_primary_mul/int_prod_i_160_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     1.825 f  u_shared_mul/u_primary_mul/int_prod_i_157/CO[3]
+                         net (fo=8, unplaced)         0.956     2.781    u_shared_mul/u_primary_mul/mul_op_b2
+                         LUT2 (Prop_lut2_I1_O)        0.117     2.898 r  u_shared_mul/u_primary_mul/int_prod_i_148/O
+                         net (fo=1, unplaced)         0.000     2.898    u_shared_mul/u_primary_mul/int_prod_i_148_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.547     3.445 r  u_shared_mul/u_primary_mul/int_prod_i_85/CO[3]
+                         net (fo=1, unplaced)         0.009     3.454    u_shared_mul/u_primary_mul/int_prod_i_85_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.571 r  u_shared_mul/u_primary_mul/int_prod_i_82/CO[3]
+                         net (fo=1, unplaced)         0.000     3.571    u_shared_mul/u_primary_mul/int_prod_i_82_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.688 r  u_shared_mul/u_primary_mul/int_prod_i_78/CO[3]
+                         net (fo=1, unplaced)         0.000     3.688    u_shared_mul/u_primary_mul/int_prod_i_78_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331     4.019 r  u_shared_mul/u_primary_mul/int_prod_i_75/O[3]
+                         net (fo=1, unplaced)         0.618     4.637    u_shared_mul/u_primary_mul/data2[15]
+                         LUT5 (Prop_lut5_I2_O)        0.307     4.944 r  u_shared_mul/u_primary_mul/int_prod_i_39/O
+                         net (fo=4, unplaced)         0.473     5.417    u_shared_mul/u_primary_mul/multiplier_tree2_i[15]_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     5.541 r  u_shared_mul/u_primary_mul/int_prod_i_17/O
+                         net (fo=36, unplaced)        0.800     6.341    u_shared_mul/u_primary_mul/multiplier_tree2_i_15_sn_1
+                         DSP48E1 (Prop_dsp48e1_B[15]_PCOUT[47])
+                                                      3.851    10.192 r  u_shared_mul/u_primary_mul/int_prod__1/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    10.247    u_shared_mul/u_primary_mul/int_prod__1_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    11.765 r  u_shared_mul/u_primary_mul/int_prod__2/P[0]
+                         net (fo=2, unplaced)         0.800    12.564    u_shared_mul/u_primary_mul/int_prod__2_n_105
+                         LUT2 (Prop_lut2_I0_O)        0.124    12.688 r  u_shared_mul/u_primary_mul/int_prod_carry_i_3/O
+                         net (fo=1, unplaced)         0.000    12.688    u_shared_mul/u_primary_mul/int_prod_carry_i_3_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    13.221 r  u_shared_mul/u_primary_mul/int_prod_carry/CO[3]
+                         net (fo=1, unplaced)         0.009    13.230    u_shared_mul/u_primary_mul/int_prod_carry_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.347 r  u_shared_mul/u_primary_mul/int_prod_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000    13.347    u_shared_mul/u_primary_mul/int_prod_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.464 r  u_shared_mul/u_primary_mul/int_prod_carry__1/CO[3]
+                         net (fo=1, unplaced)         0.000    13.464    u_shared_mul/u_primary_mul/int_prod_carry__1_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256    13.720 r  u_shared_mul/u_primary_mul/int_prod_carry__2/O[2]
+                         net (fo=3, unplaced)         1.132    14.852    u_shared_mul/u_primary_mul/int_prod__3__0[30]
+                         LUT6 (Prop_lut6_I5_O)        0.301    15.153 r  u_shared_mul/u_primary_mul/result_hi_o[30]_INST_0_i_5/O
+                         net (fo=10, unplaced)        0.492    15.645    u_shared_mul/u_primary_mul/full_prod[30]
+                         LUT4 (Prop_lut4_I3_O)        0.124    15.769 r  u_shared_mul/u_primary_mul/stage_a_result_i_8/O
+                         net (fo=1, unplaced)         0.800    16.569    u_shared_mul/stage_a_op1[30]
+                         DSP48E1 (Prop_dsp48e1_A[13]_P[0])
+                                                      3.841    20.410 r  u_shared_mul/stage_a_result/P[0]
+                         net (fo=1, unplaced)         0.800    21.210    u_shared_mul/stage_a_result_n_105
+                         LUT2 (Prop_lut2_I1_O)        0.124    21.334 r  u_shared_mul/modp_tp_i_34/O
+                         net (fo=1, unplaced)         0.000    21.334    u_shared_mul/modp_tp_i_34_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    21.867 r  u_shared_mul/modp_tp_i_19/CO[3]
+                         net (fo=1, unplaced)         0.009    21.876    u_shared_mul/modp_tp_i_19_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    21.993 r  u_shared_mul/modp_tp_i_18/CO[3]
+                         net (fo=1, unplaced)         0.000    21.993    u_shared_mul/modp_tp_i_18_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    22.110 r  u_shared_mul/modp_tp_i_17/CO[3]
+                         net (fo=1, unplaced)         0.000    22.110    u_shared_mul/modp_tp_i_17_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    22.441 r  u_shared_mul/modp_tp_i_16/O[3]
+                         net (fo=2, unplaced)         0.629    23.070    u_shared_mul/stage_a_result__2[31]
+                         LUT5 (Prop_lut5_I0_O)        0.307    23.377 r  u_shared_mul/modp_tp_i_1/O
+                         net (fo=2, unplaced)         0.800    24.177    u_shared_mul/p_1_in[31]
+                         DSP48E1 (Prop_dsp48e1_B[14]_PCOUT[47])
+                                                      3.851    28.028 r  u_shared_mul/modp_tp/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    28.083    u_shared_mul/modp_tp_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518    29.601 r  u_shared_mul/modp_tp__0/P[3]
+                         net (fo=1, unplaced)         0.800    30.400    u_shared_mul/modp_tp__0_n_102
+                         LUT2 (Prop_lut2_I1_O)        0.124    30.524 r  u_shared_mul/result_o[23]_INST_0_i_214/O
+                         net (fo=1, unplaced)         0.000    30.524    u_shared_mul/result_o[23]_INST_0_i_214_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    31.057 r  u_shared_mul/result_o[23]_INST_0_i_207/CO[3]
+                         net (fo=1, unplaced)         0.000    31.057    u_shared_mul/result_o[23]_INST_0_i_207_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.174 r  u_shared_mul/result_o[31]_INST_0_i_255/CO[3]
+                         net (fo=1, unplaced)         0.000    31.174    u_shared_mul/result_o[31]_INST_0_i_255_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.291 r  u_shared_mul/result_hi_o[19]_INST_0_i_95/CO[3]
+                         net (fo=1, unplaced)         0.000    31.291    u_shared_mul/result_hi_o[19]_INST_0_i_95_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    31.628 r  u_shared_mul/result_o[23]_INST_0_i_211/O[1]
+                         net (fo=1, unplaced)         0.611    32.239    u_shared_mul/u_primary_mul/modp_tp__3[33]
+                         LUT4 (Prop_lut4_I3_O)        0.306    32.545 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_205/O
+                         net (fo=1, unplaced)         0.000    32.545    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_205_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    33.078 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_151/CO[3]
+                         net (fo=1, unplaced)         0.000    33.078    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_151_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    33.409 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_138/O[3]
+                         net (fo=2, unplaced)         0.629    34.038    u_shared_mul/u_primary_mul/modp_shifted[24]
+                         LUT2 (Prop_lut2_I0_O)        0.307    34.345 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_142/O
+                         net (fo=1, unplaced)         0.000    34.345    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_142_n_0
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    34.858 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_45/CO[3]
+                         net (fo=1, unplaced)         0.000    34.858    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_45_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    35.189 r  u_shared_mul/u_primary_mul/result_o[31]_INST_0_i_64/O[3]
+                         net (fo=32, unplaced)        0.689    35.878    u_shared_mul/u_primary_mul/modp_sub[31]
+                         LUT3 (Prop_lut3_I2_O)        0.307    36.185 r  u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_79/O
+                         net (fo=1, unplaced)         0.000    36.185    u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_79_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    36.718 r  u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_21/CO[3]
+                         net (fo=1, unplaced)         0.009    36.727    u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_21_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    36.844 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_19/CO[3]
+                         net (fo=1, unplaced)         0.000    36.844    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_19_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    37.175 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_36/O[3]
+                         net (fo=1, unplaced)         0.618    37.793    u_shared_mul/u_primary_mul/data4[11]
+                         LUT5 (Prop_lut5_I0_O)        0.307    38.100 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_17/O
+                         net (fo=3, unplaced)         0.467    38.567    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_17_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124    38.691 r  u_shared_mul/u_primary_mul/result_o[11]_INST_0_i_7/O
+                         net (fo=13, unplaced)        0.499    39.190    u_shared_mul/u_primary_mul/mul_res_lo[11]
+                         LUT2 (Prop_lut2_I1_O)        0.124    39.314 r  u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_29/O
+                         net (fo=1, unplaced)         0.000    39.314    u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_29_n_0
+                         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    39.690 r  u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_13/CO[3]
+                         net (fo=1, unplaced)         0.000    39.690    u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_13_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    39.807 r  u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_12/CO[3]
+                         net (fo=1, unplaced)         0.000    39.807    u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_12_n_0
+                         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.281    40.088 r  u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_13/CO[0]
+                         net (fo=6, unplaced)         0.343    40.431    u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_13_n_3
+                         LUT2 (Prop_lut2_I1_O)        0.367    40.798 r  u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_13/O
+                         net (fo=1, unplaced)         0.000    40.798    u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_13_n_0
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    41.311 r  u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_5/CO[3]
+                         net (fo=1, unplaced)         0.009    41.320    u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_5_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    41.437 r  u_shared_mul/u_primary_mul/result_o[22]_INST_0_i_6/CO[3]
+                         net (fo=1, unplaced)         0.000    41.437    u_shared_mul/u_primary_mul/result_o[22]_INST_0_i_6_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256    41.693 r  u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_5/O[2]
+                         net (fo=1, unplaced)         0.452    42.145    u_shared_mul/u_primary_mul/result_o0[10]
+                         LUT3 (Prop_lut3_I2_O)        0.301    42.446 r  u_shared_mul/u_primary_mul/result_o[26]_INST_0_i_5/O
+                         net (fo=1, unplaced)         0.449    42.895    u_shared_mul/u_primary_mul/result_o[26]_INST_0_i_5_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    43.019 r  u_shared_mul/u_primary_mul/result_o[26]_INST_0_i_1/O
+                         net (fo=1, unplaced)         0.449    43.468    u_shared_mul/u_primary_mul/result_o[26]_INST_0_i_1_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    43.592 r  u_shared_mul/u_primary_mul/result_o[26]_INST_0/O
+                         net (fo=0)                   0.973    44.565    result_o[26]
+                                                                      r  result_o[26] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   20.000    20.000    
+                         clock pessimism              0.000    20.000    
+                         output delay                -0.000    20.000    
+  -------------------------------------------------------------------
+                         required time                         20.000    
+                         arrival time                         -44.565    
+  -------------------------------------------------------------------
+                         slack                                -24.565    
+
+Slack (VIOLATED) :        -24.544ns  (required time - arrival time)
+  Source:                 multiplier_tree2_i[1]
+                            (input port)
+  Destination:            result_o[15]
+  Path Group:             **default**
+  Path Type:              Max at Slow Process Corner
+  Requirement:            20.000ns  (MaxDelay Path 20.000ns)
+  Data Path Delay:        44.544ns  (logic 26.961ns (60.526%)  route 17.583ns (39.474%))
+  Logic Levels:           52  (CARRY4=27 DSP48E1=5 LUT2=6 LUT3=1 LUT4=5 LUT5=4 LUT6=4)
+  Output Delay:           0.000ns
+  Timing Exception:       MaxDelay Path 20.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 f  multiplier_tree2_i[1] (IN)
+                         net (fo=26, unset)           0.973     0.973    u_shared_mul/u_primary_mul/multiplier_tree2_i[1]
+                         LUT4 (Prop_lut4_I2_O)        0.150     1.123 r  u_shared_mul/u_primary_mul/int_prod_i_172/O
+                         net (fo=1, unplaced)         0.000     1.123    u_shared_mul/u_primary_mul/int_prod_i_172_n_0
+                         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.576     1.699 r  u_shared_mul/u_primary_mul/int_prod_i_160/CO[3]
+                         net (fo=1, unplaced)         0.009     1.708    u_shared_mul/u_primary_mul/int_prod_i_160_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     1.825 f  u_shared_mul/u_primary_mul/int_prod_i_157/CO[3]
+                         net (fo=8, unplaced)         0.956     2.781    u_shared_mul/u_primary_mul/mul_op_b2
+                         LUT2 (Prop_lut2_I1_O)        0.117     2.898 r  u_shared_mul/u_primary_mul/int_prod_i_148/O
+                         net (fo=1, unplaced)         0.000     2.898    u_shared_mul/u_primary_mul/int_prod_i_148_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.547     3.445 r  u_shared_mul/u_primary_mul/int_prod_i_85/CO[3]
+                         net (fo=1, unplaced)         0.009     3.454    u_shared_mul/u_primary_mul/int_prod_i_85_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.571 r  u_shared_mul/u_primary_mul/int_prod_i_82/CO[3]
+                         net (fo=1, unplaced)         0.000     3.571    u_shared_mul/u_primary_mul/int_prod_i_82_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.688 r  u_shared_mul/u_primary_mul/int_prod_i_78/CO[3]
+                         net (fo=1, unplaced)         0.000     3.688    u_shared_mul/u_primary_mul/int_prod_i_78_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331     4.019 r  u_shared_mul/u_primary_mul/int_prod_i_75/O[3]
+                         net (fo=1, unplaced)         0.618     4.637    u_shared_mul/u_primary_mul/data2[15]
+                         LUT5 (Prop_lut5_I2_O)        0.307     4.944 r  u_shared_mul/u_primary_mul/int_prod_i_39/O
+                         net (fo=4, unplaced)         0.473     5.417    u_shared_mul/u_primary_mul/multiplier_tree2_i[15]_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     5.541 r  u_shared_mul/u_primary_mul/int_prod_i_17/O
+                         net (fo=36, unplaced)        0.800     6.341    u_shared_mul/u_primary_mul/multiplier_tree2_i_15_sn_1
+                         DSP48E1 (Prop_dsp48e1_B[15]_PCOUT[47])
+                                                      3.851    10.192 r  u_shared_mul/u_primary_mul/int_prod__1/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    10.247    u_shared_mul/u_primary_mul/int_prod__1_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    11.765 r  u_shared_mul/u_primary_mul/int_prod__2/P[0]
+                         net (fo=2, unplaced)         0.800    12.564    u_shared_mul/u_primary_mul/int_prod__2_n_105
+                         LUT2 (Prop_lut2_I0_O)        0.124    12.688 r  u_shared_mul/u_primary_mul/int_prod_carry_i_3/O
+                         net (fo=1, unplaced)         0.000    12.688    u_shared_mul/u_primary_mul/int_prod_carry_i_3_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    13.221 r  u_shared_mul/u_primary_mul/int_prod_carry/CO[3]
+                         net (fo=1, unplaced)         0.009    13.230    u_shared_mul/u_primary_mul/int_prod_carry_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.347 r  u_shared_mul/u_primary_mul/int_prod_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000    13.347    u_shared_mul/u_primary_mul/int_prod_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.464 r  u_shared_mul/u_primary_mul/int_prod_carry__1/CO[3]
+                         net (fo=1, unplaced)         0.000    13.464    u_shared_mul/u_primary_mul/int_prod_carry__1_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256    13.720 r  u_shared_mul/u_primary_mul/int_prod_carry__2/O[2]
+                         net (fo=3, unplaced)         1.132    14.852    u_shared_mul/u_primary_mul/int_prod__3__0[30]
+                         LUT6 (Prop_lut6_I5_O)        0.301    15.153 r  u_shared_mul/u_primary_mul/result_hi_o[30]_INST_0_i_5/O
+                         net (fo=10, unplaced)        0.492    15.645    u_shared_mul/u_primary_mul/full_prod[30]
+                         LUT4 (Prop_lut4_I3_O)        0.124    15.769 r  u_shared_mul/u_primary_mul/stage_a_result_i_8/O
+                         net (fo=1, unplaced)         0.800    16.569    u_shared_mul/stage_a_op1[30]
+                         DSP48E1 (Prop_dsp48e1_A[13]_P[0])
+                                                      3.841    20.410 r  u_shared_mul/stage_a_result/P[0]
+                         net (fo=1, unplaced)         0.800    21.210    u_shared_mul/stage_a_result_n_105
+                         LUT2 (Prop_lut2_I1_O)        0.124    21.334 r  u_shared_mul/modp_tp_i_34/O
+                         net (fo=1, unplaced)         0.000    21.334    u_shared_mul/modp_tp_i_34_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    21.867 r  u_shared_mul/modp_tp_i_19/CO[3]
+                         net (fo=1, unplaced)         0.009    21.876    u_shared_mul/modp_tp_i_19_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    21.993 r  u_shared_mul/modp_tp_i_18/CO[3]
+                         net (fo=1, unplaced)         0.000    21.993    u_shared_mul/modp_tp_i_18_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    22.110 r  u_shared_mul/modp_tp_i_17/CO[3]
+                         net (fo=1, unplaced)         0.000    22.110    u_shared_mul/modp_tp_i_17_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    22.441 r  u_shared_mul/modp_tp_i_16/O[3]
+                         net (fo=2, unplaced)         0.629    23.070    u_shared_mul/stage_a_result__2[31]
+                         LUT5 (Prop_lut5_I0_O)        0.307    23.377 r  u_shared_mul/modp_tp_i_1/O
+                         net (fo=2, unplaced)         0.800    24.177    u_shared_mul/p_1_in[31]
+                         DSP48E1 (Prop_dsp48e1_B[14]_PCOUT[47])
+                                                      3.851    28.028 r  u_shared_mul/modp_tp/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    28.083    u_shared_mul/modp_tp_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518    29.601 r  u_shared_mul/modp_tp__0/P[3]
+                         net (fo=1, unplaced)         0.800    30.400    u_shared_mul/modp_tp__0_n_102
+                         LUT2 (Prop_lut2_I1_O)        0.124    30.524 r  u_shared_mul/result_o[23]_INST_0_i_214/O
+                         net (fo=1, unplaced)         0.000    30.524    u_shared_mul/result_o[23]_INST_0_i_214_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    31.057 r  u_shared_mul/result_o[23]_INST_0_i_207/CO[3]
+                         net (fo=1, unplaced)         0.000    31.057    u_shared_mul/result_o[23]_INST_0_i_207_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.174 r  u_shared_mul/result_o[31]_INST_0_i_255/CO[3]
+                         net (fo=1, unplaced)         0.000    31.174    u_shared_mul/result_o[31]_INST_0_i_255_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.291 r  u_shared_mul/result_hi_o[19]_INST_0_i_95/CO[3]
+                         net (fo=1, unplaced)         0.000    31.291    u_shared_mul/result_hi_o[19]_INST_0_i_95_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    31.628 r  u_shared_mul/result_o[23]_INST_0_i_211/O[1]
+                         net (fo=1, unplaced)         0.611    32.239    u_shared_mul/u_primary_mul/modp_tp__3[33]
+                         LUT4 (Prop_lut4_I3_O)        0.306    32.545 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_205/O
+                         net (fo=1, unplaced)         0.000    32.545    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_205_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    33.078 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_151/CO[3]
+                         net (fo=1, unplaced)         0.000    33.078    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_151_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    33.409 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_138/O[3]
+                         net (fo=2, unplaced)         0.629    34.038    u_shared_mul/u_primary_mul/modp_shifted[24]
+                         LUT2 (Prop_lut2_I0_O)        0.307    34.345 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_142/O
+                         net (fo=1, unplaced)         0.000    34.345    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_142_n_0
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    34.858 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_45/CO[3]
+                         net (fo=1, unplaced)         0.000    34.858    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_45_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    35.189 r  u_shared_mul/u_primary_mul/result_o[31]_INST_0_i_64/O[3]
+                         net (fo=32, unplaced)        0.689    35.878    u_shared_mul/u_primary_mul/modp_sub[31]
+                         LUT3 (Prop_lut3_I2_O)        0.307    36.185 r  u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_79/O
+                         net (fo=1, unplaced)         0.000    36.185    u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_79_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    36.718 r  u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_21/CO[3]
+                         net (fo=1, unplaced)         0.009    36.727    u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_21_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    36.844 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_19/CO[3]
+                         net (fo=1, unplaced)         0.000    36.844    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_19_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    37.175 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_36/O[3]
+                         net (fo=1, unplaced)         0.618    37.793    u_shared_mul/u_primary_mul/data4[11]
+                         LUT5 (Prop_lut5_I0_O)        0.307    38.100 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_17/O
+                         net (fo=3, unplaced)         0.467    38.567    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_17_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124    38.691 r  u_shared_mul/u_primary_mul/result_o[11]_INST_0_i_7/O
+                         net (fo=13, unplaced)        0.499    39.190    u_shared_mul/u_primary_mul/mul_res_lo[11]
+                         LUT2 (Prop_lut2_I1_O)        0.124    39.314 r  u_shared_mul/u_primary_mul/result_o[10]_INST_0_i_15/O
+                         net (fo=1, unplaced)         0.000    39.314    u_shared_mul/u_primary_mul/result_o[10]_INST_0_i_15_n_0
+                         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    39.690 r  u_shared_mul/u_primary_mul/result_o[10]_INST_0_i_8/CO[3]
+                         net (fo=1, unplaced)         0.000    39.690    u_shared_mul/u_primary_mul/result_o[10]_INST_0_i_8_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    40.021 r  u_shared_mul/u_primary_mul/result_o[22]_INST_0_i_55/O[3]
+                         net (fo=1, unplaced)         0.618    40.639    u_shared_mul/u_primary_mul/data5[15]
+                         LUT4 (Prop_lut4_I0_O)        0.307    40.946 r  u_shared_mul/u_primary_mul/result_o[15]_INST_0_i_17/O
+                         net (fo=1, unplaced)         0.902    41.848    u_shared_mul/u_primary_mul/result_o[15]_INST_0_i_17_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.124    41.972 r  u_shared_mul/u_primary_mul/result_o[15]_INST_0_i_4/O
+                         net (fo=1, unplaced)         0.902    42.874    u_shared_mul/u_primary_mul/result_o[15]_INST_0_i_4_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    42.998 r  u_shared_mul/u_primary_mul/result_o[15]_INST_0_i_1/O
+                         net (fo=1, unplaced)         0.449    43.447    u_shared_mul/u_primary_mul/result_o[15]_INST_0_i_1_n_0
+                         LUT4 (Prop_lut4_I0_O)        0.124    43.571 r  u_shared_mul/u_primary_mul/result_o[15]_INST_0/O
+                         net (fo=0)                   0.973    44.544    result_o[15]
+                                                                      r  result_o[15] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   20.000    20.000    
+                         clock pessimism              0.000    20.000    
+                         output delay                -0.000    20.000    
+  -------------------------------------------------------------------
+                         required time                         20.000    
+                         arrival time                         -44.544    
+  -------------------------------------------------------------------
+                         slack                                -24.544    
+
+Slack (VIOLATED) :        -24.511ns  (required time - arrival time)
+  Source:                 multiplier_tree2_i[1]
+                            (input port)
+  Destination:            result_o[28]
+  Path Group:             **default**
+  Path Type:              Max at Slow Process Corner
+  Requirement:            20.000ns  (MaxDelay Path 20.000ns)
+  Data Path Delay:        44.511ns  (logic 28.238ns (63.440%)  route 16.273ns (36.560%))
+  Logic Levels:           57  (CARRY4=32 DSP48E1=5 LUT2=7 LUT3=2 LUT4=3 LUT5=4 LUT6=4)
+  Output Delay:           0.000ns
+  Timing Exception:       MaxDelay Path 20.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 f  multiplier_tree2_i[1] (IN)
+                         net (fo=26, unset)           0.973     0.973    u_shared_mul/u_primary_mul/multiplier_tree2_i[1]
+                         LUT4 (Prop_lut4_I2_O)        0.150     1.123 r  u_shared_mul/u_primary_mul/int_prod_i_172/O
+                         net (fo=1, unplaced)         0.000     1.123    u_shared_mul/u_primary_mul/int_prod_i_172_n_0
+                         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.576     1.699 r  u_shared_mul/u_primary_mul/int_prod_i_160/CO[3]
+                         net (fo=1, unplaced)         0.009     1.708    u_shared_mul/u_primary_mul/int_prod_i_160_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     1.825 f  u_shared_mul/u_primary_mul/int_prod_i_157/CO[3]
+                         net (fo=8, unplaced)         0.956     2.781    u_shared_mul/u_primary_mul/mul_op_b2
+                         LUT2 (Prop_lut2_I1_O)        0.117     2.898 r  u_shared_mul/u_primary_mul/int_prod_i_148/O
+                         net (fo=1, unplaced)         0.000     2.898    u_shared_mul/u_primary_mul/int_prod_i_148_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.547     3.445 r  u_shared_mul/u_primary_mul/int_prod_i_85/CO[3]
+                         net (fo=1, unplaced)         0.009     3.454    u_shared_mul/u_primary_mul/int_prod_i_85_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.571 r  u_shared_mul/u_primary_mul/int_prod_i_82/CO[3]
+                         net (fo=1, unplaced)         0.000     3.571    u_shared_mul/u_primary_mul/int_prod_i_82_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.688 r  u_shared_mul/u_primary_mul/int_prod_i_78/CO[3]
+                         net (fo=1, unplaced)         0.000     3.688    u_shared_mul/u_primary_mul/int_prod_i_78_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331     4.019 r  u_shared_mul/u_primary_mul/int_prod_i_75/O[3]
+                         net (fo=1, unplaced)         0.618     4.637    u_shared_mul/u_primary_mul/data2[15]
+                         LUT5 (Prop_lut5_I2_O)        0.307     4.944 r  u_shared_mul/u_primary_mul/int_prod_i_39/O
+                         net (fo=4, unplaced)         0.473     5.417    u_shared_mul/u_primary_mul/multiplier_tree2_i[15]_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     5.541 r  u_shared_mul/u_primary_mul/int_prod_i_17/O
+                         net (fo=36, unplaced)        0.800     6.341    u_shared_mul/u_primary_mul/multiplier_tree2_i_15_sn_1
+                         DSP48E1 (Prop_dsp48e1_B[15]_PCOUT[47])
+                                                      3.851    10.192 r  u_shared_mul/u_primary_mul/int_prod__1/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    10.247    u_shared_mul/u_primary_mul/int_prod__1_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    11.765 r  u_shared_mul/u_primary_mul/int_prod__2/P[0]
+                         net (fo=2, unplaced)         0.800    12.564    u_shared_mul/u_primary_mul/int_prod__2_n_105
+                         LUT2 (Prop_lut2_I0_O)        0.124    12.688 r  u_shared_mul/u_primary_mul/int_prod_carry_i_3/O
+                         net (fo=1, unplaced)         0.000    12.688    u_shared_mul/u_primary_mul/int_prod_carry_i_3_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    13.221 r  u_shared_mul/u_primary_mul/int_prod_carry/CO[3]
+                         net (fo=1, unplaced)         0.009    13.230    u_shared_mul/u_primary_mul/int_prod_carry_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.347 r  u_shared_mul/u_primary_mul/int_prod_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000    13.347    u_shared_mul/u_primary_mul/int_prod_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.464 r  u_shared_mul/u_primary_mul/int_prod_carry__1/CO[3]
+                         net (fo=1, unplaced)         0.000    13.464    u_shared_mul/u_primary_mul/int_prod_carry__1_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256    13.720 r  u_shared_mul/u_primary_mul/int_prod_carry__2/O[2]
+                         net (fo=3, unplaced)         1.132    14.852    u_shared_mul/u_primary_mul/int_prod__3__0[30]
+                         LUT6 (Prop_lut6_I5_O)        0.301    15.153 r  u_shared_mul/u_primary_mul/result_hi_o[30]_INST_0_i_5/O
+                         net (fo=10, unplaced)        0.492    15.645    u_shared_mul/u_primary_mul/full_prod[30]
+                         LUT4 (Prop_lut4_I3_O)        0.124    15.769 r  u_shared_mul/u_primary_mul/stage_a_result_i_8/O
+                         net (fo=1, unplaced)         0.800    16.569    u_shared_mul/stage_a_op1[30]
+                         DSP48E1 (Prop_dsp48e1_A[13]_P[0])
+                                                      3.841    20.410 r  u_shared_mul/stage_a_result/P[0]
+                         net (fo=1, unplaced)         0.800    21.210    u_shared_mul/stage_a_result_n_105
+                         LUT2 (Prop_lut2_I1_O)        0.124    21.334 r  u_shared_mul/modp_tp_i_34/O
+                         net (fo=1, unplaced)         0.000    21.334    u_shared_mul/modp_tp_i_34_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    21.867 r  u_shared_mul/modp_tp_i_19/CO[3]
+                         net (fo=1, unplaced)         0.009    21.876    u_shared_mul/modp_tp_i_19_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    21.993 r  u_shared_mul/modp_tp_i_18/CO[3]
+                         net (fo=1, unplaced)         0.000    21.993    u_shared_mul/modp_tp_i_18_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    22.110 r  u_shared_mul/modp_tp_i_17/CO[3]
+                         net (fo=1, unplaced)         0.000    22.110    u_shared_mul/modp_tp_i_17_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    22.441 r  u_shared_mul/modp_tp_i_16/O[3]
+                         net (fo=2, unplaced)         0.629    23.070    u_shared_mul/stage_a_result__2[31]
+                         LUT5 (Prop_lut5_I0_O)        0.307    23.377 r  u_shared_mul/modp_tp_i_1/O
+                         net (fo=2, unplaced)         0.800    24.177    u_shared_mul/p_1_in[31]
+                         DSP48E1 (Prop_dsp48e1_B[14]_PCOUT[47])
+                                                      3.851    28.028 r  u_shared_mul/modp_tp/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    28.083    u_shared_mul/modp_tp_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518    29.601 r  u_shared_mul/modp_tp__0/P[3]
+                         net (fo=1, unplaced)         0.800    30.400    u_shared_mul/modp_tp__0_n_102
+                         LUT2 (Prop_lut2_I1_O)        0.124    30.524 r  u_shared_mul/result_o[23]_INST_0_i_214/O
+                         net (fo=1, unplaced)         0.000    30.524    u_shared_mul/result_o[23]_INST_0_i_214_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    31.057 r  u_shared_mul/result_o[23]_INST_0_i_207/CO[3]
+                         net (fo=1, unplaced)         0.000    31.057    u_shared_mul/result_o[23]_INST_0_i_207_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.174 r  u_shared_mul/result_o[31]_INST_0_i_255/CO[3]
+                         net (fo=1, unplaced)         0.000    31.174    u_shared_mul/result_o[31]_INST_0_i_255_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.291 r  u_shared_mul/result_hi_o[19]_INST_0_i_95/CO[3]
+                         net (fo=1, unplaced)         0.000    31.291    u_shared_mul/result_hi_o[19]_INST_0_i_95_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    31.628 r  u_shared_mul/result_o[23]_INST_0_i_211/O[1]
+                         net (fo=1, unplaced)         0.611    32.239    u_shared_mul/u_primary_mul/modp_tp__3[33]
+                         LUT4 (Prop_lut4_I3_O)        0.306    32.545 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_205/O
+                         net (fo=1, unplaced)         0.000    32.545    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_205_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    33.078 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_151/CO[3]
+                         net (fo=1, unplaced)         0.000    33.078    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_151_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    33.409 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_138/O[3]
+                         net (fo=2, unplaced)         0.629    34.038    u_shared_mul/u_primary_mul/modp_shifted[24]
+                         LUT2 (Prop_lut2_I0_O)        0.307    34.345 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_142/O
+                         net (fo=1, unplaced)         0.000    34.345    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_142_n_0
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    34.858 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_45/CO[3]
+                         net (fo=1, unplaced)         0.000    34.858    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_45_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    35.189 r  u_shared_mul/u_primary_mul/result_o[31]_INST_0_i_64/O[3]
+                         net (fo=32, unplaced)        0.689    35.878    u_shared_mul/u_primary_mul/modp_sub[31]
+                         LUT3 (Prop_lut3_I2_O)        0.307    36.185 r  u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_79/O
+                         net (fo=1, unplaced)         0.000    36.185    u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_79_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    36.718 r  u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_21/CO[3]
+                         net (fo=1, unplaced)         0.009    36.727    u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_21_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    36.844 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_19/CO[3]
+                         net (fo=1, unplaced)         0.000    36.844    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_19_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    37.175 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_36/O[3]
+                         net (fo=1, unplaced)         0.618    37.793    u_shared_mul/u_primary_mul/data4[11]
+                         LUT5 (Prop_lut5_I0_O)        0.307    38.100 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_17/O
+                         net (fo=3, unplaced)         0.467    38.567    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_17_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124    38.691 r  u_shared_mul/u_primary_mul/result_o[11]_INST_0_i_7/O
+                         net (fo=13, unplaced)        0.499    39.190    u_shared_mul/u_primary_mul/mul_res_lo[11]
+                         LUT2 (Prop_lut2_I1_O)        0.124    39.314 r  u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_29/O
+                         net (fo=1, unplaced)         0.000    39.314    u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_29_n_0
+                         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    39.690 r  u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_13/CO[3]
+                         net (fo=1, unplaced)         0.000    39.690    u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_13_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    39.807 r  u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_12/CO[3]
+                         net (fo=1, unplaced)         0.000    39.807    u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_12_n_0
+                         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.281    40.088 r  u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_13/CO[0]
+                         net (fo=6, unplaced)         0.343    40.431    u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_13_n_3
+                         LUT2 (Prop_lut2_I1_O)        0.367    40.798 r  u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_13/O
+                         net (fo=1, unplaced)         0.000    40.798    u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_13_n_0
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    41.311 r  u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_5/CO[3]
+                         net (fo=1, unplaced)         0.009    41.320    u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_5_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    41.437 r  u_shared_mul/u_primary_mul/result_o[22]_INST_0_i_6/CO[3]
+                         net (fo=1, unplaced)         0.000    41.437    u_shared_mul/u_primary_mul/result_o[22]_INST_0_i_6_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    41.554 r  u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_5/CO[3]
+                         net (fo=1, unplaced)         0.000    41.554    u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_5_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.232    41.786 r  u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_5/O[0]
+                         net (fo=1, unplaced)         0.311    42.097    u_shared_mul/u_primary_mul/result_o0[12]
+                         LUT3 (Prop_lut3_I2_O)        0.295    42.392 r  u_shared_mul/u_primary_mul/result_o[28]_INST_0_i_8/O
+                         net (fo=1, unplaced)         0.449    42.841    u_shared_mul/u_primary_mul/result_o[28]_INST_0_i_8_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.124    42.965 r  u_shared_mul/u_primary_mul/result_o[28]_INST_0_i_1/O
+                         net (fo=1, unplaced)         0.449    43.414    u_shared_mul/u_primary_mul/result_o[28]_INST_0_i_1_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    43.538 r  u_shared_mul/u_primary_mul/result_o[28]_INST_0/O
+                         net (fo=0)                   0.973    44.511    result_o[28]
+                                                                      r  result_o[28] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   20.000    20.000    
+                         clock pessimism              0.000    20.000    
+                         output delay                -0.000    20.000    
+  -------------------------------------------------------------------
+                         required time                         20.000    
+                         arrival time                         -44.511    
+  -------------------------------------------------------------------
+                         slack                                -24.511    
+
+Slack (VIOLATED) :        -24.421ns  (required time - arrival time)
+  Source:                 multiplier_tree2_i[1]
+                            (input port)
+  Destination:            result_o[11]
+  Path Group:             **default**
+  Path Type:              Max at Slow Process Corner
+  Requirement:            20.000ns  (MaxDelay Path 20.000ns)
+  Data Path Delay:        44.421ns  (logic 26.844ns (60.430%)  route 17.577ns (39.570%))
+  Logic Levels:           51  (CARRY4=26 DSP48E1=5 LUT2=6 LUT3=1 LUT4=5 LUT5=4 LUT6=4)
+  Output Delay:           0.000ns
+  Timing Exception:       MaxDelay Path 20.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 f  multiplier_tree2_i[1] (IN)
+                         net (fo=26, unset)           0.973     0.973    u_shared_mul/u_primary_mul/multiplier_tree2_i[1]
+                         LUT4 (Prop_lut4_I2_O)        0.150     1.123 r  u_shared_mul/u_primary_mul/int_prod_i_172/O
+                         net (fo=1, unplaced)         0.000     1.123    u_shared_mul/u_primary_mul/int_prod_i_172_n_0
+                         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.576     1.699 r  u_shared_mul/u_primary_mul/int_prod_i_160/CO[3]
+                         net (fo=1, unplaced)         0.009     1.708    u_shared_mul/u_primary_mul/int_prod_i_160_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     1.825 f  u_shared_mul/u_primary_mul/int_prod_i_157/CO[3]
+                         net (fo=8, unplaced)         0.956     2.781    u_shared_mul/u_primary_mul/mul_op_b2
+                         LUT2 (Prop_lut2_I1_O)        0.117     2.898 r  u_shared_mul/u_primary_mul/int_prod_i_148/O
+                         net (fo=1, unplaced)         0.000     2.898    u_shared_mul/u_primary_mul/int_prod_i_148_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.547     3.445 r  u_shared_mul/u_primary_mul/int_prod_i_85/CO[3]
+                         net (fo=1, unplaced)         0.009     3.454    u_shared_mul/u_primary_mul/int_prod_i_85_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.571 r  u_shared_mul/u_primary_mul/int_prod_i_82/CO[3]
+                         net (fo=1, unplaced)         0.000     3.571    u_shared_mul/u_primary_mul/int_prod_i_82_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.688 r  u_shared_mul/u_primary_mul/int_prod_i_78/CO[3]
+                         net (fo=1, unplaced)         0.000     3.688    u_shared_mul/u_primary_mul/int_prod_i_78_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331     4.019 r  u_shared_mul/u_primary_mul/int_prod_i_75/O[3]
+                         net (fo=1, unplaced)         0.618     4.637    u_shared_mul/u_primary_mul/data2[15]
+                         LUT5 (Prop_lut5_I2_O)        0.307     4.944 r  u_shared_mul/u_primary_mul/int_prod_i_39/O
+                         net (fo=4, unplaced)         0.473     5.417    u_shared_mul/u_primary_mul/multiplier_tree2_i[15]_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     5.541 r  u_shared_mul/u_primary_mul/int_prod_i_17/O
+                         net (fo=36, unplaced)        0.800     6.341    u_shared_mul/u_primary_mul/multiplier_tree2_i_15_sn_1
+                         DSP48E1 (Prop_dsp48e1_B[15]_PCOUT[47])
+                                                      3.851    10.192 r  u_shared_mul/u_primary_mul/int_prod__1/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    10.247    u_shared_mul/u_primary_mul/int_prod__1_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    11.765 r  u_shared_mul/u_primary_mul/int_prod__2/P[0]
+                         net (fo=2, unplaced)         0.800    12.564    u_shared_mul/u_primary_mul/int_prod__2_n_105
+                         LUT2 (Prop_lut2_I0_O)        0.124    12.688 r  u_shared_mul/u_primary_mul/int_prod_carry_i_3/O
+                         net (fo=1, unplaced)         0.000    12.688    u_shared_mul/u_primary_mul/int_prod_carry_i_3_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    13.221 r  u_shared_mul/u_primary_mul/int_prod_carry/CO[3]
+                         net (fo=1, unplaced)         0.009    13.230    u_shared_mul/u_primary_mul/int_prod_carry_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.347 r  u_shared_mul/u_primary_mul/int_prod_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000    13.347    u_shared_mul/u_primary_mul/int_prod_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.464 r  u_shared_mul/u_primary_mul/int_prod_carry__1/CO[3]
+                         net (fo=1, unplaced)         0.000    13.464    u_shared_mul/u_primary_mul/int_prod_carry__1_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256    13.720 r  u_shared_mul/u_primary_mul/int_prod_carry__2/O[2]
+                         net (fo=3, unplaced)         1.132    14.852    u_shared_mul/u_primary_mul/int_prod__3__0[30]
+                         LUT6 (Prop_lut6_I5_O)        0.301    15.153 r  u_shared_mul/u_primary_mul/result_hi_o[30]_INST_0_i_5/O
+                         net (fo=10, unplaced)        0.492    15.645    u_shared_mul/u_primary_mul/full_prod[30]
+                         LUT4 (Prop_lut4_I3_O)        0.124    15.769 r  u_shared_mul/u_primary_mul/stage_a_result_i_8/O
+                         net (fo=1, unplaced)         0.800    16.569    u_shared_mul/stage_a_op1[30]
+                         DSP48E1 (Prop_dsp48e1_A[13]_P[0])
+                                                      3.841    20.410 r  u_shared_mul/stage_a_result/P[0]
+                         net (fo=1, unplaced)         0.800    21.210    u_shared_mul/stage_a_result_n_105
+                         LUT2 (Prop_lut2_I1_O)        0.124    21.334 r  u_shared_mul/modp_tp_i_34/O
+                         net (fo=1, unplaced)         0.000    21.334    u_shared_mul/modp_tp_i_34_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    21.867 r  u_shared_mul/modp_tp_i_19/CO[3]
+                         net (fo=1, unplaced)         0.009    21.876    u_shared_mul/modp_tp_i_19_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    21.993 r  u_shared_mul/modp_tp_i_18/CO[3]
+                         net (fo=1, unplaced)         0.000    21.993    u_shared_mul/modp_tp_i_18_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    22.110 r  u_shared_mul/modp_tp_i_17/CO[3]
+                         net (fo=1, unplaced)         0.000    22.110    u_shared_mul/modp_tp_i_17_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    22.441 r  u_shared_mul/modp_tp_i_16/O[3]
+                         net (fo=2, unplaced)         0.629    23.070    u_shared_mul/stage_a_result__2[31]
+                         LUT5 (Prop_lut5_I0_O)        0.307    23.377 r  u_shared_mul/modp_tp_i_1/O
+                         net (fo=2, unplaced)         0.800    24.177    u_shared_mul/p_1_in[31]
+                         DSP48E1 (Prop_dsp48e1_B[14]_PCOUT[47])
+                                                      3.851    28.028 r  u_shared_mul/modp_tp/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    28.083    u_shared_mul/modp_tp_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518    29.601 r  u_shared_mul/modp_tp__0/P[3]
+                         net (fo=1, unplaced)         0.800    30.400    u_shared_mul/modp_tp__0_n_102
+                         LUT2 (Prop_lut2_I1_O)        0.124    30.524 r  u_shared_mul/result_o[23]_INST_0_i_214/O
+                         net (fo=1, unplaced)         0.000    30.524    u_shared_mul/result_o[23]_INST_0_i_214_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    31.057 r  u_shared_mul/result_o[23]_INST_0_i_207/CO[3]
+                         net (fo=1, unplaced)         0.000    31.057    u_shared_mul/result_o[23]_INST_0_i_207_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.174 r  u_shared_mul/result_o[31]_INST_0_i_255/CO[3]
+                         net (fo=1, unplaced)         0.000    31.174    u_shared_mul/result_o[31]_INST_0_i_255_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.291 r  u_shared_mul/result_hi_o[19]_INST_0_i_95/CO[3]
+                         net (fo=1, unplaced)         0.000    31.291    u_shared_mul/result_hi_o[19]_INST_0_i_95_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    31.628 r  u_shared_mul/result_o[23]_INST_0_i_211/O[1]
+                         net (fo=1, unplaced)         0.611    32.239    u_shared_mul/u_primary_mul/modp_tp__3[33]
+                         LUT4 (Prop_lut4_I3_O)        0.306    32.545 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_205/O
+                         net (fo=1, unplaced)         0.000    32.545    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_205_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    33.078 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_151/CO[3]
+                         net (fo=1, unplaced)         0.000    33.078    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_151_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    33.409 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_138/O[3]
+                         net (fo=2, unplaced)         0.629    34.038    u_shared_mul/u_primary_mul/modp_shifted[24]
+                         LUT2 (Prop_lut2_I0_O)        0.307    34.345 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_142/O
+                         net (fo=1, unplaced)         0.000    34.345    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_142_n_0
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    34.858 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_45/CO[3]
+                         net (fo=1, unplaced)         0.000    34.858    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_45_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    35.189 r  u_shared_mul/u_primary_mul/result_o[31]_INST_0_i_64/O[3]
+                         net (fo=32, unplaced)        0.689    35.878    u_shared_mul/u_primary_mul/modp_sub[31]
+                         LUT3 (Prop_lut3_I2_O)        0.307    36.185 r  u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_79/O
+                         net (fo=1, unplaced)         0.000    36.185    u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_79_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    36.718 r  u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_21/CO[3]
+                         net (fo=1, unplaced)         0.009    36.727    u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_21_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    37.058 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_19/O[3]
+                         net (fo=1, unplaced)         0.618    37.676    u_shared_mul/u_primary_mul/data4[7]
+                         LUT5 (Prop_lut5_I0_O)        0.307    37.983 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_10/O
+                         net (fo=2, unplaced)         0.460    38.443    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_10_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124    38.567 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_6/O
+                         net (fo=14, unplaced)        0.500    39.067    u_shared_mul/u_primary_mul/mul_res_lo[7]
+                         LUT2 (Prop_lut2_I1_O)        0.124    39.191 r  u_shared_mul/u_primary_mul/result_o[10]_INST_0_i_23/O
+                         net (fo=1, unplaced)         0.000    39.191    u_shared_mul/u_primary_mul/result_o[10]_INST_0_i_23_n_0
+                         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    39.567 r  u_shared_mul/u_primary_mul/result_o[10]_INST_0_i_14/CO[3]
+                         net (fo=1, unplaced)         0.000    39.567    u_shared_mul/u_primary_mul/result_o[10]_INST_0_i_14_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    39.898 r  u_shared_mul/u_primary_mul/result_o[10]_INST_0_i_8/O[3]
+                         net (fo=1, unplaced)         0.618    40.516    u_shared_mul/u_primary_mul/data5[11]
+                         LUT4 (Prop_lut4_I0_O)        0.307    40.823 r  u_shared_mul/u_primary_mul/result_o[11]_INST_0_i_12/O
+                         net (fo=1, unplaced)         0.902    41.725    u_shared_mul/u_primary_mul/result_o[11]_INST_0_i_12_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.124    41.849 r  u_shared_mul/u_primary_mul/result_o[11]_INST_0_i_4/O
+                         net (fo=1, unplaced)         0.902    42.751    u_shared_mul/u_primary_mul/result_o[11]_INST_0_i_4_n_0
+                         LUT6 (Prop_lut6_I1_O)        0.124    42.875 r  u_shared_mul/u_primary_mul/result_o[11]_INST_0_i_1/O
+                         net (fo=1, unplaced)         0.449    43.324    u_shared_mul/u_primary_mul/result_o[11]_INST_0_i_1_n_0
+                         LUT4 (Prop_lut4_I0_O)        0.124    43.448 r  u_shared_mul/u_primary_mul/result_o[11]_INST_0/O
+                         net (fo=0)                   0.973    44.421    result_o[11]
+                                                                      r  result_o[11] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   20.000    20.000    
+                         clock pessimism              0.000    20.000    
+                         output delay                -0.000    20.000    
+  -------------------------------------------------------------------
+                         required time                         20.000    
+                         arrival time                         -44.421    
+  -------------------------------------------------------------------
+                         slack                                -24.421    
+
+Slack (VIOLATED) :        -24.386ns  (required time - arrival time)
+  Source:                 multiplier_tree2_i[1]
+                            (input port)
+  Destination:            result_o[21]
+  Path Group:             **default**
+  Path Type:              Max at Slow Process Corner
+  Requirement:            20.000ns  (MaxDelay Path 20.000ns)
+  Data Path Delay:        44.386ns  (logic 28.112ns (63.335%)  route 16.274ns (36.665%))
+  Logic Levels:           55  (CARRY4=30 DSP48E1=5 LUT2=7 LUT3=2 LUT4=3 LUT5=4 LUT6=4)
+  Output Delay:           0.000ns
+  Timing Exception:       MaxDelay Path 20.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 f  multiplier_tree2_i[1] (IN)
+                         net (fo=26, unset)           0.973     0.973    u_shared_mul/u_primary_mul/multiplier_tree2_i[1]
+                         LUT4 (Prop_lut4_I2_O)        0.150     1.123 r  u_shared_mul/u_primary_mul/int_prod_i_172/O
+                         net (fo=1, unplaced)         0.000     1.123    u_shared_mul/u_primary_mul/int_prod_i_172_n_0
+                         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.576     1.699 r  u_shared_mul/u_primary_mul/int_prod_i_160/CO[3]
+                         net (fo=1, unplaced)         0.009     1.708    u_shared_mul/u_primary_mul/int_prod_i_160_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     1.825 f  u_shared_mul/u_primary_mul/int_prod_i_157/CO[3]
+                         net (fo=8, unplaced)         0.956     2.781    u_shared_mul/u_primary_mul/mul_op_b2
+                         LUT2 (Prop_lut2_I1_O)        0.117     2.898 r  u_shared_mul/u_primary_mul/int_prod_i_148/O
+                         net (fo=1, unplaced)         0.000     2.898    u_shared_mul/u_primary_mul/int_prod_i_148_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.547     3.445 r  u_shared_mul/u_primary_mul/int_prod_i_85/CO[3]
+                         net (fo=1, unplaced)         0.009     3.454    u_shared_mul/u_primary_mul/int_prod_i_85_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.571 r  u_shared_mul/u_primary_mul/int_prod_i_82/CO[3]
+                         net (fo=1, unplaced)         0.000     3.571    u_shared_mul/u_primary_mul/int_prod_i_82_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.688 r  u_shared_mul/u_primary_mul/int_prod_i_78/CO[3]
+                         net (fo=1, unplaced)         0.000     3.688    u_shared_mul/u_primary_mul/int_prod_i_78_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331     4.019 r  u_shared_mul/u_primary_mul/int_prod_i_75/O[3]
+                         net (fo=1, unplaced)         0.618     4.637    u_shared_mul/u_primary_mul/data2[15]
+                         LUT5 (Prop_lut5_I2_O)        0.307     4.944 r  u_shared_mul/u_primary_mul/int_prod_i_39/O
+                         net (fo=4, unplaced)         0.473     5.417    u_shared_mul/u_primary_mul/multiplier_tree2_i[15]_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     5.541 r  u_shared_mul/u_primary_mul/int_prod_i_17/O
+                         net (fo=36, unplaced)        0.800     6.341    u_shared_mul/u_primary_mul/multiplier_tree2_i_15_sn_1
+                         DSP48E1 (Prop_dsp48e1_B[15]_PCOUT[47])
+                                                      3.851    10.192 r  u_shared_mul/u_primary_mul/int_prod__1/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    10.247    u_shared_mul/u_primary_mul/int_prod__1_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    11.765 r  u_shared_mul/u_primary_mul/int_prod__2/P[0]
+                         net (fo=2, unplaced)         0.800    12.564    u_shared_mul/u_primary_mul/int_prod__2_n_105
+                         LUT2 (Prop_lut2_I0_O)        0.124    12.688 r  u_shared_mul/u_primary_mul/int_prod_carry_i_3/O
+                         net (fo=1, unplaced)         0.000    12.688    u_shared_mul/u_primary_mul/int_prod_carry_i_3_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    13.221 r  u_shared_mul/u_primary_mul/int_prod_carry/CO[3]
+                         net (fo=1, unplaced)         0.009    13.230    u_shared_mul/u_primary_mul/int_prod_carry_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.347 r  u_shared_mul/u_primary_mul/int_prod_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000    13.347    u_shared_mul/u_primary_mul/int_prod_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.464 r  u_shared_mul/u_primary_mul/int_prod_carry__1/CO[3]
+                         net (fo=1, unplaced)         0.000    13.464    u_shared_mul/u_primary_mul/int_prod_carry__1_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256    13.720 r  u_shared_mul/u_primary_mul/int_prod_carry__2/O[2]
+                         net (fo=3, unplaced)         1.132    14.852    u_shared_mul/u_primary_mul/int_prod__3__0[30]
+                         LUT6 (Prop_lut6_I5_O)        0.301    15.153 r  u_shared_mul/u_primary_mul/result_hi_o[30]_INST_0_i_5/O
+                         net (fo=10, unplaced)        0.492    15.645    u_shared_mul/u_primary_mul/full_prod[30]
+                         LUT4 (Prop_lut4_I3_O)        0.124    15.769 r  u_shared_mul/u_primary_mul/stage_a_result_i_8/O
+                         net (fo=1, unplaced)         0.800    16.569    u_shared_mul/stage_a_op1[30]
+                         DSP48E1 (Prop_dsp48e1_A[13]_P[0])
+                                                      3.841    20.410 r  u_shared_mul/stage_a_result/P[0]
+                         net (fo=1, unplaced)         0.800    21.210    u_shared_mul/stage_a_result_n_105
+                         LUT2 (Prop_lut2_I1_O)        0.124    21.334 r  u_shared_mul/modp_tp_i_34/O
+                         net (fo=1, unplaced)         0.000    21.334    u_shared_mul/modp_tp_i_34_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    21.867 r  u_shared_mul/modp_tp_i_19/CO[3]
+                         net (fo=1, unplaced)         0.009    21.876    u_shared_mul/modp_tp_i_19_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    21.993 r  u_shared_mul/modp_tp_i_18/CO[3]
+                         net (fo=1, unplaced)         0.000    21.993    u_shared_mul/modp_tp_i_18_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    22.110 r  u_shared_mul/modp_tp_i_17/CO[3]
+                         net (fo=1, unplaced)         0.000    22.110    u_shared_mul/modp_tp_i_17_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    22.441 r  u_shared_mul/modp_tp_i_16/O[3]
+                         net (fo=2, unplaced)         0.629    23.070    u_shared_mul/stage_a_result__2[31]
+                         LUT5 (Prop_lut5_I0_O)        0.307    23.377 r  u_shared_mul/modp_tp_i_1/O
+                         net (fo=2, unplaced)         0.800    24.177    u_shared_mul/p_1_in[31]
+                         DSP48E1 (Prop_dsp48e1_B[14]_PCOUT[47])
+                                                      3.851    28.028 r  u_shared_mul/modp_tp/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    28.083    u_shared_mul/modp_tp_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518    29.601 r  u_shared_mul/modp_tp__0/P[3]
+                         net (fo=1, unplaced)         0.800    30.400    u_shared_mul/modp_tp__0_n_102
+                         LUT2 (Prop_lut2_I1_O)        0.124    30.524 r  u_shared_mul/result_o[23]_INST_0_i_214/O
+                         net (fo=1, unplaced)         0.000    30.524    u_shared_mul/result_o[23]_INST_0_i_214_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    31.057 r  u_shared_mul/result_o[23]_INST_0_i_207/CO[3]
+                         net (fo=1, unplaced)         0.000    31.057    u_shared_mul/result_o[23]_INST_0_i_207_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.174 r  u_shared_mul/result_o[31]_INST_0_i_255/CO[3]
+                         net (fo=1, unplaced)         0.000    31.174    u_shared_mul/result_o[31]_INST_0_i_255_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.291 r  u_shared_mul/result_hi_o[19]_INST_0_i_95/CO[3]
+                         net (fo=1, unplaced)         0.000    31.291    u_shared_mul/result_hi_o[19]_INST_0_i_95_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    31.628 r  u_shared_mul/result_o[23]_INST_0_i_211/O[1]
+                         net (fo=1, unplaced)         0.611    32.239    u_shared_mul/u_primary_mul/modp_tp__3[33]
+                         LUT4 (Prop_lut4_I3_O)        0.306    32.545 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_205/O
+                         net (fo=1, unplaced)         0.000    32.545    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_205_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    33.078 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_151/CO[3]
+                         net (fo=1, unplaced)         0.000    33.078    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_151_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    33.409 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_138/O[3]
+                         net (fo=2, unplaced)         0.629    34.038    u_shared_mul/u_primary_mul/modp_shifted[24]
+                         LUT2 (Prop_lut2_I0_O)        0.307    34.345 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_142/O
+                         net (fo=1, unplaced)         0.000    34.345    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_142_n_0
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    34.858 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_45/CO[3]
+                         net (fo=1, unplaced)         0.000    34.858    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_45_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    35.189 r  u_shared_mul/u_primary_mul/result_o[31]_INST_0_i_64/O[3]
+                         net (fo=32, unplaced)        0.689    35.878    u_shared_mul/u_primary_mul/modp_sub[31]
+                         LUT3 (Prop_lut3_I2_O)        0.307    36.185 r  u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_79/O
+                         net (fo=1, unplaced)         0.000    36.185    u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_79_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    36.718 r  u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_21/CO[3]
+                         net (fo=1, unplaced)         0.009    36.727    u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_21_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    36.844 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_19/CO[3]
+                         net (fo=1, unplaced)         0.000    36.844    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_19_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    37.175 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_36/O[3]
+                         net (fo=1, unplaced)         0.618    37.793    u_shared_mul/u_primary_mul/data4[11]
+                         LUT5 (Prop_lut5_I0_O)        0.307    38.100 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_17/O
+                         net (fo=3, unplaced)         0.467    38.567    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_17_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124    38.691 r  u_shared_mul/u_primary_mul/result_o[11]_INST_0_i_7/O
+                         net (fo=13, unplaced)        0.499    39.190    u_shared_mul/u_primary_mul/mul_res_lo[11]
+                         LUT2 (Prop_lut2_I1_O)        0.124    39.314 r  u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_29/O
+                         net (fo=1, unplaced)         0.000    39.314    u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_29_n_0
+                         CARRY4 (Prop_carry4_S[3]_CO[3])
+                                                      0.376    39.690 r  u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_13/CO[3]
+                         net (fo=1, unplaced)         0.000    39.690    u_shared_mul/u_primary_mul/result_o[25]_INST_0_i_13_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    39.807 r  u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_12/CO[3]
+                         net (fo=1, unplaced)         0.000    39.807    u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_12_n_0
+                         CARRY4 (Prop_carry4_CI_CO[0])
+                                                      0.281    40.088 r  u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_13/CO[0]
+                         net (fo=6, unplaced)         0.343    40.431    u_shared_mul/u_primary_mul/result_o[29]_INST_0_i_13_n_3
+                         LUT2 (Prop_lut2_I1_O)        0.367    40.798 r  u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_13/O
+                         net (fo=1, unplaced)         0.000    40.798    u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_13_n_0
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    41.311 r  u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_5/CO[3]
+                         net (fo=1, unplaced)         0.009    41.320    u_shared_mul/u_primary_mul/result_o[19]_INST_0_i_5_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    41.657 r  u_shared_mul/u_primary_mul/result_o[22]_INST_0_i_6/O[1]
+                         net (fo=1, unplaced)         0.312    41.969    u_shared_mul/u_primary_mul/result_o0[5]
+                         LUT3 (Prop_lut3_I2_O)        0.298    42.267 r  u_shared_mul/u_primary_mul/result_o[21]_INST_0_i_9/O
+                         net (fo=1, unplaced)         0.449    42.716    u_shared_mul/u_primary_mul/result_o[21]_INST_0_i_9_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.124    42.840 r  u_shared_mul/u_primary_mul/result_o[21]_INST_0_i_1/O
+                         net (fo=1, unplaced)         0.449    43.289    u_shared_mul/u_primary_mul/result_o[21]_INST_0_i_1_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    43.413 r  u_shared_mul/u_primary_mul/result_o[21]_INST_0/O
+                         net (fo=0)                   0.973    44.386    result_o[21]
+                                                                      r  result_o[21] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   20.000    20.000    
+                         clock pessimism              0.000    20.000    
+                         output delay                -0.000    20.000    
+  -------------------------------------------------------------------
+                         required time                         20.000    
+                         arrival time                         -44.386    
+  -------------------------------------------------------------------
+                         slack                                -24.386    
+
+Slack (VIOLATED) :        -24.343ns  (required time - arrival time)
+  Source:                 multiplier_tree2_i[1]
+                            (input port)
+  Destination:            result_o[8]
+  Path Group:             **default**
+  Path Type:              Max at Slow Process Corner
+  Requirement:            20.000ns  (MaxDelay Path 20.000ns)
+  Data Path Delay:        44.343ns  (logic 28.067ns (63.295%)  route 16.276ns (36.705%))
+  Logic Levels:           55  (CARRY4=30 DSP48E1=5 LUT2=7 LUT3=2 LUT4=3 LUT5=4 LUT6=4)
+  Output Delay:           0.000ns
+  Timing Exception:       MaxDelay Path 20.000ns
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                                                      0.000     0.000 f  multiplier_tree2_i[1] (IN)
+                         net (fo=26, unset)           0.973     0.973    u_shared_mul/u_primary_mul/multiplier_tree2_i[1]
+                         LUT4 (Prop_lut4_I2_O)        0.150     1.123 r  u_shared_mul/u_primary_mul/int_prod_i_172/O
+                         net (fo=1, unplaced)         0.000     1.123    u_shared_mul/u_primary_mul/int_prod_i_172_n_0
+                         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.576     1.699 r  u_shared_mul/u_primary_mul/int_prod_i_160/CO[3]
+                         net (fo=1, unplaced)         0.009     1.708    u_shared_mul/u_primary_mul/int_prod_i_160_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     1.825 f  u_shared_mul/u_primary_mul/int_prod_i_157/CO[3]
+                         net (fo=8, unplaced)         0.956     2.781    u_shared_mul/u_primary_mul/mul_op_b2
+                         LUT2 (Prop_lut2_I1_O)        0.117     2.898 r  u_shared_mul/u_primary_mul/int_prod_i_148/O
+                         net (fo=1, unplaced)         0.000     2.898    u_shared_mul/u_primary_mul/int_prod_i_148_n_0
+                         CARRY4 (Prop_carry4_DI[1]_CO[3])
+                                                      0.547     3.445 r  u_shared_mul/u_primary_mul/int_prod_i_85/CO[3]
+                         net (fo=1, unplaced)         0.009     3.454    u_shared_mul/u_primary_mul/int_prod_i_85_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.571 r  u_shared_mul/u_primary_mul/int_prod_i_82/CO[3]
+                         net (fo=1, unplaced)         0.000     3.571    u_shared_mul/u_primary_mul/int_prod_i_82_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117     3.688 r  u_shared_mul/u_primary_mul/int_prod_i_78/CO[3]
+                         net (fo=1, unplaced)         0.000     3.688    u_shared_mul/u_primary_mul/int_prod_i_78_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331     4.019 r  u_shared_mul/u_primary_mul/int_prod_i_75/O[3]
+                         net (fo=1, unplaced)         0.618     4.637    u_shared_mul/u_primary_mul/data2[15]
+                         LUT5 (Prop_lut5_I2_O)        0.307     4.944 r  u_shared_mul/u_primary_mul/int_prod_i_39/O
+                         net (fo=4, unplaced)         0.473     5.417    u_shared_mul/u_primary_mul/multiplier_tree2_i[15]_0
+                         LUT6 (Prop_lut6_I1_O)        0.124     5.541 r  u_shared_mul/u_primary_mul/int_prod_i_17/O
+                         net (fo=36, unplaced)        0.800     6.341    u_shared_mul/u_primary_mul/multiplier_tree2_i_15_sn_1
+                         DSP48E1 (Prop_dsp48e1_B[15]_PCOUT[47])
+                                                      3.851    10.192 r  u_shared_mul/u_primary_mul/int_prod__1/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    10.247    u_shared_mul/u_primary_mul/int_prod__1_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[0])
+                                                      1.518    11.765 r  u_shared_mul/u_primary_mul/int_prod__2/P[0]
+                         net (fo=2, unplaced)         0.800    12.564    u_shared_mul/u_primary_mul/int_prod__2_n_105
+                         LUT2 (Prop_lut2_I0_O)        0.124    12.688 r  u_shared_mul/u_primary_mul/int_prod_carry_i_3/O
+                         net (fo=1, unplaced)         0.000    12.688    u_shared_mul/u_primary_mul/int_prod_carry_i_3_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    13.221 r  u_shared_mul/u_primary_mul/int_prod_carry/CO[3]
+                         net (fo=1, unplaced)         0.009    13.230    u_shared_mul/u_primary_mul/int_prod_carry_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.347 r  u_shared_mul/u_primary_mul/int_prod_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000    13.347    u_shared_mul/u_primary_mul/int_prod_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    13.464 r  u_shared_mul/u_primary_mul/int_prod_carry__1/CO[3]
+                         net (fo=1, unplaced)         0.000    13.464    u_shared_mul/u_primary_mul/int_prod_carry__1_n_0
+                         CARRY4 (Prop_carry4_CI_O[2])
+                                                      0.256    13.720 r  u_shared_mul/u_primary_mul/int_prod_carry__2/O[2]
+                         net (fo=3, unplaced)         1.132    14.852    u_shared_mul/u_primary_mul/int_prod__3__0[30]
+                         LUT6 (Prop_lut6_I5_O)        0.301    15.153 r  u_shared_mul/u_primary_mul/result_hi_o[30]_INST_0_i_5/O
+                         net (fo=10, unplaced)        0.492    15.645    u_shared_mul/u_primary_mul/full_prod[30]
+                         LUT4 (Prop_lut4_I3_O)        0.124    15.769 r  u_shared_mul/u_primary_mul/stage_a_result_i_8/O
+                         net (fo=1, unplaced)         0.800    16.569    u_shared_mul/stage_a_op1[30]
+                         DSP48E1 (Prop_dsp48e1_A[13]_P[0])
+                                                      3.841    20.410 r  u_shared_mul/stage_a_result/P[0]
+                         net (fo=1, unplaced)         0.800    21.210    u_shared_mul/stage_a_result_n_105
+                         LUT2 (Prop_lut2_I1_O)        0.124    21.334 r  u_shared_mul/modp_tp_i_34/O
+                         net (fo=1, unplaced)         0.000    21.334    u_shared_mul/modp_tp_i_34_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    21.867 r  u_shared_mul/modp_tp_i_19/CO[3]
+                         net (fo=1, unplaced)         0.009    21.876    u_shared_mul/modp_tp_i_19_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    21.993 r  u_shared_mul/modp_tp_i_18/CO[3]
+                         net (fo=1, unplaced)         0.000    21.993    u_shared_mul/modp_tp_i_18_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    22.110 r  u_shared_mul/modp_tp_i_17/CO[3]
+                         net (fo=1, unplaced)         0.000    22.110    u_shared_mul/modp_tp_i_17_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    22.441 r  u_shared_mul/modp_tp_i_16/O[3]
+                         net (fo=2, unplaced)         0.629    23.070    u_shared_mul/stage_a_result__2[31]
+                         LUT5 (Prop_lut5_I0_O)        0.307    23.377 r  u_shared_mul/modp_tp_i_1/O
+                         net (fo=2, unplaced)         0.800    24.177    u_shared_mul/p_1_in[31]
+                         DSP48E1 (Prop_dsp48e1_B[14]_PCOUT[47])
+                                                      3.851    28.028 r  u_shared_mul/modp_tp/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    28.083    u_shared_mul/modp_tp_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518    29.601 r  u_shared_mul/modp_tp__0/P[3]
+                         net (fo=1, unplaced)         0.800    30.400    u_shared_mul/modp_tp__0_n_102
+                         LUT2 (Prop_lut2_I1_O)        0.124    30.524 r  u_shared_mul/result_o[23]_INST_0_i_214/O
+                         net (fo=1, unplaced)         0.000    30.524    u_shared_mul/result_o[23]_INST_0_i_214_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    31.057 r  u_shared_mul/result_o[23]_INST_0_i_207/CO[3]
+                         net (fo=1, unplaced)         0.000    31.057    u_shared_mul/result_o[23]_INST_0_i_207_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.174 r  u_shared_mul/result_o[31]_INST_0_i_255/CO[3]
+                         net (fo=1, unplaced)         0.000    31.174    u_shared_mul/result_o[31]_INST_0_i_255_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    31.291 r  u_shared_mul/result_hi_o[19]_INST_0_i_95/CO[3]
+                         net (fo=1, unplaced)         0.000    31.291    u_shared_mul/result_hi_o[19]_INST_0_i_95_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    31.628 r  u_shared_mul/result_o[23]_INST_0_i_211/O[1]
+                         net (fo=1, unplaced)         0.611    32.239    u_shared_mul/u_primary_mul/modp_tp__3[33]
+                         LUT4 (Prop_lut4_I3_O)        0.306    32.545 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_205/O
+                         net (fo=1, unplaced)         0.000    32.545    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_205_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    33.078 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_151/CO[3]
+                         net (fo=1, unplaced)         0.000    33.078    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_151_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    33.409 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_138/O[3]
+                         net (fo=2, unplaced)         0.629    34.038    u_shared_mul/u_primary_mul/modp_shifted[24]
+                         LUT2 (Prop_lut2_I0_O)        0.307    34.345 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_142/O
+                         net (fo=1, unplaced)         0.000    34.345    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_142_n_0
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    34.858 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_45/CO[3]
+                         net (fo=1, unplaced)         0.000    34.858    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_45_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    35.189 r  u_shared_mul/u_primary_mul/result_o[31]_INST_0_i_64/O[3]
+                         net (fo=32, unplaced)        0.689    35.878    u_shared_mul/u_primary_mul/modp_sub[31]
+                         LUT3 (Prop_lut3_I2_O)        0.307    36.185 r  u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_79/O
+                         net (fo=1, unplaced)         0.000    36.185    u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_79_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    36.718 r  u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_21/CO[3]
+                         net (fo=1, unplaced)         0.009    36.727    u_shared_mul/u_primary_mul/result_o[16]_INST_0_i_21_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    36.844 r  u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_19/CO[3]
+                         net (fo=1, unplaced)         0.000    36.844    u_shared_mul/u_primary_mul/result_o[23]_INST_0_i_19_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    37.175 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_36/O[3]
+                         net (fo=1, unplaced)         0.618    37.793    u_shared_mul/u_primary_mul/data4[11]
+                         LUT5 (Prop_lut5_I0_O)        0.307    38.100 r  u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_17/O
+                         net (fo=3, unplaced)         0.467    38.567    u_shared_mul/u_primary_mul/result_o[27]_INST_0_i_17_n_0
+                         LUT5 (Prop_lut5_I0_O)        0.124    38.691 r  u_shared_mul/u_primary_mul/result_o[11]_INST_0_i_7/O
+                         net (fo=13, unplaced)        0.499    39.190    u_shared_mul/u_primary_mul/mul_res_lo[11]
+                         LUT2 (Prop_lut2_I1_O)        0.116    39.306 r  u_shared_mul/u_primary_mul/result_o[15]_INST_0_i_32/O
+                         net (fo=1, unplaced)         0.000    39.306    u_shared_mul/u_primary_mul/result_o[15]_INST_0_i_32_n_0
+                         CARRY4 (Prop_carry4_DI[0]_CO[3])
+                                                      0.576    39.882 r  u_shared_mul/u_primary_mul/result_o[15]_INST_0_i_8/CO[3]
+                         net (fo=1, unplaced)         0.000    39.882    u_shared_mul/u_primary_mul/result_o[15]_INST_0_i_8_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.232    40.114 r  u_shared_mul/u_primary_mul/result_o[15]_INST_0_i_10/O[0]
+                         net (fo=7, unplaced)         0.346    40.460    u_shared_mul/u_primary_mul/p_0_in0
+                         LUT2 (Prop_lut2_I1_O)        0.295    40.755 r  u_shared_mul/u_primary_mul/result_o[3]_INST_0_i_18/O
+                         net (fo=1, unplaced)         0.000    40.755    u_shared_mul/u_primary_mul/result_o[3]_INST_0_i_18_n_0
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    41.268 r  u_shared_mul/u_primary_mul/result_o[3]_INST_0_i_9/CO[3]
+                         net (fo=1, unplaced)         0.009    41.277    u_shared_mul/u_primary_mul/result_o[3]_INST_0_i_9_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    41.394 r  u_shared_mul/u_primary_mul/result_o[7]_INST_0_i_5/CO[3]
+                         net (fo=1, unplaced)         0.000    41.394    u_shared_mul/u_primary_mul/result_o[7]_INST_0_i_5_n_0
+                         CARRY4 (Prop_carry4_CI_O[0])
+                                                      0.232    41.626 r  u_shared_mul/u_primary_mul/result_o[11]_INST_0_i_3/O[0]
+                         net (fo=1, unplaced)         0.311    41.937    u_shared_mul/u_primary_mul/result_o[11]_INST_0_i_3_n_7
+                         LUT3 (Prop_lut3_I2_O)        0.287    42.224 r  u_shared_mul/u_primary_mul/result_o[8]_INST_0_i_8/O
+                         net (fo=1, unplaced)         0.449    42.673    u_shared_mul/u_primary_mul/result_o[8]_INST_0_i_8_n_0
+                         LUT6 (Prop_lut6_I5_O)        0.124    42.797 r  u_shared_mul/u_primary_mul/result_o[8]_INST_0_i_1/O
+                         net (fo=1, unplaced)         0.449    43.246    u_shared_mul/u_primary_mul/result_o[8]_INST_0_i_1_n_0
+                         LUT6 (Prop_lut6_I0_O)        0.124    43.370 r  u_shared_mul/u_primary_mul/result_o[8]_INST_0/O
+                         net (fo=0)                   0.973    44.343    result_o[8]
+                                                                      r  result_o[8] (OUT)
+  -------------------------------------------------------------------    -------------------
+
+                         max delay                   20.000    20.000    
+                         clock pessimism              0.000    20.000    
+                         output delay                -0.000    20.000    
+  -------------------------------------------------------------------
+                         required time                         20.000    
+                         arrival time                         -44.343    
+  -------------------------------------------------------------------
+                         slack                                -24.343    
+
+
+
+

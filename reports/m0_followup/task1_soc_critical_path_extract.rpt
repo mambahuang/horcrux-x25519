@@ -1,0 +1,278 @@
+
+Slack (VIOLATED) :        -30.825ns  (required time - arrival time)
+  Source:                 u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/select_insn_o_reg[4]/C
+                            (rising edge-triggered cell FDCE clocked by clk_out1_xilinx_clk_wizard_clk_wiz_0_0  {rise@0.000ns fall@33.333ns period=66.667ns})
+  Destination:            u_crheepto_top/u_core_v_mini_mcu/cpu_subsystem_i/gen_cv32e40px.cv32e40px_top_i/core_i/id_stage_i/alu_operand_b_ex_o_reg[23]/D
+                            (rising edge-triggered cell FDCE clocked by clk_out1_xilinx_clk_wizard_clk_wiz_0_0_1  {rise@0.000ns fall@33.333ns period=66.667ns})
+  Path Group:             clk_out1_xilinx_clk_wizard_clk_wiz_0_0_1
+  Path Type:              Setup (Max at Slow Process Corner)
+  Requirement:            66.667ns  (clk_out1_xilinx_clk_wizard_clk_wiz_0_0_1 rise@66.667ns - clk_out1_xilinx_clk_wizard_clk_wiz_0_0 rise@0.000ns)
+  Data Path Delay:        97.231ns  (logic 47.772ns (49.133%)  route 49.459ns (50.867%))
+  Logic Levels:           110  (CARRY4=50 DSP48E1=3 LUT2=8 LUT3=2 LUT4=2 LUT5=18 LUT6=26 MUXF7=1)
+  Clock Path Skew:        -0.145ns (DCD - SCD + CPR)
+    Destination Clock Delay (DCD):    -2.269ns = ( 64.398 - 66.667 ) 
+    Source Clock Delay      (SCD):    -1.593ns
+    Clock Pessimism Removal (CPR):    0.530ns
+  Clock Uncertainty:      0.159ns  ((TSJ^2 + DJ^2)^1/2) / 2 + PE
+    Total System Jitter     (TSJ):    0.071ns
+    Discrete Jitter          (DJ):    0.311ns
+    Phase Error              (PE):    0.000ns
+  Clock Domain Crossing:  Inter clock paths are considered valid unless explicitly excluded by timing constraints such as set_clock_groups or set_false_path.
+
+    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  -------------------------------------------------------------------    -------------------
+                         (clock clk_out1_xilinx_clk_wizard_clk_wiz_0_0 rise edge)
+                                                      0.000     0.000 r  
+    H16                                               0.000     0.000 r  clk_i (INOUT)
+                         net (fo=0)                   0.000     0.000    xilinx_clk_wizard_wrapper_i/xilinx_clk_wizard_i/clk_wiz_0/inst/clk_in1
+    H16                  IBUF (Prop_ibuf_I_O)         1.451     1.451 r  xilinx_clk_wizard_wrapper_i/xilinx_clk_wizard_i/clk_wiz_0/inst/clkin1_ibufg/O
+                         net (fo=1, unplaced)         0.584     2.035    xilinx_clk_wizard_wrapper_i/xilinx_clk_wizard_i/clk_wiz_0/inst/clk_in1_xilinx_clk_wizard_clk_wiz_0_0
+                         MMCME2_ADV (Prop_mmcme2_adv_CLKIN1_CLKOUT0)
+                                                     -5.113    -3.078 r  xilinx_clk_wizard_wrapper_i/xilinx_clk_wizard_i/clk_wiz_0/inst/mmcm_adv_inst/CLKOUT0
+                         net (fo=1, unplaced)         0.800    -2.278    xilinx_clk_wizard_wrapper_i/xilinx_clk_wizard_i/clk_wiz_0/inst/clk_out1_xilinx_clk_wizard_clk_wiz_0_0
+                         BUFG (Prop_bufg_I_O)         0.101    -2.177 r  xilinx_clk_wizard_wrapper_i/xilinx_clk_wizard_i/clk_wiz_0/inst/clkout1_buf/O
+                         net (fo=37312, unplaced)     0.584    -1.593    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/clk_out1_0
+                         FDCE                                         r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/select_insn_o_reg[4]/C
+  -------------------------------------------------------------------    -------------------
+                         FDCE (Prop_fdce_C_Q)         0.478    -1.115 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/select_insn_o_reg[4]/Q
+                         net (fo=55, unplaced)        1.050    -0.065    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/select_insn_o_reg[6]_0[1]
+                         LUT6 (Prop_lut6_I0_O)        0.295     0.230 f  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/stage_a_result__0_i_42/O
+                         net (fo=10, unplaced)        0.945     1.175    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/stage_a_result__0_i_42_n_0
+                         LUT4 (Prop_lut4_I0_O)        0.124     1.299 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/difference_carry__14_i_16/O
+                         net (fo=31, unplaced)        0.972     2.271    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/difference_carry__14_i_16_n_0
+                         LUT6 (Prop_lut6_I2_O)        0.124     2.395 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry_i_34/O
+                         net (fo=1, unplaced)         0.902     3.297    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry_i_34_n_0
+                         LUT4 (Prop_lut4_I0_O)        0.124     3.421 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry_i_18/O
+                         net (fo=99, unplaced)        0.548     3.969    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry_i_18_n_0
+                         LUT2 (Prop_lut2_I0_O)        0.117     4.086 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/stage_a_result__0_i_28/O
+                         net (fo=1, unplaced)         0.000     4.086    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/partial_products85_in[1]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.593     4.679 r  u_shared_mul/u_primary_mul/stage_a_result__0_i_22/O[2]
+                         net (fo=1, unplaced)         0.452     5.131    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry_i_19[2]
+                         LUT6 (Prop_lut6_I5_O)        0.301     5.432 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry_i_14/O
+                         net (fo=4, unplaced)         0.663     6.095    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator82_in[2]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566     6.661 r  u_shared_mul/u_primary_mul/falcon_sum_carry_i_19/O[2]
+                         net (fo=1, unplaced)         0.452     7.113    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry_i_16[2]
+                         LUT5 (Prop_lut5_I4_O)        0.301     7.414 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry_i_10/O
+                         net (fo=4, unplaced)         0.663     8.077    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator79_in[3]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566     8.643 r  u_shared_mul/u_primary_mul/falcon_sum_carry_i_16/O[2]
+                         net (fo=1, unplaced)         0.452     9.095    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry_i_12[2]
+                         LUT5 (Prop_lut5_I4_O)        0.301     9.396 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__0_i_21/O
+                         net (fo=4, unplaced)         0.663    10.059    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator76_in[4]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    10.625 r  u_shared_mul/u_primary_mul/falcon_sum_carry_i_12/O[2]
+                         net (fo=1, unplaced)         0.452    11.077    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__0_i_22[2]
+                         LUT5 (Prop_lut5_I4_O)        0.301    11.378 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__0_i_18/O
+                         net (fo=4, unplaced)         0.663    12.041    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator73_in[5]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    12.607 r  u_shared_mul/u_primary_mul/falcon_sum_carry__0_i_22/O[2]
+                         net (fo=1, unplaced)         0.452    13.059    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__0_i_19[2]
+                         LUT5 (Prop_lut5_I4_O)        0.301    13.360 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__0_i_14/O
+                         net (fo=4, unplaced)         0.663    14.023    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator70_in[6]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    14.589 r  u_shared_mul/u_primary_mul/falcon_sum_carry__0_i_19/O[2]
+                         net (fo=1, unplaced)         0.452    15.041    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__0_i_16[2]
+                         LUT5 (Prop_lut5_I4_O)        0.301    15.342 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__0_i_10/O
+                         net (fo=4, unplaced)         0.663    16.005    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator67_in[7]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    16.571 r  u_shared_mul/u_primary_mul/falcon_sum_carry__0_i_16/O[2]
+                         net (fo=1, unplaced)         0.452    17.023    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__0_i_12[2]
+                         LUT5 (Prop_lut5_I4_O)        0.301    17.324 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__1_i_20/O
+                         net (fo=4, unplaced)         0.663    17.987    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator64_in[8]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    18.553 r  u_shared_mul/u_primary_mul/falcon_sum_carry__0_i_12/O[2]
+                         net (fo=1, unplaced)         0.452    19.005    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__1_i_21[2]
+                         LUT5 (Prop_lut5_I4_O)        0.301    19.306 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__1_i_17/O
+                         net (fo=4, unplaced)         0.663    19.969    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator61_in[9]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    20.535 r  u_shared_mul/u_primary_mul/falcon_sum_carry__1_i_21/O[2]
+                         net (fo=1, unplaced)         0.452    20.987    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__1_i_18[2]
+                         LUT5 (Prop_lut5_I4_O)        0.301    21.288 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__1_i_14/O
+                         net (fo=4, unplaced)         0.663    21.951    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator58_in[10]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    22.517 r  u_shared_mul/u_primary_mul/falcon_sum_carry__1_i_18/O[2]
+                         net (fo=1, unplaced)         0.452    22.969    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__1_i_15[2]
+                         LUT5 (Prop_lut5_I4_O)        0.301    23.270 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__1_i_33/O
+                         net (fo=3, unplaced)         0.657    23.927    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator55_in[11]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    24.493 r  u_shared_mul/u_primary_mul/falcon_sum_carry__1_i_15/O[2]
+                         net (fo=1, unplaced)         0.452    24.945    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__1_i_12[2]
+                         LUT5 (Prop_lut5_I4_O)        0.301    25.246 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__1_i_25/O
+                         net (fo=3, unplaced)         0.657    25.903    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator52_in[12]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    26.469 r  u_shared_mul/u_primary_mul/falcon_sum_carry__1_i_12/O[2]
+                         net (fo=2, unplaced)         0.463    26.932    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__2_i_23_0[2]
+                         LUT6 (Prop_lut6_I5_O)        0.301    27.233 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__2_i_17/O
+                         net (fo=4, unplaced)         0.663    27.896    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator49_in[13]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    28.462 r  u_shared_mul/u_primary_mul/falcon_sum_carry__2_i_23/O[2]
+                         net (fo=1, unplaced)         0.452    28.914    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__2_i_19[2]
+                         LUT6 (Prop_lut6_I5_O)        0.301    29.215 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__2_i_14/O
+                         net (fo=5, unplaced)         0.667    29.882    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator46_in[14]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    30.448 r  u_shared_mul/u_primary_mul/falcon_sum_carry__2_i_19/O[2]
+                         net (fo=1, unplaced)         0.452    30.900    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__2_i_15[2]
+                         LUT6 (Prop_lut6_I5_O)        0.301    31.201 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__2_i_40/O
+                         net (fo=3, unplaced)         0.657    31.858    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator43_in[15]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    32.424 r  u_shared_mul/u_primary_mul/falcon_sum_carry__2_i_15/O[2]
+                         net (fo=1, unplaced)         0.452    32.876    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__2_i_12[2]
+                         LUT5 (Prop_lut5_I4_O)        0.301    33.177 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__2_i_29/O
+                         net (fo=3, unplaced)         0.657    33.834    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator40_in[16]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    34.400 r  u_shared_mul/u_primary_mul/falcon_sum_carry__2_i_12/O[2]
+                         net (fo=1, unplaced)         0.452    34.852    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_A[18]_i_5_0[2]
+                         LUT5 (Prop_lut5_I4_O)        0.301    35.153 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__3_i_61/O
+                         net (fo=3, unplaced)         0.657    35.810    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator37_in[17]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    36.376 r  u_shared_mul/u_primary_mul/falcon_sum_carry__3_i_24/O[2]
+                         net (fo=1, unplaced)         0.452    36.828    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__3_i_20[2]
+                         LUT5 (Prop_lut5_I4_O)        0.301    37.129 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__3_i_49/O
+                         net (fo=3, unplaced)         0.657    37.786    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator34_in[18]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    38.352 r  u_shared_mul/u_primary_mul/falcon_sum_carry__3_i_20/O[2]
+                         net (fo=1, unplaced)         0.452    38.804    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__3_i_16[2]
+                         LUT5 (Prop_lut5_I4_O)        0.301    39.105 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__3_i_38/O
+                         net (fo=3, unplaced)         0.657    39.762    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator31_in[19]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    40.328 r  u_shared_mul/u_primary_mul/falcon_sum_carry__3_i_16/O[2]
+                         net (fo=1, unplaced)         0.452    40.780    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__3_i_12[2]
+                         LUT6 (Prop_lut6_I5_O)        0.301    41.081 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__4_i_21/O
+                         net (fo=5, unplaced)         0.667    41.748    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator28_in[20]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    42.314 r  u_shared_mul/u_primary_mul/falcon_sum_carry__3_i_12/O[2]
+                         net (fo=1, unplaced)         0.452    42.766    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__4_i_22_0[2]
+                         LUT6 (Prop_lut6_I5_O)        0.301    43.067 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__4_i_56/O
+                         net (fo=3, unplaced)         0.657    43.724    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator25_in[21]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    44.290 r  u_shared_mul/u_primary_mul/falcon_sum_carry__4_i_22/O[2]
+                         net (fo=1, unplaced)         0.452    44.742    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__4_i_19[2]
+                         LUT6 (Prop_lut6_I5_O)        0.301    45.043 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__4_i_13/O
+                         net (fo=5, unplaced)         0.667    45.710    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator22_in[22]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    46.276 r  u_shared_mul/u_primary_mul/falcon_sum_carry__4_i_19/O[2]
+                         net (fo=1, unplaced)         0.452    46.728    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__4_i_15[2]
+                         LUT6 (Prop_lut6_I5_O)        0.301    47.029 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__4_i_37/O
+                         net (fo=3, unplaced)         0.657    47.686    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator19_in[23]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    48.252 r  u_shared_mul/u_primary_mul/falcon_sum_carry__4_i_15/O[2]
+                         net (fo=1, unplaced)         0.452    48.704    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__4_i_12[2]
+                         LUT6 (Prop_lut6_I5_O)        0.301    49.005 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__4_i_27/O
+                         net (fo=3, unplaced)         0.657    49.662    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator16_in[24]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    50.228 r  u_shared_mul/u_primary_mul/falcon_sum_carry__4_i_12/O[2]
+                         net (fo=1, unplaced)         0.452    50.680    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__5_i_24[2]
+                         LUT6 (Prop_lut6_I5_O)        0.301    50.981 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__5_i_64/O
+                         net (fo=3, unplaced)         0.657    51.638    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator13_in[25]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    52.204 r  u_shared_mul/u_primary_mul/falcon_sum_carry__5_i_24/O[2]
+                         net (fo=1, unplaced)         0.452    52.656    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__5_i_20[2]
+                         LUT5 (Prop_lut5_I4_O)        0.301    52.957 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__5_i_54/O
+                         net (fo=3, unplaced)         0.657    53.614    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator10_in[26]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    54.180 r  u_shared_mul/u_primary_mul/falcon_sum_carry__5_i_20/O[2]
+                         net (fo=1, unplaced)         0.452    54.632    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__5_i_16_0[2]
+                         LUT5 (Prop_lut5_I4_O)        0.301    54.933 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__5_i_45/O
+                         net (fo=3, unplaced)         0.657    55.590    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator7_in[27]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    56.156 r  u_shared_mul/u_primary_mul/falcon_sum_carry__5_i_16/O[2]
+                         net (fo=1, unplaced)         0.452    56.608    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__5_i_12_0[2]
+                         LUT6 (Prop_lut6_I5_O)        0.301    56.909 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__6_i_16/O
+                         net (fo=5, unplaced)         0.667    57.576    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator4_in[28]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    58.142 r  u_shared_mul/u_primary_mul/falcon_sum_carry__5_i_12/O[2]
+                         net (fo=2, unplaced)         0.463    58.605    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__6_i_17[2]
+                         LUT6 (Prop_lut6_I5_O)        0.301    58.906 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/falcon_sum_carry__6_i_14/O
+                         net (fo=4, unplaced)         0.663    59.569    coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/accumulator1_in[29]
+                         CARRY4 (Prop_carry4_DI[1]_O[2])
+                                                      0.566    60.135 r  u_shared_mul/u_primary_mul/falcon_sum_carry__6_i_17/O[2]
+                         net (fo=1, unplaced)         0.452    60.587    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__6_i_12[2]
+                         LUT6 (Prop_lut6_I0_O)        0.301    60.888 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/falcon_sum_carry__6_i_26/O
+                         net (fo=1, unplaced)         0.000    60.888    u_crheepto_top_n_2359
+                         CARRY4 (Prop_carry4_S[1]_O[2])
+                                                      0.578    61.466 r  u_shared_mul/u_primary_mul/falcon_sum_carry__6_i_12/O[2]
+                         net (fo=3, unplaced)         0.470    61.936    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/u_primary_mul/stage_a_result_i_43[2]
+                         LUT6 (Prop_lut6_I1_O)        0.301    62.237 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/stage_a_result_i_59/O
+                         net (fo=1, unplaced)         0.000    62.237    u_crheepto_top_n_40
+                         CARRY4 (Prop_carry4_S[0]_O[0])
+                                                      0.252    62.489 r  u_shared_mul/u_primary_mul/stage_a_result_i_43/O[0]
+                         net (fo=2, unplaced)         0.322    62.811    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/modp_sub_carry_i_1_0[0]
+                         LUT5 (Prop_lut5_I4_O)        0.295    63.106 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/stage_a_result_i_30/O
+                         net (fo=7, unplaced)         0.484    63.590    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_inst/u_shared_mul/full_prod[31]
+                         LUT3 (Prop_lut3_I2_O)        0.124    63.714 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/stage_a_result_i_7/O
+                         net (fo=1, unplaced)         0.800    64.513    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/A[14]
+                         DSP48E1 (Prop_dsp48e1_A[14]_P[0])
+                                                      3.841    68.354 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/stage_a_result/P[0]
+                         net (fo=1, unplaced)         0.800    69.154    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/stage_a_result_n_105
+                         LUT2 (Prop_lut2_I1_O)        0.124    69.278 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/stage_a_result_carry_i_3/O
+                         net (fo=1, unplaced)         0.000    69.278    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/stage_a_result_carry_i_3_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    69.811 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/stage_a_result_carry/CO[3]
+                         net (fo=1, unplaced)         0.009    69.820    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/stage_a_result_carry_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    69.937 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/stage_a_result_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000    69.937    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/stage_a_result_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    70.054 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/stage_a_result_carry__1/CO[3]
+                         net (fo=1, unplaced)         0.000    70.054    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/stage_a_result_carry__1_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    70.385 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/stage_a_result_carry__2/O[3]
+                         net (fo=2, unplaced)         0.629    71.014    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/stage_b_result_3[3]
+                         LUT6 (Prop_lut6_I5_O)        0.307    71.321 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/modp_tp_i_1/O
+                         net (fo=2, unplaced)         0.800    72.121    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/data3[31]
+                         DSP48E1 (Prop_dsp48e1_B[14]_PCOUT[47])
+                                                      3.851    75.972 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp/PCOUT[47]
+                         net (fo=1, unplaced)         0.055    76.027    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_n_106
+                         DSP48E1 (Prop_dsp48e1_PCIN[47]_P[3])
+                                                      1.518    77.545 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp__0/P[3]
+                         net (fo=1, unplaced)         0.800    78.345    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp__0_n_102
+                         LUT2 (Prop_lut2_I1_O)        0.124    78.469 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_carry__4_i_3/O
+                         net (fo=1, unplaced)         0.000    78.469    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_carry__4_i_3_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    79.002 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_carry__4/CO[3]
+                         net (fo=1, unplaced)         0.000    79.002    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_carry__4_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    79.119 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_carry__5/CO[3]
+                         net (fo=1, unplaced)         0.000    79.119    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_carry__5_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    79.236 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_carry__6/CO[3]
+                         net (fo=1, unplaced)         0.000    79.236    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_carry__6_n_0
+                         CARRY4 (Prop_carry4_CI_O[1])
+                                                      0.337    79.573 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_tp_carry__7/O[1]
+                         net (fo=1, unplaced)         0.611    80.184    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/modp_tp__3__0[33]
+                         LUT2 (Prop_lut2_I1_O)        0.306    80.490 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/modp_sub_carry__3_i_12/O
+                         net (fo=1, unplaced)         0.000    80.490    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/u_shared_mul/modp_sub_carry__3_i_12_n_0
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    81.022 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/modp_sub_carry__3_i_1/CO[3]
+                         net (fo=1, unplaced)         0.000    81.022    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/modp_sub_carry__3_i_1_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    81.354 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/modp_sub_carry__4_i_1/O[3]
+                         net (fo=2, unplaced)         0.629    81.982    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/modp_tp__2[24]
+                         LUT2 (Prop_lut2_I0_O)        0.307    82.289 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/modp_sub_carry__5_i_5/O
+                         net (fo=1, unplaced)         0.000    82.289    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_final_carry__5_i_4[0]
+                         CARRY4 (Prop_carry4_S[0]_CO[3])
+                                                      0.513    82.802 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_sub_carry__5/CO[3]
+                         net (fo=1, unplaced)         0.000    82.802    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_sub_carry__5_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    83.133 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_sub_carry__6/O[3]
+                         net (fo=32, unplaced)        0.689    83.823    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/modp_final_carry__6[0]
+                         LUT3 (Prop_lut3_I1_O)        0.307    84.130 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/modp_final_carry_i_3/O
+                         net (fo=1, unplaced)         0.000    84.130    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/reg_B[0]_i_4[1]
+                         CARRY4 (Prop_carry4_S[1]_CO[3])
+                                                      0.533    84.662 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_final_carry/CO[3]
+                         net (fo=1, unplaced)         0.009    84.672    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_final_carry_n_0
+                         CARRY4 (Prop_carry4_CI_CO[3])
+                                                      0.117    84.788 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_final_carry__0/CO[3]
+                         net (fo=1, unplaced)         0.000    84.788    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_final_carry__0_n_0
+                         CARRY4 (Prop_carry4_CI_O[3])
+                                                      0.331    85.119 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/i_horcrux/multiplier_tree_inst/u_shared_mul/modp_final_carry__1/O[3]
+                         net (fo=1, unplaced)         0.618    85.737    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/data4[11]
+                         LUT2 (Prop_lut2_I1_O)        0.307    86.044 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B[11]_i_5/O
+                         net (fo=1, unplaced)         0.449    86.493    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B[11]_i_5_n_0
+                         LUT6 (Prop_lut6_I3_O)        0.124    86.617 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/reg_B[11]_i_2/O
+                         net (fo=13, unplaced)        0.499    87.116    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/i_horcrux/multiplier_tree_inst/mul_res_lo[11]
+                         LUT2 (Prop_lut2_I1_O)        0.116    87.232 r  u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem[31][15]_i_153/O
+                         net (fo=1, unplaced)         0.000    87.232    u_crheepto_top/coproc_wrapper_i/horcrux_top_i/id_stage_i/gen_rf[31].mem[31][15]_i_153_n_0
+                         CARRY4 (Prop_carry4_DI[0]_CO[3])

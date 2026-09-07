@@ -1,0 +1,14 @@
+DSP count: 11
+u_shared_mul/modp_tp
+u_shared_mul/modp_tp__0
+u_shared_mul/modp_tp__1
+u_shared_mul/modp_tp__2
+u_shared_mul/stage_a_result
+u_shared_mul/stage_a_result__0
+u_shared_mul/stage_a_result__1
+u_shared_mul/stage_b_result
+u_shared_mul/stage_b_result__0
+u_shared_mul/stage_b_result__1
+u_shared_mul/stage_b_result__2
+----
+cells under u_primary_mul: 8375
