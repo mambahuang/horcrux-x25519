@@ -925,3 +925,90 @@ magic constant. Every Barrett multiplier is decomposed into shift-and-add
 the three HQC variants), so there is no constant to find. The greppable
 constants are the moduli — 3329, 17669, 35851, 57637 — and those are absorbed
 into LUT truth tables rather than surviving as netlist objects.
+
+---
+
+# M0 Follow-Up — Task 3: genuine post-route numbers (RESOLVED)
+
+Every number above this point is a synthesis estimate with a statistical route
+model. These are not: `Design State: Routed`, 650 real site locations
+(`SLICE_X…` / `DSP48E2_X…`), no `unplaced` annotations anywhere.
+
+## How the two blockers were cleared
+
+M0 documented two, and both are gone:
+
+- **OOC placement failure.** A bare `multiplier_tree` with its own clock port
+  gives `[Place 30-188] UnBuffered IOs` and three documented workarounds all
+  failed. Solved with the register-wrapped harness Task 3 itself proposed
+  (`reports/m0_followup/mt_char_wrapper.sv`): an LFSR drives the operands *and*
+  `insn_i`, the DUT sits between input and signature registers, and only four
+  real I/O leave the chip. An ordinary non-OOC flow then applies, and every
+  DUT-internal path is register-to-register.
+- **Capacity.** The design never fitted the Z020. Installing Artix
+  UltraScale+ device support — a free-edition install, no board and no licence
+  needed — makes `xcau25p-ffvb676-2-e` available: 141,000 LUT, 300 BRAM,
+  1,200 DSP.
+
+**That part is also a much better proxy for the paper's platform than the
+Z020 ever was:**
+
+| | Pynq-Z2 (M0) | xcau25p-2 (here) | ZCU104 (paper) |
+|---|---|---|---|
+| Process | 28 nm | **16 nm** | 16 nm |
+| Speed grade | −1 | **−2** | −2 |
+| DSP | DSP48E1 | **DSP48E2** | DSP48E2 |
+| Carry primitive | CARRY4 | CARRY8 | CARRY8 |
+
+## Post-route results
+
+Both configurations placed and routed on `xcau25p-ffvb676-2-e`, same script,
+same harness; the only difference is which `unified_mul_32x32.sv` is read.
+Each is constrained near its own achievable period so the optimiser faces a
+real trade-off — the methodology point Task 2 raises, applied here from the
+start.
+
+| | Before | After |
+|---|---|---|
+| Constraint used | 20.0 ns | 14.0 ns |
+| WNS | −5.347 ns | −0.470 ns |
+| **Achievable period** | **≈ 25.35 ns** | **≈ 14.47 ns** |
+| **Achievable fmax** | **≈ 39.5 MHz** | **≈ 69.1 MHz** |
+| Data path delay | 25.458 ns | 14.464 ns |
+| Logic levels | 117 (CARRY8=54) | 57 (CARRY8=18) |
+| logic / route split | 49.1 / 50.9 | 64.3 / 35.7 |
+| LUTs (harness incl.) | 6,031 | **3,731** |
+| DSP48E2 | 11 | 15 |
+
+**−42.9 % path delay, +74.9 % fmax, −38.1 % LUTs, post-route.**
+
+*(DSP count is the `DSP Blocks` column. `get_cells -filter {PRIMITIVE_TYPE =~
+*DSP*}` returns 99 and 135 respectively because UltraScale+ models each
+DSP48E2 as several sub-primitives — `DSP_ALU`, `DSP_MULTIPLIER`, `DSP_OUTPUT`
+and so on. 11 → 15 matches the Z020 result exactly.)*
+
+The relative gain is smaller than the 50.7 % measured on the Z020, and that is
+expected: CARRY8 covers eight bits per element against CARRY4's four, so the
+ripple chain starts out roughly half as deep on this part before the process
+advantage is counted. The Z020 exaggerated the penalty; this number is the
+more honest one.
+
+## An independent check on the paper's 42 MHz
+
+The paper reports **42 MHz** for complete HORCRUX on ZU7EV (16 nm, −2). The
+unmodified multiplier tree measured here, alone, on a different 16 nm −2 part,
+routes at **≈ 39.5 MHz**.
+
+Two independent measurements on comparable silicon landing within ~6 % of each
+other is strong support for the central claim that this module sets the
+system frequency — the paper says so, and Step 2's critical path showed it, but
+this is the first time it has been measured post-route.
+
+**What this does not establish.** The harness contains the multiplier tree
+only; the paper's figure is the whole SoC, and the closeness of 39.5 to 42 is
+partly coincidence, since a system is limited by its worst path and not only by
+this one. Projecting "42 → 69 MHz" would additionally assume the rest of the
+design does not become critical first — the paper's own 125 MHz figure without
+the multiplier tree suggests headroom, but that is inference, not measurement.
+Settling it needs the full SoC on ZU7EV, which requires Vivado ML Enterprise;
+the free edition this work used does not include Zynq UltraScale+ MPSoC.

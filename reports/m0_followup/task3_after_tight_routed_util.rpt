@@ -1,0 +1,35 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
+| Date         : Mon Sep  7 22:59:26 2026
+| Host         : DESKTOP-OKV77IV running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file reports/m0_followup/task3_after_tight_routed_util.rpt
+| Design       : mt_char_wrapper
+| Device       : xcau25p-ffvb676-2-e
+| Speed File   : -2
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++----------------------+-----------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+|       Instance       |            Module           | Total LUTs | Logic LUTs | LUTRAMs | SRLs | FFs | RAMB36 | RAMB18 | URAM | DSP Blocks |
++----------------------+-----------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+| mt_char_wrapper      |                       (top) |       3731 |       3731 |       0 |    0 | 197 |      0 |      0 |    0 |         15 |
+|   (mt_char_wrapper)  |                       (top) |         40 |         40 |       0 |    0 | 101 |      0 |      0 |    0 |          0 |
+|   dut                |             multiplier_tree |       3691 |       3691 |       0 |    0 |  96 |      0 |      0 |    0 |         15 |
+|     (dut)            |             multiplier_tree |        303 |        303 |       0 |    0 |  96 |      0 |      0 |    0 |          0 |
+|     u_shared_mul     | shared_multiplication_logic |       3389 |       3389 |       0 |    0 |   0 |      0 |      0 |    0 |         15 |
+|       (u_shared_mul) | shared_multiplication_logic |        526 |        526 |       0 |    0 |   0 |      0 |      0 |    0 |         11 |
+|       u_primary_mul  |           unified_mul_32x32 |       2866 |       2866 |       0 |    0 |   0 |      0 |      0 |    0 |          4 |
++----------------------+-----------------------------+------------+------------+---------+------+-----+--------+--------+------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+
