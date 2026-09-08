@@ -148,13 +148,22 @@ run_one() {
 
     make questasim-sim > "$OUT/${name}.sim.log" 2>&1
 
-    # Match FAIL, not FAILED: the applications print "Test 3 FAIL:" and
-    # "FINAL STATUS: TEST FAILURE DETECTED", neither of which contains "FAILED".
-    # An earlier version of this pattern matched the pass case but not either
-    # failure case, which silently hid a fully failing test.
-    grep -E "PASSED|FAIL|FINAL STATUS|ERROR|[Mm]ismatch|[Cc]ycles:|TEST SUCCEEDED" \
+    # Display. The tests use several different conventions for the success
+    # line -- "FINAL STATUS: ALL TESTS PASSED" (32 of them), "All suites
+    # passed.", "Result: ALL TESTS PASSED", "REJ_ETA: All tests passed.",
+    # "Tests: 8/8 passed" -- so lowercase `passed` is matched too. Without it
+    # a passing test shows only its cycle counts and you are left inferring
+    # success from the absence of a failure line.
+    grep -E "PASSED|passed|FAIL|FINAL STATUS|Result:|ERROR|[Mm]ismatch|[Cc]ycles:|TEST SUCCEEDED" \
         "$OUT/${name}.sim.log"
 
+    # Decision. Deliberately case-SENSITIVE on FAIL, and it must stay that way:
+    # every failure message in these tests is uppercase (FAIL, FAILED, FAILURE,
+    # ERROR, Mismatch), while cbd_eta2 prints the counter line
+    #   "ETA2: %d passed, %d failed"
+    # on every run, pass or fail. Adding -i here to catch lowercase success
+    # messages looks like an improvement and would mark that test failed every
+    # time. The display grep above handles lowercase; this one must not.
     if grep -qE "FAIL|ERROR|[Mm]ismatch" "$OUT/${name}.sim.log"; then
         echo "  ^^ FAIL  ->  $OUT/${name}.sim.log"
         record "$p" no
