@@ -56,47 +56,38 @@ fi
 echo "Removing ModelSim build dir to force a clean recompile..."
 rm -rf build/polito_vlsi_crheepto_*/sim-modelsim
 
-# Tier 1: directed tests. Fast, and they pinpoint which mode broke.
-#   karats / gf-carryless  -> carry-less GF(2) path (cl_prod)
-#   *-montg / mq-montymul  -> integer path (int_prod), all four modes
-#   *-ntt / *-intt         -> integer path under real butterfly traffic
-#   *-barrett              -> all four OP_BARRETT* opcodes
-#   remainder              -> regression, should be untouched by this change
-DIRECTED="tests/karats \
-tests/gf-carryless \
-tests/kyber-montg \
-tests/dilithium-montg \
-tests/mq-montymul \
-tests/kyber-ntt \
-tests/kyber-intt \
-tests/dilithium-ntt \
-tests/dilithium-intt \
-tests/falcon-ntt \
-tests/falcon-intt \
-tests/dilithium-reduce32 \
-tests/gf-reduce \
-tests/kyber-barrett \
-tests/hqc-barrett \
-tests/compare-u32"
+# Excluded -- these fail for pre-existing reasons unrelated to any RTL change,
+# so including them would report failures on a perfectly good design. Both are
+# documented in M0_FINDINGS.md. Re-add only once the causes are fixed.
+#
+#   falcon-montg   its .insn encoding (funct7=0x02) decodes to OP_CBD3 and is
+#                  dispatched to the CBD sampler, never reaching
+#                  multiplier_tree. 19/19 hardware vectors fail, before and
+#                  after, confirmed by reverting the RTL. Falcon's datapath is
+#                  still covered by falcon-ntt / falcon-intt.
+SKIP="falcon-montg"
+
+# Tier 1: every directed test, discovered rather than listed.
+#
+# An earlier version hand-picked the 16 tests judged to touch the changed code.
+# That judgement was wrong: it missed fqmul and the four *-poly-ntt /
+# *-poly-intt variants, all of which drive the multiplier. Whether a test is
+# relevant is exactly the kind of call that should not be made by hand, so the
+# list is now derived from the directory.
+DIRECTED=""
+for d in sw/applications/tests/*/ ; do
+    n=`basename "$d"`
+    case " $SKIP " in *" $n "*) continue ;; esac
+    DIRECTED="$DIRECTED tests/$n"
+done
 
 # Tier 2: full end-to-end KATs with published cycle counts.
 KAT="pqc/optimized/KEM/ML-KEM/ml-kem-768 \
 pqc/optimized/KEM/HQC/HQC-2025/HQC-1 \
 pqc/optimized/DS/ML-DSA/ML-DSA-65"
 
-# Deliberately NOT in the lists above -- both fail for pre-existing reasons
-# that have nothing to do with any RTL change, so including them would report
-# two failures on a perfectly good design:
-#
-#   tests/falcon-montg   its .insn encoding (funct7=0x02) decodes to OP_CBD3
-#                        and is dispatched to the CBD sampler, never reaching
-#                        multiplier_tree. 19/19 hardware vectors fail, before
-#                        and after, confirmed by reverting the RTL.
-#   .../FALCON/falcon-512  does not link: "region 'ram0' overflowed by 19232
-#                        bytes". No binary is produced.
-#
-# Falcon's datapath is still covered, by falcon-ntt / falcon-intt.
-# See M0_FINDINGS.md for both. Re-add them only once they are fixed.
+# FALCON/falcon-512 is likewise absent from the Tier 2 list: it does not link
+# ("region 'ram0' overflowed by 19232 bytes"), so no binary is produced.
 
 pass=0
 fail=0
