@@ -16,6 +16,17 @@
 #
 #   ML-KEM-768  KeyGen/Encaps/Decaps :   260,388 /   288,498 /   426,258
 #   HQC-1       KeyGen/Encaps/Decaps : 2,411,827 / 4,537,744 / 7,406,292
+#
+# STATUS: this script has never been executed end to end. Every step in it was
+# run by hand during the Experiment 1 regression and the results are in
+# M0_FINDINGS.md, but the script as assembled here is unvalidated. `sh -n`
+# passes. Treat the first run as a shakedown.
+#
+# Note also scripts/sim_all_app.sh, which does a similar sweep but marks a test
+# PASSED on the string "TEST SUCCEEDED" alone. That is the testbench reporting
+# the program returned 0, not the application's own correctness check -- it
+# would mark tests/falcon-montg as passing while all 19 of its hardware vectors
+# fail. This script greps for FAIL instead, which is what caught that.
 
 # WARNING: never run this alongside another build/simulation in the same working
 # tree. They share hw/vendor/x-heep/sw/build/main.elf, build/sw/app/main.hex and
@@ -49,12 +60,12 @@ rm -rf build/polito_vlsi_crheepto_*/sim-modelsim
 #   karats / gf-carryless  -> carry-less GF(2) path (cl_prod)
 #   *-montg / mq-montymul  -> integer path (int_prod), all four modes
 #   *-ntt / *-intt         -> integer path under real butterfly traffic
+#   *-barrett              -> all four OP_BARRETT* opcodes
 #   remainder              -> regression, should be untouched by this change
 DIRECTED="tests/karats \
 tests/gf-carryless \
 tests/kyber-montg \
 tests/dilithium-montg \
-tests/falcon-montg \
 tests/mq-montymul \
 tests/kyber-ntt \
 tests/kyber-intt \
@@ -71,8 +82,21 @@ tests/compare-u32"
 # Tier 2: full end-to-end KATs with published cycle counts.
 KAT="pqc/optimized/KEM/ML-KEM/ml-kem-768 \
 pqc/optimized/KEM/HQC/HQC-2025/HQC-1 \
-pqc/optimized/DS/ML-DSA/ML-DSA-65 \
-pqc/optimized/DS/FALCON/falcon-512"
+pqc/optimized/DS/ML-DSA/ML-DSA-65"
+
+# Deliberately NOT in the lists above -- both fail for pre-existing reasons
+# that have nothing to do with any RTL change, so including them would report
+# two failures on a perfectly good design:
+#
+#   tests/falcon-montg   its .insn encoding (funct7=0x02) decodes to OP_CBD3
+#                        and is dispatched to the CBD sampler, never reaching
+#                        multiplier_tree. 19/19 hardware vectors fail, before
+#                        and after, confirmed by reverting the RTL.
+#   .../FALCON/falcon-512  does not link: "region 'ram0' overflowed by 19232
+#                        bytes". No binary is produced.
+#
+# Falcon's datapath is still covered, by falcon-ntt / falcon-intt.
+# See M0_FINDINGS.md for both. Re-add them only once they are fixed.
 
 pass=0
 fail=0
