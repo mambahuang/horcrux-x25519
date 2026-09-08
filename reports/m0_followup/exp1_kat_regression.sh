@@ -56,16 +56,19 @@ fi
 echo "Removing ModelSim build dir to force a clean recompile..."
 rm -rf build/polito_vlsi_crheepto_*/sim-modelsim
 
-# Excluded -- these fail for pre-existing reasons unrelated to any RTL change,
-# so including them would report failures on a perfectly good design. Both are
-# documented in M0_FINDINGS.md. Re-add only once the causes are fixed.
+# Known failures. These are RUN, not skipped -- excluding a broken test hides
+# it, and if someone fixes one it would silently stay unrun. They are reported
+# as "expected failure" so they do not drown the signal, and a test here that
+# starts PASSING is called out, because that means the cause was fixed and this
+# list needs updating.
 #
 #   falcon-montg   its .insn encoding (funct7=0x02) decodes to OP_CBD3 and is
 #                  dispatched to the CBD sampler, never reaching
 #                  multiplier_tree. 19/19 hardware vectors fail, before and
 #                  after, confirmed by reverting the RTL. Falcon's datapath is
-#                  still covered by falcon-ntt / falcon-intt.
-SKIP="falcon-montg"
+#                  covered by falcon-ntt / falcon-intt regardless.
+#                  See M0_FINDINGS.md.
+XFAIL="tests/falcon-montg"
 
 # Tier 1: every directed test, discovered rather than listed.
 #
@@ -76,9 +79,7 @@ SKIP="falcon-montg"
 # list is now derived from the directory.
 DIRECTED=""
 for d in sw/applications/tests/*/ ; do
-    n=`basename "$d"`
-    case " $SKIP " in *" $n "*) continue ;; esac
-    DIRECTED="$DIRECTED tests/$n"
+    DIRECTED="$DIRECTED tests/`basename "$d"`"
 done
 
 # Tier 2: full end-to-end KATs with published cycle counts.
@@ -91,7 +92,35 @@ pqc/optimized/DS/ML-DSA/ML-DSA-65"
 
 pass=0
 fail=0
+xfail=0
+xpass=0
 failed_list=""
+xpass_list=""
+
+is_xfail() {
+    case " $XFAIL " in *" $1 "*) return 0 ;; esac
+    return 1
+}
+
+# Record the outcome, accounting for whether this test is a known failure.
+record() {
+    p="$1"; ok="$2"
+    if is_xfail "$p"; then
+        if [ "$ok" = yes ]; then
+            echo "  ^^ XPASS -- known failure now passes, update XFAIL"
+            xpass=`expr $xpass + 1`
+            xpass_list="$xpass_list $p"
+        else
+            echo "  ^^ xfail (known, see XFAIL note)"
+            xfail=`expr $xfail + 1`
+        fi
+    elif [ "$ok" = yes ]; then
+        pass=`expr $pass + 1`
+    else
+        fail=`expr $fail + 1`
+        failed_list="$failed_list $p"
+    fi
+}
 
 run_one() {
     p="$1"
@@ -110,8 +139,7 @@ run_one() {
     # check for the artefact rather than trusting the exit status.
     if [ ! -f hw/vendor/x-heep/sw/build/main.elf ]; then
         echo "BUILD FAILED  ->  $OUT/${name}.build.log"
-        fail=`expr $fail + 1`
-        failed_list="$failed_list $p(build)"
+        record "$p" no
         return
     fi
     mkdir -p build/sw/app
@@ -129,10 +157,9 @@ run_one() {
 
     if grep -qE "FAIL|ERROR|[Mm]ismatch" "$OUT/${name}.sim.log"; then
         echo "  ^^ FAIL  ->  $OUT/${name}.sim.log"
-        fail=`expr $fail + 1`
-        failed_list="$failed_list $p"
+        record "$p" no
     else
-        pass=`expr $pass + 1`
+        record "$p" yes
     fi
 }
 
@@ -141,10 +168,16 @@ for p in $DIRECTED $KAT; do
 done
 
 echo "=================================================================="
-echo "SUMMARY: $pass passed, $fail failed"
+echo "SUMMARY: $pass passed, $fail failed, $xfail expected-fail, $xpass xpass"
 if [ -n "$failed_list" ]; then
-    echo "FAILED:$failed_list"
+    echo ""
+    echo "FAILED (unexpected -- these are the ones that matter):$failed_list"
 fi
+if [ -n "$xpass_list" ]; then
+    echo ""
+    echo "XPASS (known failures that now pass -- update XFAIL):$xpass_list"
+fi
+echo ""
 echo "Logs in $OUT/"
 echo "Now compare the cycle counts above against the M0 reference numbers"
 echo "in the header of this script -- they must match exactly."
