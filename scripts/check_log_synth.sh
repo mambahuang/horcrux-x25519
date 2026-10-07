@@ -50,9 +50,16 @@ if grep -iq "error:" "$LOG_FILE"; then
 fi
 
 # --- Check for "latch" in synth.log with filters ---
+# dc_shell -f echoes the script it is running into the log, so the synthesis script's
+# own comments and its "set_app_var hdlin_check_no_latch true" line end up in
+# synth.log and match this grep. Drop echoed script text: only DC's own diagnostics
+# should count. The authoritative answer is report_register -level_sensitive, which
+# the flow writes to registers.rpt.
 LATCH_LINES=$(grep -i "latch" "$LOG_FILE" | \
               grep -iv "Sequential cell: latch" | \
-              grep -iv "|")
+              grep -iv "|" | \
+              grep -v "^[[:space:]]*#" | \
+              grep -v "hdlin_check_no_latch")
 
 if [ -n "$LATCH_LINES" ]; then
     found=true

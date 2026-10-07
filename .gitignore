@@ -36,6 +36,7 @@ private/
 .vscode/
 .Xil/
 *.txt
+!CMakeLists.txt
 
 # Tech files
 *.db
@@ -52,3 +53,13 @@ implementation/drc/*
 implementation/dummyfill/*
 implementation/lvs/*
 implementation/pnr/*
+
+# ASIC synthesis run output (Design Compiler)
+implementation/synthesis/
+implementation/design_compiler/.alib/
+# Site-specific library setup, copied in by the user
+implementation/design_compiler/synopsys.setup
+implementation/design_compiler/libinfo.rpt
+implementation/design_compiler/*.log
+implementation/design_compiler/command.log
+implementation/design_compiler/default.svf
