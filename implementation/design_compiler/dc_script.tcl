@@ -327,6 +327,41 @@ if {[sizeof_collection $_paths] > 0} {
 set _achieved [expr {$CLK_PERIOD - $_slack}]
 set _fmax     [expr {$_achieved > 0 ? 1000.0 / $_achieved : 0.0}]
 
+# "achieved period" above is target minus slack, which treats every constraint as a
+# fixed cost. Here most of them scale with the target: the IO delay is
+# IO_DELAY_FRAC * period and, unless CLK_UNCERT was given, the setup uncertainty is
+# 5% of it. On the worst path
+#     slack = P - U - k*IO_DELAY_FRAC*P - D
+# where k counts the ports at its ends (input-port start, output-port end) and D is
+# the path's own delay; clock latency cancels between launch and capture. Solving
+# for the P at which slack reaches zero, keeping D fixed:
+#     P_est = P - slack / (1 - U/P - k*IO_DELAY_FRAC)      (U scaled)
+# On a register-to-output path at 0.15 / 5% the divisor is 0.8, so a -1 ns slack
+# costs 1.25 ns of period, not 1. D itself drifts as the target moves (DC sizes
+# cells less aggressively under a looser clock), so this is an estimate for picking
+# the next sweep point, not a number to quote.
+set _est_line "###   est. closure    : n/a"
+if {[sizeof_collection $_paths] > 0} {
+  set _p0 [index_collection $_paths 0]
+  set _k 0
+  set _kind {}
+  foreach _end {startpoint endpoint} _io {in out} {
+    if {[get_attribute -quiet [get_attribute $_p0 $_end] object_class] eq "port"} {
+      incr _k
+      lappend _kind $_io
+    } else {
+      lappend _kind reg
+    }
+  }
+  set _unc_scaled [expr {!([info exists ::env(CLK_UNCERT)] && [string length $::env(CLK_UNCERT)] > 0)}]
+  set _frac [expr {1.0 - $_k * $IO_DELAY_FRAC - ($_unc_scaled ? $CLK_UNCERT / $CLK_PERIOD : 0.0)}]
+  if {$_frac > 0.0} {
+    set _est [expr {$CLK_PERIOD - $_slack / $_frac}]
+    set _est_line [format "###   est. closure    : %.3f ns  (%.1f MHz)  \[%s path, slack scaled by 1/%.3f\]" \
+                     $_est [expr {1000.0 / $_est}] [join $_kind "->"] $_frac]
+  }
+}
+
 # Convert area to gate equivalents so the number can be compared against a paper
 # that used a different process node. 1 GE = the area of a 2-input NAND.
 set _nand2_area 0.0
@@ -409,11 +444,12 @@ set _sum [format \
 ###   achieved period : %.3f ns  (%.1f MHz)
 %s
 %s
+%s
 ###   reports         : %s
 ########################################################################" \
   $DESIGN_TOP $_lib_lines $_cond \
   $CLK_PERIOD [expr {1000.0/$CLK_PERIOD}] $_slack $_achieved $_fmax \
-  $_area_line $_ge_line $REPORT_DIR]
+  $_est_line $_area_line $_ge_line $REPORT_DIR]
 
 puts $_sum
 set _fh [open [file join $REPORT_DIR summary.rpt] w]
