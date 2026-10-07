@@ -1,0 +1,51 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2024 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2024.2 (win64) Build 5239630 Fri Nov 08 22:35:27 MST 2024
+| Date         : Wed Sep  9 09:28:24 2026
+| Host         : DESKTOP-OKV77IV running 64-bit major release  (build 9200)
+| Command      : report_utilization -hierarchical -file reports/m0_followup/task5_before_routed_util_hier.rpt
+| Design       : horcrux_char_wrapper
+| Device       : xc7z020clg400-1
+| Speed File   : -1
+| Design State : Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Utilization Design Information
+
+Table of Contents
+-----------------
+1. Utilization by Hierarchy
+
+1. Utilization by Hierarchy
+---------------------------
+
++--------------------------------+-----------------------------+------------+------------+---------+------+------+--------+--------+------------+
+|            Instance            |            Module           | Total LUTs | Logic LUTs | LUTRAMs | SRLs |  FFs | RAMB36 | RAMB18 | DSP Blocks |
++--------------------------------+-----------------------------+------------+------------+---------+------+------+--------+--------+------------+
+| horcrux_char_wrapper           |                       (top) |      18521 |      18521 |       0 |    0 | 4299 |      0 |      0 |         11 |
+|   (horcrux_char_wrapper)       |                       (top) |         40 |         40 |       0 |    0 |   97 |      0 |      0 |          0 |
+|   dut                          |                 horcrux_top |      18483 |      18483 |       0 |    0 | 4202 |      0 |      0 |         11 |
+|     (dut)                      |                 horcrux_top |          0 |          0 |       0 |    0 |    8 |      0 |      0 |          0 |
+|     commit_stage_i             |                commit_stage |          7 |          7 |       0 |    0 |    0 |      0 |      0 |          0 |
+|     i_horcrux                  |                     horcrux |       9987 |       9987 |       0 |    0 | 4018 |      0 |      0 |         11 |
+|       (i_horcrux)              |                     horcrux |          0 |          0 |       0 |    0 |    1 |      0 |      0 |          0 |
+|       chain_lengths_inst       |               chain_lengths |         31 |         31 |       0 |    0 |   43 |      0 |      0 |          0 |
+|       fpr_inst                 |                         fpr |         10 |         10 |       0 |    0 |  107 |      0 |      0 |          0 |
+|       horcrux_register_inst    |            horcrux_register |       1451 |       1451 |       0 |    0 | 1600 |      0 |      0 |          0 |
+|       keccak_i                 |                    keccak_f |       5058 |       5058 |       0 |    0 | 1636 |      0 |      0 |          0 |
+|         u_cu                   |                   keccak_cu |         11 |         11 |       0 |    0 |    8 |      0 |      0 |          0 |
+|         u_dp                   |                   keccak_dp |       5048 |       5048 |       0 |    0 | 1628 |      0 |      0 |          0 |
+|           (u_dp)               |                   keccak_dp |       2484 |       2484 |       0 |    0 | 1628 |      0 |      0 |          0 |
+|           round_constants_gen  |  keccak_round_constants_gen |          4 |          4 |       0 |    0 |    0 |      0 |      0 |          0 |
+|           round_map            |                keccak_round |       2560 |       2560 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       multiplier_tree_inst     |             multiplier_tree |        148 |        148 |       0 |    0 |   91 |      0 |      0 |         11 |
+|         (multiplier_tree_inst) |             multiplier_tree |          2 |          2 |       0 |    0 |   91 |      0 |      0 |          0 |
+|         u_shared_mul           | shared_multiplication_logic |        146 |        146 |       0 |    0 |    0 |      0 |      0 |         11 |
+|           (u_shared_mul)       | shared_multiplication_logic |        146 |        146 |       0 |    0 |    0 |      0 |      0 |         11 |
+|           u_primary_mul        |           unified_mul_32x32 |          0 |          0 |       0 |    0 |    0 |      0 |      0 |          0 |
+|       sphincs_ops_inst         |                 sphincs_ops |       3290 |       3290 |       0 |    0 |  540 |      0 |      0 |          0 |
+|     id_stage_i                 |                    id_stage |       8497 |       8497 |       0 |    0 |  176 |      0 |      0 |          0 |
++--------------------------------+-----------------------------+------------+------------+---------+------+------+--------+--------+------------+
+* Note: The sum of lower-level cells may be larger than their parent cells total, due to cross-hierarchy LUT combining
+
+
