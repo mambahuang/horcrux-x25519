@@ -20,28 +20,20 @@ module unified_mul_32x32 (
     input  logic        carryless_mode_i, 
     output logic [63:0] prod_o
 );
-    logic [63:0] accumulator;
-    logic [63:0] partial_products [31:0];
+    // The two modes are kept as independent expressions. Muxing them inside a
+    // single shared accumulate loop prevents the synthesiser from recognising
+    // the integer branch as a multiply, which forces the whole 32x32 into a
+    // LUT/CARRY4 ripple chain instead of DSP48E1s.
+    logic signed [63:0] int_prod;
+    assign int_prod = $signed(a_i) * $signed(b_i);
 
+    logic [63:0] cl_prod;
     always_comb begin
-        accumulator = '0;
+        cl_prod = '0;
         for (int i = 0; i < 32; i++) begin
-            if (a_i[i]) begin
-                if (carryless_mode_i)
-                    partial_products[i] = {32'b0, b_i} << i;
-                else
-                    partial_products[i] = 64'(signed'(b_i)) << i;
-            end else begin
-                partial_products[i] = '0;
-            end
-
-            if (carryless_mode_i)
-                accumulator ^= partial_products[i];
-            else begin
-                if (i < 31) accumulator += partial_products[i];
-                else        accumulator -= partial_products[i]; // Signed MSB
-            end
+            if (a_i[i]) cl_prod ^= ({32'b0, b_i} << i);
         end
-        prod_o = accumulator;
     end
+
+    assign prod_o = carryless_mode_i ? cl_prod : int_prod;
 endmodule
