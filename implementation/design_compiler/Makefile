@@ -65,7 +65,8 @@ endif
 # The same design is about (90/40) = 2.25x longer per wire at 90 nm, i.e. about
 # 34 um. The shortest 90 nm model, tsmc090_wl10, is 66.7 um (0.150 fF/um,
 # 10 fF), so it is the closest match and still about 2x pessimistic for 90 nm.
-# Assumes both libraries use um and pF; check capacitive_load_unit in the .lib.
+# Both .lib files declare capacitive_load_unit as 1 pF, so the fanout-1
+# capacitances (3.3 fF vs 10 fF) compare directly.
 TECH ?=
 ifeq ($(TECH),tsmc40)
 _TECH_LIB       := sc9_cln40g_base_rvt_ss_typical_max_0p81v_125c
