@@ -60,6 +60,12 @@ endif
 # Neither library has a wire_load_selection table, and the 90 nm one has no
 # default_wire_load either: without WIRE_LOAD_MODEL it would run with no wire
 # load at all. So the model is always named explicitly.
+#
+# Matching the two: 40 nm "Medium" is 15.3 um at fanout 1 (0.218 fF/um, 3.3 fF).
+# The same design is about (90/40) = 2.25x longer per wire at 90 nm, i.e. about
+# 34 um. The shortest 90 nm model, tsmc090_wl10, is 66.7 um (0.150 fF/um,
+# 10 fF), so it is the closest match and still about 2x pessimistic for 90 nm.
+# Assumes both libraries use um and pF; check capacitive_load_unit in the .lib.
 TECH ?=
 ifeq ($(TECH),tsmc40)
 _TECH_LIB       := sc9_cln40g_base_rvt_ss_typical_max_0p81v_125c
@@ -72,7 +78,7 @@ else ifeq ($(TECH),tsmc90)
 _TECH_LIB       := scx3_tsmc_cln90god_ss_1p08v_125c
 STD_CELL_DB     ?= /cad/designkit/CBDK_TSMC90GUTM_Arm_f1.0/CIC/SynopsysDC/db/$(_TECH_LIB).db
 WIRE_LOAD_LIB   ?= $(_TECH_LIB)
-WIRE_LOAD_MODEL ?= $(error TECH=tsmc90 has no agreed wire load model yet; pass WIRE_LOAD_MODEL=tsmc090_wlNN)
+WIRE_LOAD_MODEL ?= tsmc090_wl10
 NAND2_CELL      ?= $(_TECH_LIB)/NAND2X1
 IO_DELAY_FRAC   ?= 0.15
 else ifneq ($(TECH),)
