@@ -49,14 +49,34 @@ endif
 # Technology presets, so every design point is synthesized with the same library
 # settings. Anything given on the command line still wins over the preset:
 #   make sweep TECH=tsmc40 PERIODS="4.8 4.6 4.5" MAX_CORES=1
+#
+# Both presets use the standard-Vt, slow-slow, 125 C corner so the two nodes are
+# compared at the same kind of corner.
+#
+# NAND2_CELL is pinned to the X1 drive strength. Left to itself the flow takes the
+# smallest NAND2 in the library, which is NAND2XL / NAND2_X0P5* on these kits and
+# inflates every kGE figure relative to the usual 1 GE = NAND2X1 convention.
+#
+# Neither library has a wire_load_selection table, and the 90 nm one has no
+# default_wire_load either: without WIRE_LOAD_MODEL it would run with no wire
+# load at all. So the model is always named explicitly.
 TECH ?=
 ifeq ($(TECH),tsmc40)
-STD_CELL_DB     ?= /cad/designkit/CBDK_TSMC40_Arm_f2.0/CIC/SynopsysDC/db/sc9_base_rvt/sc9_cln40g_base_rvt_ss_typical_max_0p81v_125c.db
-WIRE_LOAD_LIB   ?= sc9_cln40g_base_rvt_ss_typical_max_0p81v_125c
+_TECH_LIB       := sc9_cln40g_base_rvt_ss_typical_max_0p81v_125c
+STD_CELL_DB     ?= /cad/designkit/CBDK_TSMC40_Arm_f2.0/CIC/SynopsysDC/db/sc9_base_rvt/$(_TECH_LIB).db
+WIRE_LOAD_LIB   ?= $(_TECH_LIB)
 WIRE_LOAD_MODEL ?= Medium
+NAND2_CELL      ?= $(_TECH_LIB)/NAND2_X1?_A9TR
+IO_DELAY_FRAC   ?= 0.15
+else ifeq ($(TECH),tsmc90)
+_TECH_LIB       := scx3_tsmc_cln90god_ss_1p08v_125c
+STD_CELL_DB     ?= /cad/designkit/CBDK_TSMC90GUTM_Arm_f1.0/CIC/SynopsysDC/db/$(_TECH_LIB).db
+WIRE_LOAD_LIB   ?= $(_TECH_LIB)
+WIRE_LOAD_MODEL ?= $(error TECH=tsmc90 has no agreed wire load model yet; pass WIRE_LOAD_MODEL=tsmc090_wlNN)
+NAND2_CELL      ?= $(_TECH_LIB)/NAND2X1
 IO_DELAY_FRAC   ?= 0.15
 else ifneq ($(TECH),)
-$(error Unknown TECH=$(TECH). Known: tsmc40)
+$(error Unknown TECH=$(TECH). Known: tsmc40 tsmc90)
 endif
 
 # Variables forwarded to the Tcl scripts. Only non-empty ones are exported, so
