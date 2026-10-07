@@ -46,6 +46,19 @@ override SYNOPSYS_SETUP := $(abspath $(SYNOPSYS_SETUP))
 endif
 endif
 
+# Technology presets, so every design point is synthesized with the same library
+# settings. Anything given on the command line still wins over the preset:
+#   make sweep TECH=tsmc40 PERIODS="4.8 4.6 4.5" MAX_CORES=1
+TECH ?=
+ifeq ($(TECH),tsmc40)
+STD_CELL_DB     ?= /cad/designkit/CBDK_TSMC40_Arm_f2.0/CIC/SynopsysDC/db/sc9_base_rvt/sc9_cln40g_base_rvt_ss_typical_max_0p81v_125c.db
+WIRE_LOAD_LIB   ?= sc9_cln40g_base_rvt_ss_typical_max_0p81v_125c
+WIRE_LOAD_MODEL ?= Medium
+IO_DELAY_FRAC   ?= 0.15
+else ifneq ($(TECH),)
+$(error Unknown TECH=$(TECH). Known: tsmc40)
+endif
+
 # Variables forwarded to the Tcl scripts. Only non-empty ones are exported, so
 # setup.tcl keeps its own defaults for anything you do not set.
 EXPORT_VARS := SYNOPSYS_SETUP STD_CELL_DB EXTRA_DBS SYMBOL_LIB \
@@ -72,6 +85,7 @@ help:
 	@echo "  make libinfo                 dump wire load models / cell areas"
 	@echo "  make clean                   delete implementation/synthesis/*"
 	@echo ""
+	@echo "  tech       = $(if $(TECH),$(TECH),<< none, set STD_CELL_DB or SYNOPSYS_SETUP >>)"
 	@echo "  top        = $(DESIGN_TOP)"
 	@echo "  period     = $(CLK_PERIOD) ns"
 	@echo "  setup      = $(if $(SYNOPSYS_SETUP),$(SYNOPSYS_SETUP),<< set SYNOPSYS_SETUP or STD_CELL_DB >>)"

@@ -54,6 +54,14 @@ If you would rather not use a setup file at all, name the `.db` directly:
 make synth STD_CELL_DB=/usr/cad/designkit/CBDK_IC_Contest_v2.1/SynopsysDC/db/slow.db
 ```
 
+For a kit used across several design points, add a `TECH` preset to the Makefile
+instead, so every branch is synthesized with identical library settings. Values on
+the command line still override the preset:
+
+```bash
+make sweep TECH=tsmc40 PERIODS="4.8 4.6 4.5" MAX_CORES=1
+```
+
 Everything lands in `implementation/synthesis/<run_name>/`, with
 `implementation/synthesis/last_output` symlinked to the newest run. That is the
 layout `scripts/check_log_synth.sh` and the `postsynthesis-netlist` fileset in
