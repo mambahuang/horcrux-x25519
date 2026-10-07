@@ -225,6 +225,7 @@ targets:
         - '--exe'
         - 'crheepto_tb.cpp'
         - '-Wall'
+        - '-Wno-fatal'
         - '-Wpedantic'
         - '-LDFLAGS "-pthread -lutil -lelf"'
         # - '-CFLAGS "-Wall -g"'
