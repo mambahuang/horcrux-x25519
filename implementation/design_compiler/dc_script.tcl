@@ -426,14 +426,21 @@ set _wl [expr {[string length $WIRE_LOAD_MODEL] > 0 ? $WIRE_LOAD_MODEL \
                                                     : "library default / none"}]
 set _oc [expr {[string length $OPCOND] > 0 ? $OPCOND : "library default"}]
 
+if {$CONSTRAIN_IO} {
+  set _io_desc [format "%s  (%.3f ns of the period given to the boundary)" \
+                  $IO_DELAY_FRAC [expr {$IO_DELAY_FRAC * $CLK_PERIOD}]]
+} else {
+  set _io_desc "unconstrained (CONSTRAIN_IO=0: register-to-register paths only)"
+}
+
 set _cond [format \
-"###   io_delay_frac   : %s  (%.3f ns of the period given to the boundary)
+"###   io_delay_frac   : %s
 ###   clk uncertainty : %s ns setup / %s ns hold
 ###   wire load       : %s
 ###   opcond          : %s
-###   compile         : ultra=%s keep_hier=%s incr=%s retime=%s clk_gate=%s fix_hold=%s" \
-  $IO_DELAY_FRAC [expr {$IO_DELAY_FRAC * $CLK_PERIOD}] $CLK_UNCERT $CLK_UNCERT_HOLD $_wl $_oc \
-  $USE_ULTRA $KEEP_HIER $INCREMENTAL $RETIME $CLOCK_GATING $FIX_HOLD]
+###   compile         : ultra=%s keep_hier=%s incr=%s retime=%s clk_gate=%s fix_hold=%s io=%s" \
+  $_io_desc $CLK_UNCERT $CLK_UNCERT_HOLD $_wl $_oc \
+  $USE_ULTRA $KEEP_HIER $INCREMENTAL $RETIME $CLOCK_GATING $FIX_HOLD $CONSTRAIN_IO]
 
 set _sum [format \
 "########################################################################
