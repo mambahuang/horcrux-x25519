@@ -50,8 +50,9 @@ endif
 # settings. Anything given on the command line still wins over the preset:
 #   make sweep TECH=tsmc40 PERIODS="4.8 4.6 4.5" MAX_CORES=1
 #
-# Both presets use the standard-Vt, slow-slow, 125 C corner so the two nodes are
-# compared at the same kind of corner.
+# tsmc40 and tsmc90 both use the standard-Vt, slow-slow, 125 C corner, so the two
+# nodes are compared at the same kind of corner; they give the reported numbers.
+# tsmc40tt is the typical corner of the 40 nm kit, for comparison with papers.
 #
 # NAND2_CELL is pinned to the X1 drive strength. Left to itself the flow takes the
 # smallest NAND2 in the library, which is NAND2XL / NAND2_X0P5* on these kits and
@@ -75,6 +76,16 @@ WIRE_LOAD_LIB   ?= $(_TECH_LIB)
 WIRE_LOAD_MODEL ?= Medium
 NAND2_CELL      ?= $(_TECH_LIB)/NAND2_X1?_A9TR
 IO_DELAY_FRAC   ?= 0.15
+else ifeq ($(TECH),tsmc40tt)
+# Typical corner (tt, 0.90 V, 25 C) of the same 40 nm kit. Not for the thesis's
+# headline numbers, which stay at ss / 125 C, but for comparing against papers
+# that report at a typical corner.
+_TECH_LIB       := sc9_cln40g_base_rvt_tt_typical_max_0p90v_25c
+STD_CELL_DB     ?= /cad/designkit/CBDK_TSMC40_Arm_f2.0/CIC/SynopsysDC/db/sc9_base_rvt/$(_TECH_LIB).db
+WIRE_LOAD_LIB   ?= $(_TECH_LIB)
+WIRE_LOAD_MODEL ?= Medium
+NAND2_CELL      ?= $(_TECH_LIB)/NAND2_X1?_A9TR
+IO_DELAY_FRAC   ?= 0.15
 else ifeq ($(TECH),tsmc90)
 _TECH_LIB       := scx3_tsmc_cln90god_ss_1p08v_125c
 STD_CELL_DB     ?= /cad/designkit/CBDK_TSMC90GUTM_Arm_f1.0/CIC/SynopsysDC/db/$(_TECH_LIB).db
@@ -83,7 +94,7 @@ WIRE_LOAD_MODEL ?= tsmc090_wl10
 NAND2_CELL      ?= $(_TECH_LIB)/NAND2X1
 IO_DELAY_FRAC   ?= 0.15
 else ifneq ($(TECH),)
-$(error Unknown TECH=$(TECH). Known: tsmc40 tsmc90)
+$(error Unknown TECH=$(TECH). Known: tsmc40 tsmc40tt tsmc90)
 endif
 
 # Variables forwarded to the Tcl scripts. Only non-empty ones are exported, so
