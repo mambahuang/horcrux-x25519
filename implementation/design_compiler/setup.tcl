@@ -142,6 +142,14 @@ set CLK_TRAN      [env_or CLK_TRAN      "0.10"]
 # surrounding logic (the CV32E40Px core) is assumed to consume.
 set IO_DELAY_FRAC [env_or IO_DELAY_FRAC "0.30"]
 
+# 0 = leave the data inputs and outputs unconstrained: no input/output delay, so DC
+# neither times nor optimizes any path that starts or ends at a port, and fmax is
+# set by register-to-register paths alone. Not a realistic boundary -- in the SoC
+# the XIF result feeds the core's writeback in the same cycle -- but it reproduces
+# the way a coprocessor is often characterized on its own, which is what a paper's
+# headline number may be.
+set CONSTRAIN_IO  [env_or CONSTRAIN_IO  "1"]
+
 # Boundary electrical environment. Leave DRIVING_CELL empty to fall back to an
 # ideal driver plus a fixed load -- fine for a first-order area/fmax number,
 # optimistic for sign-off. Pick a mid-strength buffer from your library; run

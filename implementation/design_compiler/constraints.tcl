@@ -53,8 +53,13 @@ if {[sizeof_collection [get_ports $RST_PORT -quiet]] > 0} {
   set data_inputs [remove_from_collection $data_inputs [get_ports $RST_PORT]]
 }
 
-set_input_delay  -clock $CLK_NAME $io_delay $data_inputs
-set_output_delay -clock $CLK_NAME $io_delay [all_outputs]
+if {$CONSTRAIN_IO} {
+  set_input_delay  -clock $CLK_NAME $io_delay $data_inputs
+  set_output_delay -clock $CLK_NAME $io_delay [all_outputs]
+} else {
+  puts "### NOTE: CONSTRAIN_IO=0 -- inputs and outputs are unconstrained; only"
+  puts "###       register-to-register paths are timed."
+}
 
 # ---- Boundary electrical environment ---------------------------------------------------
 if {[string length $DRIVING_CELL] > 0} {

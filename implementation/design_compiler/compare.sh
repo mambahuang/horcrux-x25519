@@ -58,7 +58,7 @@ find "$OUT_ROOT" -maxdepth 1 -mindepth 1 -type d -not -name last_output | sort |
   case "$slack" in -*) mark="" ;; *) [ -n "$slack" ] && mark=" <== MET" ;; esac
 
   # The design-wide flags are constant across most runs; show only what varies.
-  flags=$(echo "$flags" | tr ' ' '\n' | grep -vE "^(ultra=1|retime=0|clk_gate=0|fix_hold=1)$" | tr '\n' ' ')
+  flags=$(echo "$flags" | tr ' ' '\n' | grep -vE "^(ultra=1|retime=0|clk_gate=0|fix_hold=1|io=1)$" | tr '\n' ' ')
 
   # Prefix each row with its sort keys (library, then target period); stripped below.
   printf "%s\t%s\t%-26s %-14s %8s %8s %10s %8s %7s %8s  %s%s\n" \
