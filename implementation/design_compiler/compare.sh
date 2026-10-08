@@ -10,6 +10,8 @@
 # ACHIEVED is target minus slack. EST is the closure estimate, which also accounts
 # for the IO delay and uncertainty growing with the target (see dc_script.tcl), and
 # is the better guide for the next sweep point. MHz follows EST when it is present.
+#
+# Rows are grouped by library and sorted by target period within each library.
 ##########################################################################################
 
 OUT_ROOT="${1:?usage: compare.sh <implementation/synthesis dir>}"
@@ -58,7 +60,9 @@ find "$OUT_ROOT" -maxdepth 1 -mindepth 1 -type d -not -name last_output | sort |
   # The design-wide flags are constant across most runs; show only what varies.
   flags=$(echo "$flags" | tr ' ' '\n' | grep -vE "^(ultra=1|retime=0|clk_gate=0|fix_hold=1)$" | tr '\n' ' ')
 
-  printf "%-26s %-14s %8s %8s %10s %8s %7s %8s  %s%s\n" \
+  # Prefix each row with its sort keys (library, then target period); stripped below.
+  printf "%s\t%s\t%-26s %-14s %8s %8s %10s %8s %7s %8s  %s%s\n" \
+    "$lib" "${target:-0}" \
     "$run" "$lib" "${target:--}" "${slack:--}" "${ach:--}" "${est:--}" "${mhz:--}" "${ge:--}" \
     "${flags:--}" "$mark"
-done
+done | sort -t "$(printf '\t')" -k1,1 -k2,2g | cut -f3-
