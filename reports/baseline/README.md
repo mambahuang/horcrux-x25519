@@ -47,7 +47,11 @@ slack 剛好 +0.000 的 run 只代表在該目標下收斂：DC 達標後會改�
 ## 注意事項（論文引用前）
 
 1. **約束隨週期縮放。** setup uncertainty（0.05 × P）與 IO delay（0.15 × P）都是週期的比例，週期越長扣得越多，會高估與較快設計（例如 `baseline-dwmul`）之間的差距。正式數字的約束待定案。
-2. **ss corner 有 `max_transition` 違規。** 收斂的 run 仍有上千條網路超過 `MAX_TRAN = 0.30 ns`（最差約 −0.07 ns），集中在 `horcrux_register_inst` 的高扇出控制訊號；tt corner 只有個位數。0.30 ns 是經驗值，對 ss / 0.81 V 可能太嚴，同樣待定案。見各 run 的 `constraint_summary.rpt`。
+2. **ss corner 有 `max_transition` 違規，但不影響時序數字。** 收斂的 run 仍有上千條網路超過 flow 自訂的 `MAX_TRAN = 0.30 ns`（最差約 −0.07 ns，即 0.37 ns），集中在 `horcrux_register_inst` 的高扇出控制訊號；tt corner 只有個位數。已對照 `sc9_cln40g_base_rvt_ss_typical_max_0p81v_125c.lib` 確認：
+   - 資料 pin 的 `max_transition` 為 0.762 ns，對應的延遲表（14,432 張）輸入 transition 也量測到 0.762 ns，因此這些網路的延遲是查表內插，不是外插。
+   - 庫中較嚴的 0.381 ns 只出現在時脈類 pin：正反器 `CK`/`CKN`、latch `G`/`GN`、register file 的 `WWL*`（共 1,566 張表）。合成時時脈為理想網路（transition 0.10 ns），不受影響。
+
+   0.30 ns 只是經驗值，比庫的限制更嚴；正式數字的 `MAX_TRAN` 建議改用 0.762 ns（庫的資料 pin 限制），與其他約束一起定案。見各 run 的 `constraint_summary.rpt`。
 3. **`max_area` 與 `max_leakage_power` 的「違規」不是問題**：flow 設了 `set_max_area 0`，要求 DC 盡量縮面積，所以面積永遠標成違規。
 4. **wire load** 為 `Medium`（`sc9` 庫），非實體佈局的估計值。
 
