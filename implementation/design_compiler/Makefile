@@ -120,6 +120,7 @@ help:
 	@echo "  make report                  show the last summary"
 	@echo "  make gui                     open Design Vision on the last run"
 	@echo "  make compare                 table of every run so far"
+	@echo "  make pack                    tarball of all runs' reports, for the repo"
 	@echo "  make libinfo                 dump wire load models / cell areas"
 	@echo "  make clean                   delete implementation/synthesis/*"
 	@echo ""
@@ -187,6 +188,13 @@ libinfo: check-tool
 .PHONY: compare
 compare:
 	@bash $(DC_DIR)/compare.sh $(OUT_ROOT)
+
+# Tarball of every run's reports for committing (see pack_reports.sh). Named after
+# the worktree, so baseline and baseline-dwmul do not overwrite each other.
+PACK ?= $(HOME)/$(notdir $(REPO_ROOT))_synth_reports.tgz
+.PHONY: pack
+pack:
+	@bash $(DC_DIR)/pack_reports.sh $(OUT_ROOT) $(PACK)
 
 .PHONY: report
 report:
