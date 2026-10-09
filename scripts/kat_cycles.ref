@@ -1,0 +1,140 @@
+pqc_optimized_DS_ML-DSA_ML-DSA-65: Keygen cycles: 789880
+pqc_optimized_DS_ML-DSA_ML-DSA-65: Sign cycles: 6176971
+pqc_optimized_DS_ML-DSA_ML-DSA-65: Verify cycles: 913085
+pqc_optimized_KEM_HQC_HQC-2025_HQC-1: Keygen cycles: 2411827
+pqc_optimized_KEM_HQC_HQC-2025_HQC-1: Encaps cycles: 4537744
+pqc_optimized_KEM_HQC_HQC-2025_HQC-1: Decaps cycles: 7406292
+pqc_optimized_KEM_ML-KEM_ml-kem-768: Keygen cycles: 260388
+pqc_optimized_KEM_ML-KEM_ml-kem-768: Encaps cycles: 288498
+pqc_optimized_KEM_ML-KEM_ml-kem-768: Decaps cycles: 426258
+tests_cbd_eta2: Software Cycles: 2048
+tests_cbd_eta2: Hardware Cycles: 786
+tests_cbd_eta2: SW Cycles: 2048 | HW Cycles: 786
+tests_cbd_eta3: Software Cycles: 7123
+tests_cbd_eta3: Hardware Cycles: 2034
+tests_cbd_eta3: SW Cycles: 7123 | HW Cycles: 2034
+tests_cbd_eta4: Software Cycles: 1150
+tests_cbd_eta4: Hardware Cycles: 431
+tests_cbd_eta4: SW Cycles: 1150 | HW Cycles: 431
+tests_chain-lengths: SPHINCS+-128f-robust SW Cycles: 552
+tests_chain-lengths: SPHINCS+-128f-robust HW Cycles: 127
+tests_chain-lengths: SW Cycles: 552 | HW Cycles: 127
+tests_chain-lengths: SPHINCS+-128f-simple SW Cycles: 552
+tests_chain-lengths: SPHINCS+-128f-simple HW Cycles: 127
+tests_chain-lengths: SW Cycles: 552 | HW Cycles: 127
+tests_chain-lengths: SPHINCS+-192f-robust SW Cycles: 792
+tests_chain-lengths: SPHINCS+-192f-robust HW Cycles: 178
+tests_chain-lengths: SW Cycles: 792 | HW Cycles: 178
+tests_chain-lengths: SPHINCS+-192f-simple SW Cycles: 792
+tests_chain-lengths: SPHINCS+-192f-simple HW Cycles: 178
+tests_chain-lengths: SW Cycles: 792 | HW Cycles: 178
+tests_chain-lengths: SPHINCS+-256f-robust SW Cycles: 1035
+tests_chain-lengths: SPHINCS+-256f-robust HW Cycles: 228
+tests_chain-lengths: SW Cycles: 1035 | HW Cycles: 228
+tests_chain-lengths: SPHINCS+-256f-simple SW Cycles: 1034
+tests_chain-lengths: SPHINCS+-256f-simple HW Cycles: 228
+tests_chain-lengths: SW Cycles: 1034 | HW Cycles: 228
+tests_compare-u32: [SW] Cycles for 20 comparisons: 291
+tests_compare-u32: [HW] Cycles for 20 comparisons: 226
+tests_compare-u32: SW Cycles: 291 | HW Cycles: 226
+tests_dilithium-intt: Software Cycles: 55534
+tests_dilithium-intt: Hardware Cycles: 19517
+tests_dilithium-intt: SW Cycles: 55534 | HW Cycles: 19517
+tests_dilithium-montg: Software Cycles: 608
+tests_dilithium-montg: Hardware Cycles: 245
+tests_dilithium-montg: SW Cycles: 608 | HW Cycles: 245
+tests_dilithium-ntt: Software Cycles: 48486
+tests_dilithium-ntt: Hardware Cycles: 17403
+tests_dilithium-ntt: SW Cycles: 48486 | HW Cycles: 17403
+tests_dilithium-poly-intt: polyvec_invntt software cycles: 221302
+tests_dilithium-poly-intt: polyvec_invntt hardware cycles: 74982
+tests_dilithium-poly-intt: SW Cycles: 221302 | HW Cycles: 74982
+tests_dilithium-poly-ntt: polyvec_ntt software cycles: 191858
+tests_dilithium-poly-ntt: polyvec_ntt hardware cycles: 62853
+tests_dilithium-poly-ntt: SW Cycles: 191858 | HW Cycles: 62853
+tests_dilithium-reduce32: Software Cycles: 388
+tests_dilithium-reduce32: Hardware Cycles: 207
+tests_dilithium-reduce32: SW Cycles: 388 | HW Cycles: 207
+tests_falcon-fpr-norm: SW cycles (FPR_NORM64): 10117
+tests_falcon-fpr-norm: HW cycles (FPR_NORM64): 1932
+tests_falcon-fpr: SW cycles (FPR): 3335
+tests_falcon-fpr: HW cycles (FPR): 1516
+tests_falcon-intt: Software Cycles: 2076
+tests_falcon-intt: Hardware Cycles: 1206
+tests_falcon-intt: SW Cycles: 2076 | HW Cycles: 1206
+tests_falcon-montg: Software Cycles: 348
+tests_falcon-montg: Hardware Cycles: 246
+tests_falcon-montg: SW Cycles: 348 | HW Cycles: 246
+tests_falcon-ntt: Software Cycles: 1652
+tests_falcon-ntt: Hardware Cycles: 994
+tests_falcon-ntt: SW Cycles: 1652 | HW Cycles: 994
+tests_fqmul: Software Cycles: 236
+tests_fqmul: Hardware Cycles: 102
+tests_fqmul: SW Cycles: 236 | HW Cycles: 102
+tests_gen-matrix: Cycles: 418061
+tests_gen-matrix: Cycles: 418041
+tests_gen-matrix: Cycles: 24762
+tests_gen-matrix: Cycles: 24742
+tests_gen-matrix: SW Cycles: 418061 | HW Cycles: 24762
+tests_gf-carryless: Software Cycles: 3047
+tests_gf-carryless: Hardware Cycles: 114
+tests_gf-carryless: SW Cycles: 3047 | HW Cycles: 114
+tests_gf-reduce: [SW] Cycles for 10 reductions: 256
+tests_gf-reduce: [HW] Cycles for 10 reductions: 104
+tests_gf-reduce: SW Cycles: 256 | HW Cycles: 104
+tests_hqc-barrett: Software Cycles: 2716
+tests_hqc-barrett: Hardware Cycles: 1878
+tests_hqc-barrett: SW Cycles: 2716 | HW Cycles: 1878
+tests_karats: Software Cycles: 2634
+tests_karats: Hardware Cycles: 8
+tests_karats: SW Cycles: 2634 | HW Cycles: 8
+tests_keccak-abs-multi-squeeze: SW cycles: 78580
+tests_keccak-abs-multi-squeeze: HW cycles: 4842
+tests_keccak-abs-multi-squeeze: SW Cycles: 78580 | HW Cycles: 4842
+tests_keccak-abs-sha3-256-multi-block: SW cycles: 50252
+tests_keccak-abs-sha3-256-multi-block: HW cycles: 3133
+tests_keccak-abs-sha3-256-multi-block: SW Cycles: 50252 | HW Cycles: 3133
+tests_keccak-abs-sha3-256-single-block: SW cycles: 24547
+tests_keccak-abs-sha3-256-single-block: HW cycles: 1638
+tests_keccak-abs-sha3-256-single-block: SW Cycles: 24547 | HW Cycles: 1638
+tests_keccak-abs-shake256: SW cycles: 27287
+tests_keccak-abs-shake256: HW cycles: 3261
+tests_keccak-abs-shake256: SW Cycles: 27287 | HW Cycles: 3261
+tests_keccak-abs: Cycles: 1656
+tests_keccak-abs: Cycles: 1743
+tests_keccak-abs: Cycles: 3142
+tests_keccak-abs: Cycles: 2394
+tests_keccak-abs: Cycles: 3284
+tests_keccak-abs: Cycles: 4832
+tests_kyber-barrett: Software Cycles: 272
+tests_kyber-barrett: Hardware Cycles: 224
+tests_kyber-barrett: SW Cycles: 272 | HW Cycles: 224
+tests_kyber-intt: Software Cycles: 29604
+tests_kyber-intt: Hardware Cycles: 11406
+tests_kyber-intt: SW Cycles: 29604 | HW Cycles: 11406
+tests_kyber-montg: Software Cycles: 291
+tests_kyber-montg: Hardware Cycles: 246
+tests_kyber-montg: SW Cycles: 291 | HW Cycles: 246
+tests_kyber-ntt: Software Cycles: 20627
+tests_kyber-ntt: Hardware (x2) Cycles: 10975
+tests_kyber-ntt: SW Cycles: 20627 | HW x2 Cycles: 10975
+tests_kyber-poly-intt: polyvec_invntt software cycles: 60926
+tests_kyber-poly-intt: polyvec_invntt hardware cycles: 21865
+tests_kyber-poly-intt: SW Cycles: 60926 | HW Cycles: 21865
+tests_kyber-poly-ntt: polyvec_ntt software cycles: 45879
+tests_kyber-poly-ntt: polyvec_ntt hardware cycles: 26573
+tests_kyber-poly-ntt: SW Cycles: 45879 | HW Cycles: 26573
+tests_mldsa-rej-eta: ETA2 Total SW Cycles: 1684 | Total HW Cycles: 400
+tests_mldsa-rej-uniform: Software Cycles: 1141
+tests_mldsa-rej-uniform: Hardware Cycles: 1203
+tests_mldsa-rej-uniform: SW Cycles: 1141 | HW Cycles: 1203
+tests_mldsa-unpack-z: Software Cycles: 1049
+tests_mldsa-unpack-z: Hardware Cycles: 506
+tests_mldsa-unpack-z: SW Cycles: 1049 | HW Cycles: 506
+tests_mq-montymul: Software Cycles: 360
+tests_mq-montymul: Hardware Cycles: 114
+tests_mq-montymul: SW Cycles: 360 | HW Cycles: 114
+tests_prf-addr: SW Cycles: 151262 | HW Cycles: 4104
+tests_thash-wots: SW Cycles: 3627188 | HW Cycles: 89156
+tests_thash: SW Cycles: 452084 | HW Cycles: 8484
+tests_thash2: SW Cycles: 461058 | HW Cycles: 8892
