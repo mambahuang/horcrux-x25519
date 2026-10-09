@@ -7,6 +7,8 @@
 # Run from the repo root on the lab server, with the Python venv active:
 #     source .venv/bin/activate.csh     # csh/tcsh
 #     sh scripts/kat_regression.sh
+#     sh scripts/kat_regression.sh tests/cbd_eta1 tests/kyber-montg   # just these
+#     sh scripts/kat_regression.sh --cycles-only    # compare existing logs only
 #
 # Build steps need LD_LIBRARY_PATH cleared (Cadence's liblzma breaks cmake3);
 # the simulation step must NOT have it cleared, since it needs the tool env.
@@ -211,7 +213,17 @@ run_one() {
     fi
 }
 
-for p in $DIRECTED $KAT; do
+# Projects named on the command line run instead of the full list, e.g.
+#     sh scripts/kat_regression.sh tests/cbd_eta1 tests/kyber-montg
+# The cycle comparison still covers every log in $OUT, so tests not rerun are
+# compared from their previous logs.
+if [ $# -gt 0 ]; then
+    LIST="$*"
+else
+    LIST="$DIRECTED $KAT"
+fi
+
+for p in $LIST; do
     run_one "$p"
 done
 
