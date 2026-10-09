@@ -59,5 +59,5 @@
 
 與 `reports/baseline/README.md` 相同，另外：
 
-- ss 的 run 也有 `max_transition` 違規（5.4 ns 時 510 條網路，最差 −0.13 ns），tt 只有個位數。
+- ss 的 run 也有 `max_transition` 違規（5.4 ns 時 510 條網路，最差 −0.13 ns，即 0.43 ns），tt 只有個位數。和 baseline 一樣，0.43 ns 仍低於庫對資料 pin 的限制與延遲表的量測上限 0.762 ns，延遲是查表內插，不影響時序數字（理由見 `baseline` 分支 `reports/baseline/README.md` 的注意事項 2）。
 - 「各自 Fmax」的面積包含 DC 為趕時序而加大的 cell；只看乘法器寫法本身的面積差，應以同頻的比較為準。
