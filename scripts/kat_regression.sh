@@ -20,10 +20,10 @@
 #   ML-KEM-768  KeyGen/Encaps/Decaps :   260,388 /   288,498 /   426,258
 #   HQC-1       KeyGen/Encaps/Decaps : 2,411,827 / 4,537,744 / 7,406,292
 #
-# STATUS: this script has never been executed end to end. Every step in it was
-# run by hand during the M0 FPGA regression (tag m0-fpga, M0_FINDINGS.md), but
-# the script as assembled here is unvalidated. `sh -n` passes. Treat the first
-# run as a shakedown.
+# STATUS: validated end to end on 2026-10-08 on x25519-ext with the unmodified
+# locket RTL: no unexpected failures, falcon-montg reported as the one expected
+# failure, and the ML-KEM-768 and HQC-1 cycle counts identical to the numbers
+# above.
 #
 # Note also scripts/sim_all_app.sh, which does a similar sweep but marks a test
 # PASSED on the string "TEST SUCCEEDED" alone. That is the testbench reporting
