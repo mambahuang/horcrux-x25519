@@ -7,7 +7,10 @@
 #
 # Per run it keeps what a write-up needs and drops what can be regenerated or is too
 # large for git (netlist, ddc, sdf, the full synth.log):
-#   summary.rpt area.rpt qor.rpt resources.rpt power.rpt constraint.rpt
+#   summary.rpt area.rpt qor.rpt resources.rpt power.rpt
+#   constraint_summary.rpt -- per constraint, the number of violating nets and the
+#                         worst slack. The full report_constraint -all_violators
+#                         lists every pin of every violating net, ~1 MB per run.
 #   timing_worst.rpt   -- the first (worst) path of timing_max.rpt only. The full
 #                         report lists 100 paths, each several hundred cells long on
 #                         the original multiplier, i.e. megabytes per run.
@@ -34,9 +37,12 @@ for d in "$SYN"/*/; do
   [ -f "$d/report/summary.rpt" ] || continue
   dest="$TMP/synth_reports/$run"
   mkdir -p "$dest"
-  for f in summary area qor resources power constraint; do
+  for f in summary area qor resources power; do
     [ -f "$d/report/$f.rpt" ] && cp "$d/report/$f.rpt" "$dest/"
   done
+  if [ -f "$d/report/constraint.rpt" ]; then
+    bash "$HERE/constraint_summary.sh" "$d/report/constraint.rpt" > "$dest/constraint_summary.rpt"
+  fi
   if [ -f "$d/report/timing_max.rpt" ]; then
     awk '/Startpoint/{n++} n<=1' "$d/report/timing_max.rpt" > "$dest/timing_worst.rpt"
   fi
