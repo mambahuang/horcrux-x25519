@@ -1,0 +1,16 @@
+########################################################################
+### SYNTHESIS SUMMARY - horcrux_top_synth
+###   library         : /cad/designkit/CBDK_TSMC40_Arm_f2.0/CIC/SynopsysDC/db/sc9_base_rvt/sc9_cln40g_base_rvt_tt_typical_max_0p90v_25c.db
+###   io_delay_frac   : unconstrained (CONSTRAIN_IO=0: register-to-register paths only)
+###   clk uncertainty : 0.13 ns setup / 0.026 ns hold
+###   wire load       : Medium
+###   opcond          : library default
+###   compile         : ultra=1 keep_hier=1 incr=1 retime=0 clk_gate=0 fix_hold=1 io=0
+###   target period   : 2.600 ns  (384.6 MHz)
+###   worst slack     : +0.000 ns
+###   achieved period : 2.600 ns  (384.6 MHz)
+###   est. closure    : 2.600 ns  (384.6 MHz)  [reg->reg path, slack scaled by 1/0.950]
+###   total cell area : 100929.6  (library area units)
+###   gate equivalent : 148.3 kGE  (1 GE = sc9_cln40g_base_rvt_tt_typical_max_0p90v_25c/NAND2_X1A_A9TR, 0.6804)
+###   reports         : /home/Charmander/horcrux-dwmul/implementation/synthesis/horcrux_top_synth_2p6ns_20261008_145132/report
+########################################################################

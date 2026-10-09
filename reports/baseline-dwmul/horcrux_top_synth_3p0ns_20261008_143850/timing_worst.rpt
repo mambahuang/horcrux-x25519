@@ -1,0 +1,140 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nworst 5
+        -max_paths 20
+Design : horcrux_top_synth
+Version: X-2025.06
+Date   : Thu Oct  8 14:51:20 2026
+****************************************
+
+Operating Conditions: tt_typical_max_0p90v_25c   Library: sc9_cln40g_base_rvt_tt_typical_max_0p90v_25c
+Wire Load Model Mode: top
+
+  Startpoint: i_horcrux_top/id_stage_i/rs_values_o_reg[rs2][8]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: i_horcrux_top/i_horcrux/multiplier_tree_inst/reg_A_reg[9]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  horcrux_top_synth  Medium                sc9_cln40g_base_rvt_tt_typical_max_0p90v_25c
+
+  Point                                                                                                                                           Incr       Path
+  ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  clock clk (rise edge)                                                                                                                         0.0000     0.0000
+  clock network delay (ideal)                                                                                                                   0.3000     0.3000
+  i_horcrux_top/id_stage_i/rs_values_o_reg[rs2][8]/CK (DFFSQN_X2M_A9TR)                                                                         0.0000     0.3000 r
+  i_horcrux_top/id_stage_i/rs_values_o_reg[rs2][8]/QN (DFFSQN_X2M_A9TR)                                                                         0.0984     0.3984 f
+  i_horcrux_top/id_stage_i/rs_values_o[rs2][8] (id_stage_I_xif_issue_if_if_xif_coproc_issue_X_NUM_RS_3)                                         0.0000     0.3984 f
+  i_horcrux_top/i_horcrux/rs_values_i[rs2][8] (horcrux_NUM_VARIABLES50_VARIABLE_WIDTH32)                                                        0.0000     0.3984 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/multiplier_tree2_i[8] (multiplier_tree)                                                          0.0000     0.3984 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/U289/Y (BUF_X13M_A9TR)                                                                           0.0358     0.4342 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/U228/Y (NOR2_X3A_A9TR)                                                                           0.0295     0.4637 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/U804/Y (INV_X2P5M_A9TR)                                                                          0.0202     0.4839 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/U611/Y (AO21A1AI2_X2M_A9TR)                                                                      0.0329     0.5168 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/U339/Y (OAI211_X2M_A9TR)                                                                         0.0364     0.5532 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/U495/Y (NOR2_X3M_A9TR)                                                                           0.0334     0.5866 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/U491/Y (AOI21_X8M_A9TR)                                                                          0.0373     0.6239 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/U710/Y (NAND2_X6B_A9TR)                                                                          0.0192     0.6431 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/U164/Y (INV_X9M_A9TR)                                                                            0.0168     0.6599 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/U352/Y (NAND2_X3B_A9TR)                                                                          0.0160     0.6759 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/U613/Y (NAND4_X4A_A9TR)                                                                          0.0323     0.7082 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/op_b_i[0] (shared_multiplication_logic)                                             0.0000     0.7082 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/b_i[0] (unified_mul_32x32)                                            0.0000     0.7082 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/U149/Y (INV_X6M_A9TR)                                                 0.0251     0.7333 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/U553/Y (INV_X13M_A9TR)                                                0.0201     0.7535 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/mult_x_1/b[0] (unified_mul_32x32_DW_mult_tc_3)                        0.0000     0.7535 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/mult_x_1/U3660/Y (BUF_X9M_A9TR)                                       0.0357     0.7892 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/mult_x_1/U4360/Y (NOR2B_X2M_A9TR)                                     0.0499     0.8391 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/mult_x_1/U3304/Y (NOR2_X4M_A9TR)                                      0.0294     0.8685 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/mult_x_1/U3302/Y (NAND2B_X2M_A9TR)                                    0.0371     0.9057 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/mult_x_1/U2991/Y (XOR2_X3M_A9TR)                                      0.0266     0.9323 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/mult_x_1/product[2] (unified_mul_32x32_DW_mult_tc_3)                  0.0000     0.9323 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/U262/Y (AO21B_X6M_A9TR)                                               0.0434     0.9757 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/prod_o[2] (unified_mul_32x32)                                         0.0000     0.9757 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/U313/Y (AND2_X11B_A9TR)                                                             0.0359     1.0116 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/mult_x_3/a[2] (shared_multiplication_logic_DW_mult_uns_3)                           0.0000     1.0116 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/mult_x_3/U1054/Y (XNOR2_X4M_A9TR)                                                   0.0263     1.0379 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/mult_x_3/U1302/Y (OAI22_X3M_A9TR)                                                   0.0384     1.0763 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/mult_x_3/U1551/Y (INV_X3B_A9TR)                                                     0.0227     1.0990 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/mult_x_3/U1042/Y (XOR2_X3M_A9TR)                                                    0.0252     1.1243 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/mult_x_3/product[2] (shared_multiplication_logic_DW_mult_uns_3)                     0.0000     1.1243 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/U102/Y (AND2_X8M_A9TR)                                                              0.0359     1.1601 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/U165/Y (OR2_X6M_A9TR)                                                               0.0242     1.1843 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/I1[2] (shared_multiplication_logic_DP_OP_46J11_122_2489_1)     0.0000     1.1843 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U3599/Y (INV_X3M_A9TR)                                         0.0207     1.2050 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U3924/Y (INV_X7P5M_A9TR)                                       0.0203     1.2253 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U4729/Y (XNOR2_X0P7M_A9TR)                                     0.0681     1.2934 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U3881/Y (OAI22_X1M_A9TR)                                       0.0945     1.3879 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U5573/Y (NOR2_X0P5M_A9TR)                                      0.0932     1.4811 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U5575/Y (OAI21_X0P7M_A9TR)                                     0.0670     1.5480 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U3574/Y (AOI21_X0P7M_A9TR)                                     0.0676     1.6156 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U5578/Y (OA21_X0P5M_A9TR)                                      0.0699     1.6855 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U5580/Y (OA21_X0P5M_A9TR)                                      0.0696     1.7552 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U3536/Y (OAI21_X1P4M_A9TR)                                     0.0379     1.7931 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U5583/Y (AOI21_X1P4M_A9TR)                                     0.0410     1.8341 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U5585/Y (OAI21_X1P4M_A9TR)                                     0.0339     1.8680 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U5587/Y (AO21_X1P4M_A9TR)                                      0.0428     1.9108 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U5589/Y (AOI21_X1P4M_A9TR)                                     0.0341     1.9449 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U3456/Y (OAI21_X2M_A9TR)                                       0.0311     1.9760 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U3667/Y (AOI22_X2M_A9TR)                                       0.0332     2.0092 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U3423/Y (OAI21_X2M_A9TR)                                       0.0312     2.0404 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U3665/Y (AOI21_X2M_A9TR)                                       0.0416     2.0820 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U5599/Y (OAI21_X4M_A9TR)                                       0.0349     2.1170 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U5824/Y (AOI21B_X6M_A9TR)                                      0.0297     2.1467 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U3677/Y (OAI21_X2M_A9TR)                                       0.0396     2.1863 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U3674/Y (AOI21_X3M_A9TR)                                       0.0433     2.2296 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U3673/Y (OAI21_X2M_A9TR)                                       0.0424     2.2720 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U5615/Y (AOI21_X3M_A9TR)                                       0.0500     2.3220 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U3672/Y (OAI21_X6M_A9TR)                                       0.0336     2.3556 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U5773/Y (AOI21_X6M_A9TR)                                       0.0338     2.3894 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U5823/Y (OAI21_X6M_A9TR)                                       0.0275     2.4169 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U5790/Y (AOI21_X6M_A9TR)                                       0.0327     2.4495 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U5791/Y (INV_X5M_A9TR)                                         0.0162     2.4657 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U5796/Y (AOI21_X4M_A9TR)                                       0.0252     2.4909 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/U4004/Y (XOR2_X4M_A9TR)                                        0.0305     2.5215 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489/O2[28] (shared_multiplication_logic_DP_OP_46J11_122_2489_1)    0.0000     2.5215 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/U127/Y (AND2_X6M_A9TR)                                                              0.0334     2.5549 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/U146/Y (OA21_X4M_A9TR)                                                              0.0354     2.5902 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/U194/Y (OAI31_X6M_A9TR)                                                             0.0403     2.6306 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/U256/Y (INV_X9M_A9TR)                                                               0.0404     2.6710 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/U222/Y (NAND2_X3M_A9TR)                                                             0.0217     2.6927 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/U219/Y (NAND2_X4B_A9TR)                                                             0.0210     2.7137 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/U218/Y (OA1B2_X6M_A9TR)                                                             0.0216     2.7353 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/U217/Y (NAND2_X8A_A9TR)                                                             0.0220     2.7572 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/res_lo_o[1] (shared_multiplication_logic)                                           0.0000     2.7572 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/sub_x_14/B[1] (multiplier_tree_DW01_sub_7)                                                       0.0000     2.7572 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/sub_x_14/U436/Y (INV_X6M_A9TR)                                                                   0.0140     2.7712 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/sub_x_14/U536/Y (OAI2XB1_X6M_A9TR)                                                               0.0146     2.7858 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/sub_x_14/U525/Y (OAI21_X6M_A9TR)                                                                 0.0217     2.8075 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/sub_x_14/U475/Y (NAND2_X4A_A9TR)                                                                 0.0220     2.8295 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/sub_x_14/U474/Y (NAND2_X4A_A9TR)                                                                 0.0193     2.8488 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/sub_x_14/U529/Y (AOI21_X8M_A9TR)                                                                 0.0261     2.8749 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/sub_x_14/U519/Y (OAI21_X8M_A9TR)                                                                 0.0227     2.8976 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/sub_x_14/U387/Y (BUF_X2B_A9TR)                                                                   0.0435     2.9410 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/sub_x_14/U364/Y (AOI21_X1M_A9TR)                                                                 0.0522     2.9932 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/sub_x_14/U341/Y (XOR2_X0P7M_A9TR)                                                                0.0537     3.0469 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/sub_x_14/DIFF[9] (multiplier_tree_DW01_sub_7)                                                    0.0000     3.0469 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/U943/Y (NAND2_X1A_A9TR)                                                                          0.0380     3.0849 f
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/U944/Y (OAI211_X1M_A9TR)                                                                         0.0465     3.1314 r
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/reg_A_reg[9]/D (DFFRPQ_X2M_A9TR)                                                                 0.0003     3.1317 r
+  data arrival time                                                                                                                                        3.1317
+
+  clock clk (rise edge)                                                                                                                         3.0000     3.0000
+  clock network delay (ideal)                                                                                                                   0.3000     3.3000
+  clock uncertainty                                                                                                                            -0.1500     3.1500
+  i_horcrux_top/i_horcrux/multiplier_tree_inst/reg_A_reg[9]/CK (DFFRPQ_X2M_A9TR)                                                                0.0000     3.1500 r
+  library setup time                                                                                                                           -0.0183     3.1317
+  data required time                                                                                                                                       3.1317
+  ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                                                                       3.1317
+  data arrival time                                                                                                                                       -3.1317
+  ------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                                                                              0.0000
+
+

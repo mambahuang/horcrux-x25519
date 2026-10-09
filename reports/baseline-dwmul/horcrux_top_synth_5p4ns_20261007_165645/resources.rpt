@@ -1,0 +1,1264 @@
+ 
+****************************************
+Report : resources
+Design : horcrux_top_synth
+Version: X-2025.06
+Date   : Wed Oct  7 17:19:36 2026
+****************************************
+
+
+No resource sharing information to report.
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : horcrux_top_I_xif_compressed_if_if_xif__X_NUM_RS_3I_xif_issue_if_if_xif__X_NUM_RS_3I_xif_commit_if_if_xif__X_NUM_RS_3I_xif_mem_if_if_xif__X_NUM_RS_3I_xif_mem_result_if_if_xif__X_NUM_RS_3I_xif_result_if_if_xif__X_NUM_RS_3
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : commit_stage_I_xif_result_if_if_xif_coproc_result_X_NUM_RS_3
+****************************************
+
+No implementations to report
+ 
+****************************************
+Design : horcrux_NUM_VARIABLES50_VARIABLE_WIDTH32
+****************************************
+
+Resource Report for this hierarchy in file
+        /home/Charmander/horcrux-dwmul/hw/ip/coprocessors/horcrux.sv
+=============================================================================
+| Cell           | Module         | Parameters | Contained Operations       |
+=============================================================================
+| add_x_4        | DW01_add       | width=6    | add_257 (horcrux.sv:257)   |
+| ashr_5         | DW_rightsh     | A_width=55 | srl_261 (horcrux.sv:261)   |
+|                |                | SH_width=5 |                            |
+=============================================================================
+
+
+Implementation Report
+===============================================================================
+|                    |                  | Current            | Set            |
+| Cell               | Module           | Implementation     | Implementation |
+===============================================================================
+| add_x_4            | DW01_add         | apparch (area)     |                |
+| ashr_5             | DW_rightsh       | astr (area)        |                |
+===============================================================================
+
+ 
+****************************************
+Design : multiplier_tree
+****************************************
+
+Resource Report for this hierarchy in file
+        /home/Charmander/horcrux-dwmul/hw/ip/coprocessors/multiplier_tree.sv
+=============================================================================
+| Cell           | Module         | Parameters | Contained Operations       |
+=============================================================================
+| add_x_1        | DW01_add       | width=32   | add_99 (multiplier_tree.sv:99) |
+| gte_x_2        | DW_cmp         | width=16   | gte_110 (multiplier_tree.sv:110) |
+| sub_x_13       | DW01_sub       | width=32   | sub_199 (multiplier_tree.sv:199) |
+| sub_x_14       | DW01_sub       | width=32   | sub_307 (multiplier_tree.sv:307) |
+| sub_x_3        | DW01_sub       | width=32   | sub_126 (multiplier_tree.sv:126) |
+           |                |            | sub_198 (multiplier_tree.sv:198) |
+| DP_OP_96J7_122_9380             |            |                            |
+|                | DP_OP_96J7_122_9380 |       |                            |
+| DP_OP_97J7_123_4100             |            |                            |
+|                | DP_OP_97J7_123_4100 |       |                            |
+| DP_OP_98J7_124_4100             |            |                            |
+|                | DP_OP_98J7_124_4100 |       |                            |
+| DP_OP_87J7_127_9004             |            |                            |
+|                | DP_OP_87J7_127_9004 |       |                            |
+| DP_OP_88J7_128_2685             |            |                            |
+|                | DP_OP_88J7_128_2685 |       |                            |
+| DP_OP_93_150_9367               |            |                            |
+|                | DP_OP_93_150_9367 |         |                            |
+| DP_OP_94_151_9367               |            |                            |
+|                | DP_OP_94_151_9367 |         |                            |
+=============================================================================
+
+Datapath Report for DP_OP_96J7_122_9380
+==============================================================================
+| Cell                 | Contained Operations                                |
+==============================================================================
+| DP_OP_96J7_122_9380  | add_264 (multiplier_tree.sv:264)                    |
+|                      | add_277 (multiplier_tree.sv:277)                    |
+|                      | sub_277 (multiplier_tree.sv:277)                    |
+|                      | add_279_aco (multiplier_tree.sv:279)                |
+==============================================================================
+
+==============================================================================
+|       |      | Data     |       |                                          |
+| Var   | Type | Class    | Width | Expression                               |
+==============================================================================
+| I1    | PI   | Unsigned | 16    |                                          |
+| I2    | PI   | Unsigned | 16    |                                          |
+| I3    | PI   | Unsigned | 14    |                                          |
+| T49   | IFO  | Signed   | 16    | O2[15:0]                                 |
+| O1    | PO   | Unsigned | 17    | I1 + I2 ( multiplier_tree.sv:264 multiplier_tree.sv:277 ) |
+| O2    | PO   | Signed   | 17    | -$unsigned(14'b11000000000001) + O1 (multiplier_tree.sv:277) |
+| O3    | PO   | Unsigned | 16    | T49 + I3 (multiplier_tree.sv:279)        |
+==============================================================================
+
+Datapath Report for DP_OP_97J7_123_4100
+==============================================================================
+| Cell                 | Contained Operations                                |
+==============================================================================
+| DP_OP_97J7_123_4100  | sub_265 (multiplier_tree.sv:265)                    |
+|                      | sub_282 (multiplier_tree.sv:282)                    |
+|                      | add_284_aco (multiplier_tree.sv:284)                |
+==============================================================================
+
+==============================================================================
+|       |      | Data     |       |                                          |
+| Var   | Type | Class    | Width | Expression                               |
+==============================================================================
+| I1    | PI   | Unsigned | 16    |                                          |
+| I2    | PI   | Unsigned | 16    |                                          |
+| I3    | PI   | Unsigned | 14    |                                          |
+| T51   | IFO  | Signed   | 16    | O1[15:0]                                 |
+| O1    | PO   | Signed   | 17    | I1 - I2 ( multiplier_tree.sv:265 multiplier_tree.sv:282 ) |
+| O2    | PO   | Unsigned | 16    | T51 + I3 (multiplier_tree.sv:284)        |
+==============================================================================
+
+Datapath Report for DP_OP_98J7_124_4100
+==============================================================================
+| Cell                 | Contained Operations                                |
+==============================================================================
+| DP_OP_98J7_124_4100  | add_294 (multiplier_tree.sv:294)                    |
+|                      | sub_294 (multiplier_tree.sv:294)                    |
+|                      | add_295_aco (multiplier_tree.sv:295)                |
+==============================================================================
+
+==============================================================================
+|       |      | Data     |       |                                          |
+| Var   | Type | Class    | Width | Expression                               |
+==============================================================================
+| I1    | PI   | Unsigned | 16    |                                          |
+| I2    | PI   | Unsigned | 16    |                                          |
+| I3    | PI   | Unsigned | 14    |                                          |
+| T53   | IFO  | Signed   | 16    | O1[15:0]                                 |
+| O1    | PO   | Signed   | 17    | I1 + I2 - $unsigned(14'b11000000000001) (multiplier_tree.sv:294) |
+| O2    | PO   | Unsigned | 16    | T53 + I3 (multiplier_tree.sv:295)        |
+==============================================================================
+
+Datapath Report for DP_OP_87J7_127_9004
+==============================================================================
+| Cell                 | Contained Operations                                |
+==============================================================================
+| DP_OP_87J7_127_9004  | sub_110 (multiplier_tree.sv:110)                    |
+|                      | sub_110_2 (multiplier_tree.sv:110)                  |
+|                      | add_110 (multiplier_tree.sv:110)                    |
+==============================================================================
+
+==============================================================================
+|       |      | Data     |       |                                          |
+| Var   | Type | Class    | Width | Expression                               |
+==============================================================================
+| I1    | PI   | Unsigned | 16    |                                          |
+| I2    | PI   | Unsigned | 16    |                                          |
+| O1    | PO   | Signed   | 16    | I1 - I2 (multiplier_tree.sv:110)         |
+| O2    | PO   | Unsigned | 16    | $unsigned(14'b11000000000001) + O1 (multiplier_tree.sv:110) |
+==============================================================================
+
+Datapath Report for DP_OP_88J7_128_2685
+==============================================================================
+| Cell                 | Contained Operations                                |
+==============================================================================
+| DP_OP_88J7_128_2685  | sub_101 (multiplier_tree.sv:101)                    |
+==============================================================================
+
+==============================================================================
+|       |      | Data     |       |                                          |
+| Var   | Type | Class    | Width | Expression                               |
+==============================================================================
+| I1    | PI   | Signed   | 16    |                                          |
+| I2    | PI   | Signed   | 16    |                                          |
+| O1    | PO   | Signed   | 17    | I1 - I2 (multiplier_tree.sv:101)         |
+==============================================================================
+
+Datapath Report for DP_OP_93_150_9367
+==============================================================================
+| Cell                 | Contained Operations                                |
+==============================================================================
+| DP_OP_93_150_9367    | add_306 (multiplier_tree.sv:306)                    |
+==============================================================================
+
+==============================================================================
+|       |      | Data     |       |                                          |
+| Var   | Type | Class    | Width | Expression                               |
+==============================================================================
+| I1    | PI   | Unsigned | 32    |                                          |
+| I2    | PI   | Unsigned | 32    |                                          |
+| O1    | PO   | Unsigned | 32    | I1 + I2 (multiplier_tree.sv:306)         |
+==============================================================================
+
+Datapath Report for DP_OP_94_151_9367
+==============================================================================
+| Cell                 | Contained Operations                                |
+==============================================================================
+| DP_OP_94_151_9367    | add_313 (multiplier_tree.sv:313)                    |
+==============================================================================
+
+==============================================================================
+|       |      | Data     |       |                                          |
+| Var   | Type | Class    | Width | Expression                               |
+==============================================================================
+| I1    | PI   | Unsigned | 32    |                                          |
+| I2    | PI   | Unsigned | 32    |                                          |
+| O1    | PO   | Unsigned | 32    | I1 + I2 (multiplier_tree.sv:313)         |
+==============================================================================
+
+
+Datapath Extraction Report
+
+Information: Operator associated with resources 'sub_110 (multiplier_tree.sv:110) sub_110_2 (multiplier_tree.sv:110) add_110 (multiplier_tree.sv:110)' in design 'multiplier_tree' breaks the datapath extraction because there is leakage due to truncation on its fanout.  (HDL-120)
+
+
+Implementation Report
+===============================================================================
+|                    |                  | Current            | Set            |
+| Cell               | Module           | Implementation     | Implementation |
+===============================================================================
+| sub_x_14           | DW01_sub         | pparch (area,speed)                 |
+| sub_x_3            | DW01_sub         | pparch (area,speed)                 |
+| sub_x_13           | DW01_sub         | apparch (area)     |                |
+| add_x_1            | DW01_add         | apparch (area)     |                |
+| gte_x_2            | DW_cmp           | apparch (area)     |                |
+| DP_OP_87J7_127_9004                   |                    |                |
+|                    | DP_OP_87J7_127_9004 | str (area,speed)                 |
+| DP_OP_96J7_122_9380                   |                    |                |
+|                    | DP_OP_96J7_122_9380 | str (area,speed)                 |
+| DP_OP_97J7_123_4100                   |                    |                |
+|                    | DP_OP_97J7_123_4100 | str (area,speed)                 |
+| DP_OP_93_150_9367  | DP_OP_93_150_9367 | str (area,speed)  |                |
+| DP_OP_94_151_9367  | DP_OP_94_151_9367 | str (area)        |                |
+| DP_OP_88J7_128_2685                   |                    |                |
+|                    | DP_OP_88J7_128_2685 | str (area,speed)                 |
+| DP_OP_98J7_124_4100                   |                    |                |
+|                    | DP_OP_98J7_124_4100 | str (area)      |                |
+===============================================================================
+
+ 
+****************************************
+Design : shared_multiplication_logic
+****************************************
+
+Resource Report for this hierarchy in file
+        /home/Charmander/horcrux-dwmul/hw/ip/coprocessors/shared_multiplication_logic.sv
+=============================================================================
+| Cell           | Module         | Parameters | Contained Operations       |
+=============================================================================
+| mult_x_3       | DW_mult_uns    | a_width=32 | mult_96 (shared_multiplication_logic.sv:96) |
+|                | b_width=32 |                            |
+| add_x_5        | DW01_add       | width=32   | add_115 (shared_multiplication_logic.sv:115) |
+| gte_x_9        | DW_cmp         | width=16   | gte_181 (shared_multiplication_logic.sv:181) |
+| DP_OP_46J11_122_2489            |            |                            |
+|                | DP_OP_46J11_122_2489 |      |                            |
+| DP_OP_44J11_124_8342            |            |                            |
+|                | DP_OP_44J11_124_8342 |      |                            |
+| DP_OP_45J11_125_3794            |            |                            |
+|                | DP_OP_45J11_125_3794 |      |                            |
+=============================================================================
+
+Datapath Report for DP_OP_46J11_122_2489
+==============================================================================
+| Cell                 | Contained Operations                                |
+==============================================================================
+| DP_OP_46J11_122_2489 | mult_139 (shared_multiplication_logic.sv:139)       |
+|                      | sub_162 (shared_multiplication_logic.sv:162)        |
+|                      | add_179 (shared_multiplication_logic.sv:179)        |
+==============================================================================
+
+==============================================================================
+|       |      | Data     |       |                                          |
+| Var   | Type | Class    | Width | Expression                               |
+==============================================================================
+| I1    | PI   | Signed   | 32    |                                          |
+| I2    | PI   | Unsigned | 32    |                                          |
+| I3    | PI   | Signed   | 64    |                                          |
+| I4    | PI   | Unsigned | 32    |                                          |
+| T7    | IFO  | Signed   | 64    | I1 * I2 (shared_multiplication_logic.sv:139) |
+| T27   | IFO  | Signed   | 32    | T7[31:0]                                 |
+| O1    | PO   | Signed   | 64    | I3 - T7 (shared_multiplication_logic.sv:162) |
+| O2    | PO   | Unsigned | 32    | I4 + T27 (shared_multiplication_logic.sv:179) |
+==============================================================================
+
+Datapath Report for DP_OP_44J11_124_8342
+==============================================================================
+| Cell                 | Contained Operations                                |
+==============================================================================
+| DP_OP_44J11_124_8342 | sub_181 (shared_multiplication_logic.sv:181)        |
+==============================================================================
+
+==============================================================================
+|       |      | Data     |       |                                          |
+| Var   | Type | Class    | Width | Expression                               |
+==============================================================================
+| I1    | PI   | Unsigned | 16    |                                          |
+| O1    | PO   | Signed   | 17    | I1 - $unsigned(14'b11000000000001) (shared_multiplication_logic.sv:181) |
+==============================================================================
+
+Datapath Report for DP_OP_45J11_125_3794
+==============================================================================
+| Cell                 | Contained Operations                                |
+==============================================================================
+| DP_OP_45J11_125_3794 | mult_145 (shared_multiplication_logic.sv:145)       |
+|                      | add_188 (shared_multiplication_logic.sv:188)        |
+|                      | sub_190 (shared_multiplication_logic.sv:190)        |
+|                      | add_191 (shared_multiplication_logic.sv:191)        |
+==============================================================================
+
+==============================================================================
+|       |      | Data     |       |                                          |
+| Var   | Type | Class    | Width | Expression                               |
+==============================================================================
+| I1    | PI   | Unsigned | 32    |                                          |
+| I2    | PI   | Unsigned | 32    |                                          |
+| I3    | PI   | Unsigned | 62    |                                          |
+| I4    | PI   | Unsigned | 32    |                                          |
+| T8    | IFO  | Unsigned | 63    | I1 * I2 (shared_multiplication_logic.sv:145) |
+| T15   | IFO  | Unsigned | 63    | I3 + T8 (shared_multiplication_logic.sv:188) |
+| T30   | IFO  | Unsigned | 32    | T15[62:31]                               |
+| O1    | PO   | Signed   | 32    | T30 - I2 (shared_multiplication_logic.sv:190) |
+| O2    | PO   | Unsigned | 32    | O1 + I4 (shared_multiplication_logic.sv:191) |
+==============================================================================
+
+
+Datapath Extraction Report
+
+Information: Operator associated with resources 'mult_96 (shared_multiplication_logic.sv:96)' in design 'shared_multiplication_logic' breaks the datapath extraction because there is leakage due to truncation on its fanout to operator of resources 'C584 (shared_multiplication_logic.sv:100)'.  (HDL-120)
+
+Information: Operator associated with resources 'gte_181 (shared_multiplication_logic.sv:181)' in design 'shared_multiplication_logic' breaks the datapath extraction because there is leakage due to truncation on the fanout of its driver 'add_179 (shared_multiplication_logic.sv:179)'.  (HDL-120)
+
+
+Implementation Report
+===============================================================================
+|                    |                  | Current            | Set            |
+| Cell               | Module           | Implementation     | Implementation |
+===============================================================================
+| mult_x_3           | DW_mult_uns      | pparch (area,speed)                 |
+|                    |                  | mult_arch: benc_radix4              |
+| add_x_5            | DW01_add         | apparch (area)     |                |
+| gte_x_9            | DW_cmp           | apparch (area)     |                |
+| DP_OP_44J11_124_8342                  |                    |                |
+|                    | DP_OP_44J11_124_8342 | str (area)     |                |
+| DP_OP_45J11_125_3794                  |                    |                |
+|                    | DP_OP_45J11_125_3794 | str (area,speed)                |
+|                    |                  | mult_arch: benc_radix4              |
+| DP_OP_46J11_122_2489                  |                    |                |
+|                    | DP_OP_46J11_122_2489 | str (area,speed)                |
+|                    |                  | mult_arch: benc_radix4              |
+===============================================================================
+
+ 
+****************************************
+Design : unified_mul_32x32
+****************************************
+
+Resource Report for this hierarchy in file
+        /home/Charmander/horcrux-dwmul/hw/ip/coprocessors/unified_mul_32x32.sv
+=============================================================================
+| Cell           | Module         | Parameters | Contained Operations       |
+=============================================================================
+| mult_x_1       | DW_mult_tc     | a_width=32 | mult_28 (unified_mul_32x32.sv:28) |
+          |                | b_width=32 |                            |
+=============================================================================
+
+
+Implementation Report
+===============================================================================
+|                    |                  | Current            | Set            |
+| Cell               | Module           | Implementation     | Implementation |
+===============================================================================
+| mult_x_1           | DW_mult_tc       | pparch (area,speed)                 |
+|                    |                  | mult_arch: benc_radix4              |
+===============================================================================
+
+ 
+****************************************
+Design : barrett
+****************************************
+
+Resource Report for this hierarchy in file
+        /home/Charmander/horcrux-dwmul/hw/ip/coprocessors/barrett.sv
+=============================================================================
+| Cell           | Module         | Parameters | Contained Operations       |
+=============================================================================
+| gte_x_1        | DW_cmp         | width=32   | gte_81 (barrett.sv:81)     |
+| gte_x_2        | DW_cmp         | width=32   | gte_104 (barrett.sv:104)   |
+| gte_x_3        | DW_cmp         | width=32   | gte_128 (barrett.sv:128)   |
+| gte_x_4        | DW_cmp         | width=32   | gte_151 (barrett.sv:151)   |
+| DP_OP_193J9_122_1739            |            |                            |
+|                | DP_OP_193J9_122_1739 |      |                            |
+| DP_OP_194J9_123_9305            |            |                            |
+|                | DP_OP_194J9_123_9305 |      |                            |
+| DP_OP_196_149_6050              |            |                            |
+|                | DP_OP_196_149_6050 |        |                            |
+=============================================================================
+
+Datapath Report for DP_OP_193J9_122_1739
+==============================================================================
+| Cell                 | Contained Operations                                |
+==============================================================================
+| DP_OP_193J9_122_1739 | add_75 (barrett.sv:75) add_75_2 (barrett.sv:75)     |
+|                      | add_75_3 (barrett.sv:75) add_75_4 (barrett.sv:75)   |
+|                      | add_75_5 (barrett.sv:75) add_75_6 (barrett.sv:75)   |
+|                      | add_75_7 (barrett.sv:75) add_75_8 (barrett.sv:75)   |
+==============================================================================
+
+==============================================================================
+|       |      | Data     |       |                                          |
+| Var   | Type | Class    | Width | Expression                               |
+==============================================================================
+| I1    | PI   | Unsigned | 32    |                                          |
+| I2    | PI   | Unsigned | 32    |                                          |
+| I3    | PI   | Unsigned | 32    |                                          |
+| I4    | PI   | Unsigned | 32    |                                          |
+| I5    | PI   | Unsigned | 32    |                                          |
+| I6    | PI   | Unsigned | 32    |                                          |
+| I7    | PI   | Unsigned | 32    |                                          |
+| I8    | PI   | Unsigned | 32    |                                          |
+| I9    | PI   | Unsigned | 32    |                                          |
+| O1    | PO   | Unsigned | 32    | I1 + I2 + I3 + I4 + I5 + I6 + I7 + I8 + I9 (barrett.sv:75) |
+==============================================================================
+
+Datapath Report for DP_OP_194J9_123_9305
+==============================================================================
+| Cell                 | Contained Operations                                |
+==============================================================================
+| DP_OP_194J9_123_9305 | add_92 (barrett.sv:92) add_92_2 (barrett.sv:92)     |
+|                      | add_92_3 (barrett.sv:92) add_92_4 (barrett.sv:92)   |
+|                      | add_92_5 (barrett.sv:92) add_92_6 (barrett.sv:92)   |
+|                      | add_92_7 (barrett.sv:92) add_92_8 (barrett.sv:92)   |
+|                      | add_92_9 (barrett.sv:92) add_92_10 (barrett.sv:92)  |
+|                      | add_115 (barrett.sv:115) add_115_2 (barrett.sv:115) |
+|                      | add_115_3 (barrett.sv:115)                          |
+|                      | add_115_4 (barrett.sv:115)                          |
+|                      | add_115_5 (barrett.sv:115)                          |
+|                      | add_115_6 (barrett.sv:115)                          |
+|                      | add_115_7 (barrett.sv:115)                          |
+|                      | add_115_8 (barrett.sv:115)                          |
+|                      | add_115_9 (barrett.sv:115)                          |
+|                      | add_115_10 (barrett.sv:115)                         |
+==============================================================================
+
+==============================================================================
+|       |      | Data     |       |                                          |
+| Var   | Type | Class    | Width | Expression                               |
+==============================================================================
+| I1    | PI   | Unsigned | 47    |                                          |
+| I2    | PI   | Unsigned | 44    |                                          |
+| I3    | PI   | Unsigned | 39    |                                          |
+| I4    | PI   | Unsigned | 49    |                                          |
+| O1    | PO   | Unsigned | 49    | I1 + I2 + I3 + I4 ( barrett.sv:92 barrett.sv:115 ) |
+==============================================================================
+
+Datapath Report for DP_OP_196_149_6050
+==============================================================================
+| Cell                 | Contained Operations                                |
+==============================================================================
+| DP_OP_196_149_6050   | add_78 (barrett.sv:78) add_78_2 (barrett.sv:78)     |
+|                      | add_78_3 (barrett.sv:78) sub_79 (barrett.sv:79)     |
+|                      | C1428 (barrett.sv:58) add_100 (barrett.sv:100)      |
+|                      | add_100_2 (barrett.sv:100)                          |
+|                      | add_100_3 (barrett.sv:100)                          |
+|                      | add_100_4 (barrett.sv:100) sub_102 (barrett.sv:102) |
+|                      | add_92 (barrett.sv:92) add_92_2 (barrett.sv:92)     |
+|                      | add_92_3 (barrett.sv:92) add_92_4 (barrett.sv:92)   |
+|                      | add_92_5 (barrett.sv:92) add_92_6 (barrett.sv:92)   |
+|                      | add_92_7 (barrett.sv:92) add_92_8 (barrett.sv:92)   |
+|                      | add_92_9 (barrett.sv:92) add_92_10 (barrett.sv:92)  |
+|                      | add_139 (barrett.sv:139) add_139_2 (barrett.sv:139) |
+|                      | add_139_3 (barrett.sv:139)                          |
+|                      | add_139_4 (barrett.sv:139)                          |
+|                      | add_139_5 (barrett.sv:139)                          |
+|                      | add_139_6 (barrett.sv:139) add_115 (barrett.sv:115) |
+|                      | add_115_2 (barrett.sv:115)                          |
+|                      | add_115_3 (barrett.sv:115)                          |
+|                      | add_115_4 (barrett.sv:115)                          |
+|                      | add_115_5 (barrett.sv:115)                          |
+|                      | add_115_6 (barrett.sv:115)                          |
+|                      | add_115_7 (barrett.sv:115)                          |
+|                      | add_115_8 (barrett.sv:115)                          |
+|                      | add_115_9 (barrett.sv:115)                          |
+|                      | add_115_10 (barrett.sv:115)                         |
+|                      | add_123 (barrett.sv:123) add_123_2 (barrett.sv:123) |
+|                      | add_123_3 (barrett.sv:123)                          |
+|                      | add_123_4 (barrett.sv:123)                          |
+|                      | add_123_5 (barrett.sv:123) sub_126 (barrett.sv:126) |
+|                      | add_146 (barrett.sv:146) add_146_2 (barrett.sv:146) |
+|                      | add_146_3 (barrett.sv:146)                          |
+|                      | add_146_4 (barrett.sv:146)                          |
+|                      | add_146_5 (barrett.sv:146)                          |
+|                      | add_146_6 (barrett.sv:146) sub_149 (barrett.sv:149) |
+|                      | sub_82_aco (barrett.sv:82)                          |
+|                      | sub_105_aco (barrett.sv:105)                        |
+|                      | sub_129_aco (barrett.sv:129)                        |
+|                      | sub_152_aco (barrett.sv:152)                        |
+==============================================================================
+
+==============================================================================
+|       |      | Data     |       |                                          |
+| Var   | Type | Class    | Width | Expression                               |
+==============================================================================
+| I1    | PI   | Signed   | 19    |                                          |
+| I2    | PI   | Signed   | 18    |                                          |
+| I3    | PI   | Signed   | 16    |                                          |
+| I4    | PI   | Signed   | 8     |                                          |
+| I5    | PI   | Unsigned | 32    |                                          |
+| I6    | PI   | Unsigned | 1     |                                          |
+| I7    | PI   | Unsigned | 1     |                                          |
+| I8    | PI   | Unsigned | 1     |                                          |
+| I9    | PI   | Unsigned | 1     |                                          |
+| I10   | PI   | Signed   | 32    |                                          |
+| I11   | PI   | Signed   | 32    |                                          |
+| I12   | PI   | Signed   | 32    |                                          |
+| I13   | PI   | Unsigned | 29    |                                          |
+| I14   | PI   | Unsigned | 49    |                                          |
+| I15   | PI   | Unsigned | 42    |                                          |
+| I16   | PI   | Unsigned | 33    |                                          |
+| I17   | PI   | Unsigned | 49    |                                          |
+| I18   | PI   | Unsigned | 45    |                                          |
+| I19   | PI   | Unsigned | 34    |                                          |
+| I20   | PI   | Unsigned | 48    |                                          |
+| I21   | PI   | Unsigned | 40    |                                          |
+| I22   | PI   | Unsigned | 41    |                                          |
+| I23   | PI   | Unsigned | 36    |                                          |
+| I24   | PI   | Unsigned | 46    |                                          |
+| I25   | PI   | Unsigned | 38    |                                          |
+| I26   | PI   | Unsigned | 37    |                                          |
+| I27   | PI   | Unsigned | 35    |                                          |
+| I28   | PI   | Signed   | 32    |                                          |
+| I29   | PI   | Signed   | 32    |                                          |
+| I30   | PI   | Signed   | 32    |                                          |
+| I31   | PI   | Unsigned | 29    |                                          |
+| I32   | PI   | Unsigned | 27    |                                          |
+| I33   | PI   | Signed   | 32    |                                          |
+| I34   | PI   | Signed   | 32    |                                          |
+| I35   | PI   | Signed   | 32    |                                          |
+| I36   | PI   | Unsigned | 30    |                                          |
+| I37   | PI   | Unsigned | 27    |                                          |
+| I38   | PI   | Unsigned | 24    |                                          |
+| I39   | PI   | Unsigned | 16    |                                          |
+| T176  | IFO  | Unsigned | 46    | I5 + I18 + I19 ( barrett.sv:92 barrett.sv:139 ) |
+| T93   | IFO  | Unsigned | 27    | O3[58:32]                                |
+| T188  | IFO  | Unsigned | 42    | I22 + I23 ( barrett.sv:115 barrett.sv:139 ) |
+| T106  | IFO  | Unsigned | 26    | O6[57:32]                                |
+| T114  | IFO  | Unsigned | 22    | O4[53:32]                                |
+| T192  | IFO  | Signed   | 32    | { I6, I7, I8, I9 } ? O1 : O2 : O7 : O8 (barrett.sv:58) |
+| O1    | PO   | Signed   | 32    | -I1 - I2 - I3 - I4 + I5 ( barrett.sv:78 barrett.sv:79 ) |
+| O2    | PO   | Signed   | 32    | -I10 - I11 - I12 - I13 - T93 + I5 ( barrett.sv:100 barrett.sv:102 ) |
+| O3    | PO   | Unsigned | 59    | I14 + I15 + I16 + I17 + T176 (barrett.sv:92) |
+| O4    | PO   | Unsigned | 54    | T176 + O5 + T188 (barrett.sv:139)        |
+| O5    | PO   | Unsigned | 49    | I20 + I21 ( barrett.sv:92 barrett.sv:115 barrett.sv:139 ) |
+| O6    | PO   | Unsigned | 58    | I24 + I25 + I26 + I27 + I17 + T188 (barrett.sv:115) |
+| O7    | PO   | Signed   | 32    | -I28 - I29 - I30 - I31 - I32 - T106 + I5 ( barrett.sv:123 barrett.sv:126 ) |
+| O8    | PO   | Signed   | 32    | -I33 - I34 - I35 - I36 - I37 - I38 - T114 + I5 ( barrett.sv:146 barrett.sv:149 ) |
+| O9    | PO   | Signed   | 32    | T192 - I39 ( barrett.sv:82 barrett.sv:105 barrett.sv:129 barrett.sv:152 ) |
+==============================================================================
+
+
+Datapath Extraction Report
+
+Information: Operator associated with resources 'add_78 (barrett.sv:78) add_78_2 (barrett.sv:78) add_78_3 (barrett.sv:78) sub_79 (barrett.sv:79)' in design 'barrett' breaks the datapath extraction because there is leakage due to truncation on the fanout of its driver 'add_75 (barrett.sv:75) add_75_2 (barrett.sv:75) add_75_3 (barrett.sv:75) add_75_4 (barrett.sv:75) add_75_5 (barrett.sv:75) add_75_6 (barrett.sv:75) add_75_7 (barrett.sv:75) add_75_8 (barrett.sv:75)'.  (HDL-120)
+
+Information: Operator associated with resources 'gte_81 (barrett.sv:81)' in design 'barrett' breaks the datapath extraction because there is leakage due to truncation on the fanout of its driver 'add_78 (barrett.sv:78) add_78_2 (barrett.sv:78) add_78_3 (barrett.sv:78) sub_79 (barrett.sv:79)'.  (HDL-120)
+
+Information: Operator associated with resources 'add_92 (barrett.sv:92) add_92_2 (barrett.sv:92) add_92_3 (barrett.sv:92) add_92_4 (barrett.sv:92) add_92_5 (barrett.sv:92) add_92_6 (barrett.sv:92) add_92_7 (barrett.sv:92) add_92_8 (barrett.sv:92) add_92_9 (barrett.sv:92) add_92_10 (barrett.sv:92) add_115 (barrett.sv:115) add_115_2 (barrett.sv:115) add_115_3 (barrett.sv:115) add_115_4 (barrett.sv:115) add_115_5 (barrett.sv:115) add_115_6 (barrett.sv:115) add_115_7 (barrett.sv:115) add_115_8 (barrett.sv:115) add_115_9 (barrett.sv:115) add_115_10 (barrett.sv:115)' in design 'barrett' breaks the datapath extraction because there is leakage due to truncation on its fanout to operator of resources 'add_92 (barrett.sv:92) add_92_2 (barrett.sv:92) add_92_3 (barrett.sv:92) add_92_4 (barrett.sv:92) add_92_5 (barrett.sv:92) add_92_6 (barrett.sv:92) add_92_7 (barrett.sv:92) add_92_8 (barrett.sv:92) add_92_9 (barrett.sv:92) add_92_10 (barrett.sv:92)'.  (HDL-120)
+
+Information: Operator associated with resources 'gte_104 (barrett.sv:104)' in design 'barrett' breaks the datapath extraction because there is leakage due to truncation on the fanout of its driver 'add_100 (barrett.sv:100) add_100_2 (barrett.sv:100) add_100_3 (barrett.sv:100) add_100_4 (barrett.sv:100) sub_102 (barrett.sv:102)'.  (HDL-120)
+
+Information: Operator associated with resources 'gte_128 (barrett.sv:128)' in design 'barrett' breaks the datapath extraction because there is leakage due to truncation on the fanout of its driver 'add_123 (barrett.sv:123) add_123_2 (barrett.sv:123) add_123_3 (barrett.sv:123) add_123_4 (barrett.sv:123) add_123_5 (barrett.sv:123) sub_126 (barrett.sv:126)'.  (HDL-120)
+
+Information: Operator associated with resources 'gte_151 (barrett.sv:151)' in design 'barrett' breaks the datapath extraction because there is leakage due to truncation on the fanout of its driver 'add_146 (barrett.sv:146) add_146_2 (barrett.sv:146) add_146_3 (barrett.sv:146) add_146_4 (barrett.sv:146) add_146_5 (barrett.sv:146) add_146_6 (barrett.sv:146) sub_149 (barrett.sv:149)'.  (HDL-120)
+
+
+Implementation Report
+===============================================================================
+|                    |                  | Current            | Set            |
+| Cell               | Module           | Implementation     | Implementation |
+===============================================================================
+| gte_x_1            | DW_cmp           | apparch (area)     |                |
+| gte_x_2            | DW_cmp           | apparch (area)     |                |
+| gte_x_3            | DW_cmp           | apparch (area)     |                |
+| gte_x_4            | DW_cmp           | apparch (area)     |                |
+| DP_OP_196_149_6050 | DP_OP_196_149_6050 | str (area,speed) |                |
+| DP_OP_193J9_122_1739                  |                    |                |
+|                    | DP_OP_193J9_122_1739 | str (area,speed)                |
+| DP_OP_194J9_123_9305                  |                    |                |
+|                    | DP_OP_194J9_123_9305 | str (area,speed)                |
+===============================================================================
+
+ 
+****************************************
+Design : fpr
+****************************************
+
+Resource Report for this hierarchy in file
+        /home/Charmander/horcrux-dwmul/hw/ip/coprocessors/fpr.sv
+=============================================================================
+| Cell           | Module         | Parameters | Contained Operations       |
+=============================================================================
+| add_x_64       | DW01_add       | width=32   | add_58_C90 (fpr.sv:58)     |
+| sub_x_65       | DW01_dec       | width=2    | sub_62_C90 (fpr.sv:62)     |
+| add_x_66       | DW01_inc       | width=12   | add_66_C90 (fpr.sv:66)     |
+| ashr_67        | DW_rightsh     | A_width=8  | srl_74_C90 (fpr.sv:74)     |
+|                |                | SH_width=3 |                            |
+| ash_69         | DW_leftsh      | A_width=64 | sll_96 (fpr.sv:96)         |
+|                |                | SH_width=6 |                            |
+| sub_x_70       | DW01_sub       | width=32   | sub_97 (fpr.sv:97)         |
+| DP_OP_96J13_122_7816            |            |                            |
+|                | DP_OP_96J13_122_7816 |      |                            |
+=============================================================================
+
+Datapath Report for DP_OP_96J13_122_7816
+==============================================================================
+| Cell                 | Contained Operations                                |
+==============================================================================
+| DP_OP_96J13_122_7816 | add_70_C90 (fpr.sv:70) add_74_C90 (fpr.sv:74)       |
+==============================================================================
+
+==============================================================================
+|       |      | Data     |       |                                          |
+| Var   | Type | Class    | Width | Expression                               |
+==============================================================================
+| I1    | PI   | Unsigned | 64    |                                          |
+| I2    | PI   | Unsigned | 64    |                                          |
+| I3    | PI   | Unsigned | 1     |                                          |
+| O1    | PO   | Unsigned | 64    | I1 + I2 + I3 ( fpr.sv:70 fpr.sv:74 )     |
+==============================================================================
+
+
+Datapath Extraction Report
+
+Information: Operator associated with resources 'sub_62_C90 (fpr.sv:62)' in design 'fpr' breaks the datapath extraction because there is leakage due to truncation on the fanout of its driver 'add_58_C90 (fpr.sv:58)'.  (HDL-120)
+
+Information: Operator associated with resources 'add_70_C90 (fpr.sv:70) add_74_C90 (fpr.sv:74)' in design 'fpr' breaks the datapath extraction because there is leakage due to truncation on the fanout of its driver 'srl_74_C90 (fpr.sv:74)'.  (HDL-120)
+
+
+Implementation Report
+===============================================================================
+|                    |                  | Current            | Set            |
+| Cell               | Module           | Implementation     | Implementation |
+===============================================================================
+| sub_x_70           | DW01_sub         | pparch (area,speed)                 |
+| add_x_66           | DW01_inc         | apparch (area)     |                |
+| add_x_64           | DW01_add         | apparch (area)     |                |
+| sub_x_65           | DW01_dec         | apparch (area)     |                |
+| ashr_67            | DW_rightsh       | astr (area)        |                |
+| ash_69             | DW_leftsh        | astr (area)        |                |
+| DP_OP_96J13_122_7816                  |                    |                |
+|                    | DP_OP_96J13_122_7816 | str (area,speed)                |
+===============================================================================
+
+ 
+****************************************
+Design : sampler
+****************************************
+
+Resource Report for this hierarchy in file
+        /home/Charmander/horcrux-dwmul/hw/ip/coprocessors/sampler.sv
+=============================================================================
+| Cell           | Module         | Parameters | Contained Operations       |
+=============================================================================
+| ash_3          | DW_leftsh      | A_width=8  | sll_61 (sampler.sv:61)     |
+|                |                | SH_width=3 |                            |
+| sub_x_4        | DW01_dec       | width=8    | sub_61 (sampler.sv:61)     |
+| mult_x_5       | DW_mult_uns    | a_width=5  | mult_63 (sampler.sv:63)    |
+|                |                | b_width=4  |                            |
+| add_x_6        | DW01_add       | width=10   | add_64 (sampler.sv:64)     |
+| ashr_7         | DW_rightsh     | A_width=32 | srl_66 (sampler.sv:66)     |
+|                |                | SH_width=9 |                            |
+| ashr_8         | DW_rightsh     | A_width=32 | srl_67 (sampler.sv:67)     |
+|                |                | SH_width=10 |                           |
+| lt_x_9         | DW_cmp         | width=23   | lt_85 (sampler.sv:85)      |
+| lt_x_12        | DW_cmp         | width=4    | lt_123 (sampler.sv:123)    |
+| sub_x_14       | DW01_sub       | width=4    | sub_128 (sampler.sv:128)   |
+| lt_x_15        | DW_cmp         | width=4    | lt_129 (sampler.sv:129)    |
+| DP_OP_46J12_122_6478            |            |                            |
+|                | DP_OP_46J12_122_6478 |      |                            |
+| DP_OP_44J12_124_5717            |            |                            |
+|                | DP_OP_44J12_124_5717 |      |                            |
+| DP_OP_45J12_125_127             |            |                            |
+|                | DP_OP_45J12_125_127 |       |                            |
+=============================================================================
+
+Datapath Report for DP_OP_46J12_122_6478
+==============================================================================
+| Cell                 | Contained Operations                                |
+==============================================================================
+| DP_OP_46J12_122_6478 | mult_118 (sampler.sv:118) mult_120 (sampler.sv:120) |
+|                      | sub_121 (sampler.sv:121) sub_122 (sampler.sv:122)   |
+==============================================================================
+
+==============================================================================
+|       |      | Data     |       |                                          |
+| Var   | Type | Class    | Width | Expression                               |
+==============================================================================
+| I1    | PI   | Unsigned | 4     |                                          |
+| I2    | PI   | Signed   | 3     |                                          |
+| T12   | IFO  | Unsigned | 12    | $unsigned(8'b11001101) * I1 (sampler.sv:118) |
+| T31   | IFO  | Unsigned | 2     | T12[11:10]                               |
+| T13   | IFO  | Unsigned | 3     | T31 * $unsigned(3'b101) (sampler.sv:120) |
+| O1    | PO   | Signed   | 3     | -I2 + T13 + $unsigned(2'b10) ( sampler.sv:121 sampler.sv:122 ) |
+==============================================================================
+
+Datapath Report for DP_OP_44J12_124_5717
+==============================================================================
+| Cell                 | Contained Operations                                |
+==============================================================================
+| DP_OP_44J12_124_5717 | sub_69 (sampler.sv:69)                              |
+==============================================================================
+
+==============================================================================
+|       |      | Data     |       |                                          |
+| Var   | Type | Class    | Width | Expression                               |
+==============================================================================
+| I1    | PI   | Signed   | 8     |                                          |
+| I2    | PI   | Signed   | 8     |                                          |
+| O1    | PO   | Signed   | 8     | I1 - I2 (sampler.sv:69)                  |
+==============================================================================
+
+Datapath Report for DP_OP_45J12_125_127
+==============================================================================
+| Cell                 | Contained Operations                                |
+==============================================================================
+| DP_OP_45J12_125_127  | sub_171 (sampler.sv:171)                            |
+==============================================================================
+
+==============================================================================
+|       |      | Data     |       |                                          |
+| Var   | Type | Class    | Width | Expression                               |
+==============================================================================
+| I1    | PI   | Unsigned | 18    |                                          |
+| O1    | PO   | Signed   | 20    | $unsigned(18'b100000000000000000) - I1 (sampler.sv:171) |
+==============================================================================
+
+
+Implementation Report
+===============================================================================
+|                    |                  | Current            | Set            |
+| Cell               | Module           | Implementation     | Implementation |
+===============================================================================
+| mult_x_5           | DW_mult_uns      | apparch (area)     |                |
+|                    |                  | mult_arch: and     |                |
+| ash_3              | DW_leftsh        | astr (area)        |                |
+| sub_x_4            | DW01_dec         | apparch (area)     |                |
+| add_x_6            | DW01_add         | apparch (area)     |                |
+| ashr_7             | DW_rightsh       | astr (area)        |                |
+| ashr_8             | DW_rightsh       | astr (area)        |                |
+| lt_x_9             | DW_cmp           | apparch (area)     |                |
+| lt_x_12            | DW_cmp           | apparch (area)     |                |
+| sub_x_14           | DW01_sub         | apparch (area)     |                |
+| lt_x_15            | DW_cmp           | apparch (area)     |                |
+| DP_OP_45J12_125_127                   |                    |                |
+|                    | DP_OP_45J12_125_127 | str (area)      |                |
+| DP_OP_46J12_122_6478                  |                    |                |
+|                    | DP_OP_46J12_122_6478 | str (area)     |                |
+| DP_OP_44J12_124_5717                  |                    |                |
+|                    | DP_OP_44J12_124_5717 | str (area)     |                |
+===============================================================================
+
+
+No resource sharing information to report.
+ 
+****************************************
+Design : sphincs_ops_00000032_00000020
+****************************************
+
+No implementations to report
+ 
+****************************************
+Design : chain_lengths_00000032_00000020
+****************************************
+
+Resource Report for this hierarchy in file
+        /home/Charmander/horcrux-dwmul/hw/ip/coprocessors/chain_lengths.sv
+=============================================================================
+| Cell           | Module         | Parameters | Contained Operations       |
+=============================================================================
+| sub_x_1        | DW01_sub       | width=5    | sub_85 (chain_lengths.sv:85) |
+| sub_x_2        | DW01_sub       | width=5    | sub_85_I2 (chain_lengths.sv:85) |
+| sub_x_3        | DW01_sub       | width=5    | sub_85_I3 (chain_lengths.sv:85) |
+| sub_x_4        | DW01_sub       | width=5    | sub_85_I4 (chain_lengths.sv:85) |
+| sub_x_5        | DW01_sub       | width=5    | sub_85_I5 (chain_lengths.sv:85) |
+| sub_x_6        | DW01_sub       | width=5    | sub_85_I6 (chain_lengths.sv:85) |
+| sub_x_7        | DW01_sub       | width=5    | sub_85_I7 (chain_lengths.sv:85) |
+| sub_x_8        | DW01_sub       | width=5    | sub_85_I8 (chain_lengths.sv:85) |
+| sub_x_9        | DW01_sub       | width=5    | sub_85_I9 (chain_lengths.sv:85) |
+| sub_x_10       | DW01_sub       | width=5    | sub_85_I10 (chain_lengths.sv:85) |
+| sub_x_11       | DW01_sub       | width=5    | sub_85_I11 (chain_lengths.sv:85) |
+| sub_x_12       | DW01_sub       | width=5    | sub_85_I12 (chain_lengths.sv:85) |
+| sub_x_13       | DW01_sub       | width=5    | sub_85_I13 (chain_lengths.sv:85) |
+| sub_x_14       | DW01_sub       | width=5    | sub_85_I14 (chain_lengths.sv:85) |
+| sub_x_15       | DW01_sub       | width=5    | sub_85_I15 (chain_lengths.sv:85) |
+| sub_x_16       | DW01_sub       | width=5    | sub_85_I16 (chain_lengths.sv:85) |
+| sub_x_17       | DW01_sub       | width=5    | sub_85_I17 (chain_lengths.sv:85) |
+| sub_x_18       | DW01_sub       | width=5    | sub_85_I18 (chain_lengths.sv:85) |
+| sub_x_19       | DW01_sub       | width=5    | sub_85_I19 (chain_lengths.sv:85) |
+| sub_x_20       | DW01_sub       | width=5    | sub_85_I20 (chain_lengths.sv:85) |
+| sub_x_21       | DW01_sub       | width=5    | sub_85_I21 (chain_lengths.sv:85) |
+| sub_x_22       | DW01_sub       | width=5    | sub_85_I22 (chain_lengths.sv:85) |
+| sub_x_23       | DW01_sub       | width=5    | sub_85_I23 (chain_lengths.sv:85) |
+| sub_x_24       | DW01_sub       | width=5    | sub_85_I24 (chain_lengths.sv:85) |
+| sub_x_25       | DW01_sub       | width=5    | sub_85_I25 (chain_lengths.sv:85) |
+| sub_x_26       | DW01_sub       | width=5    | sub_85_I26 (chain_lengths.sv:85) |
+| sub_x_27       | DW01_sub       | width=5    | sub_85_I27 (chain_lengths.sv:85) |
+| sub_x_28       | DW01_sub       | width=5    | sub_85_I28 (chain_lengths.sv:85) |
+| sub_x_29       | DW01_sub       | width=5    | sub_85_I29 (chain_lengths.sv:85) |
+| sub_x_30       | DW01_sub       | width=5    | sub_85_I30 (chain_lengths.sv:85) |
+| sub_x_31       | DW01_sub       | width=5    | sub_85_I31 (chain_lengths.sv:85) |
+| sub_x_32       | DW01_sub       | width=5    | sub_85_I32 (chain_lengths.sv:85) |
+| sub_x_33       | DW01_sub       | width=5    | sub_90_I33 (chain_lengths.sv:90) |
+| sub_x_34       | DW01_sub       | width=5    | sub_90_I34 (chain_lengths.sv:90) |
+| sub_x_35       | DW01_sub       | width=5    | sub_90_I35 (chain_lengths.sv:90) |
+| sub_x_36       | DW01_sub       | width=5    | sub_90_I36 (chain_lengths.sv:90) |
+| sub_x_37       | DW01_sub       | width=5    | sub_90_I37 (chain_lengths.sv:90) |
+| sub_x_38       | DW01_sub       | width=5    | sub_90_I38 (chain_lengths.sv:90) |
+| sub_x_39       | DW01_sub       | width=5    | sub_90_I39 (chain_lengths.sv:90) |
+| sub_x_40       | DW01_sub       | width=5    | sub_90_I40 (chain_lengths.sv:90) |
+| sub_x_41       | DW01_sub       | width=5    | sub_90_I41 (chain_lengths.sv:90) |
+| sub_x_42       | DW01_sub       | width=5    | sub_90_I42 (chain_lengths.sv:90) |
+| sub_x_43       | DW01_sub       | width=5    | sub_90_I43 (chain_lengths.sv:90) |
+| sub_x_44       | DW01_sub       | width=5    | sub_90_I44 (chain_lengths.sv:90) |
+| sub_x_45       | DW01_sub       | width=5    | sub_90_I45 (chain_lengths.sv:90) |
+| sub_x_46       | DW01_sub       | width=5    | sub_90_I46 (chain_lengths.sv:90) |
+| sub_x_47       | DW01_sub       | width=5    | sub_90_I47 (chain_lengths.sv:90) |
+| sub_x_48       | DW01_sub       | width=5    | sub_90_I48 (chain_lengths.sv:90) |
+| sub_x_49       | DW01_sub       | width=5    | sub_95_I49 (chain_lengths.sv:95) |
+| sub_x_50       | DW01_sub       | width=5    | sub_95_I50 (chain_lengths.sv:95) |
+| sub_x_51       | DW01_sub       | width=5    | sub_95_I51 (chain_lengths.sv:95) |
+| sub_x_52       | DW01_sub       | width=5    | sub_95_I52 (chain_lengths.sv:95) |
+| sub_x_53       | DW01_sub       | width=5    | sub_95_I53 (chain_lengths.sv:95) |
+| sub_x_54       | DW01_sub       | width=5    | sub_95_I54 (chain_lengths.sv:95) |
+| sub_x_55       | DW01_sub       | width=5    | sub_95_I55 (chain_lengths.sv:95) |
+| sub_x_56       | DW01_sub       | width=5    | sub_95_I56 (chain_lengths.sv:95) |
+| sub_x_57       | DW01_sub       | width=5    | sub_95_I57 (chain_lengths.sv:95) |
+| sub_x_58       | DW01_sub       | width=5    | sub_95_I58 (chain_lengths.sv:95) |
+| sub_x_59       | DW01_sub       | width=5    | sub_95_I59 (chain_lengths.sv:95) |
+| sub_x_60       | DW01_sub       | width=5    | sub_95_I60 (chain_lengths.sv:95) |
+| sub_x_61       | DW01_sub       | width=5    | sub_95_I61 (chain_lengths.sv:95) |
+| sub_x_62       | DW01_sub       | width=5    | sub_95_I62 (chain_lengths.sv:95) |
+| sub_x_63       | DW01_sub       | width=5    | sub_95_I63 (chain_lengths.sv:95) |
+| sub_x_64       | DW01_sub       | width=5    | sub_95_I64 (chain_lengths.sv:95) |
+| DP_OP_977J8_122_926             |            |                            |
+|                | DP_OP_977J8_122_926 |       |                            |
+| DP_OP_978J8_123_2435            |            |                            |
+|                | DP_OP_978J8_123_2435 |      |                            |
+=============================================================================
+
+Datapath Report for DP_OP_977J8_122_926
+==============================================================================
+| Cell                 | Contained Operations                                |
+==============================================================================
+| DP_OP_977J8_122_926  | add_85_I2 (chain_lengths.sv:85)                     |
+|                      | add_85_I3 (chain_lengths.sv:85)                     |
+|                      | add_85_I4 (chain_lengths.sv:85)                     |
+|                      | add_85_I5 (chain_lengths.sv:85)                     |
+|                      | add_85_I6 (chain_lengths.sv:85)                     |
+|                      | add_85_I7 (chain_lengths.sv:85)                     |
+|                      | add_85_I8 (chain_lengths.sv:85)                     |
+|                      | add_85_I9 (chain_lengths.sv:85)                     |
+|                      | add_85_I10 (chain_lengths.sv:85)                    |
+|                      | add_85_I11 (chain_lengths.sv:85)                    |
+|                      | add_85_I12 (chain_lengths.sv:85)                    |
+|                      | add_85_I13 (chain_lengths.sv:85)                    |
+|                      | add_85_I14 (chain_lengths.sv:85)                    |
+|                      | add_85_I15 (chain_lengths.sv:85)                    |
+|                      | add_85_I16 (chain_lengths.sv:85)                    |
+|                      | add_85_I17 (chain_lengths.sv:85)                    |
+|                      | add_85_I18 (chain_lengths.sv:85)                    |
+|                      | add_85_I19 (chain_lengths.sv:85)                    |
+|                      | add_85_I20 (chain_lengths.sv:85)                    |
+|                      | add_85_I21 (chain_lengths.sv:85)                    |
+|                      | add_85_I22 (chain_lengths.sv:85)                    |
+|                      | add_85_I23 (chain_lengths.sv:85)                    |
+|                      | add_85_I24 (chain_lengths.sv:85)                    |
+|                      | add_85_I25 (chain_lengths.sv:85)                    |
+|                      | add_85_I26 (chain_lengths.sv:85)                    |
+|                      | add_85_I27 (chain_lengths.sv:85)                    |
+|                      | add_85_I28 (chain_lengths.sv:85)                    |
+|                      | add_85_I29 (chain_lengths.sv:85)                    |
+|                      | add_85_I30 (chain_lengths.sv:85)                    |
+|                      | add_85_I31 (chain_lengths.sv:85)                    |
+|                      | add_85_I32 (chain_lengths.sv:85)                    |
+|                      | add_90_I32 (chain_lengths.sv:90)                    |
+|                      | add_90_I33 (chain_lengths.sv:90)                    |
+|                      | add_90_I34 (chain_lengths.sv:90)                    |
+|                      | add_90_I35 (chain_lengths.sv:90)                    |
+|                      | add_90_I36 (chain_lengths.sv:90)                    |
+|                      | add_90_I37 (chain_lengths.sv:90)                    |
+|                      | add_90_I38 (chain_lengths.sv:90)                    |
+|                      | add_90_I39 (chain_lengths.sv:90)                    |
+|                      | add_90_I40 (chain_lengths.sv:90)                    |
+|                      | add_90_I41 (chain_lengths.sv:90)                    |
+|                      | add_90_I42 (chain_lengths.sv:90)                    |
+|                      | add_90_I43 (chain_lengths.sv:90)                    |
+|                      | add_90_I44 (chain_lengths.sv:90)                    |
+|                      | add_90_I45 (chain_lengths.sv:90)                    |
+|                      | add_90_I46 (chain_lengths.sv:90)                    |
+|                      | add_90_I47 (chain_lengths.sv:90)                    |
+|                      | add_90_I48 (chain_lengths.sv:90)                    |
+|                      | add_95_I48 (chain_lengths.sv:95)                    |
+|                      | add_95_I49 (chain_lengths.sv:95)                    |
+|                      | add_95_I50 (chain_lengths.sv:95)                    |
+|                      | add_95_I51 (chain_lengths.sv:95)                    |
+|                      | add_95_I52 (chain_lengths.sv:95)                    |
+|                      | add_95_I53 (chain_lengths.sv:95)                    |
+|                      | add_95_I54 (chain_lengths.sv:95)                    |
+|                      | add_95_I55 (chain_lengths.sv:95)                    |
+|                      | add_95_I56 (chain_lengths.sv:95)                    |
+|                      | add_95_I57 (chain_lengths.sv:95)                    |
+|                      | add_95_I58 (chain_lengths.sv:95)                    |
+|                      | add_95_I59 (chain_lengths.sv:95)                    |
+|                      | add_95_I60 (chain_lengths.sv:95)                    |
+|                      | add_95_I61 (chain_lengths.sv:95)                    |
+|                      | add_95_I62 (chain_lengths.sv:95)                    |
+|                      | add_95_I63 (chain_lengths.sv:95)                    |
+|                      | add_95_I64 (chain_lengths.sv:95)                    |
+==============================================================================
+
+==============================================================================
+|       |      | Data     |       |                                          |
+| Var   | Type | Class    | Width | Expression                               |
+==============================================================================
+| I1    | PI   | Unsigned | 4     |                                          |
+| I2    | PI   | Unsigned | 4     |                                          |
+| I3    | PI   | Unsigned | 4     |                                          |
+| I4    | PI   | Unsigned | 4     |                                          |
+| I5    | PI   | Unsigned | 4     |                                          |
+| I6    | PI   | Unsigned | 4     |                                          |
+| I7    | PI   | Unsigned | 4     |                                          |
+| I8    | PI   | Unsigned | 4     |                                          |
+| I9    | PI   | Unsigned | 4     |                                          |
+| I10   | PI   | Unsigned | 4     |                                          |
+| I11   | PI   | Unsigned | 4     |                                          |
+| I12   | PI   | Unsigned | 4     |                                          |
+| I13   | PI   | Unsigned | 4     |                                          |
+| I14   | PI   | Unsigned | 4     |                                          |
+| I15   | PI   | Unsigned | 4     |                                          |
+| I16   | PI   | Unsigned | 4     |                                          |
+| I17   | PI   | Unsigned | 4     |                                          |
+| I18   | PI   | Unsigned | 4     |                                          |
+| I19   | PI   | Unsigned | 4     |                                          |
+| I20   | PI   | Unsigned | 4     |                                          |
+| I21   | PI   | Unsigned | 4     |                                          |
+| I22   | PI   | Unsigned | 4     |                                          |
+| I23   | PI   | Unsigned | 4     |                                          |
+| I24   | PI   | Unsigned | 4     |                                          |
+| I25   | PI   | Unsigned | 4     |                                          |
+| I26   | PI   | Unsigned | 4     |                                          |
+| I27   | PI   | Unsigned | 4     |                                          |
+| I28   | PI   | Unsigned | 4     |                                          |
+| I29   | PI   | Unsigned | 4     |                                          |
+| I30   | PI   | Unsigned | 4     |                                          |
+| I31   | PI   | Unsigned | 4     |                                          |
+| I32   | PI   | Unsigned | 4     |                                          |
+| O1    | PO   | Unsigned | 10    | I1 + I2 + I3 + I4 + I5 + I6 + I7 + I8 + I9 + I10 + I11 + I12 + I13 + I14 + I15 + I16 + I17 + I18 + I19 + I20 + I21 + I22 + I23 + I24 + I25 + I26 + I27 + I28 + I29 + I30 + I31 + I32 ( chain_lengths.sv:85 chain_lengths.sv:90 chain_lengths.sv:95 ) |
+==============================================================================
+
+Datapath Report for DP_OP_978J8_123_2435
+==============================================================================
+| Cell                 | Contained Operations                                |
+==============================================================================
+| DP_OP_978J8_123_2435 | add_85_I2 (chain_lengths.sv:85)                     |
+|                      | add_85_I3 (chain_lengths.sv:85)                     |
+|                      | add_85_I4 (chain_lengths.sv:85)                     |
+|                      | add_85_I5 (chain_lengths.sv:85)                     |
+|                      | add_85_I6 (chain_lengths.sv:85)                     |
+|                      | add_85_I7 (chain_lengths.sv:85)                     |
+|                      | add_85_I8 (chain_lengths.sv:85)                     |
+|                      | add_85_I9 (chain_lengths.sv:85)                     |
+|                      | add_85_I10 (chain_lengths.sv:85)                    |
+|                      | add_85_I11 (chain_lengths.sv:85)                    |
+|                      | add_85_I12 (chain_lengths.sv:85)                    |
+|                      | add_85_I13 (chain_lengths.sv:85)                    |
+|                      | add_85_I14 (chain_lengths.sv:85)                    |
+|                      | add_85_I15 (chain_lengths.sv:85)                    |
+|                      | add_85_I16 (chain_lengths.sv:85)                    |
+|                      | add_85_I17 (chain_lengths.sv:85)                    |
+|                      | add_85_I18 (chain_lengths.sv:85)                    |
+|                      | add_85_I19 (chain_lengths.sv:85)                    |
+|                      | add_85_I20 (chain_lengths.sv:85)                    |
+|                      | add_85_I21 (chain_lengths.sv:85)                    |
+|                      | add_85_I22 (chain_lengths.sv:85)                    |
+|                      | add_85_I23 (chain_lengths.sv:85)                    |
+|                      | add_85_I24 (chain_lengths.sv:85)                    |
+|                      | add_85_I25 (chain_lengths.sv:85)                    |
+|                      | add_85_I26 (chain_lengths.sv:85)                    |
+|                      | add_85_I27 (chain_lengths.sv:85)                    |
+|                      | add_85_I28 (chain_lengths.sv:85)                    |
+|                      | add_85_I29 (chain_lengths.sv:85)                    |
+|                      | add_85_I30 (chain_lengths.sv:85)                    |
+|                      | add_85_I31 (chain_lengths.sv:85)                    |
+|                      | add_90_I32 (chain_lengths.sv:90)                    |
+|                      | add_90_I33 (chain_lengths.sv:90)                    |
+|                      | add_90_I34 (chain_lengths.sv:90)                    |
+|                      | add_90_I35 (chain_lengths.sv:90)                    |
+|                      | add_90_I36 (chain_lengths.sv:90)                    |
+|                      | add_90_I37 (chain_lengths.sv:90)                    |
+|                      | add_90_I38 (chain_lengths.sv:90)                    |
+|                      | add_90_I39 (chain_lengths.sv:90)                    |
+|                      | add_90_I40 (chain_lengths.sv:90)                    |
+|                      | add_90_I41 (chain_lengths.sv:90)                    |
+|                      | add_90_I42 (chain_lengths.sv:90)                    |
+|                      | add_90_I43 (chain_lengths.sv:90)                    |
+|                      | add_90_I44 (chain_lengths.sv:90)                    |
+|                      | add_90_I45 (chain_lengths.sv:90)                    |
+|                      | add_90_I46 (chain_lengths.sv:90)                    |
+|                      | add_90_I47 (chain_lengths.sv:90)                    |
+|                      | add_90_I48 (chain_lengths.sv:90)                    |
+|                      | add_95_I48 (chain_lengths.sv:95)                    |
+|                      | add_95_I49 (chain_lengths.sv:95)                    |
+|                      | add_95_I50 (chain_lengths.sv:95)                    |
+|                      | add_95_I51 (chain_lengths.sv:95)                    |
+|                      | add_95_I52 (chain_lengths.sv:95)                    |
+|                      | add_95_I53 (chain_lengths.sv:95)                    |
+|                      | add_95_I54 (chain_lengths.sv:95)                    |
+|                      | add_95_I55 (chain_lengths.sv:95)                    |
+|                      | add_95_I56 (chain_lengths.sv:95)                    |
+|                      | add_95_I57 (chain_lengths.sv:95)                    |
+|                      | add_95_I58 (chain_lengths.sv:95)                    |
+|                      | add_95_I59 (chain_lengths.sv:95)                    |
+|                      | add_95_I60 (chain_lengths.sv:95)                    |
+|                      | add_95_I61 (chain_lengths.sv:95)                    |
+|                      | add_95_I62 (chain_lengths.sv:95)                    |
+|                      | add_95_I63 (chain_lengths.sv:95)                    |
+|                      | add_95_I64 (chain_lengths.sv:95)                    |
+==============================================================================
+
+==============================================================================
+|       |      | Data     |       |                                          |
+| Var   | Type | Class    | Width | Expression                               |
+==============================================================================
+| I1    | PI   | Unsigned | 4     |                                          |
+| I2    | PI   | Unsigned | 4     |                                          |
+| I3    | PI   | Unsigned | 4     |                                          |
+| I4    | PI   | Unsigned | 4     |                                          |
+| I5    | PI   | Unsigned | 4     |                                          |
+| I6    | PI   | Unsigned | 4     |                                          |
+| I7    | PI   | Unsigned | 4     |                                          |
+| I8    | PI   | Unsigned | 4     |                                          |
+| I9    | PI   | Unsigned | 4     |                                          |
+| I10   | PI   | Unsigned | 4     |                                          |
+| I11   | PI   | Unsigned | 4     |                                          |
+| I12   | PI   | Unsigned | 4     |                                          |
+| I13   | PI   | Unsigned | 4     |                                          |
+| I14   | PI   | Unsigned | 4     |                                          |
+| I15   | PI   | Unsigned | 4     |                                          |
+| I16   | PI   | Unsigned | 4     |                                          |
+| I17   | PI   | Unsigned | 9     |                                          |
+| I18   | PI   | Unsigned | 4     |                                          |
+| I19   | PI   | Unsigned | 4     |                                          |
+| I20   | PI   | Unsigned | 4     |                                          |
+| I21   | PI   | Unsigned | 4     |                                          |
+| I22   | PI   | Unsigned | 4     |                                          |
+| I23   | PI   | Unsigned | 4     |                                          |
+| I24   | PI   | Unsigned | 4     |                                          |
+| I25   | PI   | Unsigned | 4     |                                          |
+| I26   | PI   | Unsigned | 4     |                                          |
+| I27   | PI   | Unsigned | 4     |                                          |
+| I28   | PI   | Unsigned | 4     |                                          |
+| I29   | PI   | Unsigned | 4     |                                          |
+| I30   | PI   | Unsigned | 4     |                                          |
+| I31   | PI   | Unsigned | 4     |                                          |
+| I32   | PI   | Unsigned | 4     |                                          |
+| I33   | PI   | Unsigned | 4     |                                          |
+| O1    | PO   | Unsigned | 10    | I1 + I2 + I3 + I4 + I5 + I6 + I7 + I8 + I9 + I10 + I11 + I12 + I13 + I14 + I15 + I16 + I17 ( chain_lengths.sv:85 chain_lengths.sv:90 chain_lengths.sv:95 ) |
+| O2    | PO   | Unsigned | 10    | I18 + I19 + I20 + I21 + I22 + I23 + I24 + I25 + I26 + I27 + I28 + I29 + I30 + I31 + I32 + I33 + O1 ( chain_lengths.sv:85 chain_lengths.sv:90 chain_lengths.sv:95 ) |
+==============================================================================
+
+
+Datapath Extraction Report
+
+Information: Operator associated with resources 'add_85_I2 (chain_lengths.sv:85) add_85_I3 (chain_lengths.sv:85) add_85_I4 (chain_lengths.sv:85) add_85_I5 (chain_lengths.sv:85) add_85_I6 (chain_lengths.sv:85) add_85_I7 (chain_lengths.sv:85) add_85_I8 (chain_lengths.sv:85) add_85_I9 (chain_lengths.sv:85) add_85_I10 (chain_lengths.sv:85) add_85_I11 (chain_lengths.sv:85) add_85_I12 (chain_lengths.sv:85) add_85_I13 (chain_lengths.sv:85) add_85_I14 (chain_lengths.sv:85) add_85_I15 (chain_lengths.sv:85) add_85_I16 (chain_lengths.sv:85) add_85_I17 (chain_lengths.sv:85) add_85_I18 (chain_lengths.sv:85) add_85_I19 (chain_lengths.sv:85) add_85_I20 (chain_lengths.sv:85) add_85_I21 (chain_lengths.sv:85) add_85_I22 (chain_lengths.sv:85) add_85_I23 (chain_lengths.sv:85) add_85_I24 (chain_lengths.sv:85) add_85_I25 (chain_lengths.sv:85) add_85_I26 (chain_lengths.sv:85) add_85_I27 (chain_lengths.sv:85) add_85_I28 (chain_lengths.sv:85) add_85_I29 (chain_lengths.sv:85) add_85_I30 (chain_lengths.sv:85) add_85_I31 (chain_lengths.sv:85) add_85_I32 (chain_lengths.sv:85) add_90_I32 (chain_lengths.sv:90) add_90_I33 (chain_lengths.sv:90) add_90_I34 (chain_lengths.sv:90) add_90_I35 (chain_lengths.sv:90) add_90_I36 (chain_lengths.sv:90) add_90_I37 (chain_lengths.sv:90) add_90_I38 (chain_lengths.sv:90) add_90_I39 (chain_lengths.sv:90) add_90_I40 (chain_lengths.sv:90) add_90_I41 (chain_lengths.sv:90) add_90_I42 (chain_lengths.sv:90) add_90_I43 (chain_lengths.sv:90) add_90_I44 (chain_lengths.sv:90) add_90_I45 (chain_lengths.sv:90) add_90_I46 (chain_lengths.sv:90) add_90_I47 (chain_lengths.sv:90) add_90_I48 (chain_lengths.sv:90) add_95_I48 (chain_lengths.sv:95) add_95_I49 (chain_lengths.sv:95) add_95_I50 (chain_lengths.sv:95) add_95_I51 (chain_lengths.sv:95) add_95_I52 (chain_lengths.sv:95) add_95_I53 (chain_lengths.sv:95) add_95_I54 (chain_lengths.sv:95) add_95_I55 (chain_lengths.sv:95) add_95_I56 (chain_lengths.sv:95) add_95_I57 (chain_lengths.sv:95) add_95_I58 (chain_lengths.sv:95) add_95_I59 (chain_lengths.sv:95) add_95_I60 (chain_lengths.sv:95) add_95_I61 (chain_lengths.sv:95) add_95_I62 (chain_lengths.sv:95) add_95_I63 (chain_lengths.sv:95) add_95_I64 (chain_lengths.sv:95)' in design 'chain_lengths_00000032_00000020' breaks the datapath extraction because there is leakage due to truncation on the fanout of its driver 'sub_85 (chain_lengths.sv:85)'.  (HDL-120)
+
+Information: Operator associated with resources 'add_85_I2 (chain_lengths.sv:85) add_85_I3 (chain_lengths.sv:85) add_85_I4 (chain_lengths.sv:85) add_85_I5 (chain_lengths.sv:85) add_85_I6 (chain_lengths.sv:85) add_85_I7 (chain_lengths.sv:85) add_85_I8 (chain_lengths.sv:85) add_85_I9 (chain_lengths.sv:85) add_85_I10 (chain_lengths.sv:85) add_85_I11 (chain_lengths.sv:85) add_85_I12 (chain_lengths.sv:85) add_85_I13 (chain_lengths.sv:85) add_85_I14 (chain_lengths.sv:85) add_85_I15 (chain_lengths.sv:85) add_85_I16 (chain_lengths.sv:85) add_85_I17 (chain_lengths.sv:85) add_85_I18 (chain_lengths.sv:85) add_85_I19 (chain_lengths.sv:85) add_85_I20 (chain_lengths.sv:85) add_85_I21 (chain_lengths.sv:85) add_85_I22 (chain_lengths.sv:85) add_85_I23 (chain_lengths.sv:85) add_85_I24 (chain_lengths.sv:85) add_85_I25 (chain_lengths.sv:85) add_85_I26 (chain_lengths.sv:85) add_85_I27 (chain_lengths.sv:85) add_85_I28 (chain_lengths.sv:85) add_85_I29 (chain_lengths.sv:85) add_85_I30 (chain_lengths.sv:85) add_85_I31 (chain_lengths.sv:85) add_90_I32 (chain_lengths.sv:90) add_90_I33 (chain_lengths.sv:90) add_90_I34 (chain_lengths.sv:90) add_90_I35 (chain_lengths.sv:90) add_90_I36 (chain_lengths.sv:90) add_90_I37 (chain_lengths.sv:90) add_90_I38 (chain_lengths.sv:90) add_90_I39 (chain_lengths.sv:90) add_90_I40 (chain_lengths.sv:90) add_90_I41 (chain_lengths.sv:90) add_90_I42 (chain_lengths.sv:90) add_90_I43 (chain_lengths.sv:90) add_90_I44 (chain_lengths.sv:90) add_90_I45 (chain_lengths.sv:90) add_90_I46 (chain_lengths.sv:90) add_90_I47 (chain_lengths.sv:90) add_90_I48 (chain_lengths.sv:90) add_95_I48 (chain_lengths.sv:95) add_95_I49 (chain_lengths.sv:95) add_95_I50 (chain_lengths.sv:95) add_95_I51 (chain_lengths.sv:95) add_95_I52 (chain_lengths.sv:95) add_95_I53 (chain_lengths.sv:95) add_95_I54 (chain_lengths.sv:95) add_95_I55 (chain_lengths.sv:95) add_95_I56 (chain_lengths.sv:95) add_95_I57 (chain_lengths.sv:95) add_95_I58 (chain_lengths.sv:95) add_95_I59 (chain_lengths.sv:95) add_95_I60 (chain_lengths.sv:95) add_95_I61 (chain_lengths.sv:95) add_95_I62 (chain_lengths.sv:95) add_95_I63 (chain_lengths.sv:95) add_95_I64 (chain_lengths.sv:95)' in design 'chain_lengths_00000032_00000020' breaks the datapath extraction because there is leakage due to truncation on the fanout of its driver 'sub_90_I33 (chain_lengths.sv:90)'.  (HDL-120)
+
+Information: Operator associated with resources 'add_85_I2 (chain_lengths.sv:85) add_85_I3 (chain_lengths.sv:85) add_85_I4 (chain_lengths.sv:85) add_85_I5 (chain_lengths.sv:85) add_85_I6 (chain_lengths.sv:85) add_85_I7 (chain_lengths.sv:85) add_85_I8 (chain_lengths.sv:85) add_85_I9 (chain_lengths.sv:85) add_85_I10 (chain_lengths.sv:85) add_85_I11 (chain_lengths.sv:85) add_85_I12 (chain_lengths.sv:85) add_85_I13 (chain_lengths.sv:85) add_85_I14 (chain_lengths.sv:85) add_85_I15 (chain_lengths.sv:85) add_85_I16 (chain_lengths.sv:85) add_85_I17 (chain_lengths.sv:85) add_85_I18 (chain_lengths.sv:85) add_85_I19 (chain_lengths.sv:85) add_85_I20 (chain_lengths.sv:85) add_85_I21 (chain_lengths.sv:85) add_85_I22 (chain_lengths.sv:85) add_85_I23 (chain_lengths.sv:85) add_85_I24 (chain_lengths.sv:85) add_85_I25 (chain_lengths.sv:85) add_85_I26 (chain_lengths.sv:85) add_85_I27 (chain_lengths.sv:85) add_85_I28 (chain_lengths.sv:85) add_85_I29 (chain_lengths.sv:85) add_85_I30 (chain_lengths.sv:85) add_85_I31 (chain_lengths.sv:85) add_90_I32 (chain_lengths.sv:90) add_90_I33 (chain_lengths.sv:90) add_90_I34 (chain_lengths.sv:90) add_90_I35 (chain_lengths.sv:90) add_90_I36 (chain_lengths.sv:90) add_90_I37 (chain_lengths.sv:90) add_90_I38 (chain_lengths.sv:90) add_90_I39 (chain_lengths.sv:90) add_90_I40 (chain_lengths.sv:90) add_90_I41 (chain_lengths.sv:90) add_90_I42 (chain_lengths.sv:90) add_90_I43 (chain_lengths.sv:90) add_90_I44 (chain_lengths.sv:90) add_90_I45 (chain_lengths.sv:90) add_90_I46 (chain_lengths.sv:90) add_90_I47 (chain_lengths.sv:90) add_95_I48 (chain_lengths.sv:95) add_95_I49 (chain_lengths.sv:95) add_95_I50 (chain_lengths.sv:95) add_95_I51 (chain_lengths.sv:95) add_95_I52 (chain_lengths.sv:95) add_95_I53 (chain_lengths.sv:95) add_95_I54 (chain_lengths.sv:95) add_95_I55 (chain_lengths.sv:95) add_95_I56 (chain_lengths.sv:95) add_95_I57 (chain_lengths.sv:95) add_95_I58 (chain_lengths.sv:95) add_95_I59 (chain_lengths.sv:95) add_95_I60 (chain_lengths.sv:95) add_95_I61 (chain_lengths.sv:95) add_95_I62 (chain_lengths.sv:95) add_95_I63 (chain_lengths.sv:95) add_95_I64 (chain_lengths.sv:95)' in design 'chain_lengths_00000032_00000020' breaks the datapath extraction because there is leakage due to truncation on the fanout of its driver 'sub_95_I49 (chain_lengths.sv:95)'.  (HDL-120)
+
+
+Implementation Report
+===============================================================================
+|                    |                  | Current            | Set            |
+| Cell               | Module           | Implementation     | Implementation |
+===============================================================================
+| sub_x_1            | DW01_sub         | apparch (area)     |                |
+| sub_x_2            | DW01_sub         | apparch (area)     |                |
+| sub_x_3            | DW01_sub         | apparch (area)     |                |
+| sub_x_4            | DW01_sub         | apparch (area)     |                |
+| sub_x_5            | DW01_sub         | apparch (area)     |                |
+| sub_x_6            | DW01_sub         | apparch (area)     |                |
+| sub_x_7            | DW01_sub         | apparch (area)     |                |
+| sub_x_8            | DW01_sub         | apparch (area)     |                |
+| sub_x_9            | DW01_sub         | apparch (area)     |                |
+| sub_x_10           | DW01_sub         | apparch (area)     |                |
+| sub_x_11           | DW01_sub         | apparch (area)     |                |
+| sub_x_12           | DW01_sub         | apparch (area)     |                |
+| sub_x_13           | DW01_sub         | apparch (area)     |                |
+| sub_x_14           | DW01_sub         | apparch (area)     |                |
+| sub_x_15           | DW01_sub         | apparch (area)     |                |
+| sub_x_16           | DW01_sub         | apparch (area)     |                |
+| sub_x_17           | DW01_sub         | apparch (area)     |                |
+| sub_x_18           | DW01_sub         | apparch (area)     |                |
+| sub_x_19           | DW01_sub         | apparch (area)     |                |
+| sub_x_20           | DW01_sub         | apparch (area)     |                |
+| sub_x_21           | DW01_sub         | apparch (area)     |                |
+| sub_x_22           | DW01_sub         | apparch (area)     |                |
+| sub_x_23           | DW01_sub         | apparch (area)     |                |
+| sub_x_24           | DW01_sub         | apparch (area)     |                |
+| sub_x_25           | DW01_sub         | apparch (area)     |                |
+| sub_x_26           | DW01_sub         | apparch (area)     |                |
+| sub_x_27           | DW01_sub         | apparch (area)     |                |
+| sub_x_28           | DW01_sub         | apparch (area)     |                |
+| sub_x_29           | DW01_sub         | apparch (area)     |                |
+| sub_x_30           | DW01_sub         | apparch (area)     |                |
+| sub_x_31           | DW01_sub         | apparch (area)     |                |
+| sub_x_32           | DW01_sub         | apparch (area)     |                |
+| sub_x_33           | DW01_sub         | apparch (area)     |                |
+| sub_x_34           | DW01_sub         | apparch (area)     |                |
+| sub_x_35           | DW01_sub         | apparch (area)     |                |
+| sub_x_36           | DW01_sub         | apparch (area)     |                |
+| sub_x_37           | DW01_sub         | apparch (area)     |                |
+| sub_x_38           | DW01_sub         | apparch (area)     |                |
+| sub_x_39           | DW01_sub         | apparch (area)     |                |
+| sub_x_40           | DW01_sub         | apparch (area)     |                |
+| sub_x_41           | DW01_sub         | apparch (area)     |                |
+| sub_x_42           | DW01_sub         | apparch (area)     |                |
+| sub_x_43           | DW01_sub         | apparch (area)     |                |
+| sub_x_44           | DW01_sub         | apparch (area)     |                |
+| sub_x_45           | DW01_sub         | apparch (area)     |                |
+| sub_x_46           | DW01_sub         | apparch (area)     |                |
+| sub_x_47           | DW01_sub         | apparch (area)     |                |
+| sub_x_48           | DW01_sub         | apparch (area)     |                |
+| sub_x_49           | DW01_sub         | apparch (area)     |                |
+| sub_x_50           | DW01_sub         | apparch (area)     |                |
+| sub_x_51           | DW01_sub         | apparch (area)     |                |
+| sub_x_52           | DW01_sub         | apparch (area)     |                |
+| sub_x_53           | DW01_sub         | apparch (area)     |                |
+| sub_x_54           | DW01_sub         | apparch (area)     |                |
+| sub_x_55           | DW01_sub         | apparch (area)     |                |
+| sub_x_56           | DW01_sub         | apparch (area)     |                |
+| sub_x_57           | DW01_sub         | apparch (area)     |                |
+| sub_x_58           | DW01_sub         | apparch (area)     |                |
+| sub_x_59           | DW01_sub         | apparch (area)     |                |
+| sub_x_60           | DW01_sub         | apparch (area)     |                |
+| sub_x_61           | DW01_sub         | apparch (area)     |                |
+| sub_x_62           | DW01_sub         | apparch (area)     |                |
+| sub_x_63           | DW01_sub         | apparch (area)     |                |
+| sub_x_64           | DW01_sub         | apparch (area)     |                |
+| DP_OP_977J8_122_926                   |                    |                |
+|                    | DP_OP_977J8_122_926 | str (area)      |                |
+| DP_OP_978J8_123_2435                  |                    |                |
+|                    | DP_OP_978J8_123_2435 | str (area)     |                |
+===============================================================================
+
+
+No resource sharing information to report.
+ 
+****************************************
+Design : keccak_f
+****************************************
+
+No implementations to report
+ 
+****************************************
+Design : keccak_cu
+****************************************
+
+Resource Report for this hierarchy in file
+        /home/Charmander/horcrux-dwmul/hw/ip/coprocessors/keccak/keccak_cu.sv
+=============================================================================
+| Cell           | Module         | Parameters | Contained Operations       |
+=============================================================================
+| add_x_1        | DW01_inc       | width=5    | add_43 (keccak_cu.sv:43)   |
+=============================================================================
+
+
+Implementation Report
+===============================================================================
+|                    |                  | Current            | Set            |
+| Cell               | Module           | Implementation     | Implementation |
+===============================================================================
+| add_x_1            | DW01_inc         | apparch (area)     |                |
+===============================================================================
+
+ 
+****************************************
+Design : keccak_dp
+****************************************
+
+Resource Report for this hierarchy in file
+        /home/Charmander/horcrux-dwmul/hw/ip/coprocessors/keccak/keccak_dp.sv
+=============================================================================
+| Cell           | Module         | Parameters | Contained Operations       |
+=============================================================================
+| lt_x_1         | DW_cmp         | width=5    | lt_98 (keccak_dp.sv:98)    |
+| add_x_2        | DW01_inc       | width=5    | add_99 (keccak_dp.sv:99)   |
+=============================================================================
+
+
+Implementation Report
+===============================================================================
+|                    |                  | Current            | Set            |
+| Cell               | Module           | Implementation     | Implementation |
+===============================================================================
+| lt_x_1             | DW_cmp           | apparch (area)     |                |
+| add_x_2            | DW01_inc         | apparch (area)     |                |
+===============================================================================
+
+
+No resource sharing information to report.
+ 
+****************************************
+Design : keccak_round_constants_gen
+****************************************
+
+No implementations to report
+
+No resource sharing information to report.
+ 
+****************************************
+Design : keccak_round
+****************************************
+
+No implementations to report
+ 
+****************************************
+Design : horcrux_register_00000032_00000020
+****************************************
+
+Resource Report for this hierarchy in file
+        /home/Charmander/horcrux-dwmul/hw/ip/coprocessors/horcrux_register.sv
+=============================================================================
+| Cell           | Module         | Parameters | Contained Operations       |
+=============================================================================
+| add_x_1        | DW01_inc       | width=7    | add_50 (horcrux_register.sv:50) |
+            |                |            | add_53 (horcrux_register.sv:53) |
+=============================================================================
+
+
+Implementation Report
+===============================================================================
+|                    |                  | Current            | Set            |
+| Cell               | Module           | Implementation     | Implementation |
+===============================================================================
+| add_x_1            | DW01_inc         | apparch (area)     |                |
+===============================================================================
+
+
+No resource sharing information to report.
+ 
+****************************************
+Design : id_stage_I_xif_issue_if_if_xif_coproc_issue_X_NUM_RS_3
+****************************************
+
+No implementations to report
+1

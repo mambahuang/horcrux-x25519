@@ -1,0 +1,8 @@
+  constraint                               violators  worst slack
+  ----------                               ---------  -----------
+  max_transition                                536        -0.44
+  max_fanout                                      9       -15.00
+  max_capacitance                                 1         0.00
+  min_capacitance                                 9         0.00
+  max_area                                        1   -103898.89
+  max_leakage_power                               1     -1203.66

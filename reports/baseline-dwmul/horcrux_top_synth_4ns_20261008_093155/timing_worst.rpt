@@ -1,0 +1,129 @@
+ 
+****************************************
+Report : timing
+        -path full
+        -delay max
+        -nworst 5
+        -max_paths 20
+Design : horcrux_top_synth
+Version: X-2025.06
+Date   : Thu Oct  8 09:44:06 2026
+****************************************
+
+Operating Conditions: tt_typical_max_0p90v_25c   Library: sc9_cln40g_base_rvt_tt_typical_max_0p90v_25c
+Wire Load Model Mode: top
+
+  Startpoint: i_horcrux_top/i_horcrux/fpr_inst/fpr_e_reg_reg[3]
+              (rising edge-triggered flip-flop clocked by clk)
+  Endpoint: i_horcrux_top/i_horcrux/fpr_inst/fpr_hi_reg_reg[31]
+            (rising edge-triggered flip-flop clocked by clk)
+  Path Group: clk
+  Path Type: max
+
+  Des/Clust/Port     Wire Load Model       Library
+  ------------------------------------------------
+  horcrux_top_synth  Medium                sc9_cln40g_base_rvt_tt_typical_max_0p90v_25c
+
+  Point                                                                                              Incr       Path
+  ---------------------------------------------------------------------------------------------------------------------
+  clock clk (rise edge)                                                                            0.0000     0.0000
+  clock network delay (ideal)                                                                      0.4000     0.4000
+  i_horcrux_top/i_horcrux/fpr_inst/fpr_e_reg_reg[3]/CK (DFFRPQ_X0P5M_A9TR)                         0.0000     0.4000 r
+  i_horcrux_top/i_horcrux/fpr_inst/fpr_e_reg_reg[3]/Q (DFFRPQ_X0P5M_A9TR)                          0.1552     0.5552 r
+  i_horcrux_top/i_horcrux/fpr_inst/U94/Y (NAND2_X1A_A9TR)                                          0.0690     0.6242 f
+  i_horcrux_top/i_horcrux/fpr_inst/U139/Y (NAND2_X3B_A9TR)                                         0.0373     0.6615 r
+  i_horcrux_top/i_horcrux/fpr_inst/U166/Y (NOR2_X3A_A9TR)                                          0.0274     0.6889 f
+  i_horcrux_top/i_horcrux/fpr_inst/U168/Y (NOR2_X4A_A9TR)                                          0.0320     0.7209 r
+  i_horcrux_top/i_horcrux/fpr_inst/U169/Y (NAND2_X2B_A9TR)                                         0.0347     0.7557 f
+  i_horcrux_top/i_horcrux/fpr_inst/U171/Y (NOR2_X3A_A9TR)                                          0.0401     0.7958 r
+  i_horcrux_top/i_horcrux/fpr_inst/U172/Y (NAND2_X2A_A9TR)                                         0.0324     0.8283 f
+  i_horcrux_top/i_horcrux/fpr_inst/U174/Y (NAND2_X1P4B_A9TR)                                       0.0405     0.8688 r
+  i_horcrux_top/i_horcrux/fpr_inst/U134/Y (NAND2_X3B_A9TR)                                         0.0269     0.8957 f
+  i_horcrux_top/i_horcrux/fpr_inst/U413/Y (OR6_X1M_A9TR)                                           0.0423     0.9380 f
+  i_horcrux_top/i_horcrux/fpr_inst/U414/Y (XOR2_X1P4M_A9TR)                                        0.0529     0.9909 r
+  i_horcrux_top/i_horcrux/fpr_inst/U114/Y (INV_X2P5M_A9TR)                                         0.0291     1.0200 f
+  i_horcrux_top/i_horcrux/fpr_inst/U115/Y (INV_X4M_A9TR)                                           0.0386     1.0586 r
+  i_horcrux_top/i_horcrux/fpr_inst/U595/Y (OA211_X0P5M_A9TR)                                       0.0732     1.1318 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/I3 (fpr_DP_OP_96J13_122_7816_J13_0)        0.0000     1.1318 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U132/CO (ADDH_X1M_A9TR)                    0.0520     1.1838 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U69/CO (ADDH_X1M_A9TR)                     0.0469     1.2307 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U133/CO (ADDH_X1M_A9TR)                    0.0471     1.2778 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U108/CO (ADDH_X1M_A9TR)                    0.0478     1.3256 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U88/CO (ADDH_X2M_A9TR)                     0.0379     1.3635 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U110/CO (ADDH_X1M_A9TR)                    0.0436     1.4071 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U74/CO (ADDH_X1M_A9TR)                     0.0471     1.4543 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U109/CO (ADDH_X1M_A9TR)                    0.0468     1.5011 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U70/CO (ADDH_X1M_A9TR)                     0.0470     1.5481 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U113/CO (ADDH_X1M_A9TR)                    0.0471     1.5953 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U71/CO (ADDH_X1M_A9TR)                     0.0471     1.6423 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U112/CO (ADDH_X1M_A9TR)                    0.0475     1.6898 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U90/CO (ADDH_X2M_A9TR)                     0.0379     1.7277 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U114/CO (ADDH_X1M_A9TR)                    0.0435     1.7712 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U75/CO (ADDH_X1M_A9TR)                     0.0471     1.8183 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U115/CO (ADDH_X1M_A9TR)                    0.0471     1.8654 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U105/CO (ADDH_X1M_A9TR)                    0.0477     1.9131 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U87/CO (ADDH_X2M_A9TR)                     0.0377     1.9508 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U106/CO (ADDH_X1M_A9TR)                    0.0428     1.9936 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U107/CO (ADDH_X1M_A9TR)                    0.0471     2.0407 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U76/CO (ADDH_X1M_A9TR)                     0.0471     2.0878 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U111/CO (ADDH_X1M_A9TR)                    0.0475     2.1353 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U89/CO (ADDH_X2M_A9TR)                     0.0379     2.1732 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U116/CO (ADDH_X1M_A9TR)                    0.0435     2.2167 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U72/CO (ADDH_X1M_A9TR)                     0.0471     2.2638 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U117/CO (ADDH_X1M_A9TR)                    0.0471     2.3109 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U73/CO (ADDH_X1M_A9TR)                     0.0471     2.3580 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U118/CO (ADDH_X1M_A9TR)                    0.0477     2.4057 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U91/CO (ADDH_X2M_A9TR)                     0.0379     2.4436 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U119/CO (ADDH_X1M_A9TR)                    0.0435     2.4870 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U92/CO (ADDH_X2M_A9TR)                     0.0379     2.5250 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U104/CO (ADDH_X1P4M_A9TR)                  0.0354     2.5604 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U94/CO (ADDH_X1M_A9TR)                     0.0451     2.6055 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U80/CO (ADDH_X2M_A9TR)                     0.0379     2.6434 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U95/CO (ADDH_X1M_A9TR)                     0.0435     2.6869 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U81/CO (ADDH_X2M_A9TR)                     0.0379     2.7248 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U96/CO (ADDH_X1M_A9TR)                     0.0435     2.7683 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U82/CO (ADDH_X2M_A9TR)                     0.0379     2.8062 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U97/CO (ADDH_X1M_A9TR)                     0.0441     2.8503 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U83/CO (ADDH_X2M_A9TR)                     0.0379     2.8882 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U98/CO (ADDH_X1M_A9TR)                     0.0435     2.9317 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U84/CO (ADDH_X2M_A9TR)                     0.0379     2.9696 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U99/CO (ADDH_X1M_A9TR)                     0.0435     3.0131 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U85/CO (ADDH_X2M_A9TR)                     0.0379     3.0510 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U100/CO (ADDH_X1M_A9TR)                    0.0429     3.0938 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U78/CO (ADDH_X1M_A9TR)                     0.0471     3.1409 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U101/CO (ADDH_X1M_A9TR)                    0.0475     3.1884 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U86/CO (ADDH_X2M_A9TR)                     0.0377     3.2261 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U102/CO (ADDH_X1M_A9TR)                    0.0435     3.2696 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U93/CO (ADDH_X2M_A9TR)                     0.0379     3.3075 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U103/CO (ADDH_X1M_A9TR)                    0.0435     3.3509 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U120/CO (ADDH_X2M_A9TR)                    0.0389     3.3899 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U131/CO (ADDF_X1M_A9TR)                    0.0579     3.4478 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U130/CO (ADDF_X1M_A9TR)                    0.0635     3.5113 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U129/CO (ADDF_X1M_A9TR)                    0.0633     3.5745 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U128/CO (ADDF_X1M_A9TR)                    0.0643     3.6388 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U127/CO (ADDF_X1M_A9TR)                    0.0643     3.7031 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U126/CO (ADDF_X1M_A9TR)                    0.0643     3.7674 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U125/CO (ADDF_X1M_A9TR)                    0.0643     3.8317 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U124/CO (ADDF_X1M_A9TR)                    0.0643     3.8960 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U123/CO (ADDF_X1M_A9TR)                    0.0633     3.9592 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U122/CO (ADDF_X1M_A9TR)                    0.0619     4.0212 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U79/CO (ADDH_X1M_A9TR)                     0.0448     4.0660 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/U121/Y (XOR2_X0P5M_A9TR)                   0.0712     4.1372 r
+  i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816/O1[63] (fpr_DP_OP_96J13_122_7816_J13_0)    0.0000     4.1372 r
+  i_horcrux_top/i_horcrux/fpr_inst/U3/Y (MX2_X1B_A9TR)                                             0.0551     4.1923 r
+  i_horcrux_top/i_horcrux/fpr_inst/fpr_hi_reg_reg[31]/D (DFFRPQ_X2M_A9TR)                          0.0003     4.1926 r
+  data arrival time                                                                                           4.1926
+
+  clock clk (rise edge)                                                                            4.0000     4.0000
+  clock network delay (ideal)                                                                      0.4000     4.4000
+  clock uncertainty                                                                               -0.2000     4.2000
+  i_horcrux_top/i_horcrux/fpr_inst/fpr_hi_reg_reg[31]/CK (DFFRPQ_X2M_A9TR)                         0.0000     4.2000 r
+  library setup time                                                                              -0.0074     4.1926
+  data required time                                                                                          4.1926
+  ---------------------------------------------------------------------------------------------------------------------
+  data required time                                                                                          4.1926
+  data arrival time                                                                                          -4.1926
+  ---------------------------------------------------------------------------------------------------------------------
+  slack (MET)                                                                                                 0.0000
+
+
