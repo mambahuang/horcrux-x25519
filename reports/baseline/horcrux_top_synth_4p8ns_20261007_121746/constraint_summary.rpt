@@ -1,0 +1,8 @@
+  constraint                               violators  worst slack
+  ----------                               ---------  -----------
+  max_delay/setup ('clk' group)                 733        -5.78
+  max_transition                               1401        -0.10
+  max_fanout                                     14        -6.00
+  min_capacitance                                 9         0.00
+  max_area                                        1   -138480.91
+  max_leakage_power                               1     -1863.45

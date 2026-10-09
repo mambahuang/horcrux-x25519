@@ -1,0 +1,116 @@
+ 
+****************************************
+Report : area
+Design : horcrux_top_synth
+Version: X-2025.06
+Date   : Thu Oct  8 14:58:53 2026
+****************************************
+
+Information: Updating design information... (UID-85)
+Library(s) Used:
+
+    sc9_cln40g_base_rvt_tt_typical_max_0p90v_25c (File: /cad/designkit/CBDK_TSMC40_Arm_f2.0/CIC/SynopsysDC/db/sc9_base_rvt/sc9_cln40g_base_rvt_tt_typical_max_0p90v_25c.db)
+
+Number of ports:                        35386
+Number of nets:                         96416
+Number of cells:                        69714
+Number of combinational cells:          65266
+Number of sequential cells:              4376
+Number of macros/black boxes:               0
+Number of buf/inv:                      12680
+Number of references:                       6
+
+Combinational area:             107362.809584
+Buf/Inv area:                     8580.070722
+Noncombinational area:           19918.255455
+Macro/Black Box area:                0.000000
+Net Interconnect area:               0.000000
+
+Total cell area:                127281.065039
+Total area:                     127281.065039
+
+Hierarchical area distribution
+------------------------------
+
+                                  Global cell area              Local cell area
+                                  --------------------  ------------------------------- 
+Hierarchical cell                 Absolute     Percent  Combi-       Noncombi-   Black-
+                                  Total        Total    national     national    boxes   Design
+--------------------------------  -----------  -------  -----------  ----------  ------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+horcrux_top_synth                 127281.0650    100.0     143.5644      0.0000  0.0000  horcrux_top_synth
+i_horcrux_top                     127137.5006     99.9      30.6180     40.8240  0.0000  horcrux_top_I_xif_compressed_if_if_xif__X_NUM_RS_3I_xif_issue_if_if_xif__X_NUM_RS_3I_xif_commit_if_if_xif__X_NUM_RS_3I_xif_mem_if_if_xif__X_NUM_RS_3I_xif_mem_result_if_if_xif__X_NUM_RS_3I_xif_result_if_if_xif__X_NUM_RS_3
+i_horcrux_top/commit_stage_i          41.0508      0.0      41.0508      0.0000  0.0000  commit_stage_I_xif_result_if_if_xif_coproc_result_X_NUM_RS_3
+i_horcrux_top/i_horcrux           126298.5674     99.2    8404.7542      4.5360  0.0000  horcrux_NUM_VARIABLES50_VARIABLE_WIDTH32
+i_horcrux_top/i_horcrux/chain_lengths_inst   2929.1219     2.3    806.9544  1211.1119 0.0000 chain_lengths_00000032_00000020
+i_horcrux_top/i_horcrux/chain_lengths_inst/DP_OP_977J9_122_926    443.1672     0.3    443.1672     0.0000 0.0000 chain_lengths_00000032_00000020_DP_OP_977J9_122_926_J9_0
+i_horcrux_top/i_horcrux/chain_lengths_inst/DP_OP_978J9_123_2435    467.8884     0.4    467.8884     0.0000 0.0000 chain_lengths_00000032_00000020_DP_OP_978J9_123_2435_J9_0
+i_horcrux_top/i_horcrux/fpr_inst    1986.3143      1.6    1124.0208    585.1440  0.0000  fpr
+i_horcrux_top/i_horcrux/fpr_inst/DP_OP_96J13_122_7816    159.6672     0.1    159.6672     0.0000 0.0000 fpr_DP_OP_96J13_122_7816_J13_0
+i_horcrux_top/i_horcrux/fpr_inst/add_x_66     20.8656     0.0     20.8656     0.0000 0.0000 fpr_DW01_inc_J13_0
+i_horcrux_top/i_horcrux/fpr_inst/sub_x_70     96.6168     0.1     96.6168     0.0000 0.0000 fpr_DW01_sub_J13_0
+i_horcrux_top/i_horcrux/horcrux_register_inst  14967.6654    11.8   7710.0658  7257.5996 0.0000 horcrux_register_00000032_00000020
+i_horcrux_top/i_horcrux/keccak_i   23233.6181     18.3       0.0000      0.0000  0.0000  keccak_f
+i_horcrux_top/i_horcrux/keccak_i/u_cu     49.8960     0.0     18.1440    31.7520 0.0000  keccak_cu
+i_horcrux_top/i_horcrux/keccak_i/u_dp  23183.7221    18.2   6860.9267  7289.3516 0.0000  keccak_dp
+i_horcrux_top/i_horcrux/keccak_i/u_dp/round_constants_gen     36.7416     0.0     36.7416     0.0000 0.0000 keccak_round_constants_gen
+i_horcrux_top/i_horcrux/keccak_i/u_dp/round_map   8996.7022     7.1   8996.7022     0.0000 0.0000 keccak_round
+i_horcrux_top/i_horcrux/multiplier_tree_inst  67518.5865    53.0   3269.5488   614.1744 0.0000 multiplier_tree
+i_horcrux_top/i_horcrux/multiplier_tree_inst/DP_OP_87J8_127_9004    607.5972     0.5    607.5972     0.0000 0.0000 multiplier_tree_DP_OP_87J8_127_9004_6
+i_horcrux_top/i_horcrux/multiplier_tree_inst/DP_OP_88J8_128_2685    321.1488     0.3    321.1488     0.0000 0.0000 multiplier_tree_DP_OP_88J8_128_2685_0
+i_horcrux_top/i_horcrux/multiplier_tree_inst/DP_OP_96J8_122_9380    140.1624     0.1    140.1624     0.0000 0.0000 multiplier_tree_DP_OP_96J8_122_9380_J8_0
+i_horcrux_top/i_horcrux/multiplier_tree_inst/DP_OP_97J8_123_4100    108.8640     0.1    108.8640     0.0000 0.0000 multiplier_tree_DP_OP_97J8_123_4100_J8_0
+i_horcrux_top/i_horcrux/multiplier_tree_inst/DP_OP_98J8_124_4100    131.3172     0.1    131.3172     0.0000 0.0000 multiplier_tree_DP_OP_98J8_124_4100_J8_0
+i_horcrux_top/i_horcrux/multiplier_tree_inst/DP_OP_99J8_129_1568    122.9256     0.1    122.9256     0.0000 0.0000 multiplier_tree_DP_OP_99J8_129_1568_J8_0
+i_horcrux_top/i_horcrux/multiplier_tree_inst/kyber_barrett_inst   5337.9647     4.2    176.2236     0.0000 0.0000 barrett
+i_horcrux_top/i_horcrux/multiplier_tree_inst/kyber_barrett_inst/DP_OP_193J10_122_1739    698.3172     0.5    698.3172     0.0000 0.0000 barrett_DP_OP_193J10_122_1739_J10_0
+i_horcrux_top/i_horcrux/multiplier_tree_inst/kyber_barrett_inst/DP_OP_194J10_123_9305    366.2820     0.3    366.2820     0.0000 0.0000 barrett_DP_OP_194J10_123_9305_J10_0
+i_horcrux_top/i_horcrux/multiplier_tree_inst/kyber_barrett_inst/DP_OP_196J10_124_1798   4097.1419     3.2   4097.1419     0.0000 0.0000 barrett_DP_OP_196J10_124_1798_J10_0
+i_horcrux_top/i_horcrux/multiplier_tree_inst/sub_x_13     58.5144     0.0     58.5144     0.0000 0.0000 multiplier_tree_DW01_sub_J8_1
+i_horcrux_top/i_horcrux/multiplier_tree_inst/sub_x_14    862.5204     0.7    862.5204     0.0000 0.0000 multiplier_tree_DW01_sub_8
+i_horcrux_top/i_horcrux/multiplier_tree_inst/sub_x_3    599.4324     0.5    599.4324     0.0000 0.0000 multiplier_tree_DW01_sub_1
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul  55344.4162    43.5   1043.0532     0.0000 0.0000 shared_multiplication_logic
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_44J11_124_8342     37.8756     0.0     37.8756     0.0000 0.0000 shared_multiplication_logic_DP_OP_44J11_124_8342_J11_0
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_45J11_125_3794   4945.8275     3.9   4945.8275     0.0000 0.0000 shared_multiplication_logic_DP_OP_45J11_125_3794_3
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/DP_OP_46J11_122_2489   4506.7427     3.5   4506.7427     0.0000 0.0000 shared_multiplication_logic_DP_OP_46J11_122_2489_3
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/mult_x_3   1280.5128     1.0   1280.5128     0.0000 0.0000 shared_multiplication_logic_DW_mult_uns_0
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul  43530.4044    34.2  12900.8374     0.0000 0.0000 unified_mul_32x32
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_1    807.8616     0.6    807.8616     0.0000 0.0000 unified_mul_32x32_DW01_add_374
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_10   1209.5244     1.0   1209.5244     0.0000 0.0000 unified_mul_32x32_DW01_add_284
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_11   1143.0720     0.9   1143.0720     0.0000 0.0000 unified_mul_32x32_DW01_add_173
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_12   1085.4648     0.9   1085.4648     0.0000 0.0000 unified_mul_32x32_DW01_add_184
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_13   1116.9900     0.9   1116.9900     0.0000 0.0000 unified_mul_32x32_DW01_add_185
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_14   1124.0208     0.9   1124.0208     0.0000 0.0000 unified_mul_32x32_DW01_add_327
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_15   1010.8476     0.8   1010.8476     0.0000 0.0000 unified_mul_32x32_DW01_add_467
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_16   1041.6924     0.8   1041.6924     0.0000 0.0000 unified_mul_32x32_DW01_add_196
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_17   1117.8972     0.9   1117.8972     0.0000 0.0000 unified_mul_32x32_DW01_add_405
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_18   1081.1556     0.8   1081.1556     0.0000 0.0000 unified_mul_32x32_DW01_add_328
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_19    952.7868     0.7    952.7868     0.0000 0.0000 unified_mul_32x32_DW01_add_462
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_2    720.9972     0.6    720.9972     0.0000 0.0000 unified_mul_32x32_DW01_add_452
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_20    963.9000     0.8    963.9000     0.0000 0.0000 unified_mul_32x32_DW01_add_461
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_21    991.1160     0.8    991.1160     0.0000 0.0000 unified_mul_32x32_DW01_add_350
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_22    996.3324     0.8    996.3324     0.0000 0.0000 unified_mul_32x32_DW01_add_463
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_23    991.5696     0.8    991.5696     0.0000 0.0000 unified_mul_32x32_DW01_add_417
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_24    923.7564     0.7    923.7564     0.0000 0.0000 unified_mul_32x32_DW01_add_392
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_25    941.4468     0.7    941.4468     0.0000 0.0000 unified_mul_32x32_DW01_add_332
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_26    877.0356     0.7    877.0356     0.0000 0.0000 unified_mul_32x32_DW01_add_377
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_27    884.7468     0.7    884.7468     0.0000 0.0000 unified_mul_32x32_DW01_add_323
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_28    813.9852     0.6    813.9852     0.0000 0.0000 unified_mul_32x32_DW01_add_404
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_29    803.0988     0.6    803.0988     0.0000 0.0000 unified_mul_32x32_DW01_add_465
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_3    738.9144     0.6    738.9144     0.0000 0.0000 unified_mul_32x32_DW01_add_453
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_30    690.1524     0.5    690.1524     0.0000 0.0000 unified_mul_32x32_DW01_add_283
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_4   1187.0712     0.9   1187.0712     0.0000 0.0000 unified_mul_32x32_DW01_add_454
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_5   1174.1436     0.9   1174.1436     0.0000 0.0000 unified_mul_32x32_DW01_add_113
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_6   1134.6804     0.9   1134.6804     0.0000 0.0000 unified_mul_32x32_DW01_add_231
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_7   1137.6288     0.9   1137.6288     0.0000 0.0000 unified_mul_32x32_DW01_add_207
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_8   1165.7520     0.9   1165.7520     0.0000 0.0000 unified_mul_32x32_DW01_add_139
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/add_x_9   1147.3812     0.9   1147.3812     0.0000 0.0000 unified_mul_32x32_DW01_add_157
+i_horcrux_top/i_horcrux/multiplier_tree_inst/u_shared_mul/u_primary_mul/sub_x_31    654.5448     0.5    654.5448     0.0000 0.0000 unified_mul_32x32_DW01_sub_7
+i_horcrux_top/i_horcrux/sampler_inst    465.3936     0.4    372.8592     0.0000  0.0000  sampler
+i_horcrux_top/i_horcrux/sampler_inst/DP_OP_45J12_125_127     46.7208     0.0     46.7208     0.0000 0.0000 sampler_DP_OP_45J12_125_127_J12_0
+i_horcrux_top/i_horcrux/sampler_inst/mult_x_5     45.8136     0.0     45.8136     0.0000 0.0000 sampler_DW_mult_uns_J12_0
+i_horcrux_top/i_horcrux/sphincs_ops_inst   6788.5774     5.3   4429.8575  2358.7199 0.0000 sphincs_ops_00000032_00000020
+i_horcrux_top/id_stage_i             726.4404      0.6     201.3984    525.0420  0.0000  id_stage_I_xif_issue_if_if_xif_coproc_issue_X_NUM_RS_3
+--------------------------------  -----------  -------  -----------  ----------  ------  ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total                                                   107362.8096  19918.2555  0.0000
+
+1
