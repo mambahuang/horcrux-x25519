@@ -40,6 +40,52 @@
 OUT=build/kat-regression
 mkdir -p "$OUT"
 
+# Cycle-count reference. Every line of every test's log that reports a cycle
+# count is extracted into $OUT/cycles.txt and compared with this file, so a
+# change in any test's cycle count -- not only the two KATs listed above --
+# fails the run. A new test shows up as added lines: check them, then re-adopt
+# the reference with
+#     cp build/kat-regression/cycles.txt scripts/kat_cycles.ref
+#
+#     sh scripts/kat_regression.sh --cycles-only
+# re-extracts and compares from the existing logs without simulating anything,
+# e.g. to build the first reference from a run that has already finished.
+REF=scripts/kat_cycles.ref
+
+extract_cycles() {
+    for f in `ls "$OUT"/*.sim.log 2>/dev/null | LC_ALL=C sort`; do
+        n=`basename "$f" .sim.log`
+        # Skip the simulator command line and the testbench's config banner,
+        # which mention max_cycles but are not measurements.
+        grep -E "[Cc]ycles" "$f" | grep -vE "max_cycles|Max cycles" | \
+            sed -e 's/[[:space:]][[:space:]]*/ /g' -e 's/^ //' -e "s|^|$n: |"
+    done
+}
+
+cycle_mismatch=0
+check_cycles() {
+    extract_cycles > "$OUT/cycles.txt"
+    lines=`wc -l < "$OUT/cycles.txt" | tr -d ' '`
+    if [ ! -f "$REF" ]; then
+        echo "CYCLES: no reference at $REF ($lines lines extracted)."
+        echo "        If this run is the one to compare against, adopt it with"
+        echo "            cp $OUT/cycles.txt $REF"
+        return
+    fi
+    if diff -u "$REF" "$OUT/cycles.txt" > "$OUT/cycles.diff"; then
+        echo "CYCLES: all $lines lines identical to $REF"
+    else
+        cycle_mismatch=1
+        echo "CYCLES: DIFFER from $REF ('-' reference, '+' this run):"
+        grep -E "^[-+][^-+]" "$OUT/cycles.diff"
+    fi
+}
+
+if [ "$1" = "--cycles-only" ]; then
+    check_cycles
+    exit $cycle_mismatch
+fi
+
 # Force one full recompile of the simulation model, so the result cannot come
 # from a stale ModelSim library that missed the RTL edit. This removes only the
 # sim build, unlike `make clean`, which deletes all of build/.
@@ -122,6 +168,9 @@ run_one() {
     # PREVIOUS test's binary in place and it gets silently re-simulated -- one
     # falcon-512 run reported ML-DSA-65's cycle counts verbatim that way.
     rm -f build/sw/app/main.* hw/vendor/x-heep/sw/build/main.*
+    # Likewise this test's log from the previous run: if the build fails now,
+    # its old cycle counts must not be read as this run's.
+    rm -f "$OUT/${name}.sim.log"
 
     env LD_LIBRARY_PATH="" make app PROJECT="$p" > "$OUT/${name}.build.log" 2>&1
     # `make app`'s final find/cp step loses $(XHEEP_DIR) in some contexts and
@@ -177,6 +226,8 @@ if [ -n "$xpass_list" ]; then
     echo "XPASS (known failures that now pass -- update XFAIL):$xpass_list"
 fi
 echo ""
+check_cycles
+echo ""
 echo "Logs in $OUT/"
-echo "Now compare the cycle counts above against the locket reference numbers"
-echo "in the header of this script -- they must match exactly."
+
+[ $fail -eq 0 ] && [ $cycle_mismatch -eq 0 ]
