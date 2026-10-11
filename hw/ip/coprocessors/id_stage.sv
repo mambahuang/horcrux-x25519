@@ -54,6 +54,31 @@ module id_stage
     assign sel[i] = ((CoproInstr[i].mask & instruction) == CoproInstr[i].instr);
   end
 
+  // Operand validity (CORE-V-XIF issue_req.rs_valid).
+  //
+  // The core may present an offloaded instruction before its source operands are
+  // ready -- e.g. when a preceding load has not yet returned the register -- and
+  // signals that through rs_valid. The coprocessor must not accept the instruction
+  // until every register it reads is valid; holding issue_ready low makes the core
+  // stall and keep forwarding until it is. Accepting early latches a stale value:
+  // a lw followed by a custom instruction reading that register returned a result
+  // computed from the register's previous contents.
+  //
+  // register_read and rs_valid share the bit order {rs3, rs2, rs1}.
+  logic operands_ready;
+  logic issue_go;
+
+  always_comb begin
+    operands_ready = 1'b1;
+    for (int unsigned i = 0; i < NbInstr; i++) begin
+      if (sel[i]) begin
+        operands_ready = &(xif_issue_if.issue_req.rs_valid[2:0] | ~CoproInstr[i].resp.register_read);
+      end
+    end
+  end
+
+  assign issue_go = xif_issue_if.issue_valid & operands_ready;
+
   // --- FSM & Decoder Logic ---
   always_comb begin
 
@@ -113,7 +138,7 @@ module id_stage
     id_o <= '0;
 
     for (int unsigned i = 0; i < NbInstr; i++) begin
-      if (sel[i] && xif_issue_if.issue_valid) begin
+      if (sel[i] && issue_go) begin
 
         xif_issue_if.issue_ready          = 1'b1;
         xif_issue_if.issue_resp.accept    = CoproInstr[i].resp.accept;
@@ -168,7 +193,8 @@ module id_stage
     state_keccak_d  = 1'b0;
     state_sphincs_d = 1'b0;
 
-    if (xif_issue_if.issue_valid) begin
+    // Only an accepted instruction may raise done or enter a wait state.
+    if (issue_go) begin
       for (int unsigned i = 0; i < NbInstr; i++) begin
         if (sel[i]) begin
           if (CoproInstr[i].resp.insn == OP_THASH1 ||
