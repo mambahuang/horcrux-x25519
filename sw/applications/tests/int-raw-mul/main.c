@@ -64,6 +64,11 @@ int main(void) {
         else                 { a[i] = xorshift32(); b[i] = xorshift32(); }
     }
 
+    // Progress lines, so a hang can be located from the log: if the coprocessor
+    // does not recognize an instruction it never raises issue_ready, and the
+    // core waits on it forever instead of trapping.
+    printf("int-raw-mul: %d products (%d edge, %d random)\n", n, (int)N_EDGE, N_RAND);
+
     CSR_CLEAR_BITS(CSR_REG_MCOUNTINHIBIT, 0x1);   // 啟動 cycle 計數器
 
     // 軟體：用 RV32 的 mul/mulh 算 64-bit 乘積
@@ -71,8 +76,10 @@ int main(void) {
     CSR_WRITE(CSR_REG_MCYCLE, 0);
     for (int i = 0; i < n; i++) { mul_ref(a[i], b[i], &sw_lo, &sw_hi); sink ^= sw_lo ^ sw_hi; }
     CSR_READ(CSR_REG_MCYCLE, &sw_cycles);
+    printf("SW reference done\n");
 
     // 硬體：每組兩條指令
+    printf("HW loop start (OP_MULRAW_LO/HI)\n");
     CSR_WRITE(CSR_REG_MCYCLE, 0);
     for (int i = 0; i < n; i++) {
         MULRAW_LO(hw_lo[i], a[i], b[i]);
