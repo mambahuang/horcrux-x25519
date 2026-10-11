@@ -160,6 +160,10 @@ module multiplier_tree (
                 mul_mode = 3'd5; // Custom mode for conditional addition of Q
                 mul_op_a = multiplier_tree1_i; // Input to conditionally reduce
             end
+            OP_MULRAW_LO, OP_MULRAW_HI: begin
+                mul_mode = 3'd3; // MODE_INT_RAW: raw 64-bit integer product rs1 * rs2
+                mul_op_a = multiplier_tree1_i; // mul_op_b keeps its default, rs2
+            end
             default: begin
                 mul_mode = 3'd0;
             end
@@ -369,6 +373,13 @@ module multiplier_tree (
 
             OP_COMPARE_U32: begin
                 result_o = compare_u32_result;
+            end
+            // result_hi_o is not written back, so it keeps its default.
+            OP_MULRAW_LO: begin
+                result_o = mul_res_lo;   // (rs1 * rs2)[31:0]
+            end
+            OP_MULRAW_HI: begin
+                result_o = mul_res_hi;   // (rs1 * rs2)[63:32]
             end
 
             default: begin

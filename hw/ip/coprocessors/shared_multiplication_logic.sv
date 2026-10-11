@@ -36,6 +36,7 @@ module shared_multiplication_logic (
     localparam logic [2:0] MODE_DSA_MONT  = 3'd0;
     localparam logic [2:0] MODE_KEM_MONT  = 3'd1;
     localparam logic [2:0] MODE_FAL_MONT  = 3'd2;
+    localparam logic [2:0] MODE_INT_RAW   = 3'd3;
     localparam logic [2:0] MODE_HQC_RAW   = 3'd4;
     localparam logic [2:0] MODE_DSA_RED32 = 3'd5;
     localparam logic [2:0] MODE_MODP_MONT = 3'd6;
@@ -212,8 +213,8 @@ module shared_multiplication_logic (
             MODE_FAL_MONT: begin
                 res_lo_o = falcon_final;
             end
-            
-            MODE_HQC_RAW: begin
+
+            MODE_HQC_RAW, MODE_INT_RAW: begin
                 res_lo_o = full_prod[31:0];
                 res_hi_o = full_prod[63:32];
             end

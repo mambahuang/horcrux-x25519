@@ -16,7 +16,7 @@ package horcrux_pkg;
 
 
 
-parameter int unsigned NbInstr = 57; 
+parameter int unsigned NbInstr = 59; 
 
 
 // Opcode of the new instruction
@@ -78,7 +78,12 @@ typedef enum logic [6:0] {
   OP_THASH1_256       = 7'b0111110,  // funct7=0x3E: SPHINCS+-256 thash for 1-block input
   OP_THASH2_256       = 7'b0111111,  // funct7=0x3F: SPHINCS+-256 thash for 2-block input
   OP_PRF_192          = 7'b1000000,  // funct7=0x40: SPHINCS+-192 PRF with address
-  OP_PRF_256          = 7'b1000001   // funct7=0x41: SPHINCS+-256 PRF with address
+  OP_PRF_256          = 7'b1000001,  // funct7=0x41: SPHINCS+-256 PRF with address
+  // M1 (temporary): read the raw 64-bit integer product through MODE_INT_RAW.
+  // enum values 0x5E/0x5F keep 0x50-0x58 free for the M2 ACC instructions;
+  // the instruction encodings are funct7 0x69/0x6A (see CoproInstr).
+  OP_MULRAW_LO        = 7'b1011110,  // 0x5E: rd = (rs1 * rs2)[31:0]
+  OP_MULRAW_HI        = 7'b1011111   // 0x5F: rd = (rs1 * rs2)[63:32]
 } horcrux_insn;
 
   typedef enum logic [6:0] {
@@ -843,6 +848,33 @@ typedef enum logic [6:0] {
             writeback : 1'b1,
             register_read : {1'b0, 1'b1, 1'b1},
             insn: OP_COMPARE_U32,
+            done : 1'b1
+        },
+        opcode : MULTIPLIER_TREE
+    },
+    // OP_MULRAW_LO / OP_MULRAW_HI (M1, temporary): the raw 64-bit product of the
+    // primary multiplier in MODE_INT_RAW. unified_mul_32x32 multiplies as signed,
+    // so the result is the signed product of rs1 and rs2.
+    '{
+        instr: 32'b1101001_00000_00000_111_00000_0111011,  // funct7=0x69
+        mask:  32'b1111111_00000_00000_111_00000_1111111,
+        resp : '{
+            accept : 1'b1,
+            writeback : 1'b1,
+            register_read : {1'b0, 1'b1, 1'b1},  // reads rs1 and rs2
+            insn: OP_MULRAW_LO,
+            done : 1'b1
+        },
+        opcode : MULTIPLIER_TREE
+    },
+    '{
+        instr: 32'b1101010_00000_00000_111_00000_0111011,  // funct7=0x6A
+        mask:  32'b1111111_00000_00000_111_00000_1111111,
+        resp : '{
+            accept : 1'b1,
+            writeback : 1'b1,
+            register_read : {1'b0, 1'b1, 1'b1},  // reads rs1 and rs2
+            insn: OP_MULRAW_HI,
             done : 1'b1
         },
         opcode : MULTIPLIER_TREE
