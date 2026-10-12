@@ -53,8 +53,14 @@ static void karats_hw_compute(karats_hw_result_t *results) {
             ".insn r 0x3b, 0x7, 0x14, %[rd2], %[r1b], %[r2b] \n" 
             ".insn r 0x3b, 0x7, 0x15, %[rd3], t0,  %[r2] \n" 
             ".insn r 0x3b, 0x7, 0x19, %[rd4], x0, x0 \n" 
-            : [rd1] "=r" (out1.rd_lo), [rd2] "=r" (out2.rd_lo), 
-              [rd3] "=r" (out3.rd_lo), [rd4] "=r" (out3.rd_hi)
+            // Early-clobber ("=&r"): the four instructions run in sequence, so
+            // an output must not share a register with an input that a later
+            // instruction still reads. With "=r", GCC put rd2 in the register
+            // holding r2 (s9), and KARATS_3 then read KARATS_2's result instead
+            // of r2. That only worked while the coprocessor ignored rs_valid
+            // and latched the register before KARATS_2 had written it.
+            : [rd1] "=&r" (out1.rd_lo), [rd2] "=&r" (out2.rd_lo),
+              [rd3] "=&r" (out3.rd_lo), [rd4] "=&r" (out3.rd_hi)
             : [r1]  "r" ((uint32_t)hqc_a[i]), 
               [r2]  "r" ((uint32_t)hqc_b[i]), 
               [r1b] "r" ((uint32_t)(hqc_a[i] >> 32)), 
