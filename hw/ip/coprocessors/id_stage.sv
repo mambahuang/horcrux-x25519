@@ -64,18 +64,23 @@ module id_stage
   // a lw followed by a custom instruction reading that register returned a result
   // computed from the register's previous contents.
   //
-  // register_read and rs_valid share the bit order {rs3, rs2, rs1}.
+  // Which operands to wait for comes from the instruction format, not from
+  // CoproInstr's register_read: that field was never used to gate anything and its
+  // bit order is inconsistent between entries (OP_RED32 and OP_MQMULK read rs1 but
+  // mark {rs3, rs2}). rs1 and rs2 exist in every HORCRUX encoding and are always
+  // waited for. rs3 exists only in the R4 format (opcode custom-3, 1101011); in the
+  // R-type format (0111011) bits [31:27] are funct7, and the core's rs_valid[2]
+  // then describes whichever register those bits happen to name, so it is ignored.
+  localparam logic [6:0] OPCODE_R4 = 7'b1101011;
+
+  logic is_r4;
   logic operands_ready;
   logic issue_go;
 
-  always_comb begin
-    operands_ready = 1'b1;
-    for (int unsigned i = 0; i < NbInstr; i++) begin
-      if (sel[i]) begin
-        operands_ready = &(xif_issue_if.issue_req.rs_valid[2:0] | ~CoproInstr[i].resp.register_read);
-      end
-    end
-  end
+  assign is_r4          = (instruction[6:0] == OPCODE_R4);
+  assign operands_ready = xif_issue_if.issue_req.rs_valid[0] &
+                          xif_issue_if.issue_req.rs_valid[1] &
+                          (xif_issue_if.issue_req.rs_valid[2] | ~is_r4);
 
   assign issue_go = xif_issue_if.issue_valid & operands_ready;
 
