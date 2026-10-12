@@ -1,15 +1,15 @@
-pqc_optimized_DS_ML-DSA_ML-DSA-65: Keygen cycles: 789880
-pqc_optimized_DS_ML-DSA_ML-DSA-65: Sign cycles: 6176971
-pqc_optimized_DS_ML-DSA_ML-DSA-65: Verify cycles: 913085
-pqc_optimized_KEM_HQC_HQC-2025_HQC-1: Keygen cycles: 2411827
-pqc_optimized_KEM_HQC_HQC-2025_HQC-1: Encaps cycles: 4537744
-pqc_optimized_KEM_HQC_HQC-2025_HQC-1: Decaps cycles: 7406292
-pqc_optimized_KEM_ML-KEM_ml-kem-768: Keygen cycles: 260388
-pqc_optimized_KEM_ML-KEM_ml-kem-768: Encaps cycles: 288498
-pqc_optimized_KEM_ML-KEM_ml-kem-768: Decaps cycles: 426258
-tests_cbd_eta1: Software Cycles: 4297
-tests_cbd_eta1: Hardware Cycles: 879
-tests_cbd_eta1: SW Cycles: 4297 | HW Cycles: 879
+pqc_optimized_DS_ML-DSA_ML-DSA-65: Keygen cycles: 798119
+pqc_optimized_DS_ML-DSA_ML-DSA-65: Sign cycles: 6186018
+pqc_optimized_DS_ML-DSA_ML-DSA-65: Verify cycles: 921327
+pqc_optimized_KEM_HQC_HQC-2025_HQC-1: Keygen cycles: 2411833
+pqc_optimized_KEM_HQC_HQC-2025_HQC-1: Encaps cycles: 4538035
+pqc_optimized_KEM_HQC_HQC-2025_HQC-1: Decaps cycles: 7407200
+pqc_optimized_KEM_ML-KEM_ml-kem-768: Keygen cycles: 261255
+pqc_optimized_KEM_ML-KEM_ml-kem-768: Encaps cycles: 289451
+pqc_optimized_KEM_ML-KEM_ml-kem-768: Decaps cycles: 426838
+tests_cbd_eta1: Software Cycles: 3969
+tests_cbd_eta1: Hardware Cycles: 884
+tests_cbd_eta1: SW Cycles: 3969 | HW Cycles: 884
 tests_cbd_eta2: Software Cycles: 2048
 tests_cbd_eta2: Hardware Cycles: 786
 tests_cbd_eta2: SW Cycles: 2048 | HW Cycles: 786
@@ -76,9 +76,9 @@ tests_fqmul: Hardware Cycles: 102
 tests_fqmul: SW Cycles: 236 | HW Cycles: 102
 tests_gen-matrix: Cycles: 418061
 tests_gen-matrix: Cycles: 418041
-tests_gen-matrix: Cycles: 24762
-tests_gen-matrix: Cycles: 24742
-tests_gen-matrix: SW Cycles: 418061 | HW Cycles: 24762
+tests_gen-matrix: Cycles: 24790
+tests_gen-matrix: Cycles: 24770
+tests_gen-matrix: SW Cycles: 418061 | HW Cycles: 24790
 tests_gf-carryless: Software Cycles: 3047
 tests_gf-carryless: Hardware Cycles: 114
 tests_gf-carryless: SW Cycles: 3047 | HW Cycles: 114
@@ -88,45 +88,48 @@ tests_gf-reduce: SW Cycles: 256 | HW Cycles: 104
 tests_hqc-barrett: Software Cycles: 2716
 tests_hqc-barrett: Hardware Cycles: 1878
 tests_hqc-barrett: SW Cycles: 2716 | HW Cycles: 1878
-tests_karats: Software Cycles: 2634
+tests_int-raw-mul: Software Cycles: 3153
+tests_int-raw-mul: Hardware Cycles: 3377
+tests_int-raw-mul: SW Cycles: 3153 | HW Cycles: 3377
+tests_karats: Software Cycles: 2633
 tests_karats: Hardware Cycles: 8
-tests_karats: SW Cycles: 2634 | HW Cycles: 8
+tests_karats: SW Cycles: 2633 | HW Cycles: 8
 tests_keccak-abs-multi-squeeze: SW cycles: 78580
-tests_keccak-abs-multi-squeeze: HW cycles: 4842
-tests_keccak-abs-multi-squeeze: SW Cycles: 78580 | HW Cycles: 4842
+tests_keccak-abs-multi-squeeze: HW cycles: 4850
+tests_keccak-abs-multi-squeeze: SW Cycles: 78580 | HW Cycles: 4850
 tests_keccak-abs-sha3-256-multi-block: SW cycles: 50252
-tests_keccak-abs-sha3-256-multi-block: HW cycles: 3133
-tests_keccak-abs-sha3-256-multi-block: SW Cycles: 50252 | HW Cycles: 3133
+tests_keccak-abs-sha3-256-multi-block: HW cycles: 3160
+tests_keccak-abs-sha3-256-multi-block: SW Cycles: 50252 | HW Cycles: 3160
 tests_keccak-abs-sha3-256-single-block: SW cycles: 24547
-tests_keccak-abs-sha3-256-single-block: HW cycles: 1638
-tests_keccak-abs-sha3-256-single-block: SW Cycles: 24547 | HW Cycles: 1638
+tests_keccak-abs-sha3-256-single-block: HW cycles: 1640
+tests_keccak-abs-sha3-256-single-block: SW Cycles: 24547 | HW Cycles: 1640
 tests_keccak-abs-shake256: SW cycles: 27287
-tests_keccak-abs-shake256: HW cycles: 3261
-tests_keccak-abs-shake256: SW Cycles: 27287 | HW Cycles: 3261
-tests_keccak-abs: Cycles: 1656
-tests_keccak-abs: Cycles: 1743
-tests_keccak-abs: Cycles: 3142
-tests_keccak-abs: Cycles: 2394
-tests_keccak-abs: Cycles: 3284
-tests_keccak-abs: Cycles: 4832
+tests_keccak-abs-shake256: HW cycles: 3275
+tests_keccak-abs-shake256: SW Cycles: 27287 | HW Cycles: 3275
+tests_keccak-abs: Cycles: 1658
+tests_keccak-abs: Cycles: 1745
+tests_keccak-abs: Cycles: 3169
+tests_keccak-abs: Cycles: 2396
+tests_keccak-abs: Cycles: 3298
+tests_keccak-abs: Cycles: 4840
 tests_kyber-barrett: Software Cycles: 272
 tests_kyber-barrett: Hardware Cycles: 224
 tests_kyber-barrett: SW Cycles: 272 | HW Cycles: 224
-tests_kyber-intt: Software Cycles: 29604
-tests_kyber-intt: Hardware Cycles: 11406
-tests_kyber-intt: SW Cycles: 29604 | HW Cycles: 11406
+tests_kyber-intt: Software Cycles: 29603
+tests_kyber-intt: Hardware Cycles: 11423
+tests_kyber-intt: SW Cycles: 29603 | HW Cycles: 11423
 tests_kyber-montg: Software Cycles: 291
 tests_kyber-montg: Hardware Cycles: 246
 tests_kyber-montg: SW Cycles: 291 | HW Cycles: 246
 tests_kyber-ntt: Software Cycles: 20627
-tests_kyber-ntt: Hardware (x2) Cycles: 10975
-tests_kyber-ntt: SW Cycles: 20627 | HW x2 Cycles: 10975
+tests_kyber-ntt: Hardware (x2) Cycles: 11027
+tests_kyber-ntt: SW Cycles: 20627 | HW x2 Cycles: 11027
 tests_kyber-poly-intt: polyvec_invntt software cycles: 60926
-tests_kyber-poly-intt: polyvec_invntt hardware cycles: 21865
-tests_kyber-poly-intt: SW Cycles: 60926 | HW Cycles: 21865
+tests_kyber-poly-intt: polyvec_invntt hardware cycles: 21897
+tests_kyber-poly-intt: SW Cycles: 60926 | HW Cycles: 21897
 tests_kyber-poly-ntt: polyvec_ntt software cycles: 45879
-tests_kyber-poly-ntt: polyvec_ntt hardware cycles: 26573
-tests_kyber-poly-ntt: SW Cycles: 45879 | HW Cycles: 26573
+tests_kyber-poly-ntt: polyvec_ntt hardware cycles: 26605
+tests_kyber-poly-ntt: SW Cycles: 45879 | HW Cycles: 26605
 tests_mldsa-rej-eta: ETA2 Total SW Cycles: 1684 | Total HW Cycles: 400
 tests_mldsa-rej-uniform: Software Cycles: 1141
 tests_mldsa-rej-uniform: Hardware Cycles: 1203
@@ -137,7 +140,7 @@ tests_mldsa-unpack-z: SW Cycles: 1049 | HW Cycles: 506
 tests_mq-montymul: Software Cycles: 360
 tests_mq-montymul: Hardware Cycles: 114
 tests_mq-montymul: SW Cycles: 360 | HW Cycles: 114
-tests_prf-addr: SW Cycles: 151262 | HW Cycles: 4104
-tests_thash-wots: SW Cycles: 3627188 | HW Cycles: 89156
-tests_thash: SW Cycles: 452084 | HW Cycles: 8484
-tests_thash2: SW Cycles: 461058 | HW Cycles: 8892
+tests_prf-addr: SW Cycles: 151262 | HW Cycles: 4164
+tests_thash-wots: SW Cycles: 3627188 | HW Cycles: 89828
+tests_thash: SW Cycles: 452084 | HW Cycles: 8604
+tests_thash2: SW Cycles: 461058 | HW Cycles: 9048

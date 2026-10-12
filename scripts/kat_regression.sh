@@ -16,16 +16,25 @@
 #
 # The extension only adds new instructions; it must not add or remove a pipeline
 # stage on the existing ones. Cycle counts must therefore come out IDENTICAL to
-# the reference numbers below, measured on unmodified locket. A changed cycle
-# count is a red flag even if the KAT passes.
+# scripts/kat_cycles.ref. A changed cycle count is a red flag even if the KAT
+# passes.
 #
-#   ML-KEM-768  KeyGen/Encaps/Decaps :   260,388 /   288,498 /   426,258
-#   HQC-1       KeyGen/Encaps/Decaps : 2,411,827 / 4,537,744 / 7,406,292
+# The reference is NOT unmodified locket. It was taken on 2026-10-13 on
+# x25519-ext after two corrections that change existing cycle counts:
+#   - id_stage now waits for CORE-V-XIF rs_valid before accepting an
+#     instruction (locket latched stale operands after a load);
+#   - thirteen multi-instruction inline-asm blocks (karats, cbd_eta1/4,
+#     kyber-ntt/intt, ML-KEM ntt.c and cbd.c) declare their outputs "=&r".
+# Against locket this costs 0-1.8% of hardware cycles, e.g.
+#                      locket                          this reference
+#   ML-KEM-768  260,388 / 288,498 / 426,258       261,255 / 289,451 / 426,838
+#   HQC-1     2,411,827 / 4,537,744 / 7,406,292 2,411,833 / 4,538,035 / 7,407,200
+#   ML-DSA-65   789,880 / 6,176,971 / 913,085     798,119 / 6,186,018 / 921,327
+# The locket reference is commit 5113364's scripts/kat_cycles.ref.
 #
-# STATUS: validated end to end on 2026-10-08 on x25519-ext with the unmodified
-# locket RTL: no unexpected failures, falcon-montg reported as the one expected
-# failure, and the ML-KEM-768 and HQC-1 cycle counts identical to the numbers
-# above.
+# STATUS: validated end to end on 2026-10-08 against unmodified locket, and on
+# 2026-10-13 against this reference: no unexpected failures, falcon-montg the
+# one expected failure.
 #
 # Note also scripts/sim_all_app.sh, which does a similar sweep but marks a test
 # PASSED on the string "TEST SUCCEEDED" alone. That is the testbench reporting
