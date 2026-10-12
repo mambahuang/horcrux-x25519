@@ -61,7 +61,7 @@ static void kyber_intt_hw_compute(kyber_poly *r) {
                 asm volatile (
                     ".insn r 0x6b, 0x7, 0x1, %[o0], %[a0], %[b0], %[z]\n"
                     ".insn r 0x6b, 0x7, 0x1, %[o1], %[a1], %[b1], %[z]\n"
-                    : [o0] "=r" (out0), [o1] "=r" (out1)
+                    : [o0] "=&r" (out0), [o1] "=&r" (out1)
                     : [a0] "r" ((int32_t)r->coeffs[j]),       [b0] "r" ((int32_t)r->coeffs[j+len]),
                       [a1] "r" ((int32_t)r->coeffs[j+1]),     [b1] "r" ((int32_t)r->coeffs[j+1+len]),
                       [z]  "r" (zeta)

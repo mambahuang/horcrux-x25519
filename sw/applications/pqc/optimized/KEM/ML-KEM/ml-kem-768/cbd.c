@@ -78,14 +78,14 @@ static void cbd2(poly *r, const uint8_t buf[2*KYBER_N/4])
       ".insn r 0x3b, 0x7, 0x1, %[dst5], t0, %[x5]\r\n"
       ".insn r 0x3b, 0x7, 0x1, %[dst6], t0, %[x6]\r\n"
       ".insn r 0x3b, 0x7, 0x1, %[dst7], t0, %[x7]\r\n"
-      : [dst0] "=r" (r->coeffs[8 * i]    ),
-        [dst1] "=r" (r->coeffs[8 * i + 1]),
-        [dst2] "=r" (r->coeffs[8 * i + 2]),
-        [dst3] "=r" (r->coeffs[8 * i + 3]),
-        [dst4] "=r" (r->coeffs[8 * i + 4]),
-        [dst5] "=r" (r->coeffs[8 * i + 5]),
-        [dst6] "=r" (r->coeffs[8 * i + 6]),
-        [dst7] "=r" (r->coeffs[8 * i + 7])
+      : [dst0] "=&r" (r->coeffs[8 * i]    ),
+        [dst1] "=&r" (r->coeffs[8 * i + 1]),
+        [dst2] "=&r" (r->coeffs[8 * i + 2]),
+        [dst3] "=&r" (r->coeffs[8 * i + 3]),
+        [dst4] "=&r" (r->coeffs[8 * i + 4]),
+        [dst5] "=&r" (r->coeffs[8 * i + 5]),
+        [dst6] "=&r" (r->coeffs[8 * i + 6]),
+        [dst7] "=&r" (r->coeffs[8 * i + 7])
       : [src] "r" (d), 
         [x0] "r" (0),
         [x1] "r" (1),

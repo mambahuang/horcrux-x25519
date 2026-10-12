@@ -99,7 +99,7 @@ void ntt(int16_t r[256]) {
                 asm volatile (
                     ".insn r 0x6b, 0x7, 0x0, %[o0], %[a0], %[b0], %[z]\n"
                     ".insn r 0x6b, 0x7, 0x0, %[o1], %[a1], %[b1], %[z]\n"
-                    : [o0] "=r" (out0), [o1] "=r" (out1)
+                    : [o0] "=&r" (out0), [o1] "=&r" (out1)
                     : [a0] "r" ((int32_t)r[j]),       [b0] "r" ((int32_t)r[j+len]),
                       [a1] "r" ((int32_t)r[j+1]),     [b1] "r" ((int32_t)r[j+1+len]),
                       [z]  "r" (zeta)
@@ -152,7 +152,7 @@ void invntt(int16_t r[256]) {
                 asm volatile (
                     ".insn r 0x6b, 0x7, 0x1, %[o0], %[a0], %[b0], %[z]\n"
                     ".insn r 0x6b, 0x7, 0x1, %[o1], %[a1], %[b1], %[z]\n"
-                    : [o0] "=r" (out0), [o1] "=r" (out1)
+                    : [o0] "=&r" (out0), [o1] "=&r" (out1)
                     : [a0] "r" ((int32_t)r[j]),       [b0] "r" ((int32_t)r[j+len]),
                       [a1] "r" ((int32_t)r[j+1]),     [b1] "r" ((int32_t)r[j+1+len]),
                       [z]  "r" (zeta)

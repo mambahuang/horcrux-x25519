@@ -207,8 +207,8 @@ int main(void) {
             "mv a3, %[src]\n\t"
             ".insn r 0x3b, 0x7, 0x3, %[dst0], %[src], %[x0]\r\n"
             ".insn r 0x3b, 0x7, 0x3, %[dst1], %[src], %[x1]\r\n"
-            :   [dst0] "=r" (out_hw[i][0]),
-                [dst1] "=r" (out_hw[i][1])
+            :   [dst0] "=&r" (out_hw[i][0]),
+                [dst1] "=&r" (out_hw[i][1])
             :   [src] "r" (d_eta4[i]),
                 [x0] "r" (0),
                 [x1] "r" (1)
