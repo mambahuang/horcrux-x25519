@@ -19,54 +19,59 @@ package horcrux_pkg;
 parameter int unsigned NbInstr = 59; 
 
 
-// Opcode of the new instruction
+// Internal instruction IDs, carried from id_stage to the functional units as
+// select_insn / insn_i. An ID is NOT the instruction's encoding: CoproInstr below
+// maps each encoding to its ID, and the two are usually different numbers (e.g.
+// OP_KARATS_1 has ID 0x20 but is encoded with funct7 0x13). The comment on each
+// line gives the encoding: funct7 for R-type (opcode 0x3B, funct3 111), or
+// funct3/funct2 for the R4 format (opcode 0x6B), which has no funct7 field.
 typedef enum logic [6:0] {
-  none                = 7'b0000000,  // funct7=0x00: Reserved (no operation)
-  OP_KSTART           = 7'b0000001,  // funct7=0x01: Start Keccak permutation
-  OP_STORE            = 7'b0000010,  // funct7=0x02: Store result to register file
-  OP_LOAD             = 7'b0000011,  // funct7=0x03: Load from register file
-  OP_KABSORB          = 7'b0000100,  // funct7=0x04: Absorb (XOR) into Keccak state
-  OP_KPERM            = 7'b0000101,  // funct7=0x05: In-place Keccak permutation
-  OP_INIT             = 7'b0000110,  // funct7=0x06: Initialize/zero register file
-  OP_KREAD3           = 7'b0101101,  // funct7=0x2D: Read 3 bytes from Keccak state
-  OP_CBD1             = 7'b0001100,  // funct7=0x0C: CBD sampling n=256
-  OP_CBD2             = 7'b0001101,  // funct7=0x0D: CBD sampling n=512
-  OP_CBD3             = 7'b0001110,  // funct7=0x0E: CBD sampling n=768
-  OP_CBD4             = 7'b0001111,  // funct7=0x0F: CBD sampling n=1024
-  OP_BARRETT          = 7'b0010001,  // funct7=0x11: Barrett reduction for ML-KEM (Z₃₃₂₉)
-  OP_BARRETT_HQC      = 7'b0011010,  // funct7=0x1A: Barrett reduction for HQC-1
-  OP_BARRETT_HQC3     = 7'b0111010,  // funct7=0x3A: Barrett reduction for HQC-3
-  OP_BARRETT_HQC5     = 7'b0111011,  // funct7=0x3B: Barrett reduction for HQC-5
-  OP_BFNTTK           = 7'b0011011,  // funct7=0x1B: Cooley-Tukey NTT butterfly for ML-KEM
-  OP_BFINTTK          = 7'b0011100,  // funct7=0x1C: Inverse NTT butterfly for ML-KEM
-  OP_MQMULF           = 7'b0011101,  // funct7=0x1D: Montgomery multiply for Falcon
-  OP_MQMULK           = 7'b0011110,  // funct7=0x1E: Montgomery multiply for ML-KEM
-  OP_MQMULD           = 7'b0011111,  // funct7=0x1F: Montgomery multiply for ML-DSA
-  OP_KARATS_1         = 7'b0100000,  // funct7=0x20: Karatsuba multiply step 1
-  OP_KARATS_2         = 7'b0100001,  // funct7=0x21: Karatsuba multiply step 2
-  OP_KARATS_3         = 7'b0100010,  // funct7=0x22: Karatsuba multiply step 3
-  OP_GFMUL8           = 7'b0100011,  // funct7=0x23: GF(2⁸) multiplication mod 0x11D
-  OP_BFNTTD           = 7'b0100100,  // funct7=0x24: Gentleman-Sande NTT butterfly for ML-DSA
-  OP_BFNTTDH          = 7'b0100101,  // funct7=0x25: NTT butterfly with high word output
-  OP_BFINTTD          = 7'b0100110,  // funct7=0x26: Inverse NTT butterfly for ML-DSA
-  OP_BFINTTDH         = 7'b0100111,  // funct7=0x27: Inverse NTT butterfly with high output
-  OP_KARATS_4         = 7'b0101000,  // funct7=0x28: Karatsuba multiply step 4
-  OP_RED32            = 7'b0101001,  // funct7=0x29: 32-bit modular reduction
-  OP_CL_128F          = 7'b0101010,  // funct7=0x2A: SPHINCS+-128f chain lengths
-  OP_CL_192F          = 7'b0101011,  // funct7=0x2B: SPHINCS+-192f chain lengths
-  OP_CL_256F          = 7'b0101100,  // funct7=0x2C: SPHINCS+-256f chain lengths
-  OP_BFNTTF           = 7'b0101110,  // funct7=0x2E: NTT butterfly for Falcon
-  OP_BFINTTF          = 7'b0101111,  // funct7=0x2F: Inverse NTT butterfly for Falcon
+  none                = 7'b0000000,  // no instruction: id_stage outputs this when nothing is accepted
+  OP_KSTART           = 7'b0000001,  // R4 funct3=1 funct2=0: Start Keccak permutation
+  OP_STORE            = 7'b0000010,  // funct7=0x0F: Store result to register file
+  OP_LOAD             = 7'b0000011,  // R4 funct3=1 funct2=3: Load from register file
+  OP_KABSORB          = 7'b0000100,  // R4 funct3=1 funct2=1: Absorb (XOR) into Keccak state
+  OP_KPERM            = 7'b0000101,  // R4 funct3=1 funct2=2: In-place Keccak permutation
+  OP_INIT             = 7'b0000110,  // funct7=0x0E: Initialize/zero register file
+  OP_KREAD3           = 7'b0101101,  // funct7=0x0D: Read 3 bytes from Keccak state
+  OP_CBD1             = 7'b0001100,  // funct7=0x00: CBD sampling n=256
+  OP_CBD2             = 7'b0001101,  // funct7=0x01: CBD sampling n=512
+  OP_CBD3             = 7'b0001110,  // funct7=0x02: CBD sampling n=768
+  OP_CBD4             = 7'b0001111,  // funct7=0x03: CBD sampling n=1024
+  OP_BARRETT          = 7'b0010001,  // funct7=0x05: Barrett reduction for ML-KEM (Z₃₃₂₉)
+  OP_BARRETT_HQC      = 7'b0011010,  // funct7=0x58: Barrett reduction for HQC-1
+  OP_BARRETT_HQC3     = 7'b0111010,  // funct7=0x59: Barrett reduction for HQC-3
+  OP_BARRETT_HQC5     = 7'b0111011,  // funct7=0x5A: Barrett reduction for HQC-5
+  OP_BFNTTK           = 7'b0011011,  // R4 funct3=7 funct2=0: Cooley-Tukey NTT butterfly for ML-KEM
+  OP_BFINTTK          = 7'b0011100,  // R4 funct3=7 funct2=1: Inverse NTT butterfly for ML-KEM
+  OP_MQMULF           = 7'b0011101,  // funct7=0x10: Montgomery multiply for Falcon
+  OP_MQMULK           = 7'b0011110,  // funct7=0x11: Montgomery multiply for ML-KEM
+  OP_MQMULD           = 7'b0011111,  // funct7=0x12: Montgomery multiply for ML-DSA
+  OP_KARATS_1         = 7'b0100000,  // funct7=0x13: Karatsuba multiply step 1
+  OP_KARATS_2         = 7'b0100001,  // funct7=0x14: Karatsuba multiply step 2
+  OP_KARATS_3         = 7'b0100010,  // funct7=0x15: Karatsuba multiply step 3
+  OP_GFMUL8           = 7'b0100011,  // funct7=0x16: GF(2⁸) multiplication mod 0x11D
+  OP_BFNTTD           = 7'b0100100,  // R4 funct3=7 funct2=2: Gentleman-Sande NTT butterfly for ML-DSA
+  OP_BFNTTDH          = 7'b0100101,  // funct7=0x17: NTT butterfly with high word output
+  OP_BFINTTD          = 7'b0100110,  // R4 funct3=7 funct2=3: Inverse NTT butterfly for ML-DSA
+  OP_BFINTTDH         = 7'b0100111,  // funct7=0x18: Inverse NTT butterfly with high output
+  OP_KARATS_4         = 7'b0101000,  // funct7=0x19: Karatsuba multiply step 4
+  OP_RED32            = 7'b0101001,  // funct7=0x1A: 32-bit modular reduction
+  OP_CL_128F          = 7'b0101010,  // funct7=0x1B: SPHINCS+-128f chain lengths
+  OP_CL_192F          = 7'b0101011,  // funct7=0x1C: SPHINCS+-192f chain lengths
+  OP_CL_256F          = 7'b0101100,  // funct7=0x1D: SPHINCS+-256f chain lengths
+  OP_BFNTTF           = 7'b0101110,  // R4 funct3=6 funct2=0: NTT butterfly for Falcon
+  OP_BFINTTF          = 7'b0101111,  // R4 funct3=6 funct2=1: Inverse NTT butterfly for Falcon
   OP_THASH1           = 7'b0110000,  // funct7=0x30: SPHINCS+ thash for 1-block input
   OP_THASH2           = 7'b0110001,  // funct7=0x31: SPHINCS+ thash for 2-block input
   OP_PRF_ADDR         = 7'b0110010,  // funct7=0x32: SPHINCS+ PRF with address (FIPS 205)
-  OP_MODP_MONTYMUL    = 7'b0110011,  // funct7=0x33: Montgomery multiply mod P
-  OP_FPR_LOAD_SE      = 7'b0110100,  // funct7=0x34: Falcon FPR load sign-extended
-  OP_FPR_EXEC         = 7'b0110101,  // funct7=0x35: Falcon FPR execute operation
-  OP_FPR_RDHI         = 7'b0110110,  // funct7=0x36: Falcon FPR read high word
-  OP_FPR_NORM64_EXEC  = 7'b0110111,  // funct7=0x37: Falcon FPR normalize 64-bit
-  OP_FPR_NORM64_RDHI  = 7'b0111000,  // funct7=0x38: Falcon FPR normalize read high
-  OP_FPR_NORM64_RDE   = 7'b0111001,  // funct7=0x39: Falcon FPR normalize read extended
+  OP_MODP_MONTYMUL    = 7'b0110011,  // R4 funct3=6 funct2=2: Montgomery multiply mod P
+  OP_FPR_LOAD_SE      = 7'b0110100,  // funct7=0x33: Falcon FPR load sign-extended
+  OP_FPR_EXEC         = 7'b0110101,  // funct7=0x34: Falcon FPR execute operation
+  OP_FPR_RDHI         = 7'b0110110,  // funct7=0x35: Falcon FPR read high word
+  OP_FPR_NORM64_EXEC  = 7'b0110111,  // R4 funct3=6 funct2=3: Falcon FPR normalize 64-bit
+  OP_FPR_NORM64_RDHI  = 7'b0111000,  // funct7=0x36: Falcon FPR normalize read high
+  OP_FPR_NORM64_RDE   = 7'b0111001,  // funct7=0x37: Falcon FPR normalize read extended
   OP_GF_REDUCE        = 7'b1111000,  // funct7=0x78: GF(2⁸) reduce mod 0x11D
   OP_COMPARE_U32      = 7'b1111001,  // funct7=0x79: Constant-time u32 comparison
   OP_REJ_UNIFORM      = 7'b1001000,  // funct7=0x48: Rejection sampling mod Q for matrix A
@@ -82,8 +87,8 @@ typedef enum logic [6:0] {
   // M1 (temporary): read the raw 64-bit integer product through MODE_INT_RAW.
   // enum values 0x5E/0x5F keep 0x50-0x58 free for the M2 ACC instructions;
   // the instruction encodings are funct7 0x69/0x6A (see CoproInstr).
-  OP_MULRAW_LO        = 7'b1011110,  // 0x5E: rd = (rs1 * rs2)[31:0]
-  OP_MULRAW_HI        = 7'b1011111   // 0x5F: rd = (rs1 * rs2)[63:32]
+  OP_MULRAW_LO        = 7'b1011110,  // funct7=0x69: rd = (rs1 * rs2)[31:0]
+  OP_MULRAW_HI        = 7'b1011111   // funct7=0x6A: rd = (rs1 * rs2)[63:32]
 } horcrux_insn;
 
   typedef enum logic [6:0] {
