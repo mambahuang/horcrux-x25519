@@ -16,7 +16,7 @@ package horcrux_pkg;
 
 
 
-parameter int unsigned NbInstr = 59; 
+parameter int unsigned NbInstr = 68; 
 
 
 // Internal instruction IDs, carried from id_stage to the functional units as
@@ -88,7 +88,16 @@ typedef enum logic [6:0] {
   // enum values 0x5E/0x5F keep 0x50-0x58 free for the M2 ACC instructions;
   // the instruction encodings are funct7 0x69/0x6A (see CoproInstr).
   OP_MULRAW_LO        = 7'b1011110,  // funct7=0x69: rd = (rs1 * rs2)[31:0]
-  OP_MULRAW_HI        = 7'b1011111   // funct7=0x6A: rd = (rs1 * rs2)[63:32]
+  OP_MULRAW_HI        = 7'b1011111,  // funct7=0x6A: rd = (rs1 * rs2)[63:32]
+  OP_ACCZERO          = 7'b1100000,  // funct7=0x60: ACC <= 0
+  OP_MACC_S1          = 7'b1100001,  // funct7=0x61: ACC += rs1 * rs2
+  OP_MACC_S2          = 7'b1100010,  // funct7=0x62: ACC += rs1 * (2*rs2)
+  OP_MACC_S19         = 7'b1100011,  // funct7=0x63: ACC += rs1 * (19*rs2)
+  OP_MACC_S38         = 7'b1100100,  // funct7=0x64: ACC += rs1 * (38*rs2)
+  OP_ACCRD26          = 7'b1100101,  // funct7=0x65: rd = ACC[25:0]; ACC >>= 26
+  OP_ACCRD25          = 7'b1100110,  // funct7=0x66: rd = ACC[24:0]; ACC >>= 25
+  OP_ACCWRAP19        = 7'b1100111,  // funct7=0x67: v = rs1 + 19*ACC; rd = v[25:0]; ACC = v >> 26
+  OP_ACCWRAP5         = 7'b1101000   // funct7=0x68: v = rs1 + 5*ACC;  rd = v[25:0]; ACC = v >> 26
 } horcrux_insn;
 
   typedef enum logic [6:0] {
@@ -880,6 +889,114 @@ typedef enum logic [6:0] {
             writeback : 1'b1,
             register_read : {1'b0, 1'b1, 1'b1},  // reads rs1 and rs2
             insn: OP_MULRAW_HI,
+            done : 1'b1
+        },
+        opcode : MULTIPLIER_TREE
+    },
+    '{
+        instr: 32'b1100000_00000_00000_111_00000_0111011,  // funct7=0x60
+        mask:  32'b1111111_00000_00000_111_00000_1111111,
+        resp : '{
+            accept : 1'b1,
+            writeback : 1'b0,
+            register_read : {1'b0, 1'b0, 1'b0},
+            insn: OP_ACCZERO,
+            done : 1'b1
+        },
+        opcode : MULTIPLIER_TREE
+    },
+    '{
+        instr: 32'b1100001_00000_00000_111_00000_0111011,  // funct7=0x61
+        mask:  32'b1111111_00000_00000_111_00000_1111111,
+        resp : '{
+            accept : 1'b1,
+            writeback : 1'b0,
+            register_read : {1'b0, 1'b1, 1'b1},  // reads rs1 and rs2
+            insn: OP_MACC_S1,
+            done : 1'b1
+        },
+        opcode : MULTIPLIER_TREE
+    },
+    '{
+        instr: 32'b1100010_00000_00000_111_00000_0111011,  // funct7=0x62
+        mask:  32'b1111111_00000_00000_111_00000_1111111,
+        resp : '{
+            accept : 1'b1,
+            writeback : 1'b0,
+            register_read : {1'b0, 1'b1, 1'b1},  // reads rs1 and rs2
+            insn: OP_MACC_S2,
+            done : 1'b1
+        },
+        opcode : MULTIPLIER_TREE
+    },
+    '{
+        instr: 32'b1100011_00000_00000_111_00000_0111011,  // funct7=0x63
+        mask:  32'b1111111_00000_00000_111_00000_1111111,
+        resp : '{
+            accept : 1'b1,
+            writeback : 1'b0,
+            register_read : {1'b0, 1'b1, 1'b1},  // reads rs1 and rs2
+            insn: OP_MACC_S19,
+            done : 1'b1
+        },
+        opcode : MULTIPLIER_TREE
+    },
+    '{
+        instr: 32'b1100100_00000_00000_111_00000_0111011,  // funct7=0x64
+        mask:  32'b1111111_00000_00000_111_00000_1111111,
+        resp : '{
+            accept : 1'b1,
+            writeback : 1'b0,
+            register_read : {1'b0, 1'b1, 1'b1},  // reads rs1 and rs2
+            insn: OP_MACC_S38,
+            done : 1'b1
+        },
+        opcode : MULTIPLIER_TREE
+    },
+    '{
+        instr: 32'b1100101_00000_00000_111_00000_0111011,  // funct7=0x65
+        mask:  32'b1111111_00000_00000_111_00000_1111111,
+        resp : '{
+            accept : 1'b1,
+            writeback : 1'b1,
+            register_read : {1'b0, 1'b0, 1'b0},
+            insn: OP_ACCRD26,
+            done : 1'b1
+        },
+        opcode : MULTIPLIER_TREE
+    },
+    '{
+        instr: 32'b1100110_00000_00000_111_00000_0111011,  // funct7=0x66
+        mask:  32'b1111111_00000_00000_111_00000_1111111,
+        resp : '{
+            accept : 1'b1,
+            writeback : 1'b1,
+            register_read : {1'b0, 1'b0, 1'b0},
+            insn: OP_ACCRD25,
+            done : 1'b1
+        },
+        opcode : MULTIPLIER_TREE
+    },
+    '{
+        instr: 32'b1100111_00000_00000_111_00000_0111011,  // funct7=0x67
+        mask:  32'b1111111_00000_00000_111_00000_1111111,
+        resp : '{
+            accept : 1'b1,
+            writeback : 1'b1,
+            register_read : {1'b0, 1'b0, 1'b1},
+            insn: OP_ACCWRAP19,
+            done : 1'b1
+        },
+        opcode : MULTIPLIER_TREE
+    },
+    '{
+        instr: 32'b1101000_00000_00000_111_00000_0111011,  // funct7=0x68
+        mask:  32'b1111111_00000_00000_111_00000_1111111,
+        resp : '{
+            accept : 1'b1,
+            writeback : 1'b1,
+            register_read : {1'b0, 1'b0, 1'b1},
+            insn: OP_ACCWRAP5,
             done : 1'b1
         },
         opcode : MULTIPLIER_TREE

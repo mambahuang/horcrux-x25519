@@ -291,8 +291,18 @@ module horcrux
                       out.rd1 = fpr_result;
       end
 
-      OP_BFNTTK, OP_BARRETT, OP_BARRETT_HQC, OP_BARRETT_HQC3, OP_BARRETT_HQC5, OP_BFINTTK, OP_MQMULF, OP_MQMULK, OP_MQMULD, OP_KARATS_1, OP_KARATS_2, OP_KARATS_3, OP_GFMUL8, OP_BFNTTD, OP_BFNTTDH, OP_BFINTTD, OP_BFINTTDH, OP_KARATS_4, OP_RED32, OP_BFNTTF, OP_BFINTTF, OP_MODP_MONTYMUL, OP_GF_REDUCE, OP_COMPARE_U32, OP_MULRAW_LO, OP_MULRAW_HI: begin
-                      out.rd1 = multiplier_tree_result;
+      // Every multiplier_tree instruction that writes rd.
+      OP_BFNTTK, OP_BFINTTK,                                    // ML-KEM NTT butterflies
+      OP_BFNTTD, OP_BFNTTDH, OP_BFINTTD, OP_BFINTTDH,           // ML-DSA NTT butterflies
+      OP_BFNTTF, OP_BFINTTF,                                    // Falcon NTT butterflies
+      OP_MQMULK, OP_MQMULD, OP_MQMULF, OP_MODP_MONTYMUL,        // Montgomery multiplies
+      OP_BARRETT, OP_BARRETT_HQC, OP_BARRETT_HQC3, OP_BARRETT_HQC5,
+      OP_RED32,                                                 // reductions
+      OP_KARATS_1, OP_KARATS_2, OP_KARATS_3, OP_KARATS_4,       // HQC Karatsuba
+      OP_GFMUL8, OP_GF_REDUCE, OP_COMPARE_U32,                  // HQC GF(2^8) and compare
+      OP_MULRAW_LO, OP_MULRAW_HI,                               // M1: raw integer product
+      OP_ACCRD26, OP_ACCRD25, OP_ACCWRAP19, OP_ACCWRAP5: begin  // M2: accumulator reads
+        out.rd1 = multiplier_tree_result;
       end
 
       default: begin out.rd1 = '0;  end

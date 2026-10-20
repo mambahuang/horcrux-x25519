@@ -30,6 +30,12 @@ module multiplier_tree (
     // Internal registers for HQC Karatsuba
     logic [31:0] a1_reg, b1_reg;  // Store a_hi, b_hi from KARATS_2
     logic [31:0] reg_A, reg_B;    // Accumulator registers for intermediate XOR results
+
+    // pseudo-Mersenne accumulator
+    logic [63:0] acc_q;         // 64-bit accumulator
+    logic [31:0] op_b_scaled;   // rs2 * N, N in {1, 2, 19, 38}
+    logic [63:0] acc_sum;       // acc_q + raw 64-bit product
+    logic [63:0] wrap_v;        // rs1 + C * acc_q, C in {19, 5}
     
     // Internal wires
     logic [31:0] mul_op_a, mul_op_b, mul_res_lo, mul_res_hi;
@@ -163,6 +169,11 @@ module multiplier_tree (
             OP_MULRAW_LO, OP_MULRAW_HI: begin
                 mul_mode = 3'd3; // MODE_INT_RAW: raw 64-bit integer product rs1 * rs2
                 mul_op_a = multiplier_tree1_i; // mul_op_b keeps its default, rs2
+            end
+            OP_MACC_S1, OP_MACC_S2, OP_MACC_S19, OP_MACC_S38: begin
+                mul_mode = 3'd3;                 // MODE_INT_RAW
+                mul_op_a = multiplier_tree1_i;   // rs1
+                mul_op_b = op_b_scaled;          // N * rs2
             end
             default: begin
                 mul_mode = 3'd0;
@@ -381,7 +392,15 @@ module multiplier_tree (
             OP_MULRAW_HI: begin
                 result_o = mul_res_hi;   // (rs1 * rs2)[63:32]
             end
-
+            OP_ACCRD26: begin
+                result_o = {6'b0, acc_q[25:0]};
+            end
+            OP_ACCRD25: begin
+                result_o = {7'b0, acc_q[24:0]};
+            end
+            OP_ACCWRAP19, OP_ACCWRAP5: begin
+                result_o = {6'b0, wrap_v[25:0]};
+            end
             default: begin
                 result_o    = mul_res_lo;
                 result_hi_o = mul_res_hi;
@@ -450,6 +469,50 @@ module multiplier_tree (
         end
     end
 
+    // Pseudo-Mersenne accumulator logic:
+    //   acc_q     : 64-bit accumulator
+    //   op_b_scaled: rs2 * N, N in {1, 2, 19, 38}
+    //   acc_sum  : acc_q + raw 64-bit product
+    //   wrap_v   : rs1 + C * acc_q, C in {19, 5}
+    always_comb begin
+        case(insn_i)
+            OP_MACC_S1: begin
+                op_b_scaled = multiplier_tree2_i;
+            end
+            OP_MACC_S2: begin
+                op_b_scaled = multiplier_tree2_i << 1;  // rs2 * 2
+            end
+            OP_MACC_S19: begin
+                op_b_scaled = (multiplier_tree2_i << 4) + (multiplier_tree2_i << 1) + multiplier_tree2_i;  // rs2 * 19
+            end
+            OP_MACC_S38: begin
+                op_b_scaled = (multiplier_tree2_i << 5) + (multiplier_tree2_i << 2) + (multiplier_tree2_i << 1);  // rs2 * 38
+            end
+            default: begin
+                op_b_scaled = multiplier_tree2_i;
+            end
+        endcase
+    end
+    assign acc_sum = acc_q + {mul_res_hi, mul_res_lo};
+    assign wrap_v = (insn_i == OP_ACCWRAP19) ? (multiplier_tree1_i + (acc_q<<4) + (acc_q<<1) + acc_q) : (multiplier_tree1_i + (acc_q<<2) + acc_q);
+
+    // ACC logic: update acc_q based on instruction type
+    always_ff @(posedge clk_i or negedge rst_ni) begin
+        if (!rst_ni) begin
+            acc_q <= '0;
+        end else begin
+            case (insn_i)
+                OP_ACCZERO: acc_q <= '0;
+                OP_MACC_S1, OP_MACC_S2, OP_MACC_S19, OP_MACC_S38:
+                            acc_q <= acc_sum;
+                OP_ACCRD26: acc_q <= acc_q >> 26;
+                OP_ACCRD25: acc_q <= acc_q >> 25;
+                OP_ACCWRAP19, OP_ACCWRAP5:
+                            acc_q <= wrap_v >> 26;
+                default: acc_q <= acc_q;
+            endcase
+        end
+    end
 
 
 endmodule
