@@ -7,6 +7,7 @@ pqc_optimized_KEM_HQC_HQC-2025_HQC-1: Decaps cycles: 7407200
 pqc_optimized_KEM_ML-KEM_ml-kem-768: Keygen cycles: 261255
 pqc_optimized_KEM_ML-KEM_ml-kem-768: Encaps cycles: 289451
 pqc_optimized_KEM_ML-KEM_ml-kem-768: Decaps cycles: 426838
+tests_acc-ops: Hardware Cycles: 22764
 tests_cbd_eta1: Software Cycles: 3969
 tests_cbd_eta1: Hardware Cycles: 884
 tests_cbd_eta1: SW Cycles: 3969 | HW Cycles: 884
