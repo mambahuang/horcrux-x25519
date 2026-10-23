@@ -7,7 +7,9 @@ pqc_optimized_KEM_HQC_HQC-2025_HQC-1: Decaps cycles: 7407200
 pqc_optimized_KEM_ML-KEM_ml-kem-768: Keygen cycles: 261255
 pqc_optimized_KEM_ML-KEM_ml-kem-768: Encaps cycles: 289451
 pqc_optimized_KEM_ML-KEM_ml-kem-768: Decaps cycles: 426838
-tests_acc-ops: Hardware Cycles: 22764
+tests_acc-ops: Software Cycles: 11094
+tests_acc-ops: Hardware Cycles: 2957
+tests_acc-ops: SW Cycles: 11094 | HW Cycles: 2957
 tests_cbd_eta1: Software Cycles: 3969
 tests_cbd_eta1: Hardware Cycles: 884
 tests_cbd_eta1: SW Cycles: 3969 | HW Cycles: 884
@@ -145,4 +147,6 @@ tests_prf-addr: SW Cycles: 151262 | HW Cycles: 4164
 tests_thash-wots: SW Cycles: 3627188 | HW Cycles: 89828
 tests_thash: SW Cycles: 452084 | HW Cycles: 8604
 tests_thash2: SW Cycles: 461058 | HW Cycles: 9048
-tests_x25519-fe-mul: Hardware Cycles: 3834
+tests_x25519-fe-mul: Software Cycles: 29809
+tests_x25519-fe-mul: Hardware Cycles: 3843
+tests_x25519-fe-mul: SW Cycles: 29809 | HW Cycles: 3843
