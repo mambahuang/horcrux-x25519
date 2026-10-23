@@ -145,3 +145,4 @@ tests_prf-addr: SW Cycles: 151262 | HW Cycles: 4164
 tests_thash-wots: SW Cycles: 3627188 | HW Cycles: 89828
 tests_thash: SW Cycles: 452084 | HW Cycles: 8604
 tests_thash2: SW Cycles: 461058 | HW Cycles: 9048
+tests_x25519-fe-mul: Hardware Cycles: 3834
