@@ -2,7 +2,7 @@
 
 輸出兩個檔案到 sw/applications/tests/x25519-fe-mul/：
   fe_mul_hw.h      展開的 fe_mul_hw()：113 條協處理器指令，每條 macc 註明 i、j、N
-  test_vectors.h   20 組 f、g，以及 golden model 算出的位元精確預期 h
+  test_vectors.h   20 組 f、g，golden model 算出的位元精確預期 h，以及 f·g mod p 的 32-byte 編碼
 
 規則（funct7、scale_factor、limb 寬度）全部從 fe_mul_model.py 匯入，不重抄。
 寫檔之前會做兩項檢查，任何一項失敗就不寫：
@@ -199,17 +199,20 @@ def emit_vectors(vecs, seed):
          "    const char *name;",
          "    uint32_t f[10];",
          "    uint32_t g[10];",
-         "    uint32_t h[10];   // 預期輸出",
+         "    uint32_t h[10];         // 預期輸出，和 golden fe_mul 逐個 limb 相同",
+         "    uint8_t  h_bytes[32];   // f·g mod p 的標準編碼（little-endian），給 limb 表示法不同的實作比對",
          "} fe_mul_vector_t;",
          "",
          f"#define FE_MUL_N_VECTORS {len(vecs)}",
          "",
          "static const fe_mul_vector_t fe_mul_vectors[FE_MUL_N_VECTORS] = {"]
     for name, f, g, h in vecs:
+        b = (from_limbs(f) * from_limbs(g) % P).to_bytes(32, "little")
         L += [f'    {{"{name}",',
               f"     {c_limbs(f)},",
               f"     {c_limbs(g)},",
-              f"     {c_limbs(h)}}},"]
+              f"     {c_limbs(h)},",
+              "     {" + ", ".join(f"0x{x:02x}" for x in b) + "}},"]
     L += ["};", "", "#endif  // TEST_VECTORS_H", ""]
     return "\n".join(L)
 
