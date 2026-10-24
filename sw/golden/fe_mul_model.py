@@ -211,12 +211,7 @@ def fe_sq(f, hw):
     raise NotImplementedError
 
 
-def poly1305_block(h, r, s, m, hw):
-    """TODO（M2）：radix 2^26、5 個 limb，s_j = 5*r_j 由軟體預先算好。
-
-    結構和 fe_mul 相同：acczero、每欄 5 條 macc.s1、accrd.26，最後 accwrap.5。
-    """
-    raise NotImplementedError
+# poly1305_block（M2）在 poly1305_model.py，共用這裡的 HorcruxAcc。
 
 
 # ---------------------------------------------------------------------------
