@@ -143,6 +143,7 @@ tests_mldsa-unpack-z: SW Cycles: 1049 | HW Cycles: 506
 tests_mq-montymul: Software Cycles: 360
 tests_mq-montymul: Hardware Cycles: 114
 tests_mq-montymul: SW Cycles: 360 | HW Cycles: 114
+tests_poly1305-block: Hardware Cycles: 1554
 tests_prf-addr: SW Cycles: 151262 | HW Cycles: 4164
 tests_thash-wots: SW Cycles: 3627188 | HW Cycles: 89828
 tests_thash: SW Cycles: 452084 | HW Cycles: 8604
