@@ -39,8 +39,8 @@ See the top-level [README](../../../README.md) for the overall system figure and
 ### Unified multiplier & lattice/code-based arithmetic
 | Module | Description |
 |---|---|
-| [`multiplier_tree.sv`](multiplier_tree.sv) | Unified datapath for NTT butterflies (ML-KEM/ML-DSA/Falcon) and Montgomery multiplication, built around the Shared Multiplication Logic. |
-| [`shared_multiplication_logic.sv`](shared_multiplication_logic.sv) | Core reduction skeleton: computes the universal Montgomery reduction for lattice schemes and routes to `unified_mul_32x32` for HQC's carry-less products. |
+| [`multiplier_tree.sv`](multiplier_tree.sv) | Unified datapath for NTT butterflies (ML-KEM/ML-DSA/Falcon) and Montgomery multiplication, built around the Shared Multiplication Logic. On `x25519-ext` it also holds the 64-bit accumulator `acc_q`, the operand scaler ×{1, 2, 19, 38}, and the `accwrap` datapath ×{19, 5}. |
+| [`shared_multiplication_logic.sv`](shared_multiplication_logic.sv) | Core reduction skeleton: computes the universal Montgomery reduction for lattice schemes and routes to `unified_mul_32x32` for HQC's carry-less products. Mode 3 (`MODE_INT_RAW`, `x25519-ext`) outputs the raw 64-bit integer product. |
 | [`unified_mul_32x32.sv`](unified_mul_32x32.sv) | Dual-mode 32×32 multiplier: standard carry-propagating integer multiplication or carry-free `GF(2)` accumulation, selected by a single `carryless_mode_i` control signal. |
 | [`barrett.sv`](barrett.sv) | Barrett reduction unit shared between ML-KEM (mod 3329) and HQC (mod 17669/35851/57637), implemented with hardwired shifts and additions instead of a divider. |
 
@@ -117,5 +117,28 @@ All instructions use standard RISC-V `R-type` (2 source registers) or `R4-type` 
 | `FPR_NORM64_EXEC` | R4 | Falcon | Normalizes 64-bit mantissa and returns low 32 bits. |
 | `FPR_NORM64_RDHI` | R | Falcon | Reads high 32 bits from previous `FPR_NORM64_EXEC`. |
 | `FPR_NORM64_RDE` | R | Falcon | Reads adjusted exponent from previous `FPR_NORM64_EXEC`. |
+
+### Pseudo-Mersenne extension (`x25519-ext` branch)
+
+Multi-word integer arithmetic for X25519 (mod `2^255 − 19`) and Poly1305 (mod `2^130 − 5`) on the shared multiplier. All instructions are R-type with opcode `0x3B` and funct3 `0x7`. The `macc` instructions share one 64-bit accumulator `ACC` and use product scanning: each output limb is the sum of one column of partial products, and the carry stays in `ACC` for the next column.
+
+| Instruction | funct7 | Reads | Writes `rd` | Description |
+|---|:-:|:-:|:-:|---|
+| `MULRAW_LO` | `0x69` | rs1, rs2 | ✓ | `(rs1 · rs2)[31:0]`, signed (M1, temporary). |
+| `MULRAW_HI` | `0x6A` | rs1, rs2 | ✓ | `(rs1 · rs2)[63:32]`, signed (M1, temporary). |
+| `ACCZERO` | `0x60` | – | – | `ACC ← 0`. |
+| `MACC_S1` | `0x61` | rs1, rs2 | – | `ACC ← ACC + rs1 · rs2`. |
+| `MACC_S2` | `0x62` | rs1, rs2 | – | `ACC ← ACC + rs1 · (2·rs2)`. |
+| `MACC_S19` | `0x63` | rs1, rs2 | – | `ACC ← ACC + rs1 · (19·rs2)`. |
+| `MACC_S38` | `0x64` | rs1, rs2 | – | `ACC ← ACC + rs1 · (38·rs2)`. |
+| `ACCRD26` | `0x65` | – | ✓ | `rd ← ACC[25:0]`; `ACC ← ACC >> 26`. |
+| `ACCRD25` | `0x66` | – | ✓ | `rd ← ACC[24:0]`; `ACC ← ACC >> 25`. |
+| `ACCWRAP19` | `0x67` | rs1 | ✓ | `v = rs1 + 19·ACC`; `rd ← v[25:0]`; `ACC ← v >> 26` (X25519 final fold). |
+| `ACCWRAP5` | `0x68` | rs1 | ✓ | `v = rs1 + 5·ACC`; `rd ← v[25:0]`; `ACC ← v >> 26` (Poly1305 final fold). |
+
+Software must keep two invariants:
+
+- **Operand bound (A1).** The multiplier is signed, so `rs1` and `N·rs2` must both be non-negative and below `2^31`. For normalized X25519 limbs the largest scaled operand is about `2^30.25` (×19 on a 26-bit limb, ×38 only on 25-bit limbs); lazy limbs one bit wider would break it.
+- **`ACC` is architectural state.** Like `reg_A` for `BFNTTDH`, it is not saved on interrupts; an interrupt handler must not use these instructions in the middle of a sequence.
 
 The exact instruction encodings and mnemonics are defined in [`include/horcrux_pkg.sv`](include/horcrux_pkg.sv). Each instruction is individually exercised by a dedicated test in [`sw/applications/tests/`](../../../sw/applications/tests/README.md).
