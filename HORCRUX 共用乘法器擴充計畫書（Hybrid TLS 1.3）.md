@@ -154,7 +154,7 @@ accwrap.5 h0, h0
 | `accwrap.19 rd, rs1` | 0x67 | `OP_ACCWRAP19` | 1 | ✓ / – | v = rs1 + 19·ACC；rd ← v\[25:0\]；ACC ← v >> 26 |
 | `accwrap.5 rd, rs1` | 0x68 | `OP_ACCWRAP5` | 1 | ✓ / – | v = rs1 + 5·ACC；rd ← v\[25:0\]；ACC ← v >> 26 |
 
-`NbInstr` 由 57 改為 66。`horcrux_insn` 的內部 enum 值另取 0x50–0x58（與 funct7 無關，現有表也是兩套編號）。軟體端與現有測試相同，用 `.insn r 0x3b, 0x7, 0x61, x0, a0, a1` 呼叫。
+`NbInstr` 由 57 改為 68（9 條 ACC 指令，加上 M1 的暫時指令 `MULRAW_LO` / `MULRAW_HI`，funct7 0x69 / 0x6A）。`horcrux_insn` 的內部 enum 值與現有表一樣是另一套編號：ACC 指令取 0x60–0x68，`MULRAW_LO` / `MULRAW_HI` 取 0x5E / 0x5F。軟體端與現有測試相同，用 `.insn r 0x3b, 0x7, 0x61, x0, a0, a1` 呼叫。
 
 ### 4.2 `shared_multiplication_logic` 模式
 
@@ -201,7 +201,7 @@ mode 3 原本落在 `default`，輸出只有 `full_prod[31:0]`；新增後兩個
 
 | 檔案 | 行數 | 修改內容 |
 | --- | --- | --- |
-| `include/horcrux_pkg.sv` | 1069 | `horcrux_insn` 新增 9 個 enum；`CoproInstr` 新增 9 筆（funct7 0x60–0x68）；`NbInstr` 57 → 66；`opcode_t` 沿用 `MULTIPLIER_TREE` |
+| `include/horcrux_pkg.sv` | 1069 | `horcrux_insn` 新增 9 個 enum；`CoproInstr` 新增 9 筆（funct7 0x60–0x68）與 M1 的 2 筆（0x69、0x6A）；`NbInstr` 57 → 68；`opcode_t` 沿用 `MULTIPLIER_TREE` |
 | `shared_multiplication_logic.sv` | 237 | 新增 `MODE_INT_RAW = 3'd3`，輸出 mux 加一個 case |
 | `multiplier_tree.sv` | 444 | 運算元 mux 加 MACC 分支、scaler、`acc_q` 及其更新邏輯、`result_o` 的 accrd/accwrap 分支 |
 | `horcrux.sv` | 307 | `case (insn_i)` 的回寫表加入 accrd/accwrap，讓 `out.rd1` 取 `multiplier_tree_result` |
@@ -220,8 +220,8 @@ mode 3 原本落在 `default`，輸出只有 `full_prod[31:0]`；新增後兩個
 
 1. **M0′ — DC baseline。** 用 repo 內建的 `make synthesis`（fusesoc `asic_synthesis` target，Design Compiler）在 90nm 合成未修改的 `locket`，換算 GE，找出 ASIC 上的關鍵路徑。驗收：`reports/baseline/` 有 area、timing、QoR 報告；確認 66 ns 累加鏈在 ASIC 上是否仍是瓶頸。
 2. **M1 — `MODE_INT_RAW`。** 只改 `shared_multiplication_logic.sv`，先用一條暫時的測試指令讀出原始乘積。驗收：既有 KAT 全過，新模式結果與 golden model 一致，面積差可量。
-3. **M2 — ACC 指令組。** 加入 9 條指令與 `acc_q`。驗收：`fe_mul` 與 Poly1305 區塊通過 RFC 7748 / RFC 8439 測試向量與 Python golden model；stall 時不重複累加。
-4. **M3 — 完整軟體。** X25519 scalar mult（Montgomery ladder，含 `fe_sq` 對稱優化）與 Poly1305 MAC。驗收：完整測試向量通過，記錄 cycle 數。
+3. **M2 — ACC 指令組。** 加入 9 條指令與 `acc_q`。驗收：`fe_mul` 與 Python golden model 逐 limb 一致；Poly1305 區塊通過 RFC 8439 §2.5.2 的逐區塊中間值與 golden model；stall 時不重複累加。（RFC 7748 只有完整 scalar mult 的測試向量，`fe_mul` 無法單獨驗，移到 M3。）
+4. **M3 — 完整軟體。** X25519 scalar mult（Montgomery ladder，含 `fe_sq` 對稱優化）與 Poly1305 MAC。驗收：X25519 通過 RFC 7748 §5.2 單次向量與 §6.1 Diffie-Hellman 範例（迭代 1000 / 1,000,000 次的向量 RTL 模擬跑不動，改在 FPGA 或 ISS 上驗）；Poly1305 MAC 通過 RFC 8439 測試向量；記錄 cycle 數。
 5. **M4 — 評估。** 合成 H\_full、H\_sub、本設計（含 / 不含 carry-less）四個設計點，PTPX 功耗三組對照（第 6 節）。
 6. **M5 — 撰寫。**
 
@@ -230,6 +230,32 @@ mode 3 原本落在 `default`，輸出只有 `full_prod[31:0]`；新增後兩個
 - Python golden model：本計畫書第 2 節的位元精確模型，擴充成逐指令輸出 ACC 狀態，供 testbench 比對
 - 測試向量：RFC 7748（X25519）、RFC 8439（Poly1305）
 - 回歸：每次 RTL 修改都重跑 repo 既有的 ML-KEM / ML-DSA KAT，確保 PQC 功能不退步
+
+### 5.5 目前進度（2026-10-28）
+
+| 里程碑 | 狀態 | 產出 |
+| --- | --- | --- |
+| M0′ | 完成 | `reports/baseline/`（tag `m0-dc-baseline`）；另加 DesignWare 乘法器設計點 `reports/baseline-dwmul/`（tag `m0-dc-dwmul`） |
+| M1 | 完成 | `tests/int-raw-mul` 通過 |
+| M2 | 功能驗收完成，合成完成 | `tests/acc-ops`、`tests/x25519-fe-mul`、`tests/poly1305-block` 通過；`reports/x25519-ext/` |
+| M3 | 未開始 | |
+
+**與計畫不同之處：**
+
+- 擴充建在 DesignWare 乘法器版本（`baseline-dwmul`）上，不是原本的 `unified_mul_32x32`（指導教授決定）。所以 M2 的面積與時序都和 `baseline-dwmul` 比較，不是和 `locket` 原版比較。
+- 合成在 TSMC 40 nm ss / 125 °C 上做，約束沿用 baseline 的設定（IO 15%），尚未與指導教授定案；定案後兩個設計點一起重跑。
+- `id_stage` 加了 `rs_valid` 修正（bug fix，不屬於擴充），沒有 backport 到 baseline；成本 22 GE，在分模組面積中單獨列出。
+
+**量測結果（QuestaSim RTL 模擬）：**
+
+| 項目 | 協處理器指令數 | 第 2 節估計的總指令數（含載入 / 存回） | 實測 |
+| --- | --- | --- | --- |
+| `fe_mul` | 113 | 約 145 | 每次約 192 cycles；ref10 約 1490 cycles，加速 7.76× |
+| Poly1305 區塊 | 33 | 約 53 | 每區塊約 78 cycles；軟體基準尚未接上 |
+
+`fe_mul` 約 192 cycles 比 113 條協處理器指令加上載入 / 存回多出約 40 cycles，原因尚未查明（需用 objdump 檢查）。
+
+**合成（12.6 ns，面積比較用）：** 132,150 → 135,179 GE，**+3029 GE（+2.3%）**。其中 `accwrap` 的資料路徑 1087 GE、ACC 加法器 725 GE、×19 scaler 567 GE、`acc_q` 與相關 mux 約 1071 GE。**時序：** 在 baseline-dwmul 的 Fmax（5.4 ns）下兩者相差 1 ps，最差路徑不經過 scaler 或 ACC。細節見 `reports/x25519-ext/README.md`。
 
 ## 6. 評估方法
 
@@ -282,8 +308,9 @@ mode 3 原本落在 `default`，輸出只有 `full_prod[31:0]`；新增後兩個
 ### 7.2 待決事項
 
 - [ ] 是否保留 carry-less（GHASH）：以 M4 兩個設計點的面積差決定
-- [ ] A1 或 A2：M0′ 之後決定
-- [ ] `accwrap` 做成硬體或軟體：M2 時比較指令數
+- [x] A1 或 A2：先做 A1（指導教授決定）；A2 之後可作為額外設計點
+- [ ] `accwrap` 做成硬體或軟體：硬體資料路徑已量到約 1.1 kGE（5.5 節），還差軟體收尾多出的指令數
+- [ ] 合成約束（固定或比例的 uncertainty / IO delay、MAX_TRAN）與指導教授定案
 - [ ] 核對 HORCRUX 論文 Table VI 的 42 / 125 MHz，並釐清與 M0 量到約 97 ns 的差距
 - [ ] 嘗試在 Vivado 補裝 XCZU7EV 元件檔，做與原論文同家族的 OOC 對照
 - [ ] 與指導教授確認本計畫書範圍
