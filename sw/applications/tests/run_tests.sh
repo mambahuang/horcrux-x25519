@@ -81,6 +81,11 @@ AVAILABLE_TESTS=(
     "mldsa-rej-uniform"
     "mldsa-rej-eta"
     "mldsa-unpack-z"
+    # Pseudo-Mersenne extension tests (x25519-ext)
+    "int-raw-mul"
+    "acc-ops"
+    "x25519-fe-mul"
+    "poly1305-block"
 )
 
 # Default values

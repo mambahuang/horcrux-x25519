@@ -316,3 +316,40 @@ The test covers:
 
 This instruction accelerates the mask vector sampling which is called repeatedly during each signing attempt in ML-DSA.
 
+---
+
+## Pseudo-Mersenne Field Arithmetic Tests (`x25519-ext`)
+
+These tests cover the extension that lets the shared multiplier perform multi-word integer arithmetic modulo the pseudo-Mersenne primes `2^255 − 19` (X25519) and `2^130 − 5` (Poly1305). The extension adds a raw 64-bit product mode (`MODE_INT_RAW`, M1) and a 64-bit accumulator `ACC` with nine instructions (M2). Field elements are split into limbs (X25519: 10 limbs in radix `2^25.5`, alternating 26 and 25 bits; Poly1305: 5 limbs of 26 bits), and each output limb is computed by product scanning: all partial products of one column are accumulated in `ACC`, the low bits are read out, and the carry stays in `ACC` for the next column.
+
+All operands passed to `macc` must stay below `2^31` after scaling, because the multiplier is signed (assumption A1); the golden models assert this bound for every instruction.
+
+### `int-raw-mul` — Raw 64-bit Integer Product (M1)
+
+Tests the temporary instructions `MULRAW_LO` (funct7 `0x69`) and `MULRAW_HI` (funct7 `0x6A`), which return the low and high words of the signed 64-bit product `rs1 · rs2` computed by the primary multiplier in `MODE_INT_RAW`. Nine edge pairs cover zero, ±1, the extreme signed values, and the largest operand pair that occurs in `fe_mul` (`2^26 − 1` times `38·(2^25 − 1)`); 200 random pairs follow. The software reference uses an `int64_t` product (RV32 `mul`/`mulh`). This test validates the mode that every `macc` relies on.
+
+### `acc-ops` — Accumulator Instructions (M2)
+
+Directed tests for each of the nine ACC instructions, followed by a timed random comparison:
+
+- **acczero**: a non-zero `ACC` reads back as zero after `acczero`.
+- **macc.s1 / s2 / s19 / s38**: one product with the largest limb values; checks the operand-side scaling by 1, 2, 19, and 38.
+- **Accumulation**: ten products summed to about `2^55`, checking carries across 32-bit boundaries.
+- **accwrap.19 / accwrap.5**: `v = rs1 + C·ACC`; checks both the 26-bit result and the carry left in `ACC`.
+- **Stall**: `macc` is issued right after the `lw` that loads its operand, so the coprocessor must wait for `rs_valid`. `ACC` must hold exactly one product (two for two back-to-back `macc`). An instruction that is accumulated twice while stalled would fail here.
+- **Random sums**: 50 rounds of ten `macc` each, cycling through all four scale factors. The software path computes the same sums with `uint64_t`, serves as the expected value, and is always run.
+
+`ACC` is read back with `accrd.26`, `accrd.26`, `accrd.25`, which returns all 64 bits.
+
+### `x25519-fe-mul` — X25519 Field Multiplication
+
+Computes `h = f · g mod 2^255 − 19` on 20 vectors: zero, one, the largest limbs, `p − 1` squared, 12 random pairs, and a chain of 4 where each output becomes the next input (as in the Montgomery ladder). The hardware path `fe_mul_hw()` is a fully unrolled sequence of 113 coprocessor instructions: `acczero`, 100 `macc` (scale ×2 when both limb indices are odd, ×19 when they wrap past limb 9, ×38 for both), 10 `accrd`, one `accwrap.19` that folds the bits above `2^255` back into `h0`, and a final `accrd` for the carry into `h1`. Hardware results must match the golden model limb for limb.
+
+The software baseline is SUPERCOP ref10 `fe_mul`. Because ref10 uses signed limbs, its output is compared through the canonical 32-byte encoding (`fe_tobytes`) rather than limb by limb. A separate check calls `fe_mul_hw(x, x, y)` with the output aliased to an input, which the ladder does; the generated code therefore writes `h` only after all inputs have been read.
+
+### `poly1305-block` — Poly1305 Block Step
+
+Computes one Poly1305 block step `h = (h + m) · r mod 2^130 − 5` on 20 vectors: the three blocks of the RFC 8439 §2.5.2 example (whose intermediate accumulator values are published), a zero accumulator, a 1-byte final block, maximum `h`, maximum clamped `r`, an all-`0xff` block, 11 random blocks, and a chain of 4. Wrapped partial products use `s_j = 5·r_j`, precomputed in software once per key, so every multiply is `macc.s1` and no hardware scaling is needed. One block takes 33 coprocessor instructions: `acczero`, 25 `macc.s1`, 5 `accrd.26`, `accwrap.5`, and a final `accrd.26`.
+
+The test additionally runs the three RFC blocks back to back from `h = 0`, feeding each output into the next block, as a real MAC computation does. Only the hardware path is measured; a software baseline has not been added yet.
+
