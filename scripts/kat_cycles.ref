@@ -151,3 +151,10 @@ tests_thash2: SW Cycles: 461058 | HW Cycles: 9048
 tests_x25519-fe-mul: Software Cycles: 29809
 tests_x25519-fe-mul: Hardware Cycles: 3843
 tests_x25519-fe-mul: SW Cycles: 29809 | HW Cycles: 3843
+tests_x25519-scalarmult: X25519 vector 0 Cycles: 1038086
+tests_x25519-scalarmult: X25519 vector 1 Cycles: 1038091
+tests_x25519-scalarmult: X25519 vector 2 Cycles: 1038086
+tests_x25519-scalarmult: X25519 vector 3 Cycles: 1038091
+tests_x25519-scalarmult: X25519 vector 4 Cycles: 1038087
+tests_x25519-scalarmult: X25519 vector 5 Cycles: 1038088
+tests_x25519-scalarmult: X25519 vector 6 Cycles: 1038089
