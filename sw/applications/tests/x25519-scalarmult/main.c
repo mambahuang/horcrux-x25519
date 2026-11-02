@@ -75,6 +75,10 @@ static void fe_sub(uint32_t h[10], const uint32_t f[10], const uint32_t g[10]){
 }
 static void fe_cswap(uint32_t a[10], uint32_t b[10], uint32_t swap){
     uint32_t mask = -swap; // swap=1 → 0xffffffff；swap=0 → 0
+    // 優化屏障：不產生指令，但讓 gcc 不知道 mask 只會是 0 或 0xffffffff。
+    // 少了這行，gcc 會把下面的 and/xor 改寫成依 swap 跳轉的 beqz，
+    // 執行時間就會洩漏私鑰的 bit（server 上量到不同私鑰差到約 5000 cycles）
+    __asm__ volatile ("" : "+r"(mask));
     for (int i = 0; i < 10; i++) {
         uint32_t t = mask & (a[i] ^ b[i]);
         a[i] ^= t;
