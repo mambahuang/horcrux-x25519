@@ -86,6 +86,7 @@ AVAILABLE_TESTS=(
     "acc-ops"
     "x25519-fe-mul"
     "poly1305-block"
+    "x25519-scalarmult"
 )
 
 # Default values
