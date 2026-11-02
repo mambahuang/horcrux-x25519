@@ -129,6 +129,17 @@ def macc_comment(i, j, n):
     return f"i={i} j={j}  N={n}" + (f"{' ' * (4 - len(str(n)))}({'，'.join(why)})" if why else "")
 
 
+# gen_x25519.py 也用這幾行，兩邊的 macro 定義才會一字不差
+MACRO_LINES = [
+    "// M2 ACC 指令（opcode 0x3b、funct3 0x7），funct7 必須是常數，所以用 macro",
+    f'#define ACCZERO()          asm volatile(".insn r 0x3b, 0x7, {FUNCT7["acczero"]:#04x}, x0, x0, x0")',
+    '#define MACC(f7, a, b)     asm volatile(".insn r 0x3b, 0x7, " #f7 ", x0, %0, %1" :: "r"(a), "r"(b))',
+    f'#define ACCRD26(rd)        asm volatile(".insn r 0x3b, 0x7, {FUNCT7["accrd.26"]:#04x}, %0, x0, x0" : "=r"(rd))',
+    f'#define ACCRD25(rd)        asm volatile(".insn r 0x3b, 0x7, {FUNCT7["accrd.25"]:#04x}, %0, x0, x0" : "=r"(rd))',
+    '#define ACCWRAP(f7, rd, a) asm volatile(".insn r 0x3b, 0x7, " #f7 ", %0, %1, x0" : "=r"(rd) : "r"(a))',
+]
+
+
 def emit_hw_header(prog):
     L = [BANNER,
          "#ifndef FE_MUL_HW_H",
@@ -136,14 +147,18 @@ def emit_hw_header(prog):
          "",
          "#include <stdint.h>",
          "",
-         "// M2 ACC 指令（opcode 0x3b、funct3 0x7），funct7 必須是常數，所以用 macro",
-         f'#define ACCZERO()          asm volatile(".insn r 0x3b, 0x7, {FUNCT7["acczero"]:#04x}, x0, x0, x0")',
-         '#define MACC(f7, a, b)     asm volatile(".insn r 0x3b, 0x7, " #f7 ", x0, %0, %1" :: "r"(a), "r"(b))',
-         f'#define ACCRD26(rd)        asm volatile(".insn r 0x3b, 0x7, {FUNCT7["accrd.26"]:#04x}, %0, x0, x0" : "=r"(rd))',
-         f'#define ACCRD25(rd)        asm volatile(".insn r 0x3b, 0x7, {FUNCT7["accrd.25"]:#04x}, %0, x0, x0" : "=r"(rd))',
-         '#define ACCWRAP(f7, rd, a) asm volatile(".insn r 0x3b, 0x7, " #f7 ", %0, %1, x0" : "=r"(rd) : "r"(a))',
+         *MACRO_LINES,
          "",
-         "// h = f·g mod 2^255-19，radix 2^25.5（偶數 limb 26 bit、奇數 limb 25 bit）。",
+         *emit_fe_mul_fn(prog),
+         "",
+         "#endif  // FE_MUL_HW_H",
+         ""]
+    return "\n".join(L)
+
+
+def emit_fe_mul_fn(prog):
+    """fe_mul_hw() 本體（含前面的說明註解），回傳一行一個字串。"""
+    L = ["// h = f·g mod 2^255-19，radix 2^25.5（偶數 limb 26 bit、奇數 limb 25 bit）。",
          "// product scanning：第 k 欄累加所有 i+j ≡ k (mod 10) 的 f_i·g_j，縮放 N 一律放在 g 這側：",
          "//   i、j 皆奇 ×2；i+j>=10 ×19；兩者皆是 ×38。",
          "// h 全部算完才寫回，所以 h 可以和 f 或 g 是同一個陣列。",
@@ -174,11 +189,8 @@ def emit_hw_header(prog):
     L += ["",
           "    " + " ".join(f"h[{i}] = h{i};" for i in range(5)),
           "    " + " ".join(f"h[{i}] = h{i};" for i in range(5, 10)),
-          "}",
-          "",
-          "#endif  // FE_MUL_HW_H",
-          ""]
-    return "\n".join(L)
+          "}"]
+    return L
 
 
 def c_limbs(v):
