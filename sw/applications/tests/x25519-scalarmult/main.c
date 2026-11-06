@@ -306,6 +306,93 @@ static int test_x25519(void) {
     return ok;
 }
 
+// 第 3 步：各運算單次的 cycle 數 × 一次 X25519 的呼叫次數，看時間花在哪裡。
+// 每個運算連續呼叫 PROF_N 次再平均；輸出寫回輸入（h = op(h, …)），
+// 讓每次呼叫都依賴上一次的結果，編譯器不能把重複的呼叫刪掉。
+#define PROF_N 100
+
+static volatile uint32_t prof_sink;   // 收結果，避免編譯器把整段計算刪掉
+
+static unsigned int prof_per_call(unsigned int total) {
+    return (total + PROF_N / 2) / PROF_N;
+}
+
+static void profile_ops(void) {
+    // 一次 X25519 的呼叫次數（sw/golden/x25519_model.py 統計的 OPS）
+    //   ladder 255 輪 × (5 mul, 4 sq, 1 a24, 4 add, 4 sub, 2 cswap)
+    //   + fe_invert 254 sq + 11 mul + 最後 1 mul + 2 cswap
+    static const struct { const char *name; unsigned int calls; } ops[] = {
+        {"fe_mul_hw", 1287}, {"fe_sq_hw", 1274}, {"fe_mul_a24_hw", 255},
+        {"fe_add", 1020}, {"fe_sub", 1020}, {"fe_cswap", 512},
+    };
+    unsigned int per_call[6], cycles = 0, total = 0;
+    uint32_t h[10], a[10], b[10];
+    const uint32_t *g = fe_op_vectors[0].g;
+    uint8_t s[32];
+
+    memcpy(h, fe_op_vectors[0].f, sizeof h);
+
+    CSR_WRITE(CSR_REG_MCYCLE, 0);
+    for (int i = 0; i < PROF_N; i++) fe_mul_hw(h, h, g);
+    CSR_READ(CSR_REG_MCYCLE, &cycles);
+    per_call[0] = prof_per_call(cycles);
+
+    CSR_WRITE(CSR_REG_MCYCLE, 0);
+    for (int i = 0; i < PROF_N; i++) fe_sq_hw(h, h);
+    CSR_READ(CSR_REG_MCYCLE, &cycles);
+    per_call[1] = prof_per_call(cycles);
+
+    CSR_WRITE(CSR_REG_MCYCLE, 0);
+    for (int i = 0; i < PROF_N; i++) fe_mul_a24_hw(h, h);
+    CSR_READ(CSR_REG_MCYCLE, &cycles);
+    per_call[2] = prof_per_call(cycles);
+
+    CSR_WRITE(CSR_REG_MCYCLE, 0);
+    for (int i = 0; i < PROF_N; i++) fe_add(h, h, g);
+    CSR_READ(CSR_REG_MCYCLE, &cycles);
+    per_call[3] = prof_per_call(cycles);
+
+    CSR_WRITE(CSR_REG_MCYCLE, 0);
+    for (int i = 0; i < PROF_N; i++) fe_sub(h, h, g);
+    CSR_READ(CSR_REG_MCYCLE, &cycles);
+    per_call[4] = prof_per_call(cycles);
+
+    memcpy(a, h, sizeof a);
+    memcpy(b, g, sizeof b);
+    CSR_WRITE(CSR_REG_MCYCLE, 0);
+    for (int i = 0; i < PROF_N; i++) fe_cswap(a, b, i & 1);
+    CSR_READ(CSR_REG_MCYCLE, &cycles);
+    per_call[5] = prof_per_call(cycles);
+    prof_sink ^= a[0] ^ b[0];
+
+    for (int k = 0; k < 6; k++) {
+        unsigned int t = per_call[k] * ops[k].calls;
+        total += t;
+        printf("Profile %-14s %5u cycles/call x %4u = %7u\n", ops[k].name, per_call[k], ops[k].calls, t);
+    }
+    printf("Profile sum of field ops   %7u (X25519 measured above; the rest is ladder control)\n", total);
+
+    // 參考：fe_add / fe_sub 裡面有多少是 fe_carry
+    CSR_WRITE(CSR_REG_MCYCLE, 0);
+    for (int i = 0; i < PROF_N; i++) fe_carry(h);
+    CSR_READ(CSR_REG_MCYCLE, &cycles);
+    printf("Profile fe_carry           %5u cycles/call (inside every fe_add / fe_sub)\n", prof_per_call(cycles));
+
+    // 參考：fe_invert 與編碼，各量一次
+    CSR_WRITE(CSR_REG_MCYCLE, 0);
+    fe_invert(h, h);
+    CSR_READ(CSR_REG_MCYCLE, &cycles);
+    printf("Profile fe_invert          %7u cycles (254 sq + 11 mul, already in the sum)\n", cycles);
+
+    CSR_WRITE(CSR_REG_MCYCLE, 0);
+    fe_tobytes(s, h);
+    fe_frombytes(h, s);
+    CSR_READ(CSR_REG_MCYCLE, &cycles);
+    printf("Profile fe_tobytes+frombytes %5u cycles\n", cycles);
+
+    prof_sink ^= h[0];
+}
+
 int main(void) {
     int all_passed = 1;
 
@@ -317,6 +404,7 @@ int main(void) {
 
     all_passed &= test_field_ops();
     all_passed &= test_x25519();
+    profile_ops();
 
     if (all_passed) {
         printf("FINAL STATUS: ALL TESTS PASSED\n");
